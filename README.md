@@ -8,4 +8,21 @@ webapp scaffold using the yeoman webapp generator
 
 see: https://github.com/yeoman/generator-webapp
 
+##Contributing
+
+What's in this repo is the app. Bower, node components are gitignored.
+
+Clone the repo. 
+
+In the root directory fire:
+
+bower install
+
+then:
+
+npm install
+
+If you have problems with npm install you may need to clear the cache and try again:
+
+npm cache clear
 
