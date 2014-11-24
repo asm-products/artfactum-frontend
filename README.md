@@ -3,6 +3,8 @@ artfactum-frontend
 
 A better way to discover new art
 
+*Feel free to improve this readme.md
+
 webapp scaffold using the yeoman webapp generator
 -includes bootstrap and modernizr
 
@@ -12,7 +14,7 @@ see: https://github.com/yeoman/generator-webapp
 
 What's in this repo is the app. Bower, node components are gitignored.
 
-Clone the repo. 
+Clone the repo and create a branch.
 
 In the root directory fire:
 
