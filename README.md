@@ -10,11 +10,11 @@ webapp scaffold using the yeoman webapp generator
 
 see: https://github.com/yeoman/generator-webapp
 
-##Contributing
+##test/contribute
 
 What's in this repo is the app. Bower, node components are gitignored.
 
-Clone the repo and create a branch.
+fork and clone the repo.
 
 In the root directory fire:
 
