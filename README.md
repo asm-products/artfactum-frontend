@@ -1,5 +1,6 @@
 artfactum-frontend
-================== A better way to discover new art
+================== 
+A better way to discover new art
 
 *Update:
 
@@ -25,10 +26,6 @@ In the root directory fire:
 
 bower install
 
-Finally, run the app on the local server:
-
-grunt serve
-
 then:
 
 npm install
@@ -36,4 +33,8 @@ npm install
 If you have problems with npm install you may need to clear the cache and try again:
 
 npm cache clear
+
+Finally, run the app on the local server:
+
+grunt serve
 
