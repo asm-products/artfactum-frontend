@@ -37,6 +37,7 @@
       </div>
 
       <div class="jumbotron">
+	    <div id="myDiv"></div>
         <h1>'Allo, 'Allo!</h1>
         <p class="lead">Always a pleasure scaffolding your apps.</p>
         <p><a class="btn btn-lg btn-success" href="#">Splendid! <span class="glyphicon glyphicon-ok"></span></a></p>
@@ -68,10 +69,12 @@
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
     <script src="bower_components/jquery/dist/jquery.js"></script>
-    <!-- endbower -->
+    <script src="bower_components/react/react.js"></script>
+    <script src="bower_components/react/JSXTransformer.js"></script>
+    
+	<!-- endbower -->
     <!-- endbuild -->
 	
-    <script src="node_modules/react/dist/react.js"></script>
    
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
@@ -105,6 +108,30 @@
 		<script>
 		  $('<p>includes jquery and react</p>').prependTo('.jumbotron');
 		</script>
+		
+		<script type="text/jsx">
+          /** @jsx React.DOM */
+          React.renderComponent(
+            <h1>Hello, world!</h1>,
+            document.getElementById('myDiv')
+          );
+		  
+		  var MyComponent = React.createClass({
+            render: function(){
+              return (
+                <h1>React -- Hello, world!</h1>
+              );
+            }
+          });
+		  
+		  React.renderComponent(
+            <MyComponent/>,
+            document.getElementById('myDiv')
+          );
+		  
+        </script>
+		
+		
         <!-- endbuild -->
 </body>
 </html>
