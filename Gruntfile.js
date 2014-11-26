@@ -320,7 +320,7 @@ module.exports = function (grunt) {
             '<%= config.dist %>/styles/{,*/}*.css',
             '!<%= config.dist %>/scripts/vendor/*'
           ]
-      g  },
+        },
         uglify: true
       }
     },

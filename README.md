@@ -20,7 +20,9 @@ see: https://github.com/yeoman/generator-webapp
 
 What's in this repo is the app. Bower, node components are gitignored.
 
-fork and clone the repo.
+You'll need to have installed bower, node, grunt.
+
+Fork the repo. Clone a branch.
 
 In the root directory fire:
 
@@ -37,4 +39,14 @@ npm cache clear
 Finally, run the app on the local server:
 
 grunt serve
+
+To build:
+
+grunt build
+
+If you need to add a library or plugin, use npm.
+
+For example:
+
+npm install jquery --save
 
