@@ -27,20 +27,22 @@ Fork the repo. Clone a branch.
 
 In the root directory fire:
 
-|  bower install
+        bower install
+
 
 then:
 
-npm install
+        npm install
+
 
 If you have problems with npm install you may need to clear the cache and try again:
 
-npm cache clear
+        npm cache clear
+
 
 Finally, run the app on the local server:
 
         grunt serve
-
 
 To build:
 
