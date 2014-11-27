@@ -1,11 +1,73 @@
-# Artfactum
+artfactum-frontend
+================== 
+A better way to discover new art
 
-## A better way to discover new art
+*Update:
 
-This is a product being built by the Assembly community. You can help push this idea forward by visiting [https://assembly.com/artfactum](https://assembly.com/artfactum).
+An app build is now included in the 'dist' folder for non-developers or anyone wanting a finished product without building the app and running on a server. 
 
-### How Assembly Works
+To view the app build download the zip. Open the 'dist' folder and open index.html in a browser.
 
-Assembly products are like open-source and made with contributions from the community. Assembly handles the boring stuff like hosting, support, financing, legal, etc. Once the product launches we collect the revenue and split the profits amongst the contributors.
+For developers:
 
-Visit [https://assembly.com](https://assembly.com) to learn more.
+This is a webapp scaffold using the yeoman webapp generator.
+
+-includes bootstrap, modernizr, jquery
+-this branch includes react as well
+
+see: https://github.com/yeoman/generator-webapp
+
+##test/download
+
+What's in this repo is the app. Bower, node components are gitignored.
+
+You'll need to have installed bower, node, grunt.
+
+Fork the repo. Clone a branch.
+
+In the root directory fire:
+
+        bower install
+
+
+then:
+
+        npm install
+
+
+If you have problems with npm install you may need to clear the cache and try again:
+
+        npm cache clear
+
+
+Finally, run the app on the local server:
+
+        grunt serve
+
+To build:
+
+        grunt build
+  
+If you need to add a library or plugin, use bower.
+
+For example:
+
+        bower install --save jquery
+
+##Contributing
+
+Base this project's git flow on [A successful Git branching model](http://nvie.com/posts/a-successful-git-branching-model/)
+
+1. Find or Submit Bounty
+2. Make a Feature Branch from `develop`
+  - Name it based on bounty: `18-init-project`
+3. Make Changes
+  - Use micro commits
+  - Use the imperative, present tense: "change", not "changed" or "changes".
+4. Write tests
+  - Will not accept PRs that reduce coverage
+5. Open PR back into develop
+  - Make PR Description links to the Bounty and add a comment to the Bounty linking the PR
+
+
+
