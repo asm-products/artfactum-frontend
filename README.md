@@ -2,26 +2,21 @@ artfactum-frontend
 ================== 
 A better way to discover new art
 
-*Update:
+##About
 
-An app build is now included in the 'dist' folder for non-developers or anyone wanting a finished product without building the app and running on a server. 
+The front-end repository for Artfactum.
 
-To view the app build download the zip. Open the 'dist' folder and open index.html in a browser.
+We're currently using React with the Flux architecture and Bootstrap w/LESS. Also included: jQuery and Modernizr.
 
-For developers:
+React: http://facebook.github.io/react/
 
-This is a webapp scaffold using the yeoman webapp generator.
+Flux: http://facebook.github.io/flux/docs/overview.html
 
--includes bootstrap, modernizr, jquery
--this branch includes react as well
+This repo was scaffolded using Yeoman (see https://github.com/yeoman/generator-webapp).
 
-see: https://github.com/yeoman/generator-webapp
+##Contribute
 
-##test/download
-
-What's in this repo is the app. Bower, node components are gitignored.
-
-You'll need to have installed bower, node, grunt.
+You'll need to have installed bower, node, grunt, grunt, and grunt-cli.
 
 Fork the repo. Clone a branch.
 
