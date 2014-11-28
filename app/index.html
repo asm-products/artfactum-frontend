@@ -21,8 +21,7 @@
 
   </head>
   <body>
-    
-	<!--[if lt IE 10]>
+    <!--[if lt IE 10]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
@@ -38,7 +37,7 @@
       </div>
 
       <div class="jumbotron">
-	    <div id="myDiv"></div>
+	    <div id="myDiv">myDiv</div>
         <h1>'Allo, 'Allo!</h1>
         <p class="lead">Always a pleasure scaffolding your apps.</p>
         <p><a class="btn btn-lg btn-success" href="#">Splendid! <span class="glyphicon glyphicon-ok"></span></a></p>
@@ -49,11 +48,6 @@
           <h4>HTML5 Boilerplate</h4>
           <p>HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.</p>
 
-          <h4>jQuery</h4>
-          <p>jQuery</p>
-
-		  <h4>React</h4>
-          <p>React.js with JSXtransformer</p>
 
 
           <h4>Bootstrap</h4>
@@ -91,8 +85,7 @@
       e.src='//www.google-analytics.com/analytics.js';
       r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
       ga('create','UA-XXXXX-X');ga('send','pageview');*/
-    
-	</script>
+    </script>
 
         <!-- build:js(.) scripts/plugins.js -->
         <script src="bower_components/bootstrap/js/affix.js"></script>
@@ -111,9 +104,11 @@
 
         <!-- build:js({app,.tmp}) scripts/main.js -->
         <script src="scripts/main.js"></script>
+		<script>
+		  $('<p>includes jquery and react</p>').prependTo('.jumbotron');
+		</script>
 		
 		<script type="text/jsx">
-		
           /** @jsx React.DOM */
           React.renderComponent(
             <h1>Hello, world!</h1>,
@@ -137,6 +132,5 @@
 		
 		
         <!-- endbuild -->
-
 </body>
 </html>
