@@ -28,11 +28,7 @@
 
 
     <div class="container">
-	
-	<div class="jumboReact" id="ajax"></div>
-	<div class="jumboReact" id="react"></div>
-	
-      <!--<div class="header">
+      <div class="header">
         <ul class="nav nav-pills pull-right">
           <li class="active"><a href="#">Home</a></li>
           <li><a href="#">About</a></li>
@@ -71,7 +67,7 @@
 
       <div class="footer">
         <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
-      </div>-->
+      </div>
 
     </div>
 
@@ -80,6 +76,7 @@
     <!-- bower:js -->
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/react/react.js"></script>
+    <script src="bower_components/react/JSXtransformer.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 	
@@ -114,10 +111,29 @@
 
         <!-- build:js({app,.tmp}) scripts/main.js -->
         <script src="scripts/main.js"></script>
-		<script src='scripts/helloworld.js'></script>
-		<script src='scripts/helloajax.js'></script>
 		
+		<script type="text/jsx">
 		
+          /** @jsx React.DOM */
+          React.renderComponent(
+            <h1>Hello, world!</h1>,
+            document.getElementById('myDiv')
+          );
+		  
+		  var MyComponent = React.createClass({
+            render: function(){
+              return (
+                <h1>React -- Hello, world!</h1>
+              );
+            }
+          });
+		  
+		  React.renderComponent(
+            <MyComponent/>,
+            document.getElementById('myDiv')
+          );
+		  
+        </script>
 		
 		
         <!-- endbuild -->
