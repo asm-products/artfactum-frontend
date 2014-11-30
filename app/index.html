@@ -13,23 +13,23 @@
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
-    <link rel="stylesheet" href="styles/main.css">
+    <!--<link rel="stylesheet" href="styles/main.css">-->
+    <link rel="stylesheet" href="styles/signup.css">
+    <link rel="stylesheet" href="styles/color-swatch.css">
+	
     <!-- endbuild -->
     <!-- build:js scripts/vendor/modernizr.js -->
     <script src="bower_components/modernizr/modernizr.js"></script>
     <!-- endbuild -->
-
+	
   </head>
   <body>
     <!--[if lt IE 10]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-
-	<div class='container'>
-	  <div class='jumbotron'>
-        <div id="myDiv"></div>
-      </div>
-	</div>
+    	  <div id="artfactum" style="border-bottom: solid black 3px"></div>
+	
+	  
 
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
@@ -37,7 +37,7 @@
     <script src="bower_components/react/react.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
-    
+   <script src="bower_components/react/jsxtransformer.js"></script>
 	
    
 
@@ -69,31 +69,14 @@
         <!-- endbuild -->
 
         <!-- build:js({app,.tmp}) scripts/main.js -->
-        <script src="scripts/main.js"></script>
+        <script src="build/signup.js"></script>
+		<script src="scripts/main.js"></script>
+		
 		<!-- endbuild -->
 		 
-		<script type="text/jsx">
-    
-	     /** @jsx React.DOM */
-    	  
-		  
-		  var MyComponent = React.createClass({
-            render: function(){
-              return (
-                <h1>React - Hell, world!</h1>
-              );
-            }
-          });
-		  
-		  React.renderComponent(
-            <MyComponent/>,
-            document.getElementById('myDiv')
-          );
-		  
-		  
-        </script>
-		
-		
+
+
        
+
 </body>
 </html>
