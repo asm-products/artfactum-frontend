@@ -114,7 +114,7 @@
 	
 	handleSuccess: function(e) {
 	  document.getElementById('info').innerHTML = JSON.stringify(e);
-	  this.setState({data:e});
+	  this.setState({data:e.data});
 	  return;
 	},
 	
@@ -132,24 +132,38 @@
 			ref="ajax" 
 			url={this.props.url} 
 		  ></Ajax>
-		  <FirstChild_A data={this.state} />
+		  <FirstChild_A data={this.state.data} />
 		</div>
 	  )
 	}
   });
   
   var FirstChild_A = React.createClass({
-    render: function(){
+	
+	render: function(){
+	  
+	  var items = this.props.data.map( function(i){
+	    return (
+		  <li>{i.name}</li>
+		);
+	  
+	  });
 	  return (
-	    <h5>{this.props.data}</h5>
-      );
+	    <div className='items'>
+		  <ul>{items}</ul>
+		  <li>mary</li>
+		</div>
+	  );
+	  
 	}
+    
   });
    
   React.render(
 	<Dispatcher url='data.json'/>,
 	document.getElementById('artfactum')
   );
+  
   
 </script>
        
