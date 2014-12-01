@@ -28,9 +28,13 @@
 	<div class='container'>
 	  <div class='jumbotron'>
        
-		  <div id="info" style="border-bottom: solid black 3px">data</div>
-		  <div id="artfactum" style="border-bottom: solid black 10px"></div>
-		  <div id='render' style='background: white' ></div>
+	      <h4>Ajax response:</h1>
+		  <div id="info" style="border-bottom: solid black 3px">
+		  data
+		  </div>
+		  <h4>App</h4>
+		  <div id="artfactum" style="border-bottom: solid black 3px"></div>
+		  <div id='render' style='border-bottom: solid black 3px' ></div>
       </div>
 	</div>
 	
@@ -78,7 +82,6 @@
 		 
 
 <script type="text/jsx">
-
   
   var Ajax = React.createClass({
 	getInitialState: function(){
@@ -104,7 +107,7 @@
 	
   });
   
-  var Artfactum = React.createClass({
+  var Dispatcher = React.createClass({
 	getInitialState: function(){
 	  return {data: []};
 	},
@@ -123,32 +126,33 @@
 	render: function(){
 	  return ( 
 		<div class='handleAjax'>
-    	  
-		  <Ajax 
+  	      <Ajax 
 		    onError={this.handleError} 
 			onSuccess={this.handleSuccess} 
 			ref="ajax" 
 			url={this.props.url} 
 		  ></Ajax>
-		  <span>{this.state.data}</span>
+		  <FirstChild_A data={this.state} />
 		</div>
-		
 	  )
 	}
   });
   
-  
+  var FirstChild_A = React.createClass({
+    render: function(){
+	  return (
+	    <h5>{this.props.data}</h5>
+      );
+	}
+  });
+   
   React.render(
-	<Artfactum url='data.json'/>,
+	<Dispatcher url='data.json'/>,
 	document.getElementById('artfactum')
   );
-		  
-		  
-  
   
 </script>
-
-		
        
+
 </body>
 </html>

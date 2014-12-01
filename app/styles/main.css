@@ -45,8 +45,12 @@ body {
 
 /* Main marketing message and sign up button */
 .jumbotron {
-  text-align: center;
+  
   border-bottom: 1px solid #e5e5e5;
+}
+
+.jumbotron >div{
+  padding:.75em;
 }
 
 .jumbotron .btn {
