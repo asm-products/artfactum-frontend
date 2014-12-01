@@ -27,10 +27,10 @@
 
 	<div class='container'>
 	  <div class='jumbotron'>
-        <div id="myDiv"></div>
-		
-		  <div id="artfactum"></div>
-		
+       
+		  <div id="info" style="border-bottom: solid black 3px">data</div>
+		  <div id="artfactum" style="border-bottom: solid black 10px"></div>
+		  <div id='render' style='background: white' ></div>
       </div>
 	</div>
 	
@@ -76,71 +76,78 @@
         <script src="scripts/main.js"></script>
 		<!-- endbuild -->
 		 
-		<script type="text/jsx">
-    
-	     /** @jsx React.DOM */
-    	  
-		  
-		  var MyComponent = React.createClass({
-            render: function(){
-              return (
-                <h1>React - Hell, world!</h1>
-              );
-            }
-          });
-		  
-		  React.render(
-            <MyComponent/>,
-            document.getElementById('myDiv')
-          );
-		  
-		  var ArtFactum = React.createClass({
-            getInitialState: function(){
-              return {data: []};
-            },
-			componentDidMount: function() {
-			  $.ajax({
-			    url: this.props.url,
-				dataType: 'json',
-				success: function(data) {
-				  this.setState( {data: data});
-				}.bind(this),
-				error: function(xhr, status, err) {
-				  console.error(this.props.url, status, err.toString());
-				}.bind(this)
-			  });
-			},
-			
-			
-			render: function() {
-			  
-			  var e = this.state.data.map(function (comment) {
-              		  
-	          return (
-			  
-	            <div className="artFactum">
-	              <h1>{comment.occupation}</h1>
-	        	</div>
-				
-	          );
-			  });
-			  
-			  return ( 
-			    <div className='e'>
-				  {e}
-				</div>
-              );
-			}
-          });
 
-          React.render(
-            <ArtFactum url="data.json" />,
-              document.getElementById('artfactum')
-            );
-		  
-		  
-        </script>
+<script type="text/jsx">
+
+  
+  var Ajax = React.createClass({
+	getInitialState: function(){
+	  return {data: []};
+	},
+	componentDidMount: function() {
+	  $.ajax({
+		url: this.props.url,
+		dataType: 'json',
+		success: function(data) {
+		  this.setState( {data: data});
+		  this.props.onSuccess({data:data});
+		}.bind(this),
+		error: function(Ajax, status, err) {
+		  console.error(this.props.url, status, err.toString());
+		  this.props.onError({data: [this.props.url,status, err.toString() ]});
+		}.bind(this)
+	  });
+	},
+	render: function() {
+	  return ( <div /> );
+	}
+	
+  });
+  
+  var Artfactum = React.createClass({
+	getInitialState: function(){
+	  return {data: []};
+	},
+	
+	handleSuccess: function(e) {
+	  document.getElementById('info').innerHTML = JSON.stringify(e);
+	  this.setState({data:e});
+	  return;
+	},
+	
+	handleError: function(e){
+	  document.getElementById('info').innerHTML = JSON.stringify(e);
+	  return;
+	},
+	
+	render: function(){
+	  return ( 
+		<div class='handleAjax'>
+    	  
+		  <Ajax 
+		    onError={this.handleError} 
+			onSuccess={this.handleSuccess} 
+			ref="ajax" 
+			url={this.props.url} 
+		  ></Ajax>
+		  <span>{this.state.data}</span>
+		</div>
 		
+	  )
+	}
+  });
+  
+  
+  React.render(
+	<Artfactum url='data.json'/>,
+	document.getElementById('artfactum')
+  );
+		  
+		  
+  
+  
+</script>
+
 		
        
 </body>
