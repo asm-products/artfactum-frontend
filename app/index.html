@@ -145,18 +145,34 @@
 	  var items = this.props.data.map( function(i){
 	    return (
 		  <li>{i.name}</li>
+		 
 		);
 	  
 	  });
 	  return (
 	    <div className='items'>
+		  <h5>firstchild-a</h5>
 		  <ul>{items}</ul>
-		  <li>mary</li>
+		  <SecondChild_A data={this.props.data} >{this.props.children}</SecondChild_A>
+		  
 		</div>
 	  );
 	  
 	}
     
+  });
+  
+  var SecondChild_A = React.createClass({
+  
+    render: function(){
+	
+	  return (
+	    <span>{this.props}</span>
+	  )
+	  
+	}
+  
+  
   });
    
   React.render(
