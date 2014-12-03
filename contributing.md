@@ -1,4 +1,4 @@
-Base this project's git flow on A successful Git branching model http://nvie.com/posts/a-successful-git-branching-model/
+Base this project's git flow on [A successful Git branching model](http://nvie.com/posts/a-successful-git-branching-model/)
 
 1.Find or Submit Bounty
 2.Make a Feature Branch from develop
