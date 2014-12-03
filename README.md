@@ -14,9 +14,9 @@ Flux: http://facebook.github.io/flux/docs/overview.html
 
 This repo was scaffolded using Yeoman (see https://github.com/yeoman/generator-webapp).
 
-##Contribute
+##Install
 
-You'll need to have installed bower, node, grunt, grunt, and grunt-cli.
+You'll need to have installed bower, node, grunt, and grunt-cli.
 
 Fork the repo. Clone a branch.
 
