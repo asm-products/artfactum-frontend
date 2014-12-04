@@ -1,3 +1,11 @@
+#debugger{
+  width:100%;
+  background: black;
+  color:white;
+  margin-top:0;
+  padding:.5em;
+}
+
 .browsehappy {
   margin: 0.2em 0;
   background: #ccc;
@@ -6,12 +14,17 @@
 }
 
 /* Space out content a bit */
-body {
+.container {
   padding-top: 20px;
   padding-bottom: 20px;
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
+
+.container{
+
+}
+
 .header,
 .marketing,
 .footer {
@@ -70,7 +83,7 @@ body {
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
   .container {
-    max-width: 730px;
+    
   }
 
   /* Remove the padding we set earlier */

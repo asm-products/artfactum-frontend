@@ -13,7 +13,8 @@
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
-    <link rel="stylesheet" href="styles/main.css">
+    <!--<link rel="stylesheet" href="styles/main.css">-->
+    <link rel="stylesheet" href="styles/signup.css">
     <!-- endbuild -->
     <!-- build:js scripts/vendor/modernizr.js -->
     <script src="bower_components/modernizr/modernizr.js"></script>
@@ -24,20 +25,9 @@
     <!--[if lt IE 10]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-
-	<div class='container'>
-	  <div class='jumbotron'>
-       
-	      <h4>Ajax response:</h1>
-		  <div id="info" style="border-bottom: solid black 3px">
-		  data
-		  </div>
-		  <h4>App</h4>
-		  <div id="artfactum" style="border-bottom: solid black 3px"></div>
-		  <div id='render' style='border-bottom: solid black 3px' ></div>
-      </div>
-	</div>
+    	  <div id="artfactum" style="border-bottom: solid black 3px"></div>
 	
+	  
 
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
@@ -77,111 +67,13 @@
         <!-- endbuild -->
 
         <!-- build:js({app,.tmp}) scripts/main.js -->
-        <script src="scripts/main.js"></script>
+        
 		<!-- endbuild -->
+		<script src="build/signup.js"></script>
+		<script src="scripts/main.js"></script>
 		 
 
-<script type="text/jsx">
-  
-  var Ajax = React.createClass({
-	getInitialState: function(){
-	  return {data: []};
-	},
-	componentDidMount: function() {
-	  $.ajax({
-		url: this.props.url,
-		dataType: 'json',
-		success: function(data) {
-		  this.setState( {data: data});
-		  this.props.onSuccess({data:data});
-		}.bind(this),
-		error: function(Ajax, status, err) {
-		  console.error(this.props.url, status, err.toString());
-		  this.props.onError({data: [this.props.url,status, err.toString() ]});
-		}.bind(this)
-	  });
-	},
-	render: function() {
-	  return ( <div /> );
-	}
-	
-  });
-  
-  var Dispatcher = React.createClass({
-	getInitialState: function(){
-	  return {data: []};
-	},
-	
-	handleSuccess: function(e) {
-	  document.getElementById('info').innerHTML = JSON.stringify(e);
-	  this.setState({data:e.data});
-	  return;
-	},
-	
-	handleError: function(e){
-	  document.getElementById('info').innerHTML = JSON.stringify(e);
-	  return;
-	},
-	
-	render: function(){
-	  return ( 
-		<div class='handleAjax'>
-  	      <Ajax 
-		    onError={this.handleError} 
-			onSuccess={this.handleSuccess} 
-			ref="ajax" 
-			url={this.props.url} 
-		  ></Ajax>
-		  <FirstChild_A data={this.state.data} />
-		</div>
-	  )
-	}
-  });
-  
-  var FirstChild_A = React.createClass({
-	
-	render: function(){
-	  
-	  var items = this.props.data.map( function(i){
-	    return (
-		  <li>{i.name}</li>
-		 
-		);
-	  
-	  });
-	  return (
-	    <div className='items'>
-		  <h5>firstchild-a</h5>
-		  <ul>{items}</ul>
-		  <SecondChild_A data={this.props.data} >{this.props.children}</SecondChild_A>
-		  
-		</div>
-	  );
-	  
-	}
-    
-  });
-  
-  var SecondChild_A = React.createClass({
-  
-    render: function(){
-	
-	  return (
-	    <span>{this.props}</span>
-	  )
-	  
-	}
-  
-  
-  });
-   
-  React.render(
-	<Dispatcher url='data.json'/>,
-	document.getElementById('artfactum')
-  );
-  
-  
-</script>
+
        
 
 </body>

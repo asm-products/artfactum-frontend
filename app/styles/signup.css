@@ -1,0 +1,66 @@
+.list{
+  background: red
+}
+
+.language-picker{
+  background: white;
+  border-radius: 3px;
+  
+  }
+  
+.second-layer{
+  margin-top:2em;
+}
+
+.intro{
+  background: tomato;
+  height:1000px;
+  color: lavender;
+}
+
+.navbar-fixed-top{
+
+   padding: 1em;
+   background: transparent;     
+
+}
+
+.top-nav-collapse {
+   padding: 0;
+   background-color: black;
+}
+
+.intro {
+    
+    display: table;
+    width: 100%;
+    height: auto;
+    padding: 100px 0;
+    text-align: center;
+    color: #fff;
+    background: url(../img/intro-bg.jpg) no-repeat bottom center scroll;
+    background-color: tomato;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+.intro .intro-body {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.page-scroll{
+  color: white;
+}
+
+.intro-text{
+  margin-top: 1.75em;
+}
+
+.launch-text{
+  padding:1em;
+  border: solid black 2px;
+  border-radius: 20px;
+}
