@@ -16,9 +16,10 @@ This repo was scaffolded using Yeoman (see https://github.com/yeoman/generator-w
 
 ##Contribute
 
-You'll need to have installed bower, node, grunt, grunt, and grunt-cli.
+You'll need to have installed bower, node, grunt, and grunt-cli.
 
-Fork the repo. Clone a branch.
+
+##How to install
 
 In the root directory fire:
 
@@ -63,6 +64,13 @@ Base this project's git flow on [A successful Git branching model](http://nvie.c
   - Will not accept PRs that reduce coverage
 5. Open PR back into develop
   - Make PR Description links to the Bounty and add a comment to the Bounty linking the PR
+
+##React and JSX 
+Use JSX for better workflow. Install react-tools and use JSX -w [original file] [build file].
+This will automatically compile your jsx js into valid js. 
+
+The build directory is located in app/build.
+Put the original somewhere in app/scripts.
 
 
 
