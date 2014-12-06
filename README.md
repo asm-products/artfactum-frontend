@@ -2,6 +2,14 @@ artfactum-frontend
 ================== 
 A better way to discover new art
 
+Artfactum is built on Assembly
+
+##How Assembly Works
+
+Assembly products are like open-source and made with contributions from the community. Assembly handles the boring stuff like hosting, support, financing, legal, etc. Once the product launches we collect the revenue and split the profits amongst the contributors.
+
+Visit https://assembly.com to learn more.
+
 ##About
 
 The front-end repository for Artfactum.
@@ -44,7 +52,7 @@ To build:
 
         grunt build
   
-If you need to add a library or plugin, use bower.
+If you need to add a library or plugin, use bower or npm.
 
 For example:
 
@@ -73,4 +81,6 @@ The build directory is located in app/build.
 Put the original somewhere in app/scripts.
 
 
+#Work DRY
 
+See if there is an existing React component, Bootstrap solution, or jQuery plugin available before starting a new bounty.
