@@ -71,29 +71,9 @@
 	  return (
 	    <div className='items'>
 
-          {/*<ul className="nav nav-pills">
-            <div className='btn-group'>
-              <a className='language-picker dropdown-toggle' data-toggle='dropdown' href='#'>
-	            Language
-	            <span className='caret'></span>
-	          </a>
-		      <ul className='dropdown-menu'>
-			    <li><a href='#'>English</a></li>
-		      </ul>
-		    </div>
-		    <input className="pull-right" type='text' placeholder='signin' />
-		  </ul>
-		  <ul className='second-layer'>
-		  <select>
-		    <option>English</option>
-		  </select>
-		  
-		  <ul>{items}</ul>
-		  <SecondChild_A data={this.props.data} >{this.props.children}</SecondChild_A>
-		  </ul>*/}
-	
-		 <TopNavBar data={this.props.data} >{this.props.children}</TopNavBar>
-	    </div>	 
+		  <TopNavBar data={this.props.data} >{this.props.children}</TopNavBar>
+	    
+		</div>	 
 	  );
 	  
 	}
@@ -105,79 +85,73 @@
     render: function(){
 	
 	  return (
-	     <div className='topNavBar'>
-	     <nav className='navbar navbar-custom navbar-fixed-top' role='navigation'>
-         <div className='container'>
+	    <div className='topNavBar'>
+	    
+	<div className="parallax">
+      <div id='first-parallax' className='parallax__group'>
+        <div className="parallax__layer parallax__layer--back">
+  
+ 	      <header id='jumbotron'>
+	        <img src='logo/logo_AF+_256.png' alt='logo/logo_AF+_.png' />
+	        <h2>A Better Way to Discover New Art</h2>
+	        <i id='artfactum-describe'>
+	          Artfactum is an online marketplace where artists and art lovers create virtual galleries to showcase and sell art to a global community
+	        </i>
+	        <p id='create-space'></p>
+	        <p className='oval-button'><span>Launch Your Own Gallery</span></p>
+	        <p className='oval-button'><span>Discover</span></p>
+	      </header>
 
-            <div className='navbar-header'>
-                <button type='button' className="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
-                    <i className="fa fa-bars"></i>
-                </button>
-                <a className="navbar-brand" href="#page-top">
-            		
-					<select className="language-picker">
-					  <option>English</option>
-					  <option>Spanish</option>
-					</select>
-					  
-                </a>
-            </div>
-            <div className="navbar-collapse navbar-right navbar-main-collapse">
-                <ul className="nav navbar-nav">
-                    <li className="hidden">
-                        <a href="#page-top"></a>
-                    </li>
-                    <li>
-                        <a className="light page-scroll" href="#about">
-						Sign Up</a>
-                    </li>
-                    <li>
-                        <a className="light page-scroll" href="#download">Login</a>
-                    </li>
-           
-                </ul>
-            </div>
-    
         </div>
-	    </nav>
-	<header className='intro'>
-        <div className="intro-body">
-            <div className="container">
-                <div className="row">
-                    <div className="col-md-8 col-md-offset-2">
-                        <img src='logo/logo_af+_256.png' alt='logo' title='log' />
-						<h3>A better way to discover new art</h3>
-                        <p className="intro-text">Description here</p>
-                        <p className="intro-text"><span className='launch-text'>Launch Your Own Gallery</span></p>
-                        
-						<a href="#about" className="btn btn-circle page-scroll">
-						    
-                        </a>
-						<a href="#about" className="btn btn-circle page-scroll">
-						    
-                            <i className="fa fa-angle-double-down animated"></i>
-                        </a>
-                    </div>
-					
-                </div>
-            </div>
+        <div className="parallax__layer parallax__layer--base">
+          <select className='light' id='signup-language'>
+	        <option>English</option>
+	        <option>Spanish</option>
+	      </select>
+	      <button className='light' id='signup-button'>Sign up</button>
+  
         </div>
-    </header>
-	<header className="intro">
-        <div className="intro-body">
-            <div className="container">
-                <div className="row">
-                    <div className="col-md-8 col-md-offset-2">
-                        <h1 className="brand-heading">Kertwang</h1>
-                        <p className="intro-text">A game inspired by Blek made with HTML5 technology.</p>
-                        <a href="#about" className="btn btn-circle page-scroll">
-                            <i className="fa fa-angle-double-down animated"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
+
+      </div> 
+  
+    <div className='parallax__group'>
+    <div className="parallax__layer parallax__layer--back"></div>
+    <div className="parallax__layer parallax__layer--base">
+  
+    <div id='section-two' >
+  
+    <article>
+      <div>Create your own Gallery</div>
+        <span>+</span>
+	    <div>Sell your artworks</div>
+        <span>+</span>
+	    <div>Get paid discovering artwork</div>
+	    <div>A global community</div>
+        <span>+</span>
+	    <div>Democratized</div>
+        <span>+</span>
+	    <div>Best commision ever</div>
+      </article>	
+    </div>
+  
+  </div>
+  
+<div className='parallax__group'>
+  <div className="parallax__layer parallax__layer--back">
+  
+   
+  
+  </div>
+  <div className="parallax__layer parallax__layer--base">
+  
+  
+  
+  </div>  
+  
+</div>
+
+</div>
+	</div>
 	</div>
 	
 	  );

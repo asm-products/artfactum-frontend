@@ -71,9 +71,29 @@
 	  return (
 	    React.createElement("div", {className: "items"}, 
 
-		  React.createElement(TopNavBar, {data: this.props.data}, this.props.children)
-	    
-		)	 
+          /*<ul className="nav nav-pills">
+            <div className='btn-group'>
+              <a className='language-picker dropdown-toggle' data-toggle='dropdown' href='#'>
+	            Language
+	            <span className='caret'></span>
+	          </a>
+		      <ul className='dropdown-menu'>
+			    <li><a href='#'>English</a></li>
+		      </ul>
+		    </div>
+		    <input className="pull-right" type='text' placeholder='signin' />
+		  </ul>
+		  <ul className='second-layer'>
+		  <select>
+		    <option>English</option>
+		  </select>
+		  
+		  <ul>{items}</ul>
+		  <SecondChild_A data={this.props.data} >{this.props.children}</SecondChild_A>
+		  </ul>*/
+	
+		 React.createElement(TopNavBar, {data: this.props.data}, this.props.children)
+	    )	 
 	  );
 	  
 	}
@@ -85,36 +105,36 @@
     render: function(){
 	
 	  return (
-	    React.createElement("div", {className: "topNavBar"}, 
-	    
+	     React.createElement("div", {className: "topNavBar"}, 
+	     
+	
 	React.createElement("div", {className: "parallax"}, 
       React.createElement("div", {id: "first-parallax", className: "parallax__group"}, 
-        React.createElement("div", {className: "parallax__layer parallax__layer--back"}, 
+    React.createElement("div", {className: "parallax__layer parallax__layer--back"}, 
   
- 	      React.createElement("header", {id: "jumbotron"}, 
-	        React.createElement("img", {src: "logo/logo_AF+_256.png", alt: "logo/logo_AF+_.png"}), 
-	        React.createElement("h2", null, "A Better Way to Discover New Art"), 
-	        React.createElement("i", {id: "artfactum-describe"}, 
-	          "Artfactum is an online marketplace where artists and art lovers create virtual galleries to showcase and sell art to a global community"
-	        ), 
-	        React.createElement("p", {id: "create-space"}), 
-	        React.createElement("p", {className: "oval-button"}, React.createElement("span", null, "Launch Your Own Gallery")), 
-	        React.createElement("p", {className: "oval-button"}, React.createElement("span", null, "Discover"))
-	      )
+ 	  React.createElement("header", {id: "jumbotron"}, 
+	    React.createElement("img", {src: "logo/logo_AF+_256.png", alt: "logo/logo_AF+_.png"}), 
+	    React.createElement("h2", null, "A Better Way to Discover New Art"), 
+	    React.createElement("i", {id: "artfactum-describe"}, 
+	      "Artfactum is an online marketplace where artists and art lovers create virtual galleries to showcase and sell art to a global community"
+	    ), 
+	    React.createElement("p", {id: "create-space"}), 
+	    React.createElement("p", {className: "oval-button"}, React.createElement("span", null, "Launch Your Own Gallery")), 
+	    React.createElement("p", {className: "oval-button"}, React.createElement("span", null, "Discover"))
+	  )
 
-        ), 
-        React.createElement("div", {className: "parallax__layer parallax__layer--base"}, 
-          React.createElement("select", {className: "light", id: "signup-language"}, 
-	        React.createElement("option", null, "English"), 
-	        React.createElement("option", null, "Spanish")
-	      ), 
-	      React.createElement("button", {className: "light", id: "signup-button"}, "Sign up")
+    ), 
+    React.createElement("div", {className: "parallax__layer parallax__layer--base"}, 
+      React.createElement("select", {className: "light", id: "signup-language"}, 
+	    React.createElement("option", null, "English"), 
+	    React.createElement("option", null, "Spanish")
+	  ), 
+	  React.createElement("button", {className: "light", id: "signup-button"}, "Sign up")
   
-        )
+    )
 
-      ), 
-  
-    React.createElement("div", {className: "parallax__group"}, 
+  ), 
+  React.createElement("div", {className: "parallax__group"}, 
     React.createElement("div", {className: "parallax__layer parallax__layer--back"}), 
     React.createElement("div", {className: "parallax__layer parallax__layer--base"}, 
   
@@ -142,9 +162,13 @@ React.createElement("div", {className: "parallax__group"},
    
   
   ), 
-  React.createElement("div", {className: "parallax__layer parallax__layer--base"}
+  React.createElement("div", {className: "parallax__layer parallax__layer--base"}, 
   
-  
+  React.createElement("div", {id: "signup-top"}
+    
+    
+	
+  )
   
   )
   
