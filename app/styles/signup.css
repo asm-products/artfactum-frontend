@@ -1,3 +1,72 @@
+<<<<<<< HEAD
+=======
+.list{
+  background: red
+}
+
+.language-picker{
+  background: white;
+  border-radius: 3px;
+  
+  }
+  
+.second-layer{
+  margin-top:2em;
+}
+
+.intro{
+  background: tomato;
+  height:1000px;
+  color: lavender;
+}
+
+.navbar-fixed-top{
+
+   padding: 1em;
+   background: transparent;     
+
+}
+
+.top-nav-collapse {
+   padding: 0;
+   background-color: black;
+}
+
+.intro {
+    
+    display: table;
+    width: 100%;
+    height: auto;
+    padding: 100px 0;
+    text-align: center;
+    color: #fff;
+    background: url(../img/intro-bg.jpg) no-repeat bottom center scroll;
+    background-color: tomato;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+.intro .intro-body {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.page-scroll{
+  color: white;
+}
+
+.intro-text{
+  margin-top: 1.75em;
+}
+
+.launch-text{
+  padding:1em;
+  border: solid black 2px;
+  border-radius: 20px;
+}
+>>>>>>> origin/contributing
 
 @font-face {
     font-family: 'Open-Sans-600';
@@ -30,7 +99,10 @@
  
 	
 .parallax {
+<<<<<<< HEAD
   	 
+=======
+>>>>>>> origin/contributing
   perspective: 1px;
   top:.5vh;
   overflow-x: hidden;
@@ -45,6 +117,7 @@
   
 }
 
+<<<<<<< HEAD
 
 .parallax__group {
   position:relative;
@@ -67,24 +140,35 @@
     background: white;
   }
 
+=======
+>>>>>>> origin/contributing
 .parallax__layer {
   position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
+<<<<<<< HEAD
   height:100vh;
+=======
+  height:200vh;
+>>>>>>> origin/contributing
 }
 .parallax__layer--base {
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
   -webkit-transform: translateZ(0);
+<<<<<<< HEAD
   
+=======
+   box-shadow: 0 -4px 4px 4px #ccc;
+>>>>>>> origin/contributing
 }
 .parallax__layer--back {
   -webkit-transform: translateZ(-1px);
   transform: translateZ(-1px);
   -webkit-transform: translateZ(-1px) scale(2);
+<<<<<<< HEAD
  width:100%;
  
    
@@ -112,6 +196,35 @@
   margin-top:3em;
   border:solid black 2px;
 }
+=======
+  //background-image: url(logo/Logo_+_256.png);  
+  
+  
+ width:100%;
+ top:50%;
+  
+   
+}
+
+.parallax__group {
+  position:relative;
+  background: rgba(30,30,30,0.25);
+//  background: url(logo/Logo_+_256.png) no-repeat bottom center scroll;
+//    -webkit-background-size: cover;
+//   -moz-background-size: cover;
+//    background-size: cover;
+//    -o-background-size: cover;
+ 
+  height:100vh;
+  transform-style: preserve-3d;
+  width:100%;
+  -webkit-transform-style: preserve-3d;
+  }
+  
+  .parallax__group:nth-child(2){
+    background: white;
+  }
+>>>>>>> origin/contributing
   
   
   #section-two{
@@ -122,12 +235,17 @@
 	margin-left:auto;
 	margin-right:auto;
 	border:solid black 1px;
+<<<<<<< HEAD
     font-family: 'Open-Sans-600;
+=======
+
+>>>>>>> origin/contributing
   }
   
   article{
     position:relative;
 	top:20%;
+<<<<<<< HEAD
 	width:110%;
 	margin-left:auto;
 	margin-right:auto;
@@ -158,6 +276,12 @@
 	  position:absolute;
 	  font-size:1.25em;
 	  
+=======
+	height:100%;
+	width:110%;
+	margin-left:auto;
+	margin-right:auto;
+>>>>>>> origin/contributing
   }
   
   #section-two div{
@@ -179,7 +303,13 @@
   }
   
   #section-two div img{
+<<<<<<< HEAD
     
+=======
+    width:100%;
+	height:100%;
+	border:solid yellow 2px;
+>>>>>>> origin/contributing
   }
   
   #signup-language,#signup-button{
@@ -198,12 +328,20 @@
   
     position:relative;
 	top:0px;
+<<<<<<< HEAD
     height:100%;
+=======
+	
+>>>>>>> origin/contributing
 	width:100%;
 	text-align:center;
   }
   
+<<<<<<< HEAD
   #jumbotron img:nth-child(1){
+=======
+  img:nth-child(1){
+>>>>>>> origin/contributing
     display:block;
 	position:relative;
 	margin-left:auto;
@@ -213,7 +351,12 @@
   }
   
   #create-space{
+<<<<<<< HEAD
     height:4em;
+=======
+    
+    height:3em;
+>>>>>>> origin/contributing
 	width: 100%;
 	border: solid black 1px;
   }
@@ -229,12 +372,17 @@
 	margin-left: auto;
 	margin-right:auto;
     border:solid black 2px;
+<<<<<<< HEAD
     width:14em;
+=======
+    width:12em;
+>>>>>>> origin/contributing
 	border-radius:20px;
 	font-family: 'Open-Sans-regular';
 	font-weight:bold;
 	font-size:1em;
   }
+<<<<<<< HEAD
   
   .create-space img{
     position:absolute;
@@ -299,3 +447,6 @@ figure {
 .margin-top-1{
   margin-top:1em;
 }
+=======
+  
+>>>>>>> origin/contributing

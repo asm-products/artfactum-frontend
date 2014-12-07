@@ -1,10 +1,13 @@
 'use strict';
 
+<<<<<<< HEAD
 /**
  * @jsx React.DOM
  */
  
 
+=======
+>>>>>>> origin/contributing
  var Ajax = React.createClass({displayName: 'Ajax',
 	getInitialState: function(){
 	  return {data: []};
@@ -91,16 +94,25 @@
 	
 	  return (
 	    React.createElement("div", {className: "topNavBar"}, 
+<<<<<<< HEAD
+=======
+	    
+>>>>>>> origin/contributing
 	React.createElement("div", {className: "parallax"}, 
       React.createElement("div", {id: "first-parallax", className: "parallax__group"}, 
         React.createElement("div", {className: "parallax__layer parallax__layer--back"}, 
   
  	      React.createElement("header", {id: "jumbotron"}, 
+<<<<<<< HEAD
 		    React.createElement("img", {src: "logo/logo_AF+_256.png", alt: "logo/logo_AF+_.png"}), 
+=======
+	        React.createElement("img", {src: "logo/logo_AF+_256.png", alt: "logo/logo_AF+_.png"}), 
+>>>>>>> origin/contributing
 	        React.createElement("h2", null, "A Better Way to Discover New Art"), 
 	        React.createElement("i", {id: "artfactum-describe"}, 
 	          "Artfactum is an online marketplace where artists and art lovers create virtual galleries to showcase and sell art to a global community"
 	        ), 
+<<<<<<< HEAD
 			React.createElement("p", {id: "create-space"}
 			), 
 	        React.createElement("p", {className: "oval-button"}, React.createElement("span", null, "Launch Your Own Gallery")), 
@@ -109,12 +121,21 @@
 		  
         ), 
 		
+=======
+	        React.createElement("p", {id: "create-space"}), 
+	        React.createElement("p", {className: "oval-button"}, React.createElement("span", null, "Launch Your Own Gallery")), 
+	        React.createElement("p", {className: "oval-button"}, React.createElement("span", null, "Discover"))
+	      )
+
+        ), 
+>>>>>>> origin/contributing
         React.createElement("div", {className: "parallax__layer parallax__layer--base"}, 
           React.createElement("select", {className: "light", id: "signup-language"}, 
 	        React.createElement("option", null, "English"), 
 	        React.createElement("option", null, "Spanish")
 	      ), 
 	      React.createElement("button", {className: "light", id: "signup-button"}, "Sign up")
+<<<<<<< HEAD
    	
         ), 
 		React.createElement("div", {className: "under-back"}, 
@@ -194,6 +215,11 @@
         
 		)
 
+=======
+  
+        )
+
+>>>>>>> origin/contributing
       ), 
   
     React.createElement("div", {className: "parallax__group"}, 
@@ -203,6 +229,7 @@
     React.createElement("div", {id: "section-two"}, 
   
     React.createElement("article", null, 
+<<<<<<< HEAD
 	 
         React.createElement("div", null, 
 	      
@@ -251,15 +278,44 @@
    
   
     ), 
+=======
+      React.createElement("div", null, "Create your own Gallery"), 
+        React.createElement("span", null, "+"), 
+	    React.createElement("div", null, "Sell your artworks"), 
+        React.createElement("span", null, "+"), 
+	    React.createElement("div", null, "Get paid discovering artwork"), 
+	    React.createElement("div", null, "A global community"), 
+        React.createElement("span", null, "+"), 
+	    React.createElement("div", null, "Democratized"), 
+        React.createElement("span", null, "+"), 
+	    React.createElement("div", null, "Best commision ever")
+      )	
+    )
+  
+  ), 
+  
+React.createElement("div", {className: "parallax__group"}, 
+  React.createElement("div", {className: "parallax__layer parallax__layer--back"}
+  
+   
+  
+  ), 
+>>>>>>> origin/contributing
   React.createElement("div", {className: "parallax__layer parallax__layer--base"}
   
   
   
   )
   
+<<<<<<< HEAD
   )
 
   )
+=======
+)
+
+)
+>>>>>>> origin/contributing
 	)
 	)
 	
