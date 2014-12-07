@@ -1,13 +1,7 @@
 'use strict';
 
-<<<<<<< HEAD
-/**
- * @jsx React.DOM
- */
- 
 
-=======
->>>>>>> origin/contributing
+
  var Ajax = React.createClass({
 	getInitialState: function(){
 	  return {data: []};
@@ -52,7 +46,7 @@
 	
 	render: function(){
 	  return ( 
-		<div class='handleAjax'>
+		<div className='handleAjax'>
   	      <Ajax 
 		    onError={this.handleError} 
 			onSuccess={this.handleSuccess} 
@@ -94,26 +88,16 @@
 	
 	  return (
 	    <div className='topNavBar'>
-<<<<<<< HEAD
-=======
-	    
->>>>>>> origin/contributing
 	<div className="parallax">
       <div id='first-parallax' className='parallax__group'>
         <div className="parallax__layer parallax__layer--back">
   
-<<<<<<< HEAD
  	      <header id='jumbotron'>    
 		    <img src='logo/logo_AF+_256.png' alt='logo/logo_AF+_.png' />
-=======
- 	      <header id='jumbotron'>
-	        <img src='logo/logo_AF+_256.png' alt='logo/logo_AF+_.png' />
->>>>>>> origin/contributing
 	        <h2>A Better Way to Discover New Art</h2>
 	        <i id='artfactum-describe'>
 	          Artfactum is an online marketplace where artists and art lovers create virtual galleries to showcase and sell art to a global community
 	        </i>
-<<<<<<< HEAD
 			<p id='create-space'>
 			</p>
 	        <p className='oval-button'><span>Launch Your Own Gallery</span></p>
@@ -122,21 +106,12 @@
 		  
         </div>
 		
-=======
-	        <p id='create-space'></p>
-	        <p className='oval-button'><span>Launch Your Own Gallery</span></p>
-	        <p className='oval-button'><span>Discover</span></p>
-	      </header>
-
-        </div>
->>>>>>> origin/contributing
         <div className="parallax__layer parallax__layer--base">
           <select className='light' id='signup-language'>
 	        <option>English</option>
 	        <option>Spanish</option>
 	      </select>
 	      <button className='light' id='signup-button'>Sign up</button>
-<<<<<<< HEAD
    	
         </div>
 		<div className='under-back'>
@@ -216,11 +191,6 @@
         
 		</div>
 
-=======
-  
-        </div>
-
->>>>>>> origin/contributing
       </div> 
   
     <div className='parallax__group'>
@@ -230,7 +200,6 @@
     <div id='section-two' >
   
     <article>
-<<<<<<< HEAD
 	 
         <div>
 	      
@@ -279,44 +248,15 @@
    
   
     </div>
-=======
-      <div>Create your own Gallery</div>
-        <span>+</span>
-	    <div>Sell your artworks</div>
-        <span>+</span>
-	    <div>Get paid discovering artwork</div>
-	    <div>A global community</div>
-        <span>+</span>
-	    <div>Democratized</div>
-        <span>+</span>
-	    <div>Best commision ever</div>
-      </article>	
-    </div>
-  
-  </div>
-  
-<div className='parallax__group'>
-  <div className="parallax__layer parallax__layer--back">
-  
-   
-  
-  </div>
->>>>>>> origin/contributing
   <div className="parallax__layer parallax__layer--base">
   
   
   
   </div>  
   
-<<<<<<< HEAD
   </div>
 
   </div>
-=======
-</div>
-
-</div>
->>>>>>> origin/contributing
 	</div>
 	</div>
 	

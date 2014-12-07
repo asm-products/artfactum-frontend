@@ -46,7 +46,7 @@
 	
 	render: function(){
 	  return ( 
-		React.createElement("div", {className: "handleAjax"}, 
+		React.createElement("div", {class: "handleAjax"}, 
   	      React.createElement(Ajax, {
 		    onError: this.handleError, 
 			onSuccess: this.handleSuccess, 

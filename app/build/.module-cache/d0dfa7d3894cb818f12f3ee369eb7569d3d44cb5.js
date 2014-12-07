@@ -1,6 +1,9 @@
 'use strict';
 
-
+/**
+ * @jsx React.DOM
+ */
+ 
 
  var Ajax = React.createClass({displayName: 'Ajax',
 	getInitialState: function(){
@@ -46,7 +49,7 @@
 	
 	render: function(){
 	  return ( 
-		React.createElement("div", {className: "handleAjax"}, 
+		React.createElement("div", {class: "handleAjax"}, 
   	      React.createElement(Ajax, {
 		    onError: this.handleError, 
 			onSuccess: this.handleSuccess, 

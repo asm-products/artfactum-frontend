@@ -1,76 +1,7 @@
-<<<<<<< HEAD
-=======
-.list{
-  background: red
-}
-
-.language-picker{
-  background: white;
-  border-radius: 3px;
-  
-  }
-  
-.second-layer{
-  margin-top:2em;
-}
-
-.intro{
-  background: tomato;
-  height:1000px;
-  color: lavender;
-}
-
-.navbar-fixed-top{
-
-   padding: 1em;
-   background: transparent;     
-
-}
-
-.top-nav-collapse {
-   padding: 0;
-   background-color: black;
-}
-
-.intro {
-    
-    display: table;
-    width: 100%;
-    height: auto;
-    padding: 100px 0;
-    text-align: center;
-    color: #fff;
-    background: url(../img/intro-bg.jpg) no-repeat bottom center scroll;
-    background-color: tomato;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    background-size: cover;
-    -o-background-size: cover;
-}
-
-.intro .intro-body {
-    display: table-cell;
-    vertical-align: middle;
-}
-
-.page-scroll{
-  color: white;
-}
-
-.intro-text{
-  margin-top: 1.75em;
-}
-
-.launch-text{
-  padding:1em;
-  border: solid black 2px;
-  border-radius: 20px;
-}
->>>>>>> origin/contributing
 
 @font-face {
     font-family: 'Open-Sans-600';
-    src: url(styles/fonts/Open-Sans-600.ttf);
+    src: url(fonts/Open-Sans-600.ttf);
     
    }
    @font-face {
@@ -99,10 +30,6 @@
  
 	
 .parallax {
-<<<<<<< HEAD
-  	 
-=======
->>>>>>> origin/contributing
   perspective: 1px;
   top:.5vh;
   overflow-x: hidden;
@@ -117,7 +44,6 @@
   
 }
 
-<<<<<<< HEAD
 
 .parallax__group {
   position:relative;
@@ -140,20 +66,18 @@
     background: white;
   }
 
-
 .parallax__layer {
   position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  height:200vh;
+  height:100vh;
 }
 .parallax__layer--base {
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
   -webkit-transform: translateZ(0);
-   box-shadow: 0 -4px 4px 4px #ccc;
 }
 .parallax__layer--back {
   -webkit-transform: translateZ(-1px);
@@ -186,14 +110,7 @@
   margin-top:3em;
   border:solid black 2px;
 }
-  //background-image: url(logo/Logo_+_256.png);  
-  
-  
- width:100%;
- top:50%;
-  
-   
-}
+ 
 
 .parallax__group {
   position:relative;
@@ -214,6 +131,7 @@
     background: white;
   }
   
+  
   #section-two{
     left:0;
 	width:90%;
@@ -222,7 +140,7 @@
 	margin-left:auto;
 	margin-right:auto;
 	border:solid black 1px;
-    font-family: 'Open-Sans-600;
+    font-family: 'Open-Sans-600';
   }
   
   article{
@@ -238,7 +156,7 @@
     border-top: 2px black solid;
     position:relative;
 	bottom:20%;
-	width:80%
+	width:80%;
 	margin-top:1em;
 	padding-top:2em;
 	font-size:1.4em;
@@ -246,7 +164,7 @@
 	margin-left:auto;
 	margin-right:auto;
 	text-align: center;
-	font-family: 'Open-Sans-600;
+	font-family: 'Open-Sans-600'gr;
   }
   
    #section-two em{
@@ -258,10 +176,6 @@
 	  position:absolute;
 	  font-size:1.25em;
 	  
-	height:100%;
-	width:110%;
-	margin-left:auto;
-	margin-right:auto;
   }
   
   #section-two div{
@@ -283,10 +197,6 @@
   }
   
   #section-two div img{
-    
-    width:100%;
-	height:100%;
-	border:solid yellow 2px;
   }
   
   #signup-language,#signup-button{
@@ -306,13 +216,11 @@
     position:relative;
 	top:0px;
     height:100%;
-	
 	width:100%;
 	text-align:center;
   }
   
   #jumbotron img:nth-child(1){
-  
     display:block;
 	position:relative;
 	margin-left:auto;
@@ -323,8 +231,6 @@
   
   #create-space{
     height:4em;
-    
-    height:3em;
 	width: 100%;
 	border: solid black 1px;
   }
@@ -340,17 +246,12 @@
 	margin-left: auto;
 	margin-right:auto;
     border:solid black 2px;
-<<<<<<< HEAD
     width:14em;
-=======
-    width:12em;
->>>>>>> origin/contributing
 	border-radius:20px;
 	font-family: 'Open-Sans-regular';
 	font-weight:bold;
 	font-size:1em;
   }
-<<<<<<< HEAD
   
   .create-space img{
     position:absolute;
@@ -388,8 +289,8 @@ figure {
 }
 
 .center-wrapper figure{
-  border:solid gray .2em;
-  padding:.75em;
+  
+  padding:1em;
 }
 
 
@@ -403,10 +304,8 @@ figure {
 }
 
 .center-wrapper{
-  border: solid blue 2px;
   position:relative;
-  display:block
-  width:110%;
+  width:100%;
   margin-right:auto;
   margin-left:auto;
   
