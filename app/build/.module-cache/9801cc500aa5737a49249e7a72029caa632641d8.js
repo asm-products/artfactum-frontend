@@ -1,6 +1,7 @@
 'use strict';
 
 
+
 var Ajax = React.createClass({displayName: 'Ajax',
   getInitialState: function(){
     return {data: []};
@@ -89,29 +90,20 @@ var TopNavBar = React.createClass({displayName: 'TopNavBar',
     return (
 	  React.createElement("div", {className: "topNavBar"}, 
         React.createElement("div", {className: "parallax"}, 
-          React.createElement("div", {id: "first-page", className: "parallax__group"}, 
+          React.createElement("div", {id: "first-parallax", className: "parallax__group"}, 
 	        React.createElement("div", {className: "parallax__layer parallax__layer--back"}, 
-              
+
 			  React.createElement("header", {id: "jumbotron"}, 
-			    React.createElement("img", {src: "images/dogs.png"}), 
-				React.createElement("img", {src: "logo/logo_AF+_256.png", alt: "logo/logo_AF+_.png"}), 
-				React.createElement("div", {className: "jumbo-inner"}, 
+			    React.createElement("img", {src: "logo/logo_AF+_256.png", alt: "logo/logo_AF+_.png"}), 
 				React.createElement("h2", null, "A Better Way to Discover New Art"), 
 				React.createElement("i", {id: "artfactum-describe"}, 
 				  "Artfactum is an online marketplace where artists and art lovers create virtual galleries to showcase and sell art to a global community"
-				)
-				
-				)
-				
-						
-			  ), 
-		  	    
-				React.createElement("p", {id: "create-space"}, 
-				
-				  React.createElement("p", {className: "oval-button"}, React.createElement("span", null, "Launch Your Own Gallery")), 
-				  React.createElement("p", {className: "second-oval oval-button"}, React.createElement("span", null, "Discover"))
-			    
-				)
+				), 
+				React.createElement("p", {id: "create-space"}
+				), 
+				React.createElement("p", {className: "oval-button"}, React.createElement("span", null, "Launch Your Own Gallery")), 
+				React.createElement("p", {className: "oval-button"}, React.createElement("span", null, "Discover"))
+			  )
 			  
 			), 
 			
@@ -121,34 +113,33 @@ var TopNavBar = React.createClass({displayName: 'TopNavBar',
 				React.createElement("option", null, "Spanish")
 			  ), 
 			  React.createElement("button", {className: "light", id: "signup-button"}, "Sign up")
-			  
 
 			), 
 			React.createElement("div", {className: "under-back"}, 
-			
-			React.createElement("div", {className: "container-fluid tomato second-page"}, 
+
+			  React.createElement("div", {className: "container-fluid second-page"}, 
 				React.createElement("div", {className: "center-wrapper"}, 
-				React.createElement("div", {className: "row min-height"}, 
-				  React.createElement("div", {className: "col-xs-6"}, 
-				  React.createElement("h3", null, 
-					React.createElement("b", null, "Simple")
+				React.createElement("div", {className: "row-min-height"}, 
+				  React.createElement("div", {className: "col-xs-12 col-lg-6"}, 
+				  React.createElement("span", null, 
+					"Simple"
 				  ), 
 				  React.createElement("p", null, 
 					"Upload your gallery and upload your artworks"
 				  )
 				  ), 
-				   React.createElement("figure", {className: "col-xs-6"}, 
-				     React.createElement("img", {src: "icons/icons/png/32px/images.png"})
+				   React.createElement("figure", {className: "col-xs-12 col-lg-6"}, 
+					 React.createElement("img", {src: "icons/icons/png/32px/images.png"})
 				   )
 				), 
 				
-				React.createElement("div", {className: "row min-height"}, 
-				  React.createElement("figure", {className: "col-xs-6"}, 
+				React.createElement("div", {className: "row-fluid min-height"}, 
+				  React.createElement("figure", {className: "col-xs-12 col-lg-6"}, 
 					React.createElement("img", {src: "icons/icons/png/32px/images.png"})
 				  ), 
-				   React.createElement("div", {className: "col-xs-6"}, 
-					 React.createElement("h3", null, 
-					   React.createElement("b", null, "Cool")
+				   React.createElement("div", {className: "col-xs-12 col-lg-6"}, 
+					 React.createElement("span", null, 
+					   "Simple"
 					), 
 					React.createElement("p", null, 
 					  "Upload your gallery and upload your artworks"
@@ -156,67 +147,71 @@ var TopNavBar = React.createClass({displayName: 'TopNavBar',
 				  )
 				), 
 				
-				React.createElement("div", {className: "row min-height"}, 
-				  React.createElement("div", {className: "col-xs-6"}, 
-				  React.createElement("h3", null, 
-					React.createElement("b", null, "Effective")
+				React.createElement("div", {className: "row-fluid min-height"}, 
+				  React.createElement("div", {className: "col-xs-12 col-lg-6"}, 
+				  React.createElement("span", null, 
+					"Simple"
 				  ), 
 				  React.createElement("p", null, 
 					"Upload your gallery and upload your artworks"
 				  )
 				  ), 
-				   React.createElement("figure", {className: "col-xs-6"}, 
+				   React.createElement("figure", {className: "col-xs-12 col-lg-6"}, 
 					 React.createElement("img", {src: "icons/icons/png/32px/images.png"})
 				   )
 				), 
-				  React.createElement("div", {className: "fair-heading row col-xs-12 text-center"}, 
-				  React.createElement("h3", {id: "underline"}, React.createElement("b", null, "And above all, fair")), 
-				  React.createElement("p", {className: "text-info"}, 
+				  React.createElement("div", {className: "row-fluid text-center"}, 
+				  React.createElement("h3", {id: "underline"}, "And above all, fair"), 
+				  React.createElement("small", {className: "text-info"}, 
 					"If an artwork is sold, 90% for the artist, 7% for the person who recommended it, and 3% for the platform."
 				  )
 				)
-			  )
-            ), 
-              React.createElement("div", {className: "third-page"}, 			  
-			    
-				React.createElement("div", {className: "container", id: "near-footer"}, 
-				React.createElement("div", {className: "row"}, 
+			  ), 
+			  React.createElement("div", {className: "third-page"}, 
+			  
+				  React.createElement("div", {id: "near-footer", className: "row-fluid"}, 
 					React.createElement("div", {className: "col-lg-8 col-md-8 col-xs-12 margin-top-1"}, 
 					  React.createElement("h3", null, "Do you want to be part of the Artfactum community?")
 					), 
-					React.createElement("div", {className: "col-lg-4 col-md-4 col-xs-12 margin-top-1"}, 
+					React.createElement("div", {className: "col-lg-4 col-md-4 col-xs-12 "}, 
 					  React.createElement("button", null, "button"), 
 					  React.createElement("button", null, "button"), 
 					  React.createElement("p", null, React.createElement("small", null, React.createElement("a", {href: "#", id: "underline"}, "Or enter your email and a password")))
 					
 					)
 					
-				)
-				), 
-				React.createElement("footer", {className: "row"}, 
-				  
-				  React.createElement("div", {className: ""}, 
-					React.createElement("ul", {className: "breadcrumb"}, 
-					  React.createElement("li", null, React.createElement("a", {href: "#"}, "About us")), 
-					  React.createElement("li", null, React.createElement("a", {href: "#"}, "Legal")), 
-					  React.createElement("li", null, React.createElement("a", {href: "#"}, "F.A.Q.")), 
-					  React.createElement("li", null, React.createElement("a", {href: "#"}, "Developers")), 
-					  React.createElement("li", null, React.createElement("a", {href: "#"}, "Ads/Sponsorship")), 
-					  React.createElement("li", null, React.createElement("a", {href: "#"}, "Contact"))
-					)
 				  ), 
 				  
-				  React.createElement("div", {className: "row"}, 
-					React.createElement("ul", null, 
-					  React.createElement("li", null, React.createElement("p", {id: "underline"}, "Built with love on assembly"))
-					)
-				  )
-				)			  
+					React.createElement("footer", {className: ""}, 
+					  
+					  React.createElement("div", {className: "row"}, 
+						React.createElement("ul", {className: "breadcrumb"}, 
+						  React.createElement("li", null, React.createElement("a", {href: "#"}, "About us")), 
+						  React.createElement("li", null, React.createElement("a", {href: "#"}, "Legal")), 
+						  React.createElement("li", null, React.createElement("a", {href: "#"}, "F.A.Q.")), 
+						  React.createElement("li", null, React.createElement("a", {href: "#"}, "Developers")), 
+						  React.createElement("li", null, React.createElement("a", {href: "#"}, "Ads/Sponsorship")), 
+						  React.createElement("li", null, React.createElement("a", {href: "#"}, "Contact"))
+						)
+					  ), 
+					  
+					  React.createElement("div", {className: "row"}, 
+					    React.createElement("ul", null, 
+						  React.createElement("li", null, React.createElement("p", {id: "underline"}, "Built with love on assembly"))
+						)
+					  )
+					)			  
+						  
 				
-			  )	  
+				)
 				
+				
+			  
 			)
-		
+
+			
+			)
+
 		  ), 
 
 		React.createElement("div", {className: "parallax__group"}, 
@@ -225,7 +220,7 @@ var TopNavBar = React.createClass({displayName: 'TopNavBar',
 
 		React.createElement("div", {id: "section-two"}, 
 
-		React.createElement("article", {id: "signup-icons"}, 
+		React.createElement("article", null, 
 		 
 			React.createElement("div", null, 
 			  
@@ -234,12 +229,12 @@ var TopNavBar = React.createClass({displayName: 'TopNavBar',
 			  
 			), 
 			
-			React.createElement("span", null), 
+			React.createElement("span", null, "+"), 
 			React.createElement("div", null, 
 			  React.createElement("img", {src: "icons/icons/png/32px/coin.png"}), 
 			  React.createElement("p", null, "Sell your artworks")
 			), 
-			React.createElement("span", null), 
+			React.createElement("span", null, "+"), 
 			React.createElement("div", null, 
 			  React.createElement("img", {src: "icons/icons/png/32px/happy.png"}), 
 			  React.createElement("p", null, "Get paid discovering art")
@@ -249,12 +244,12 @@ var TopNavBar = React.createClass({displayName: 'TopNavBar',
 
 			  React.createElement("p", null, "A global community")
 			), 
-			React.createElement("span", null), 
+			React.createElement("span", null, "+"), 
 			React.createElement("div", null, 
 			  React.createElement("img", {src: "icons/icons/png/32px/volume-high.png"}), 
 			  React.createElement("p", null, "Democratized visibility")
 			), 
-			React.createElement("span", null), 
+			React.createElement("span", null, "+"), 
 			React.createElement("div", null, 
 			  React.createElement("img", {src: "icons/icons/png/32px/loop.png"}), 
 			  React.createElement("p", null, "Best commission ever")
@@ -271,26 +266,31 @@ var TopNavBar = React.createClass({displayName: 'TopNavBar',
 		React.createElement("div", {className: "parallax__group"}, 
 		React.createElement("div", {className: "parallax__layer parallax__layer--back"}
 
+
+
 		), 
 		React.createElement("div", {className: "parallax__layer parallax__layer--base"}
 
-		)
+
 
 		)
 
-      )
-    )
-  )
+		)
+
+)
+)
+)
 
   );
   
 }
 
+
 });
 
 React.render(
-  React.createElement(Dispatcher, {url: "data.json"}),
-  document.getElementById('artfactum')
+React.createElement(Dispatcher, {url: "data.json"}),
+document.getElementById('artfactum')
 );
 
 
