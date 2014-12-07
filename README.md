@@ -22,12 +22,10 @@ Flux: http://facebook.github.io/flux/docs/overview.html
 
 This repo was scaffolded using Yeoman (see https://github.com/yeoman/generator-webapp).
 
-##Contribute
+##Install
 
 You'll need to have installed bower, node, grunt, and grunt-cli.
 
-
-##How to install
 
 In the root directory fire:
 
@@ -74,11 +72,16 @@ Base this project's git flow on [A successful Git branching model](http://nvie.c
   - Make PR Description links to the Bounty and add a comment to the Bounty linking the PR
 
 ##React and JSX 
-Use JSX for better workflow. Install react-tools and use JSX -w [original file] [build file].
+
+If you've never used React before it's very simple to get into if you've ever used any kind of MVC or MV+ library or framework and it is very very similar to Polymer. React provides the View part of MVC and can be supplemented with Flux for its structure.
+
+When using React I suggest you use JSX for better workflow. Install react-tools and use JSX -w [original file] [build file].
 This will automatically compile your jsx js into valid js. 
 
 The build directory is located in app/build.
 Put the original somewhere in app/scripts.
+
+Before making a new commit you may want to clear out the build modules all but the last. JSX creates a new module for every change saved which can add up pretty fast.
 
 
 #Work DRY
