@@ -1,5 +1,7 @@
 'use strict';
 
+
+
  var Ajax = React.createClass({
 	getInitialState: function(){
 	  return {data: []};
@@ -44,7 +46,7 @@
 	
 	render: function(){
 	  return ( 
-		<div class='handleAjax'>
+		<div className='handleAjax'>
   	      <Ajax 
 		    onError={this.handleError} 
 			onSuccess={this.handleSuccess} 
@@ -86,31 +88,108 @@
 	
 	  return (
 	    <div className='topNavBar'>
-	    
 	<div className="parallax">
       <div id='first-parallax' className='parallax__group'>
         <div className="parallax__layer parallax__layer--back">
   
- 	      <header id='jumbotron'>
-	        <img src='logo/logo_AF+_256.png' alt='logo/logo_AF+_.png' />
+ 	      <header id='jumbotron'>    
+		    <img src='logo/logo_AF+_256.png' alt='logo/logo_AF+_.png' />
 	        <h2>A Better Way to Discover New Art</h2>
 	        <i id='artfactum-describe'>
 	          Artfactum is an online marketplace where artists and art lovers create virtual galleries to showcase and sell art to a global community
 	        </i>
-	        <p id='create-space'></p>
+			<p id='create-space'>
+			</p>
 	        <p className='oval-button'><span>Launch Your Own Gallery</span></p>
 	        <p className='oval-button'><span>Discover</span></p>
 	      </header>
-
+		  
         </div>
+		
         <div className="parallax__layer parallax__layer--base">
           <select className='light' id='signup-language'>
 	        <option>English</option>
 	        <option>Spanish</option>
 	      </select>
 	      <button className='light' id='signup-button'>Sign up</button>
-  
+   	
         </div>
+		<div className='under-back'>
+	
+		  <div className='container-fluid second-page'>
+            <div className='center-wrapper'>
+			<div className='row-min-height'>
+              <div className='col-xs-12 col-lg-6'>
+			  <span>
+			    Simple
+			  </span>
+			  <p>
+			    Upload your gallery and upload your artworks
+			  </p>
+			  </div>
+			   <figure className='col-xs-12 col-lg-6'>
+			     <img src='icons/icons/png/32px/images.png' />
+			   </figure>
+		    </div>
+			
+			<div className='row-fluid min-height'>
+              <figure className='col-xs-12 col-lg-6'>
+			    <img src='icons/icons/png/32px/images.png' />  
+			  </figure>
+			   <div className='col-xs-12 col-lg-6'>
+			     <span>
+ 			       Simple
+			    </span>
+			    <p>
+			      Upload your gallery and upload your artworks
+			    </p>
+			  </div>
+		    </div>
+			
+			<div className='row-fluid min-height'>
+              <div className='col-xs-12 col-lg-6'>
+			  <span>
+			    Simple
+			  </span>
+			  <p>
+			    Upload your gallery and upload your artworks
+			  </p>
+			  </div>
+			   <figure className='col-xs-12 col-lg-6'>
+			     <img src='icons/icons/png/32px/images.png' />
+			   </figure>
+			 </div> 
+			  <div className='row-fluid text-center'> 
+			  <h3 id='underline' >And above all, fair</h3>
+	          <small className='text-info'>
+	            If an artwork is sold, 90% for the artist, 7% for the person who recommended it, and 3% for the platform.
+			  </small>
+			</div>
+			</div>
+		    <div className='container third-page'>
+		  
+		    <div id='near-footer' className='row-fluid'>
+			    <div className='col-lg-8 col-xs-12'>
+				  <h3>Do you want to be part of the Artfactum community?</h3>
+				</div>
+				<div className='col-lg-4 co-xs-12'>
+				  <button>button</button>
+				  <button>button</button>
+				  <p><a href='#'>sign up</a></p>
+				
+				</div>
+				
+			  </div>
+		    </div>
+		    <footer>
+			
+			
+			</footer>
+		  
+        </div>
+
+        
+		</div>
 
       </div> 
   
@@ -121,36 +200,63 @@
     <div id='section-two' >
   
     <article>
-      <div>Create your own Gallery</div>
+	 
+        <div>
+	      
+		<img src='icons/icons/png/32px/pencil2.png' />
+		<p>Create your own Gallery</p>
+		  
+	    </div>
+        
         <span>+</span>
-	    <div>Sell your artworks</div>
+	    <div>
+		  <img src='icons/icons/png/32px/coin.png' />
+		  <p>Sell your artworks</p>
+		</div>
         <span>+</span>
-	    <div>Get paid discovering artwork</div>
-	    <div>A global community</div>
+	    <div>
+		  <img src='icons/icons/png/32px/happy.png' />
+  		  <p>Get paid discovering art</p>
+		</div>
+	 	<div>
+		  <img src='icons/icons/png/32px/users.png' />
+
+    	  <p>A global community</p>
+		</div>
         <span>+</span>
-	    <div>Democratized</div>
+	    <div>
+  		  <img src='icons/icons/png/32px/volume-high.png' />
+          <p>Democratized visibility</p>
+		</div>
         <span>+</span>
-	    <div>Best commision ever</div>
-      </article>	
+	    <div>
+		  <img src='icons/icons/png/32px/loop.png' />
+		  <p>Best commission ever</p>
+		</div>
+		
+      </article>
+	  
     </div>
-  
+  <div className='below-article'>
+	    <strong>The artistic community you were waiting for</strong>
+	  </div>
   </div>
   
-<div className='parallax__group'>
-  <div className="parallax__layer parallax__layer--back">
+  <div className='parallax__group'>
+    <div className="parallax__layer parallax__layer--back">
   
    
   
-  </div>
+    </div>
   <div className="parallax__layer parallax__layer--base">
   
   
   
   </div>  
   
-</div>
+  </div>
 
-</div>
+  </div>
 	</div>
 	</div>
 	
