@@ -1,0 +1,190 @@
+<!DOCTYPE html> <html class=no-js> <head> <meta charset=utf-8> <title>artfactum-react</title> <meta name=description content=""> <meta name=viewport content="width=device-width"> <style>@font-face {
+    font-family: 'Open-Sans-600';
+    src: url(styles/fonts/Open-Sans-600.ttf);
+    
+   }
+   @font-face {
+    font-family: 'Open-Sans-regular';
+    src: url(styles/fonts/Open-Sans-regular.ttf);
+    
+   }
+	
+	
+	
+	body{
+	
+	  margin:0;
+	  padding:0;
+      font-family: 'Open-Sans-600';	
+	}
+
+
+  .signup-top{
+    position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height:8vh;
+  }
+ 
+	
+.parallax {
+  perspective: 1px;
+  top:.5vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  height:100vh;
+  position:relative;
+  height:99.5vh;
+}
+
+#first-parallax{
+
+  
+}
+
+.parallax__layer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height:200vh;
+}
+.parallax__layer--base {
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+   box-shadow: 0 -4px 4px 4px #ccc;
+}
+.parallax__layer--back {
+  -webkit-transform: translateZ(-1px);
+  transform: translateZ(-1px);
+  -webkit-transform: translateZ(-1px) scale(2);
+  //background-image: url(logo/Logo_+_256.png);  
+  
+  
+ width:100%;
+ top:50%;
+  
+   
+}
+
+.parallax__group {
+  position:relative;
+  background: rgba(30,30,30,0.25);
+//  background: url(logo/Logo_+_256.png) no-repeat bottom center scroll;
+//    -webkit-background-size: cover;
+//   -moz-background-size: cover;
+//    background-size: cover;
+//    -o-background-size: cover;
+ 
+  height:100vh;
+  transform-style: preserve-3d;
+  width:100%;
+  -webkit-transform-style: preserve-3d;
+  }
+  
+  .parallax__group:nth-child(2){
+    background: white;
+  }
+  
+  
+  #section-two{
+    left:0;
+	width:90%;
+	height:100vh;
+	position:relative;
+	margin-left:auto;
+	margin-right:auto;
+	border:solid black 1px;
+
+  }
+  
+  article{
+    position:relative;
+	top:20%;
+	height:100%;
+	width:110%;
+	margin-left:auto;
+	margin-right:auto;
+  }
+  
+  #section-two div{
+    width: 25%;
+	height:30%;
+	float:left;
+	font-size:1.2em;
+	text-align:center;
+	
+  }
+  
+  #section-two span{
+    width: 8%;
+	height:30%;
+	float:left;
+	font-size:1.2em;
+	text-align:center;
+	
+  }
+  
+  #section-two div img{
+    width:100%;
+	height:100%;
+	border:solid yellow 2px;
+  }
+  
+  #signup-language,#signup-button{
+
+    position: absolute;
+    padding: 1vh;
+	margin: .75em;
+
+  }
+
+  #signup-button{
+    right:0;
+  }	
+  
+  #jumbotron{
+  
+    position:relative;
+	top:0px;
+	
+	width:100%;
+	text-align:center;
+  }
+  
+  img:nth-child(1){
+    display:block;
+	position:relative;
+	margin-left:auto;
+	margin-right:auto;
+	border:solid black 3px;
+	
+  }
+  
+  #create-space{
+    
+    height:3em;
+	width: 100%;
+	border: solid black 1px;
+  }
+  
+  #artfactum-describe{
+    padding: 1em;
+  }
+  
+  .oval-button{
+    padding: .75em;
+    position:relative;
+	display:block;
+	margin-left: auto;
+	margin-right:auto;
+    border:solid black 2px;
+    width:12em;
+	border-radius:20px;
+	font-family: 'Open-Sans-regular';
+	font-weight:bold;
+  }</style>  <body> <!--todo--
+program it so that it scrolls a px for mobile--> <div class=parallax> <div id=first-parallax class=parallax__group> <div class="parallax__layer parallax__layer--back"> <header id=jumbotron> <img src=logo/logo_AF+_256.png alt="logo/logo_AF+_.png"> <h2>A Better Way to Discover New Art</h2> <i id=artfactum-describe> Artfactum is an online marketplace where artists and art lovers create virtual galleries to showcase and sell art to a global community </i> <p id=create-space></p> <p class=oval-button><span>Launch Your Own Gallery</span></p> <p class=oval-button><span>Discover</span></p> </header> </div> <div class="parallax__layer parallax__layer--base"> <select id=signup-language> <option>English <option>Spanish </select> <button id=signup-button>Sign up</button> </div> </div> <!--end first-parallax group--> <div class=parallax__group> <div class="parallax__layer parallax__layer--back"></div> <div class="parallax__layer parallax__layer--base"> <div id=section-two> <article> <div>Create your own Gallery</div> <span>+</span> <div>Sell your artworks</div> <span>+</span> <div>Get paid discovering artwork</div> <div>A global community</div> <span>+</span> <div>Democratized</div> <span>+</span> <div>Best commision ever</div> </article> </div> </div> <div class=parallax__group> <div class="parallax__layer parallax__layer--back"> </div> <div class="parallax__layer parallax__layer--base"> <div id=signup-top> </div> </div> </div> </div> </div> 
