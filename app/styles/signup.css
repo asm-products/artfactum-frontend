@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /*the height break point seems to be just over 450px;
 /*width breakpoint 350px;
 
@@ -26,6 +27,28 @@ body{
 }
 
 /*for the language picker and sign-in button*/
+=======
+
+@font-face {
+    font-family: 'Open-Sans-600';
+    src: url(fonts/Open-Sans-600.ttf);
+    
+   }
+   @font-face {
+    font-family: 'Open-Sans-regular';
+    src: url(styles/fonts/Open-Sans-regular.ttf);
+    
+   }
+	
+	
+	
+	body{
+	
+	  margin:0;
+	  padding:0;
+      font-family: 'Open-Sans-600';	
+	}
+>>>>>>> origin/contributing
 
 
 /*the entire page needs to be wrapped inside the parallax class and it needs
@@ -40,6 +63,10 @@ body{
   height:99vh;
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/contributing
 .parallax__group {
   position:relative;
   background: white;
@@ -55,9 +82,15 @@ body{
   -webkit-transform-style: preserve-3d;
 }
   
+<<<<<<< HEAD
 .parallax__group:nth-child(2){
    background: white;
 }
+=======
+  .parallax__group:nth-child(2){
+    background: white;
+  }
+>>>>>>> origin/contributing
 
 .parallax__layer {
 
@@ -67,7 +100,10 @@ body{
   bottom: 0;
   left: 0;
   height:100vh;
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/contributing
 }
 
 .parallax__layer--base {
@@ -75,9 +111,13 @@ body{
   webkit-transform: translateZ(0);
   transform: translateZ(0);
   -webkit-transform: translateZ(0);
+<<<<<<< HEAD
 
 	}
 
+=======
+}
+>>>>>>> origin/contributing
 .parallax__layer--back {
 
   -webkit-transform: translateZ(-1px);
@@ -157,6 +197,7 @@ body{
   color:white;
 
 }
+<<<<<<< HEAD
   
 #jumbotron h2{
   
@@ -171,6 +212,9 @@ body{
   z-index:0;
   margin-left:auto;
   margin-right:auto;
+=======
+ 
+>>>>>>> origin/contributing
 
 }
   
@@ -186,8 +230,22 @@ body{
   
 #jumbotron .jumbo-inner{
   
+<<<<<<< HEAD
   position:relative;
   top:-100px;
+=======
+  
+  #section-two{
+    left:0;
+	width:90%;
+	height:100vh;
+	position:relative;
+	margin-left:auto;
+	margin-right:auto;
+	border:solid black 1px;
+    font-family: 'Open-Sans-600';
+  }
+>>>>>>> origin/contributing
   
 }
   
@@ -257,16 +315,38 @@ article{
 	border-top: 1px silver solid;
 	position:relative;
 	bottom:20%;
+<<<<<<< HEAD
 	clear:float;
 	width:80%;
 	padding-top:1.5em;
+=======
+	width:80%;
+	margin-top:1em;
+	padding-top:2em;
+>>>>>>> origin/contributing
 	font-size:1.4em;
 	font-style: italic;
 	margin-left:auto;
 	margin-right:auto;
 	text-align: center;
+<<<<<<< HEAD
 	font-family: 'Open-Sans-600';
 }
+=======
+	font-family: 'Open-Sans-600'gr;
+  }
+  
+   #section-two em{
+      border-top: 3px slategray ridge;
+	  padding-top: 1.5em;
+      margin:2em 2em 2em 2em;
+	  width:80%;
+      text-align: center;
+	  position:absolute;
+	  font-size:1.25em;
+	  
+  }
+>>>>>>> origin/contributing
   
 #section-two div{
 	width: 25%;
@@ -285,6 +365,80 @@ article{
 	font-size:1.2em;
 	text-align:center;
 	
+<<<<<<< HEAD
+=======
+  }
+  
+  #section-two div img{
+  }
+  
+  #signup-language,#signup-button{
+
+    position: absolute;
+    padding: 1vh;
+	margin: .75em;
+
+  }
+
+  #signup-button{
+    right:0;
+  }	
+  
+  #jumbotron{
+  
+    position:relative;
+	top:0px;
+    height:100%;
+	width:100%;
+	text-align:center;
+  }
+  
+  #jumbotron img:nth-child(1){
+    display:block;
+	position:relative;
+	margin-left:auto;
+	margin-right:auto;
+	border:solid black 3px;
+	
+  }
+  
+  #create-space{
+    height:4em;
+	width: 100%;
+	border: solid black 1px;
+  }
+  
+  #artfactum-describe{
+    padding: 1em;
+  }
+  
+  .oval-button{
+    padding: .75em;
+    position:relative;
+	display:block;
+	margin-left: auto;
+	margin-right:auto;
+    border:solid black 2px;
+    width:14em;
+	border-radius:20px;
+	font-family: 'Open-Sans-regular';
+	font-weight:bold;
+	font-size:1em;
+  }
+  
+  .create-space img{
+    position:absolute;
+	overflow:hidden;
+	z-index:1;
+  }
+  
+.container-fluid{
+  font-family: 'Open-Sans-600';
+  margin-top:2em;
+  font-size:1.5em;
+  padding:1em;
+  
+>>>>>>> origin/contributing
 }
   
 /*TODO make less global*/
@@ -339,7 +493,14 @@ figure {
   
 }
 
+<<<<<<< HEAD
 footer{
+=======
+.center-wrapper figure{
+  
+  padding:1em;
+}
+>>>>>>> origin/contributing
 
   font-size:1em;
   text-decoration:underline;
@@ -351,8 +512,18 @@ footer{
 
 .stretch{
 
+<<<<<<< HEAD
   position:relative;
   background: black;
+=======
+.center-wrapper{
+  position:relative;
+  width:100%;
+  margin-right:auto;
+  margin-left:auto;
+  
+}
+>>>>>>> origin/contributing
 
 }
 
