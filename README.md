@@ -81,7 +81,7 @@ This will automatically compile your jsx js into valid js.
 The build directory is located in app/build.
 Put the original somewhere in app/scripts.
 
-Before making a new commit you may want to clear out the build modules all but the last. JSX creates a new module for every change saved which can add up pretty fast.
+Before making a new commit you may want to clear out the build module caches all but the last. JSX creates a new cache for every change saved when watching which can add up pretty fast.
 
 
 #Work DRY
