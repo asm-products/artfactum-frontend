@@ -94,8 +94,13 @@ var TopNavBar = React.createClass({displayName: 'TopNavBar',
 	        React.createElement("div", {className: "parallax__layer parallax__layer--back"}, 
               
 			  React.createElement("header", {id: "jumbotron"}, 
-			    React.createElement("img", {src: "images/dogs.png"}), 
-				React.createElement("img", {src: "logo/logo_AF+_256.png", alt: "logo/logo_AF+_.png"}), 
+                	  
+			    
+				React.createElement("img", {src: "images/flowers_big.jpg"}), 
+				
+				
+				React.createElement("img", {src: "images/logo_AF+_256.png", alt: "images/logo_AF+_.png"}), 
+					
 				React.createElement("div", {className: "jumbo-inner"}, 
 				React.createElement("h2", null, "A Better Way to Discover New Art"), 
 				React.createElement("i", {id: "artfactum-describe"}, 
@@ -139,20 +144,21 @@ var TopNavBar = React.createClass({displayName: 'TopNavBar',
 				  )
 				  ), 
 				   React.createElement("figure", {className: "col-xs-6"}, 
-				     React.createElement("img", {src: "icons/icons/png/32px/images.png"})
+				      React.createElement("img", {src: "images/artistspage_gif.gif"})
+				   
 				   )
 				), 
 				
 				React.createElement("div", {className: "row min-height"}, 
 				  React.createElement("figure", {className: "col-xs-6"}, 
-					React.createElement("img", {src: "icons/icons/png/32px/images.png"})
+				    React.createElement("img", {src: "images/egon.jpg"})
 				  ), 
 				   React.createElement("div", {className: "col-xs-6"}, 
 					 React.createElement("h3", null, 
 					   React.createElement("b", null, "Cool")
 					), 
 					React.createElement("p", null, 
-					  "Upload your gallery and upload your artworks"
+					  "Curate the art you love while you recommend it"
 					)
 				  )
 				), 
@@ -163,15 +169,15 @@ var TopNavBar = React.createClass({displayName: 'TopNavBar',
 					React.createElement("b", null, "Effective")
 				  ), 
 				  React.createElement("p", null, 
-					"Upload your gallery and upload your artworks"
+					"Find the best new art by the recommendations of who really knows, the artists and art lovers"
 				  )
 				  ), 
 				   React.createElement("figure", {className: "col-xs-6"}, 
-					 React.createElement("img", {src: "icons/icons/png/32px/images.png"})
+					 React.createElement("img", {src: "images/egon_land.jpg"})
 				   )
 				), 
 				  React.createElement("div", {className: "fair-heading row col-xs-12 text-center"}, 
-				  React.createElement("h3", {id: "underline"}, React.createElement("b", null, "And above all, fair")), 
+				  React.createElement("h2", {id: "underline"}, React.createElement("b", null, "And above all, fair")), 
 				  React.createElement("p", {className: "text-info"}, 
 					"If an artwork is sold, 90% for the artist, 7% for the person who recommended it, and 3% for the platform."
 				  )
@@ -186,24 +192,25 @@ var TopNavBar = React.createClass({displayName: 'TopNavBar',
 					  React.createElement("h3", null, "Do you want to be part of the Artfactum community?")
 					), 
 					React.createElement("div", {className: "col-lg-4 col-md-4 col-xs-12 margin-top-1"}, 
-					  React.createElement("button", null, "button"), 
-					  React.createElement("button", null, "button"), 
-					  React.createElement("p", null, React.createElement("small", null, React.createElement("a", {href: "#", id: "underline"}, "Or enter your email and a password")))
-					
+					  React.createElement("div", {class: "btn-group"}, 
+					    React.createElement("button", {type: "button", class: "btn btn-default"}, "Middle"), 
+					    React.createElement("button", {type: "button", class: "btn btn-default"}, "Right")
+					  )
+					  
 					)
 					
 				)
 				), 
 				React.createElement("footer", {className: "row"}, 
 				  
-				  React.createElement("div", {className: ""}, 
-					React.createElement("ul", {className: "breadcrumb"}, 
-					  React.createElement("li", null, React.createElement("a", {href: "#"}, "About us")), 
-					  React.createElement("li", null, React.createElement("a", {href: "#"}, "Legal")), 
-					  React.createElement("li", null, React.createElement("a", {href: "#"}, "F.A.Q.")), 
-					  React.createElement("li", null, React.createElement("a", {href: "#"}, "Developers")), 
-					  React.createElement("li", null, React.createElement("a", {href: "#"}, "Ads/Sponsorship")), 
-					  React.createElement("li", null, React.createElement("a", {href: "#"}, "Contact"))
+				  React.createElement("div", {className: "row"}, 
+					React.createElement("ul", null, 
+					  React.createElement("li", null, React.createElement("a", {href: "#"}, "About us | ")), 
+					  React.createElement("li", null, React.createElement("a", {href: "#"}, "Legal | ")), 
+					  React.createElement("li", null, React.createElement("a", {href: "#"}, "F.A.Q. | ")), 
+					  React.createElement("li", null, React.createElement("a", {href: "#"}, "Developers | ")), 
+					  React.createElement("li", null, React.createElement("a", {href: "#"}, "Ads/Sponsorship | ")), 
+					  React.createElement("li", null, React.createElement("a", {href: "#"}, "Contact| "))
 					)
 				  ), 
 				  
@@ -211,6 +218,7 @@ var TopNavBar = React.createClass({displayName: 'TopNavBar',
 					React.createElement("ul", null, 
 					  React.createElement("li", null, React.createElement("p", {id: "underline"}, "Built with love on assembly"))
 					)
+				
 				  )
 				)			  
 				
