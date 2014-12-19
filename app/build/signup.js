@@ -1,6 +1,6 @@
 'use strict';
 
-
+//
 var Ajax = React.createClass({displayName: 'Ajax',
   getInitialState: function(){
     return {data: []};
@@ -326,5 +326,9 @@ render: function(){
 
 }
 });
+
+
+
+
 
 

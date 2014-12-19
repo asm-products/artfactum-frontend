@@ -1,5 +1,11 @@
 'use strict'
 
+var Footer = React.createFactory(require('./Footer.js'));
+
+
+//css  
+require('../styles/user-profile.css');
+
 var UserProfile = React.createClass({
 
   render: function(){
@@ -7,13 +13,11 @@ var UserProfile = React.createClass({
     return (
 	 
       <div className='user-profile'>	  
-	  
+	 
 	    <div className='container fluid'>
-	      
-		  <div className='row'>
-		    
-			<div className='col-xs-5 col-md-3 col-lg-1'>
-		      <p>logo</p>
+	      <div className='row'>
+		    <div className='col-xs-5 col-md-3 col-lg-1'>
+		      <p>logoo</p>
 		    </div>
 		    <div className='col-xs-6 col-md-3 col-lg-2'>
 		      <input type='search' placeholder='search'/>
@@ -37,6 +41,7 @@ var UserProfile = React.createClass({
 		  </div>{/end first row/}
 	    
 		  <div className='row user-profile-head'>
+		  
 		  
 		    <div className='col-xs-12'>
 		    
@@ -240,6 +245,99 @@ var UserProfile = React.createClass({
 		  
 		  </div>{/end tenth row/}
 		
+		  <div className='row user-profile-forms center-block'> 
+			  
+	 	    <div className='col-xs-12'> 
+			    
+			  <h3 id='underline' className= ''>
+				Personal Interests
+		      </h3>
+			</div>
+			  
+		  </div> {/end 11th row/} 
+		  
+		  <div className='row user-profile-forms center-block' > 
+		  
+		    <div className='col-xs-12' > 
+			  
+			  <article>
+			  
+			    <p>Favorite art styles</p>
+			  
+			    <div className='input-group' > 
+			    
+				  <input type='text' className='form-control' placeholder='username' /> 
+			      <label>Suggestions</label> 
+				    <span className='label label-primary'>Photography</span> 
+				    <span className='label label-primary'>Painting</span>
+				  
+				</div> 
+			
+			    <p>Featured interests</p> 
+			  
+			    <div className='input-group' >
+			    
+				  <input type='text' className='form-control' placeholder='url' /> 
+			      <label>Suggestions</label>
+				    <span className='label label-primary'>Photography</span> 
+				    <span className='label label-primary'>Painting</span>
+				  
+                </div>
+				 
+				
+				<p>Influences</p> 
+			  
+				<div className='input-group'> 
+			    
+				  <input type='text' className='form-control' placeholder='url' /> 
+			      <label>Suggestions - </label> 
+				    <span className='label label-primary' >Photography</span> 
+				    <span className='label label-primary' >Painting</span>
+				
+				</div> 
+				
+				<div className='center-block button-wrapper'> 
+                  <div className='btn-group'> 
+				    
+					<button type='button' className='btn btn-default' > 
+                      Save
+                    </button>
+                    
+                  </div>
+				
+				</div>
+			
+			  </article>
+			
+			</div>			
+		  
+		  </div> {/end 12th row/} 
+		
+		  <div className='row user-profile-bottom'> 
+		  
+		    <div className='col-xs-6 col-xs-offset-3'> 
+		      
+			  <div className='user-profile-logo-bottom center-block' > 
+			    <img className='img-responsive padding1' src='images/Logo_AF_vector_white.png' alt='artfactum logo' title='artfactum logo' />
+		      </div>
+			  
+			</div>
+			
+			<div className='col-xs-10 col-xs-offset-1 padding1' > 
+			
+		      <span>About | </span><span>Legal | </span><span>FAQ | </span><span>Developers | </span> 
+			  <span>Ads | </span> <span>Contact</span>
+		  
+		    </div>
+			
+			<div className='col-xs-10 col-xs-offset-1 padding1' >
+			
+		      <span>Made with love on assembly</span>
+		  
+		    </div>
+		  
+		  </div> {/end 13th row/}
+		
 		</div>
 		
 	  </div>
@@ -257,3 +355,5 @@ React.render(
   <UserProfile/>,
   document.getElementById('user-profile')
 );
+
+module.exports = UserProfile;

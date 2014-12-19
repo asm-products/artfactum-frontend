@@ -54,17 +54,14 @@ body{
 }
 
 .fluid{
-  border: solid blue 1px;
- 
   width: 100%;
 }
 
 .row{
-  border: solid red 1px;
+  
 }
 
 .center-block {
-  
   display: block;
   margin-left: auto;
   margin-right: auto;

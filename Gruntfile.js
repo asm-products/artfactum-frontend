@@ -28,9 +28,26 @@ module.exports = function (grunt) {
     // Project settings
     config: config,
 
+	
+	
+	browserify: {
+      dist: {
+        files: {
+          'app/build/user-profile-bundle.js': ['app/build/user-profile.js',],
+        }
+      },
+	  options: {
+	    transform: ['cssify']
+	  }
+    },
+	
     // Watches files for changes and runs tasks based on the changed files
     watch: {
-      bower: {
+      react: {
+	    files: 'app/build/*.js',
+		tasks: ['browserify']
+	  },
+	  bower: {
         files: ['bower.json'],
         tasks: ['wiredep']
       },
@@ -340,6 +357,8 @@ module.exports = function (grunt) {
       ]
     }
   });
+  
+  grunt.loadNpmTasks('grunt-browserify');
 
 
   grunt.registerTask('serve', 'start the server and preview your app, --allow-remote for remote access', function (target) {
@@ -401,4 +420,9 @@ module.exports = function (grunt) {
     'test',
     'build'
   ]);
+  
+  grunt.registerTask('default', [
+    'browserify'
+  ]);
+  
 };
