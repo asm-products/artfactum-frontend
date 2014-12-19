@@ -1,38 +1,10 @@
-(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-var Footer = React.createClass({displayName: 'Footer',
-render: function(){
-
-  return (
- 
-	React.createElement("footer", {className: "container"}, 
-	  React.createElement("div", {className: "row"}, 
-		React.createElement("ul", {className: "breadcrumb"}, 
-		  React.createElement("li", null, React.createElement("a", {href: "#"}, "About us")), 
-		  React.createElement("li", null, React.createElement("a", {href: "#"}, "Legal")), 
-		  React.createElement("li", null, React.createElement("a", {href: "#"}, "F.A.Q.")), 
-		  React.createElement("li", null, React.createElement("a", {href: "#"}, "Developers")), 
-		  React.createElement("li", null, React.createElement("a", {href: "#"}, "Ads/Sponsorship")), 
-		  React.createElement("li", null, React.createElement("a", {href: "#"}, "Contact"))
-		)
-	  )
-	)
- 
-  );
-
-
-}
-});
-
-module.exports = Footer;
-},{}],2:[function(require,module,exports){
 'use strict'
 
 var Footer = React.createFactory(require('./Footer.js'));
 
 
 //css  
-require('../../styles/user-profile.css');
-
+require('../styles/user-profile.css');
 
 var UserProfile = React.createClass({displayName: 'UserProfile',
 
@@ -45,7 +17,7 @@ var UserProfile = React.createClass({displayName: 'UserProfile',
 	    React.createElement("div", {className: "container fluid"}, 
 	      React.createElement("div", {className: "row"}, 
 		    React.createElement("div", {className: "col-xs-5 col-md-3 col-lg-1"}, 
-		      React.createElement("p", null, "logo")
+		      React.createElement("p", null, "logoo")
 		    ), 
 		    React.createElement("div", {className: "col-xs-6 col-md-3 col-lg-2"}, 
 		      React.createElement("input", {type: "search", placeholder: "search"})
@@ -385,45 +357,3 @@ React.render(
 );
 
 module.exports = UserProfile;
-},{"../../styles/user-profile.css":3,"./Footer.js":1}],3:[function(require,module,exports){
-var css = ".user-profile-head{\r\n\r\n  height: 14em;\r\n  overflow:hidden;\r\n  background: purple;\r\n  background-image: url(../images/mohai.jpg);\r\n \r\n\r\n}\r\n\r\n.user-profile-head h1{\r\n\r\n  position: relative;\r\n  top:1.5em;\r\n  width:100%;\r\n  height:14em;\r\n  color:ghostwhite\r\n  \r\n}\r\n\r\n.user-profile-bottom{\r\n\r\n  position:relative;\r\n  top:200px;\r\n  height: 14em;\r\n  overflow:hidden;\r\n  background: #3a3a3a;\r\n  color:white;\r\n\r\n}\r\n\r\n.user-profile-forms{\r\n\r\n  width: 80%;\r\n  top:1em;\r\n\r\n}\r\n\r\n/*make width wider on wider screens*/\r\n\r\n.user-profile-forms article{\r\n  top:2em;\r\n  left:0; \r\n  width:90%;\r\n  height: 270px;\r\n \r\n}\r\n\r\narticle p{\r\n  margin-top:1em;\r\n}\r\n\r\narticle .btn-group{\r\n\r\n  margin-left:5em;\r\n  margin-right:5em;\r\n\r\n}\r\n\r\n.dropdown-toggle{\r\n  background:tomato;\r\n  color:white;\r\n}\r\n\r\n.button-wrapper{\r\n  position:relative;\r\n  top:1em;\r\n  width:100%;\r\n}\r\n\r\n.user-profile-logo-bottom{\r\n\r\n  width:200px;\r\n\r\n}\r\n\r\n.user-profile-top-logo{\r\n\r\n  width:3em;\r\n\r\n}\r\n\r\n.user-profile-search{\r\n  padding-top:.5em;\r\n}"; (require("C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify"))(css); module.exports = css;
-},{"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify":4}],4:[function(require,module,exports){
-module.exports = function (css, customDocument) {
-  var doc = customDocument || document;
-  if (doc.createStyleSheet) {
-    var sheet = doc.createStyleSheet()
-    sheet.cssText = css;
-    return sheet.ownerNode;
-  } else {
-    var head = doc.getElementsByTagName('head')[0],
-        style = doc.createElement('style');
-
-    style.type = 'text/css';
-
-    if (style.styleSheet) {
-      style.styleSheet.cssText = css;
-    } else {
-      style.appendChild(doc.createTextNode(css));
-    }
-
-    head.appendChild(style);
-    return style;
-  }
-};
-
-module.exports.byUrl = function(url) {
-  if (document.createStyleSheet) {
-    return document.createStyleSheet(url).ownerNode;
-  } else {
-    var head = document.getElementsByTagName('head')[0],
-        link = document.createElement('link');
-
-    link.rel = 'stylesheet';
-    link.href = url;
-
-    head.appendChild(link);
-    return link;
-  }
-};
-
-},{}]},{},[2]);
