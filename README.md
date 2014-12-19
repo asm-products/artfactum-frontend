@@ -56,7 +56,7 @@ For example:
 
         bower install --save jquery
 
-##Contributing
+##Git Workflow
 
 Base this project's git flow on [A successful Git branching model](http://nvie.com/posts/a-successful-git-branching-model/)
 
@@ -83,7 +83,17 @@ Put the original somewhere in app/scripts.
 
 Before making a new commit you may want to clear out the build module caches all but the last. JSX creates a new cache for every change saved when watching which can add up pretty fast.
 
+##Module Bundling
+
+To have the ability to require both js and css the following is set up:
+
+Both grunt-browserify and cssify are included in the watch task of the main gruntfile. The watch task is triggered by 'grunt serve.' 
+
+Whenever you make changes to the components you're working on in the scripts/jsx directory or in the stylesheets, a new bundle will be created in app/build/
+
+To require a react component, first put module.exports = [reactClass name] at the botttom of the component you need required.
+And then use the following to require it: var [component name] = React.createFactory(require('./[component]') assuming it's in the same directory. To require css just do require([stylesheet]).
 
 #Work DRY
 
-See if there is an existing React component, Bootstrap solution, or jQuery plugin available before starting a new bounty.
+Check to see if there is an existing React component, bootstrap solution, or jQuery plugin available for whatever you're working on.
