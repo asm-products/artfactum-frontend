@@ -1,6 +1,6 @@
 'use strict';
 
-
+//
 var Ajax = React.createClass({
   getInitialState: function(){
     return {data: []};
@@ -93,9 +93,14 @@ var TopNavBar = React.createClass({
           <div id='first-page' className='parallax__group'>
 	        <div className="parallax__layer parallax__layer--back">
               
-			  <header id='jumbotron'>    
-			    <img src='images/dogs.png' />
-				<img src='logo/logo_AF+_256.png' alt='logo/logo_AF+_.png' />
+			  <header id='jumbotron'>
+                	  
+			    
+				<img src='images/flowers_big.jpg' />
+				
+				
+				<img src='images/logo_AF+_256.png' alt='images/logo_AF+_.png' />
+					
 				<div className='jumbo-inner'>
 				<h2>A Better Way to Discover New Art</h2>
 				<i id='artfactum-describe'>
@@ -139,20 +144,21 @@ var TopNavBar = React.createClass({
 				  </p>
 				  </div>
 				   <figure className='col-xs-6'>
-				     <img src='icons/icons/png/32px/images.png' />  
+				      <img src='images/artistspage_gif.gif' />
+				   
 				   </figure>
 				</div>
 				
 				<div className='row min-height'>
 				  <figure className='col-xs-6'>
-					<img src='icons/icons/png/32px/images.png' />  
+				    <img src='images/egon.jpg' />
 				  </figure>
 				   <div className='col-xs-6'>
 					 <h3>
 					   <b>Cool</b>
 					</h3>
 					<p>
-					  Upload your gallery and upload your artworks
+					  Curate the art you love while you recommend it
 					</p>
 				  </div>
 				</div>
@@ -163,15 +169,15 @@ var TopNavBar = React.createClass({
 					<b>Effective</b>
 				  </h3>
 				  <p>
-					Upload your gallery and upload your artworks
+					Find the best new art by the recommendations of who really knows, the artists and art lovers
 				  </p>
 				  </div>
 				   <figure className='col-xs-6'>
-					 <img src='icons/icons/png/32px/images.png' />
+					 <img src='images/egon_land.jpg' />
 				   </figure>
 				</div> 
 				  <div className='fair-heading row col-xs-12 text-center'> 
-				  <h3 id='underline' ><b>And above all, fair</b></h3>
+				  <h2 id='underline' ><b>And above all, fair</b></h2>
 				  <p className='text-info'>
 					If an artwork is sold, 90% for the artist, 7% for the person who recommended it, and 3% for the platform.
 				  </p>
@@ -186,24 +192,25 @@ var TopNavBar = React.createClass({
 					  <h3>Do you want to be part of the Artfactum community?</h3>
 					</div>
 					<div className='col-lg-4 col-md-4 col-xs-12 margin-top-1'>
-					  <button>button</button>
-					  <button>button</button>
-					  <p><small><a href='#' id='underline'>Or enter your email and a password</a></small></p>
-					
+					  <div class="btn-group">
+					    <button type="button" class="btn btn-default">Middle</button>
+					    <button type="button" class="btn btn-default">Right</button>
+					  </div>
+					  
 					</div>
 					
 				</div>
 				</div>  
 				<footer className='row'>
 				  
-				  <div className=''>
-					<ul className='breadcrumb'>
-					  <li><a href='#'>About us</a></li>
-					  <li><a href='#'>Legal</a></li>
-					  <li><a href='#'>F.A.Q.</a></li>
-					  <li><a href='#'>Developers</a></li>
-					  <li><a href='#'>Ads/Sponsorship</a></li>
-					  <li><a href='#'>Contact</a></li>
+				  <div className='row'>
+					<ul>
+					  <li><a href='#'>About us | </a></li>
+					  <li><a href='#'>Legal | </a></li>
+					  <li><a href='#'>F.A.Q. | </a></li>
+					  <li><a href='#'>Developers | </a></li>
+					  <li><a href='#'>Ads/Sponsorship | </a></li>
+					  <li><a href='#'>Contact| </a></li>
 					</ul>
 				  </div>
 				  
@@ -211,6 +218,7 @@ var TopNavBar = React.createClass({
 					<ul>
 					  <li><p id='underline'>Built with love on assembly</p></li>
 					</ul>
+				
 				  </div>
 				</footer>			  
 				
@@ -318,5 +326,9 @@ render: function(){
 
 }
 });
+
+
+
+
 
 
