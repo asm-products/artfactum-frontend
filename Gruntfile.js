@@ -33,18 +33,18 @@ module.exports = function (grunt) {
 	browserify: {
       dist: {
         files: {
-          'app/build/user-profile-bundle.js': ['app/build/user-profile.js',],
+          'app/build/main.js': ['app/scripts/jsx/main.js',],
         }
       },
 	  options: {
-	    transform: ['cssify']
+	    transform: ['reactify', 'cssify']
 	  }
     },
 	
     // Watches files for changes and runs tasks based on the changed files
     watch: {
       react: {
-	    files: 'app/build/*.js',
+	    files: 'app/scripts/jsx/*.js',
 		tasks: ['browserify']
 	  },
 	  bower: {
