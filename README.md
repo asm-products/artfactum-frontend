@@ -75,24 +75,24 @@ Base this project's git flow on [A successful Git branching model](http://nvie.c
 
 If you've never used React before it's very simple to get into if you've ever used any kind of MVC or MV+ library or framework and it is very very similar to Polymer. React provides the View part of MVC and can be supplemented with Flux for its structure.
 
-When using React I suggest you use JSX for better workflow. Install react-tools and use JSX -w [original file] [build file].
-This will automatically compile your jsx js into valid js. 
+When using React I suggest you use JSX for better workflow. For compiling to regular js see the section 'module bundling' just below.
 
-The build directory is located in app/build.
-Put the original somewhere in app/scripts.
+The build file main.js is in app/build/
 
-Before making a new commit you may want to clear out the build module caches all but the last. JSX creates a new cache for every change saved when watching which can add up pretty fast.
+The working file main.js is in app/scripts/jsx/
 
 ##Module Bundling
 
 To have the ability to require both js and css the following is set up:
 
-Both grunt-browserify and cssify are included in the watch task of the main gruntfile. The watch task is triggered by 'grunt serve.' 
+Grunt-browserify, reactify and cssify are included in the watch task of the main gruntfile. The watch task is triggered by 'grunt serve.' 
 
-Whenever you make changes to the components you're working on in the scripts/jsx directory or in the stylesheets, a new bundle will be created in app/build/
+Whenever you make changes to the components you're working on in the /scripts directory or in the stylesheets, the central bundle main.js in /build/ will be updated (give it a few seconds).
 
 To require a react component, first put module.exports = [reactClass name] at the botttom of the component you need required.
 And then use the following to require it: var [component name] = React.createFactory(require('./[component]') assuming it's in the same directory. To require css just do require([stylesheet]).
+
+Everything should be piped to main.js
 
 #Work DRY
 
