@@ -33,11 +33,11 @@ module.exports = function (grunt) {
 	browserify: {
       dist: {
         files: {
-          'app/build/user-profile-bundle.js': ['app/scripts/jsx/user-profile.js',],
+          'app/build/main.js': ['app/scripts/jsx/main.js',],
         }
       },
 	  options: {
-	    transform: ['cssify', 'reactify']
+	    transform: ['reactify', 'cssify']
 	  }
     },
 	

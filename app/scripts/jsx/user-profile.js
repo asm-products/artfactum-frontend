@@ -1,11 +1,7 @@
 'use strict'
 
-var Footer = React.createFactory(require('./Footer.js'));
-
-
 //css  
 require('../../styles/user-profile.css');
-
 
 var UserProfile = React.createClass({
 
@@ -18,7 +14,7 @@ var UserProfile = React.createClass({
 	    <div className='container fluid'>
 	      <div className='row'>
 		    <div className='col-xs-5 col-md-3 col-lg-1'>
-		      <p>logo</p>
+		      <p>logos</p>
 		    </div>
 		    <div className='col-xs-6 col-md-3 col-lg-2'>
 		      <input type='search' placeholder='search'/>
@@ -351,10 +347,5 @@ var UserProfile = React.createClass({
   
 });
 
-
-React.render(
-  <UserProfile/>,
-  document.getElementById('user-profile')
-);
 
 module.exports = UserProfile;
