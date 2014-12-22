@@ -1,7 +1,51 @@
+
+.top-nav{
+
+  width: 98%;
+  display: block;
+  margin-left: auto;
+  margin-right:auto;
+  background: white;
+  
+}
+
+.tabs:active{
+	
+	color: tomato;
+	box-shadow: inset 0px -5px blue;
+    -webkit-transition: all 0.15s linear;
+	transition: all 0.15s linear;
+	
+}
+
+.tabs:focus{
+	color: tomato;
+	box-shadow: inset 0px -5px tomato;
+
+}
+
+
+.navbar{
+  background: white;
+  border: none;
+}
+
+.search{
+
+  border: none;
+  outline: none;
+  
+}
+
+.search-box{
+
+  overflow:hidden; 
+
+}
+
 .user-profile-head{
 
   height: 14em;
-  overflow:hidden;
   background: purple;
   background-image: url(../images/mohai.jpg);
  
@@ -13,9 +57,34 @@
   position: relative;
   top:1.5em;
   width:100%;
-  height:14em;
-  color:ghostwhite
-  
+  height:7em;
+  color: white;
+ 
+}
+
+.photo-circle{
+  position:relative;
+  top:1em;
+  border: solid #eee 4px;
+  box-shadow: 0 0 4px 1px white;
+  border-radius: 50%;
+  width: 3em;
+  height: 3em;
+  display:block;
+  overflow:hidden;
+  margin-left:auto;
+  margin-right:auto;
+  display:cover;
+  background: white;
+}
+
+.inner-circle{
+
+  position:absolute;
+  z-index:9999;
+  width:100%;
+  height:100%;
+  top: .75em;
 }
 
 .user-profile-bottom{
@@ -28,6 +97,8 @@
   color:white;
 
 }
+
+
 
 .user-profile-forms{
 
@@ -82,4 +153,28 @@ article .btn-group{
 
 .user-profile-search{
   padding-top:.5em;
+}
+
+.top-logo-holder{
+  width: 50px;
+  height:50px;
+  
+}
+
+.article{
+  position: relative;
+  width:400px;
+  border: solid pink 1px;
+}
+
+
+
+.top-drop, .top-drop:active{
+
+  background: inherit;
+   
+}
+
+.top-drop:hover{
+  background: #d1ccca;
 }

@@ -2,22 +2,107 @@
 
 //css  
 require('../../styles/user-profile.css');
+require('../../styles/color-swatch.css');
 
 var UserProfile = React.createClass({
-
+  
+  componentDidMount: function(){
+  
+    this.handleNavCollapse();
+  
+  },
+  
+  handleNavCollapse: function(){
+	
+	  $('#af-navbar-collapse-1').collapse('hide');  
+	
+  },
+  
   render: function(){
   
+    
     return (
 	 
       <div className='user-profile'>	  
 	 
 	    <div className='container fluid'>
-	      <div className='row'>
-		    <div className='col-xs-5 col-md-3 col-lg-1'>
-		      <p>logos</p>
+	      <div className='row top-nav'>
+		    <nav className='navbar navbar-default' role='navigation'>
+			  <div className='navbar-header'>
+			    <button type='button' className='navbar-toggle' data-toggle='collapse'
+				  data-target='#af-navbar-collapse-1'>
+				  <span className='sr-only'>Navigate</span>
+				  <span className='icon-bar'></span>
+				  <span className='icon-bar'></span>
+				  <span className='icon-bar'></span>
+				</button>
+				<img className='top-logo-holder' src='images/logo_+_256.png' />
+		      </div>
+			  <div className='collaspe navbar-collapse' id='af-navbar-collapse-1'>
+			    <ul className='nav navbar-nav search-wrapper'>
+				  <li className='active search-box'>
+				    <form className='navbar-form navar-left' role='search'>
+
+					  <div className='form-group'>
+					    <div className='input-group'>
+					      <input type='text' className='search form-control' placeholder='Search' />
+					      <span className="input-group-addon glyphicon glyphicon-search"></span>
+					    </div>
+					  </div>
+					 
+					</form>
+				  </li>
+				  
+				  <li className='dropdown'>
+				    <a href="#" className="top-drop dropdown-toggle" data-toggle="dropdown">
+					  <span className="glyphicon glyphicon-align-justify"></span> 
+					</a>
+					<ul className="dropdown-menu">
+					  <li><a href="#">Action</a></li>
+					  <li><a href="#">Another action</a></li>
+					  <li><a href="#">Something</a></li>
+					  <li className="divider"></li>
+					  <li><a href="#">Separated link</a></li>
+					  <li className="divider"></li>
+					  <li><a href="#">One more separated </a></li>
+					</ul>
+				  </li>
+				  <li><a className='tabs'href='#'>Browse</a></li>
+				  <li><a className='tabs'href='#'>Collections</a></li>
+				  <li><a className='tabs'href='#'>Marketplace</a></li>
+				</ul>
+				
+				<ul className="nav navbar-nav navbar-right">
+				
+				  <li><a href="#">My Gallery</a></li>
+				  <li><a href="#">My Marketplace</a></li>
+				  <li className="dropdown">
+					<a href="#" className="top-drop dropdown-toggle" data-toggle="dropdown">
+					  <span className="glyphicon glyphicon-search"></span> 
+					  <b className="caret"></b>
+					</a>
+					<ul className="dropdown-menu">
+					  <li><a href="#">Action</a></li>
+					  <li><a href="#">Another action</a></li>
+					  <li><a href="#">Something else here</a></li>
+					  <li className="divider"></li>
+					  <li><a href="#">Separated link</a></li>
+					</ul>
+				  </li>
+				</ul>
+			  </div>{/*-- /.navbar-collapse --*/}
+								
+			
+			</nav>
+			
+			
+			{/*<div className='col-xs-5 col-md-3 col-lg-1'>
+		      <div className='top-logo-holder'>
+			    <img className='img-responsive' src='images/logo_+_256.png' />
+			  </div>
 		    </div>
 		    <div className='col-xs-6 col-md-3 col-lg-2'>
-		      <input type='search' placeholder='search'/>
+		      <input className='search' type='search' placeholder='search...'/>
 		    </div>
 			<div className='col-xs-12 col-md-3 col-lg-5'>
 			  <menu>
@@ -33,7 +118,7 @@ var UserProfile = React.createClass({
 			    <menuitem>My Marketplace </menuitem>
 			    <menuitem>Avatar </menuitem>
 			  </menu>
-			</div>
+			</div>*/}
 			
 		  </div>{/end first row/}
 	    
@@ -42,10 +127,15 @@ var UserProfile = React.createClass({
 		  
 		    <div className='col-xs-12'>
 		    
-			  <h1 className='text-center vertical-align'>User Profile</h1>
-		  
+			  <h1 className='text-center vertical-align'>User Profile
+			    <div className='photo-circle'>
+				  <div className='inner-circle'>
+				    <img src='images/camera.png' alt='camera' title='camera' />
+				  </div>
+				</div>
+			  </h1>
 		    </div>
-		  
+		   
 		  </div>{/end second row/}
 		  
 		  <div className='row user-profile-menu'>
@@ -79,7 +169,7 @@ var UserProfile = React.createClass({
 		  
 		  <div className='row user-profile-forms center-block'>
 		  
-		    <div className='col-xs-12'>
+		    <div className='col-xs-12 col-md-8 col-md-offset-2'>
 			  
 			  <article>
 			  
@@ -131,7 +221,7 @@ var UserProfile = React.createClass({
 		  
 		  <div className='row user-profile-forms center-block'>
 		  
-		    <div className='col-xs-12'>
+		    <div className='col-xs-12 col-md-8 col-md-offset-2'>
 			  
 			  <article>
 			  
@@ -153,10 +243,10 @@ var UserProfile = React.createClass({
 			  
                 </div>
 				
-				<label>Suggestions - 
-				  <span className='label label-primary'>English</span>
-				  <span className='label label-primary'>Spanish</span>
-				</label>
+				<p className='gray'>Suggestions - 
+				  <button type='button' className='btn btn-default'>English</button>
+				  <button type='button' className='btn btn-default'>Spanish</button>
+				</p>
                 
 			  </article>
 			
@@ -208,7 +298,7 @@ var UserProfile = React.createClass({
 		  
 		  <div className='row user-profile-forms center-block'>
 		  
-		    <div className='col-xs-12'>
+		    <div className='col-xs-12 col-md-8 col-md-offset-2'>
 			  
 			  <article>
 			  
@@ -220,10 +310,10 @@ var UserProfile = React.createClass({
 			  
                 </div>
 				
-				<label>Suggestions -
-				  <span className='label label-primary'>Photography</span>
-				  <span className='label label-primary'>Painting</span>
-				</label>
+				<p className='gray'>Suggestions - 
+				  <button type='button' className='btn btn-default'>Photography</button>
+				  <button type='button' className='btn btn-default'>Painting</button>
+				</p>
 			
 			    <p>Artistic CV</p>
 			    
@@ -255,7 +345,7 @@ var UserProfile = React.createClass({
 		  
 		  <div className='row user-profile-forms center-block' > 
 		  
-		    <div className='col-xs-12' > 
+		    <div className='col-xs-12 col-md-8 col-md-offset-4' > 
 			  
 			  <article>
 			  
@@ -264,9 +354,11 @@ var UserProfile = React.createClass({
 			    <div className='input-group' > 
 			    
 				  <input type='text' className='form-control' placeholder='username' /> 
-			      <label>Suggestions</label> 
-				    <span className='label label-primary'>Photography</span> 
-				    <span className='label label-primary'>Painting</span>
+			      
+				  <p className='gray'>Suggestions - 
+				    <button type='button' className='btn btn-default'>English</button>
+				    <button type='button' className='btn btn-default'>Spanish</button>
+				  </p>
 				  
 				</div> 
 			
@@ -275,28 +367,32 @@ var UserProfile = React.createClass({
 			    <div className='input-group' >
 			    
 				  <input type='text' className='form-control' placeholder='url' /> 
-			      <label>Suggestions</label>
-				    <span className='label label-primary'>Photography</span> 
-				    <span className='label label-primary'>Painting</span>
-				  
-                </div>
+			      
+				  <p className='gray'>Suggestions - 
+				    <button type='button' className='btn btn-default'>English</button>
+				    <button type='button' className='btn btn-default'>Spanish</button>
+				  </p>
+                
+				</div>
 				 
 				
 				<p>Influences</p> 
 			  
 				<div className='input-group'> 
 			    
-				  <input type='text' className='form-control' placeholder='url' /> 
-			      <label>Suggestions - </label> 
-				    <span className='label label-primary' >Photography</span> 
-				    <span className='label label-primary' >Painting</span>
+				  <input type='text' className='form-control' placeholder='influences' /> 
+			     
+				  <p className='gray'>Suggestions - 
+				    <button type='button' className='btn btn-default'>Surrealism</button>
+				    <button type='button' className='btn btn-default'>Cubism</button>
+				  </p>
 				
 				</div> 
 				
 				<div className='center-block button-wrapper'> 
                   <div className='btn-group'> 
 				    
-					<button type='button' className='btn btn-default' > 
+					<button type='button' className='btn btn-active' > 
                       Save
                     </button>
                     
