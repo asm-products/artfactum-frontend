@@ -1,8 +1,13 @@
 'use strict'
 
+
+var TopNav = React.createFactory(require('./TopNav'));
+
+
 //css  
 require('../../styles/user-profile.css');
 require('../../styles/color-swatch.css');
+
 
 var UserProfile = React.createClass({
   
@@ -14,7 +19,7 @@ var UserProfile = React.createClass({
   
   handleNavCollapse: function(){
 	
-	  $('#af-navbar-collapse-1').collapse('hide');  
+	$('#af-navbar-collapse-1').collapse('hide');  
 	
   },
   
@@ -26,102 +31,9 @@ var UserProfile = React.createClass({
       <div className='user-profile'>	  
 	 
 	    <div className='container fluid'>
-	      <div className='row top-nav'>
-		    <nav className='navbar navbar-default' role='navigation'>
-			  <div className='navbar-header'>
-			    <button type='button' className='navbar-toggle' data-toggle='collapse'
-				  data-target='#af-navbar-collapse-1'>
-				  <span className='sr-only'>Navigate</span>
-				  <span className='icon-bar'></span>
-				  <span className='icon-bar'></span>
-				  <span className='icon-bar'></span>
-				</button>
-				<img className='top-logo-holder' src='images/logo_+_256.png' />
-		      </div>
-			  <div className='collaspe navbar-collapse' id='af-navbar-collapse-1'>
-			    <ul className='nav navbar-nav search-wrapper'>
-				  <li className='active search-box'>
-				    <form className='navbar-form navar-left' role='search'>
-
-					  <div className='form-group'>
-					    <div className='input-group'>
-					      <input type='text' className='search form-control' placeholder='Search' />
-					      <span className="input-group-addon glyphicon glyphicon-search"></span>
-					    </div>
-					  </div>
-					 
-					</form>
-				  </li>
-				  
-				  <li className='dropdown'>
-				    <a href="#" className="top-drop dropdown-toggle" data-toggle="dropdown">
-					  <span className="glyphicon glyphicon-align-justify"></span> 
-					</a>
-					<ul className="dropdown-menu">
-					  <li><a href="#">Action</a></li>
-					  <li><a href="#">Another action</a></li>
-					  <li><a href="#">Something</a></li>
-					  <li className="divider"></li>
-					  <li><a href="#">Separated link</a></li>
-					  <li className="divider"></li>
-					  <li><a href="#">One more separated </a></li>
-					</ul>
-				  </li>
-				  <li><a className='tabs'href='#'>Browse</a></li>
-				  <li><a className='tabs'href='#'>Collections</a></li>
-				  <li><a className='tabs'href='#'>Marketplace</a></li>
-				</ul>
-				
-				<ul className="nav navbar-nav navbar-right">
-				
-				  <li><a href="#">My Gallery</a></li>
-				  <li><a href="#">My Marketplace</a></li>
-				  <li className="dropdown">
-					<a href="#" className="top-drop dropdown-toggle" data-toggle="dropdown">
-					  <span className="glyphicon glyphicon-search"></span> 
-					  <b className="caret"></b>
-					</a>
-					<ul className="dropdown-menu">
-					  <li><a href="#">Action</a></li>
-					  <li><a href="#">Another action</a></li>
-					  <li><a href="#">Something else here</a></li>
-					  <li className="divider"></li>
-					  <li><a href="#">Separated link</a></li>
-					</ul>
-				  </li>
-				</ul>
-			  </div>{/*-- /.navbar-collapse --*/}
-								
-			
-			</nav>
-			
-			
-			{/*<div className='col-xs-5 col-md-3 col-lg-1'>
-		      <div className='top-logo-holder'>
-			    <img className='img-responsive' src='images/logo_+_256.png' />
-			  </div>
-		    </div>
-		    <div className='col-xs-6 col-md-3 col-lg-2'>
-		      <input className='search' type='search' placeholder='search...'/>
-		    </div>
-			<div className='col-xs-12 col-md-3 col-lg-5'>
-			  <menu>
-			    <menuitem># </menuitem>
-			    <menuitem>tabs </menuitem>
-			    <menuitem>tabs </menuitem>
-			    <menuitem>tabs </menuitem>
-			  </menu>
-			</div>
-			<div className='col-xs-12 col-md-3 col-lg-4'>
-			  <menu>
-			    <menuitem>My Gallery </menuitem>
-			    <menuitem>My Marketplace </menuitem>
-			    <menuitem>Avatar </menuitem>
-			  </menu>
-			</div>*/}
-			
-		  </div>{/end first row/}
-	    
+	      
+		  <TopNav></TopNav>{/*end first row*/}
+		 
 		  <div className='row user-profile-head'>
 		  
 		  
@@ -136,7 +48,7 @@ var UserProfile = React.createClass({
 			  </h1>
 		    </div>
 		   
-		  </div>{/end second row/}
+		  </div>{/*end second row*/}
 		  
 		  <div className='row user-profile-menu'>
 		  
@@ -154,7 +66,7 @@ var UserProfile = React.createClass({
 			
 			</div>
 			
-		  </div>{/end third row/}
+		  </div>{/*end third row*/}
 			
 		  <div className='row user-profile-forms center-block'>
 			  
@@ -165,7 +77,7 @@ var UserProfile = React.createClass({
 	
 			</div>
           
-		  </div>{/end fourth row/}
+		  </div>{/*end fourth row*/}
 		  
 		  <div className='row user-profile-forms center-block'>
 		  
@@ -207,7 +119,7 @@ var UserProfile = React.createClass({
 			
 			</div>			
 		  
-		  </div>{/end fifth row/}
+		  </div>{/*end fifth row*/}
 		
 		  <div className='row user-profile-forms center-block'>
 			  
@@ -217,7 +129,7 @@ var UserProfile = React.createClass({
 			 
 			</div>
           
-		  </div>{/end sixth row/}
+		  </div>{/*end sixth row*/}
 		  
 		  <div className='row user-profile-forms center-block'>
 		  
@@ -252,7 +164,7 @@ var UserProfile = React.createClass({
 			
 			</div>			
 		  
-		  </div>{/end seventh row/}
+		  </div>{/*end seventh row*/}
 		
 		  <div className='row user-profile-forms center-block'>
 			  
@@ -282,9 +194,9 @@ var UserProfile = React.createClass({
 			
 			  </div>
 			
-		    </div>{/end sub-row/}
+		    </div>{/*end sub-row*/}
 		  
-		  </div>{/end eighth row/}
+		  </div>{/*end eighth row*/}
 		
 		  <div className='row user-profile-forms center-block'>
 			  
@@ -294,7 +206,7 @@ var UserProfile = React.createClass({
 			 
 			</div>
           
-		  </div>{/end ninth row/}
+		  </div>{/*end ninth row*/}
 		  
 		  <div className='row user-profile-forms center-block'>
 		  
@@ -330,7 +242,7 @@ var UserProfile = React.createClass({
 			
 			</div>			
 		  
-		  </div>{/end tenth row/}
+		  </div>{/*end tenth row*/}
 		
 		  <div className='row user-profile-forms center-block'> 
 			  
@@ -341,7 +253,7 @@ var UserProfile = React.createClass({
 		      </h3>
 			</div>
 			  
-		  </div> {/end 11th row/} 
+		  </div> {/*end 11th row*/} 
 		  
 		  <div className='row user-profile-forms center-block' > 
 		  
@@ -404,7 +316,7 @@ var UserProfile = React.createClass({
 			
 			</div>			
 		  
-		  </div> {/end 12th row/} 
+		  </div> {/*end 12th row*/} 
 		
 		  <div className='row user-profile-bottom'> 
 		  
@@ -423,25 +335,24 @@ var UserProfile = React.createClass({
 		  
 		    </div>
 			
-			<div className='col-xs-10 col-xs-offset-1 padding1' >
+			<div className='col-xs-10 col-xs-offset-1 padding1'>
 			
 		      <span>Made with love on assembly</span>
 		  
 		    </div>
 		  
-		  </div> {/end 13th row/}
+		  </div> {/*end 13th row*/}
 		
 		</div>
 		
 	  </div>
-	
-	
-	
+		
 	);
 	
   }
   
 });
+
 
 
 module.exports = UserProfile;
