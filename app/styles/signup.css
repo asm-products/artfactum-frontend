@@ -31,7 +31,8 @@ body{
   to have the appropriate height to keep a second scroller from appearing*/
 	
 .parallax {
-  perspective: 1px;
+  -webkit-perspective: 1px;
+          perspective: 1px;
   top:.5vh;
   overflow-x: hidden;
   overflow-y: auto;
@@ -51,7 +52,8 @@ body{
 //    background-size: cover;
 //    -o-background-size: cover;
   height:100vh;
-  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
   width:100%;
   -webkit-transform-style: preserve-3d;
 }
@@ -93,7 +95,8 @@ body{
   position:relative;
   background: rgba(130,130,230,0.01);
   height:100vh;
-  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
   width:100%;
   -webkit-transform-style: preserve-3d;
 }

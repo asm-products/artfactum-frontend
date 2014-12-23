@@ -37,14 +37,14 @@ module.exports = function (grunt) {
         }
       },
 	  options: {
-	    transform: ['reactify', 'cssify']
+	    transform: ['cssify', 'reactify']
 	  }
     },
 	
     // Watches files for changes and runs tasks based on the changed files
     watch: {
       react: {
-	    files: 'app/scripts/jsx/*.js',
+	    files: ['app/scripts/jsx/*.js', '<%= config.app %>/styles/{,*/}*.css' ],
 		tasks: ['browserify']
 	  },
 	  bower: {
@@ -65,17 +65,17 @@ module.exports = function (grunt) {
       gruntfile: {
         files: ['Gruntfile.js']
       },
-      styles: {
-        files: ['<%= config.app %>/styles/{,*/}*.css'],
-        tasks: ['newer:copy:styles', 'autoprefixer']
-      },
+      //styles: {
+        //files: ['<%= config.app %>/styles/{,*/}*.css'],
+        //tasks: ['newer:copy:styles', 'autoprefixer']
+      //},
       livereload: {
         options: {
           livereload: '<%= connect.options.livereload %>'
         },
         files: [
           '<%= config.app %>/{,*/}*.html',
-          '.tmp/styles/{,*/}*.css',
+          '<%= config.app %>/styles/{,*/}*.css',
           '<%= config.app %>/images/{,*/}*'
         ]
       }
@@ -94,7 +94,7 @@ module.exports = function (grunt) {
         options: {
           middleware: function(connect) {
             return [
-              connect.static('.tmp'),
+              connect.static('app'),
               connect().use('/bower_components', connect.static('./bower_components')),
               connect.static(config.app)
             ];
