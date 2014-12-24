@@ -3,17 +3,37 @@
 
 var TopNav = React.createFactory(require('./TopNav'));
 
+var store = require('./../stores/store.js');
+var Dispatcher = require('./../dispatcher.js');
+var Actions = require('./../actions/actions.js');
+
 
 //css  
 require('../../styles/user-profile.css');
 require('../../styles/color-swatch.css');
-
+ 
 
 var UserProfile = React.createClass({
+  
+  getInitialState: function(){
+  
+    return { username: 'user profile'} 
+  
+  },
   
   componentDidMount: function(){
   
     this.handleNavCollapse();
+	var self = this;
+	
+	store.onChange(function () {
+    
+	// End of data cycle.
+    // document.getElementById('result').innerText = store.store.data;
+      
+	  self.setState({username: store.store.data});    
+	
+    });
   
   },
   
@@ -39,7 +59,10 @@ var UserProfile = React.createClass({
 		  
 		    <div className='col-xs-12'>
 		    
-			  <h1 className='text-center vertical-align'>User Profile
+			  <h1 onClick={this.handleButtonClick} className='text-center vertical-align'>
+			  
+			    {this.state.username}
+			  
 			    <div className='photo-circle'>
 				  <div className='inner-circle'>
 				    <img src='images/camera.png' alt='camera' title='camera' />
@@ -320,7 +343,7 @@ var UserProfile = React.createClass({
 		
 		  <div className='row user-profile-bottom'> 
 		  
-		    <div className='col-xs-6 col-xs-offset-3'> 
+		    <div className='col-xs-12'> 
 		      
 			  <div className='user-profile-logo-bottom center-block' > 
 			    <img className='img-responsive padding1' src='images/Logo_AF_vector_white.png' alt='artfactum logo' title='artfactum logo' />
@@ -349,6 +372,12 @@ var UserProfile = React.createClass({
 		
 	);
 	
+  },
+  
+  handleButtonClick: function(){
+  
+    Actions.setData(Math.random());
+  
   }
   
 });

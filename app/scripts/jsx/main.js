@@ -1,5 +1,8 @@
 'use strict';
 
+
+var Flux = require('delorean').Flux;
+
 var UserProfile = React.createFactory(require('./user-profile.js'));
 
 
@@ -9,3 +12,7 @@ React.render (
   document.getElementById('container')
 
 );
+
+
+
+
