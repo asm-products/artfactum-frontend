@@ -2,6 +2,7 @@
   "name": "art",
   "devDependencies": {
     "apache-server-configs": "^2.7.1",
+    "connect-modrewrite": "^0.7.9",
     "grunt": "^0.4.5",
     "grunt-autoprefixer": "^1.0.0",
     "grunt-browserify": "^3.2.1",
@@ -31,6 +32,7 @@
     "node": ">=0.10.0"
   },
   "dependencies": {
+    "connect-history-api-fallback": "0.0.5",
     "delorean": "^0.8.7",
     "material-ui": "^0.3.3",
     "react": "^0.12.2",

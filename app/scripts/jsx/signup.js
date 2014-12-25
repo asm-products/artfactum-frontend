@@ -31,7 +31,7 @@ var Ajax = React.createClass({
 
 
 
-var Dispatcher = React.createClass({
+var Signup = React.createClass({
   getInitialState: function(){
     return {data: []};
   },
@@ -94,10 +94,8 @@ var TopNavBar = React.createClass({
 	        <div className="parallax__layer parallax__layer--back">
               
 			  <header id='jumbotron'>
-                	  
 			    
 				<img src='images/flowers_big.jpg' />
-				
 				
 				<img src='images/logo_AF+_256.png' alt='images/logo_AF+_.png' />
 					
@@ -298,7 +296,7 @@ var TopNavBar = React.createClass({
 });
 
 React.render(
-  <Dispatcher url='data.json'/>,
+  <Signup url='data.json'/>,
   document.getElementById('artfactum')
 );
 
@@ -328,7 +326,4 @@ render: function(){
 });
 
 
-
-
-
-
+module.exports = Ajax;

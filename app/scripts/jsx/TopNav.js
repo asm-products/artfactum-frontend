@@ -19,7 +19,7 @@ var TopNav = React.createClass({
 			</button>
 			<img className='top-logo-holder' src='images/logo_+_256.png' />
 		  </div>
-		  <div className='collaspe navbar-collapse' id='af-navbar-collapse-1'>
+		  <div ref='collapsible' data-toggle='false' className='collapse navbar-collapse' id='af-navbar-collapse-1'>
 			<ul className='nav navbar-nav search-wrapper'>
 			  <li className='active search-box'>
 				<form className='navbar-form navar-left' role='search'>

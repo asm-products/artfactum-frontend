@@ -1,11 +1,16 @@
 'use strict'
 
+var Router = window.ReactRouter,
+    Route = Router.Route,
+    Routes = Router.Routes,
+	Link = Router.Link,
+    RouteHandler = Router.RouteHandler;
 
-var TopNav = React.createFactory(require('./TopNav'));
-
+	
 var store = require('./../stores/store.js');
 var Dispatcher = require('./../dispatcher.js');
 var Actions = require('./../actions/actions.js');
+var TopNav = require('./TopNav.js');
 
 
 //css  
@@ -15,54 +20,71 @@ require('../../styles/color-swatch.css');
 
 var UserProfile = React.createClass({
   
+  getDefaultProps: function(){
+  
+    return {
+	
+	  data: 'data'
+	
+	}
+  
+  },
+  
   getInitialState: function(){
   
-    return { username: 'user profile'} 
+    return { username: 'user profile'
+	} 
+  
+  },
+  
+  statics: {
+  
+    handleCollapse: function(){
+	  
+	  return $('#af-navbar-collapse-1').collapse('hide');  
+      
+	}
   
   },
   
   componentDidMount: function(){
-  
-    this.handleNavCollapse();
-	var self = this;
+    
+	//save this for later
+	/*var self = this;
 	
 	store.onChange(function () {
-    
-	// End of data cycle.
-    // document.getElementById('result').innerText = store.store.data;
       
-	  self.setState({username: store.store.data});    
-	
-    });
-  
+	  if (this.isMounted()) {
+        self.setState({username: store.store.data});    
+      }
+    
+	}.bind(this));*/
+    
   },
   
-  handleNavCollapse: function(){
-	
-	$('#af-navbar-collapse-1').collapse('hide');  
-	
-  },
+  componentWillUnmount: function() {
   
+  
+  },
+   
   render: function(){
-  
     
     return (
 	 
       <div className='user-profile'>	  
-	 
+	    
 	    <div className='container fluid'>
-	      
-		  <TopNav></TopNav>{/*end first row*/}
-		 
+	    {this.props.data}    
+     	<TopNav></TopNav>
+		  
 		  <div className='row user-profile-head'>
-		  
-		  
+		   
 		    <div className='col-xs-12'>
 		    
 			  <h1 onClick={this.handleButtonClick} className='text-center vertical-align'>
 			  
 			    {this.state.username}
-			  
+			    
 			    <div className='photo-circle'>
 				  <div className='inner-circle'>
 				    <img src='images/camera.png' alt='camera' title='camera' />
@@ -84,7 +106,6 @@ var UserProfile = React.createClass({
 			    <menuitem>Social | </menuitem>
 			    <menuitem>Background | </menuitem>
 			    <menuitem>Interests</menuitem>
-				
 			  </menu>
 			
 			</div>
@@ -269,7 +290,7 @@ var UserProfile = React.createClass({
 		
 		  <div className='row user-profile-forms center-block'> 
 			  
-	 	    <div className='col-xs-12'> 
+	 	    <div className='col-xs-12 '> 
 			    
 			  <h3 id='underline' className= ''>
 				Personal Interests
@@ -280,7 +301,7 @@ var UserProfile = React.createClass({
 		  
 		  <div className='row user-profile-forms center-block' > 
 		  
-		    <div className='col-xs-12 col-md-8 col-md-offset-4' > 
+		    <div className='col-xs-12 col-md-8 col-md-offset-2' > 
 			  
 			  <article>
 			  
@@ -375,9 +396,9 @@ var UserProfile = React.createClass({
   },
   
   handleButtonClick: function(){
-  
+    
     Actions.setData(Math.random());
-  
+	
   }
   
 });

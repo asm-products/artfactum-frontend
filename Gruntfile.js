@@ -15,6 +15,8 @@ module.exports = function (grunt) {
 
   // Load grunt tasks automatically
   require('load-grunt-tasks')(grunt);
+  
+  var historyApiFallback = require('connect-history-api-fallback');
 
   // Configurable paths
   var config = {
@@ -96,7 +98,8 @@ module.exports = function (grunt) {
             return [
               connect.static('app'),
               connect().use('/bower_components', connect.static('./bower_components')),
-              connect.static(config.app)
+              connect().use(historyApiFallback).listen(3000),
+			  connect.static(config.app)
             ];
           }
         }

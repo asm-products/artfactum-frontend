@@ -33,7 +33,7 @@ var Dispatcher = Flux.createDispatcher({
 });
 
 module.exports = Dispatcher;
-},{"./stores/store.js":6,"delorean":20}],3:[function(require,module,exports){
+},{"./stores/store.js":6,"delorean":21}],3:[function(require,module,exports){
 'use strict';
 
 
@@ -55,7 +55,7 @@ var TopNav = React.createClass({displayName: 'TopNav',
 			), 
 			React.createElement("img", {className: "top-logo-holder", src: "images/logo_+_256.png"})
 		  ), 
-		  React.createElement("div", {className: "collaspe navbar-collapse", id: "af-navbar-collapse-1"}, 
+		  React.createElement("div", {ref: "collapsible", 'data-toggle': "false", className: "collapse navbar-collapse", id: "af-navbar-collapse-1"}, 
 			React.createElement("ul", {className: "nav navbar-nav search-wrapper"}, 
 			  React.createElement("li", {className: "active search-box"}, 
 				React.createElement("form", {className: "navbar-form navar-left", role: "search"}, 
@@ -123,32 +123,113 @@ module.exports = TopNav;
 },{}],4:[function(require,module,exports){
 'use strict';
 
-
-var Flux = require('delorean').Flux;
-
-var UserProfile = React.createFactory(require('./user-profile.js'));
-
-
-React.render (
-
-  React.createElement(UserProfile, null),
-  document.getElementById('container')
-
-);
-
-
-
-
-
-},{"./user-profile.js":5,"delorean":20}],5:[function(require,module,exports){
-'use strict'
-
-
-var TopNav = React.createFactory(require('./TopNav'));
+var UserProfile = React.createFactory(require('./user-profile.js')),
+    TopNav = React.createFactory(require('./TopNav.js'));
 
 var store = require('./../stores/store.js');
 var Dispatcher = require('./../dispatcher.js');
 var Actions = require('./../actions/actions.js');
+var Flux = require('delorean').Flux;  
+	
+var Router = window.ReactRouter,
+    Route = Router.Route,
+    Routes = Router.Routes,
+	Link = Router.Link,
+    DefaultRoute = Router.DefaultRoute,
+    NotFoundRoute = Router.NotFoundRoute, 
+	RouteHandler = Router.RouteHandler;
+
+	
+require('../../styles/router.css');
+
+
+//better to render to a container or to document.html?	
+/*React.render (
+  <UserProfile></UserProfile>,
+  document.getElementById('container')
+);*/
+
+
+// Make Welcome and NotFound(404) separate components
+
+var Welcome = React.createClass({displayName: 'Welcome',
+  render: function() {
+    return (
+	  React.createElement("div", {className: "routeHandler"}, 
+ 	     React.createElement("h2", null, "Welcome")
+	  )
+	);
+  }
+});
+
+
+var NotFound = React.createClass({displayName: 'NotFound',
+  render: function() {
+    return React.createElement("h2", null, "NotFound");
+  }
+});
+
+
+var App = React.createClass({displayName: 'App',
+  
+  getInitialState: function(){
+    return {data: []}
+  },
+  
+  mixins: [Flux.mixins.storeListener],
+  
+  storeDidChange: function(Store){
+    this.setState({ data: store.store.data });
+  },
+  
+  render: function() {
+    return (
+	  React.createElement("div", {className: "routeHandler route-header"}, 
+	    React.createElement(Link, {to: "welcome"}, React.createElement("button", null, "Welcome")), 
+	    React.createElement(Link, {to: "user-profile"}, React.createElement("button", null, "user profile")), 
+	    React.createElement(Link, {to: "topnav"}, React.createElement("button", null, "topnav")), 
+ 	    React.createElement("div", {className: "views"}, 
+		  React.createElement(RouteHandler, {data: this.state.data})
+	    )
+	  )
+	);
+  }
+});
+
+var routes = (
+  React.createElement(Route, {handler: App, path: "/"}, 
+	React.createElement(Route, {path: "/user-profile", name: "user-profile", handler: UserProfile}), 
+    React.createElement(Route, {path: "/", name: "welcome", handler: Welcome}), 
+    React.createElement(Route, {path: "/topnav", name: "topnav", handler: TopNav}), 
+	React.createElement(NotFoundRoute, {handler: NotFound}), 
+	React.createElement(DefaultRoute, {handler: Welcome, pageTitle: "Home"})
+  )
+);
+
+
+
+Router.run(routes, Router.HistoryLocation, function (Handler,state) {
+  
+  React.render( React.createElement(Handler, {dispatcher: Dispatcher}), document.getElementById('container') );
+  
+});
+
+
+
+},{"../../styles/router.css":8,"./../actions/actions.js":1,"./../dispatcher.js":2,"./../stores/store.js":6,"./TopNav.js":3,"./user-profile.js":5,"delorean":21}],5:[function(require,module,exports){
+'use strict'
+
+var Router = window.ReactRouter,
+    Route = Router.Route,
+    Routes = Router.Routes,
+	Link = Router.Link,
+    RouteHandler = Router.RouteHandler;
+
+	
+var store = require('./../stores/store.js');
+var Dispatcher = require('./../dispatcher.js');
+var Actions = require('./../actions/actions.js');
+var TopNav = require('./TopNav.js');
 
 
 //css  
@@ -158,54 +239,71 @@ require('../../styles/color-swatch.css');
 
 var UserProfile = React.createClass({displayName: 'UserProfile',
   
+  getDefaultProps: function(){
+  
+    return {
+	
+	  data: 'data'
+	
+	}
+  
+  },
+  
   getInitialState: function(){
   
-    return { username: 'user profile'} 
+    return { username: 'user profile'
+	} 
+  
+  },
+  
+  statics: {
+  
+    handleCollapse: function(){
+	  
+	  return $('#af-navbar-collapse-1').collapse('hide');  
+      
+	}
   
   },
   
   componentDidMount: function(){
-  
-    this.handleNavCollapse();
-	var self = this;
+    
+	//save this for later
+	/*var self = this;
 	
 	store.onChange(function () {
-    
-	// End of data cycle.
-    // document.getElementById('result').innerText = store.store.data;
       
-	  self.setState({username: store.store.data});    
-	
-    });
-  
+	  if (this.isMounted()) {
+        self.setState({username: store.store.data});    
+      }
+    
+	}.bind(this));*/
+    
   },
   
-  handleNavCollapse: function(){
-	
-	$('#af-navbar-collapse-1').collapse('hide');  
-	
-  },
+  componentWillUnmount: function() {
   
+  
+  },
+   
   render: function(){
-  
     
     return (
 	 
       React.createElement("div", {className: "user-profile"}, 	  
-	 
+	    
 	    React.createElement("div", {className: "container fluid"}, 
-	      
-		  React.createElement(TopNav, null), /*end first row*/
-		 
+	    this.props.data, 
+     	React.createElement(TopNav, null), 
+		  
 		  React.createElement("div", {className: "row user-profile-head"}, 
-		  
-		  
+		   
 		    React.createElement("div", {className: "col-xs-12"}, 
 		    
 			  React.createElement("h1", {onClick: this.handleButtonClick, className: "text-center vertical-align"}, 
 			  
 			    this.state.username, 
-			  
+			    
 			    React.createElement("div", {className: "photo-circle"}, 
 				  React.createElement("div", {className: "inner-circle"}, 
 				    React.createElement("img", {src: "images/camera.png", alt: "camera", title: "camera"})
@@ -227,7 +325,6 @@ var UserProfile = React.createClass({displayName: 'UserProfile',
 			    React.createElement("menuitem", null, "Social | "), 
 			    React.createElement("menuitem", null, "Background | "), 
 			    React.createElement("menuitem", null, "Interests")
-				
 			  )
 			
 			)
@@ -412,7 +509,7 @@ var UserProfile = React.createClass({displayName: 'UserProfile',
 		
 		  React.createElement("div", {className: "row user-profile-forms center-block"}, 
 			  
-	 	    React.createElement("div", {className: "col-xs-12"}, 
+	 	    React.createElement("div", {className: "col-xs-12 "}, 
 			    
 			  React.createElement("h3", {id: "underline", className: ""}, 
 				"Personal Interests"
@@ -423,7 +520,7 @@ var UserProfile = React.createClass({displayName: 'UserProfile',
 		  
 		  React.createElement("div", {className: "row user-profile-forms center-block"}, 
 		  
-		    React.createElement("div", {className: "col-xs-12 col-md-8 col-md-offset-4"}, 
+		    React.createElement("div", {className: "col-xs-12 col-md-8 col-md-offset-2"}, 
 			  
 			  React.createElement("article", null, 
 			  
@@ -518,9 +615,9 @@ var UserProfile = React.createClass({displayName: 'UserProfile',
   },
   
   handleButtonClick: function(){
-  
+    
     Actions.setData(Math.random());
-  
+	
   }
   
 });
@@ -528,7 +625,7 @@ var UserProfile = React.createClass({displayName: 'UserProfile',
 
 
 module.exports = UserProfile;
-},{"../../styles/color-swatch.css":7,"../../styles/user-profile.css":8,"./../actions/actions.js":1,"./../dispatcher.js":2,"./../stores/store.js":6,"./TopNav":3}],6:[function(require,module,exports){
+},{"../../styles/color-swatch.css":7,"../../styles/user-profile.css":9,"./../actions/actions.js":1,"./../dispatcher.js":2,"./../stores/store.js":6,"./TopNav.js":3}],6:[function(require,module,exports){
 'use strict';
 
 var Flux = require('delorean').Flux;
@@ -547,11 +644,13 @@ var Store = Flux.createStore({
 var store = new Store();
 
 module.exports = store;
-},{"delorean":20}],7:[function(require,module,exports){
+},{"delorean":21}],7:[function(require,module,exports){
 var css = "/*color swatch theme for artfactum signup page*/\r\n\r\n.tomato{\r\n  color:#e56e5c;\r\n}\r\n\r\n.tomato-background{\r\n  background:#e5635c;\r\n  color: white;\r\n}\r\n\r\n.dark-gray{\r\n\r\n  color: #3a3a3a;\r\n\r\n}\r\n\r\n.dark-gray-background{\r\n\r\n  background: #3a3a3a;\r\n  color:white;\r\n  \r\n}\r\n\r\n.chrome{\r\n\r\n  color: #d1ccca;\r\n\r\n}\r\n\r\n.chrome-background{\r\n\r\n  background: #d1ccca;\r\n  color: black;\r\n\r\n}\r\n\r\n.gray{\r\n  color: slategray;\r\n}\r\n"; (require("C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify"))(css); module.exports = css;
-},{"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify":9}],8:[function(require,module,exports){
+},{"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify":10}],8:[function(require,module,exports){
+var css = ".route-header{\r\n  position:absolute;\r\n  height:100px;\r\n  background: #eee;\r\n  padding:1em;\r\n  width:100%;\r\n  left:0;\r\n  top:0;\r\n}\r\n\r\n.views{\r\n\r\n  position:absolute;\r\n  top: 100px;\r\n  width:100%;\r\n  left:0;\r\n\r\n}"; (require("C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify"))(css); module.exports = css;
+},{"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify":10}],9:[function(require,module,exports){
 var css = "\r\n.top-nav{\r\n\r\n  width: 98%;\r\n  display: block;\r\n  margin-left: auto;\r\n  margin-right:auto;\r\n  background: white;\r\n  \r\n}\r\n\r\n.tabs:active{\r\n\t\r\n\tcolor: tomato;\r\n\tbox-shadow: inset 0px -5px blue;\r\n    -webkit-transition: all 0.15s linear;\r\n\ttransition: all 0.15s linear;\r\n\t\r\n}\r\n\r\n.tabs:focus{\r\n\tcolor: tomato;\r\n\tbox-shadow: inset 0px -5px tomato;\r\n\r\n}\r\n\r\n\r\n.navbar{\r\n  background: white;\r\n  border: none;\r\n}\r\n\r\n.search{\r\n\r\n  border: none;\r\n  outline: none;\r\n  \r\n}\r\n\r\n.search-box{\r\n\r\n  overflow:hidden; \r\n\r\n}\r\n\r\n.user-profile-head{\r\n\r\n  height: 14em;\r\n  background: purple;\r\n  background-image: url(../images/mohai.jpg);\r\n \r\n\r\n}\r\n\r\n.user-profile-head h1{\r\n\r\n  position: relative;\r\n  top:1.5em;\r\n  width:100%;\r\n  height:7em;\r\n  color: white;\r\n \r\n}\r\n\r\n.photo-circle{\r\n  position:relative;\r\n  top:1em;\r\n  border: solid #eee 4px;\r\n  box-shadow: 0 0 4px 1px white;\r\n  border-radius: 50%;\r\n  width: 3em;\r\n  height: 3em;\r\n  display:block;\r\n  overflow:hidden;\r\n  margin-left:auto;\r\n  margin-right:auto;\r\n  display:cover;\r\n  background: white;\r\n}\r\n\r\n.inner-circle{\r\n\r\n  position:absolute;\r\n  z-index:9999;\r\n  width:100%;\r\n  height:100%;\r\n  top: .75em;\r\n}\r\n\r\n.user-profile-bottom{\r\n\r\n  position:relative;\r\n  top:300px;\r\n  height: 14em;\r\n  overflow:hidden;\r\n  background: #3a3a3a;\r\n  color:white;\r\n\r\n}\r\n\r\n\r\n\r\n.user-profile-forms{\r\n\r\n  width: 80%;\r\n  top:1em;\r\n\r\n}\r\n\r\n/*make width wider on wider screens*/\r\n\r\n.user-profile-forms article{\r\n  top:2em;\r\n  left:0; \r\n  width:90%;\r\n  height: 270px;\r\n \r\n}\r\n\r\narticle p{\r\n  margin-top:1em;\r\n}\r\n\r\narticle .btn-group{\r\n\r\n  margin-left:5em;\r\n  margin-right:5em;\r\n\r\n}\r\n\r\n.dropdown-toggle{\r\n  background:tomato;\r\n  color:white;\r\n}\r\n\r\n.button-wrapper{\r\n  position:relative;\r\n  top:1em;\r\n  width:100%;\r\n}\r\n\r\n.user-profile-logo-bottom{\r\n\r\n  width:200px;\r\n\r\n}\r\n\r\n.user-profile-top-logo{\r\n\r\n  width:3em;\r\n\r\n}\r\n\r\n.user-profile-search{\r\n  padding-top:.5em;\r\n}\r\n\r\n.top-logo-holder{\r\n  width: 50px;\r\n  height:50px;\r\n  \r\n}\r\n\r\n.article{\r\n  position: relative;\r\n  width:400px;\r\n  border: solid pink 1px;\r\n}\r\n\r\n\r\n\r\n.top-drop, .top-drop:active{\r\n\r\n  background: inherit;\r\n   \r\n}\r\n\r\n.top-drop:hover{\r\n  background: #d1ccca;\r\n}"; (require("C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify"))(css); module.exports = css;
-},{"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify":9}],9:[function(require,module,exports){
+},{"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify":10}],10:[function(require,module,exports){
 module.exports = function (css, customDocument) {
   var doc = customDocument || document;
   if (doc.createStyleSheet) {
@@ -590,13 +689,13 @@ module.exports.byUrl = function(url) {
   }
 };
 
-},{}],10:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 "use strict";
 var Promise = require("./promise/promise").Promise;
 var polyfill = require("./promise/polyfill").polyfill;
 exports.Promise = Promise;
 exports.polyfill = polyfill;
-},{"./promise/polyfill":14,"./promise/promise":15}],11:[function(require,module,exports){
+},{"./promise/polyfill":15,"./promise/promise":16}],12:[function(require,module,exports){
 "use strict";
 /* global toString */
 
@@ -690,7 +789,7 @@ function all(promises) {
 }
 
 exports.all = all;
-},{"./utils":19}],12:[function(require,module,exports){
+},{"./utils":20}],13:[function(require,module,exports){
 (function (process,global){
 "use strict";
 var browserGlobal = (typeof window !== 'undefined') ? window : {};
@@ -754,7 +853,7 @@ function asap(callback, arg) {
 
 exports.asap = asap;
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"_process":23}],13:[function(require,module,exports){
+},{"_process":24}],14:[function(require,module,exports){
 "use strict";
 var config = {
   instrument: false
@@ -770,7 +869,7 @@ function configure(name, value) {
 
 exports.config = config;
 exports.configure = configure;
-},{}],14:[function(require,module,exports){
+},{}],15:[function(require,module,exports){
 (function (global){
 "use strict";
 /*global self*/
@@ -811,7 +910,7 @@ function polyfill() {
 
 exports.polyfill = polyfill;
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./promise":15,"./utils":19}],15:[function(require,module,exports){
+},{"./promise":16,"./utils":20}],16:[function(require,module,exports){
 "use strict";
 var config = require("./config").config;
 var configure = require("./config").configure;
@@ -1023,7 +1122,7 @@ function publishRejection(promise) {
 }
 
 exports.Promise = Promise;
-},{"./all":11,"./asap":12,"./config":13,"./race":16,"./reject":17,"./resolve":18,"./utils":19}],16:[function(require,module,exports){
+},{"./all":12,"./asap":13,"./config":14,"./race":17,"./reject":18,"./resolve":19,"./utils":20}],17:[function(require,module,exports){
 "use strict";
 /* global toString */
 var isArray = require("./utils").isArray;
@@ -1113,7 +1212,7 @@ function race(promises) {
 }
 
 exports.race = race;
-},{"./utils":19}],17:[function(require,module,exports){
+},{"./utils":20}],18:[function(require,module,exports){
 "use strict";
 /**
   `RSVP.reject` returns a promise that will become rejected with the passed
@@ -1161,7 +1260,7 @@ function reject(reason) {
 }
 
 exports.reject = reject;
-},{}],18:[function(require,module,exports){
+},{}],19:[function(require,module,exports){
 "use strict";
 function resolve(value) {
   /*jshint validthis:true */
@@ -1177,7 +1276,7 @@ function resolve(value) {
 }
 
 exports.resolve = resolve;
-},{}],19:[function(require,module,exports){
+},{}],20:[function(require,module,exports){
 "use strict";
 function objectOrFunction(x) {
   return isFunction(x) || (typeof x === "object" && x !== null);
@@ -1200,7 +1299,7 @@ exports.objectOrFunction = objectOrFunction;
 exports.isFunction = isFunction;
 exports.isArray = isArray;
 exports.now = now;
-},{}],20:[function(require,module,exports){
+},{}],21:[function(require,module,exports){
 (function (DeLorean) {
   'use strict';
 
@@ -1840,7 +1939,7 @@ exports.now = now;
 
 })({});
 
-},{"./requirements":21}],21:[function(require,module,exports){
+},{"./requirements":22}],22:[function(require,module,exports){
 // ## Dependency injection file.
 
 // You can change dependencies using `DeLorean.Flux.define`. There are
@@ -1864,7 +1963,7 @@ if (typeof DeLorean !== 'undefined') {
   }
 }
 
-},{"es6-promise":10,"events":22}],22:[function(require,module,exports){
+},{"es6-promise":11,"events":23}],23:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -2167,7 +2266,7 @@ function isUndefined(arg) {
   return arg === void 0;
 }
 
-},{}],23:[function(require,module,exports){
+},{}],24:[function(require,module,exports){
 // shim for using process in browser
 
 var process = module.exports = {};
