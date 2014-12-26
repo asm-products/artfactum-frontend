@@ -1,0 +1,28 @@
+@media all and (max-width:500px) and (min-width: 300px) {
+
+.min-height div{
+
+  width:90%;
+  min-height: 18vh;
+
+}
+
+figure{
+
+  min-height: 18vh;
+  
+}
+
+
+.gif{
+   height: 0em;
+   width:0;
+   opacity: 0;
+      
+}
+
+.egon{
+  top:-2.25em;
+}
+
+}

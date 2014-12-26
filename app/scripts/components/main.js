@@ -1,10 +1,12 @@
 'use strict';
 
-var UserProfile = React.createFactory(require('./user-profile.js')),
-    TopNav = React.createFactory(require('./TopNav.js'));
-
-var store = require('./../stores/store.js');
-var Dispatcher = require('./../dispatcher.js');
+var UserProfile = React.createFactory(require('./user-profile/user-profile.js')),
+    TopNav = React.createFactory(require('./TopNav.js')),
+    Signup = React.createFactory(require('./Signup/signup.js'));
+	
+	
+var store = require('./../stores/store.js'),
+    Dispatcher = require('./../dispatcher.js');
 var Actions = require('./../actions/actions.js');
 var Flux = require('delorean').Flux;  
 	
@@ -65,6 +67,7 @@ var App = React.createClass({
 	    <Link to='welcome'><button>Welcome</button></Link>
 	    <Link to='user-profile'><button>user profile</button></Link>
 	    <Link to='topnav'><button>topnav</button></Link>
+	    <Link to='signup'><button>signup</button></Link>
  	    <div className='views'>
 		  <RouteHandler data={this.state.data} />
 	    </div>
@@ -78,6 +81,7 @@ var routes = (
 	<Route path='/user-profile' name="user-profile" handler={UserProfile}/>
     <Route path='/' name="welcome" handler={Welcome}/>
     <Route path='/topnav' name='topnav' handler={TopNav}/>
+    <Route path='/signup' name='signup' handler={Signup}/>
 	<NotFoundRoute handler={NotFound} ></NotFoundRoute>
 	<DefaultRoute handler={Welcome} pageTitle="Home"/>
   </Route>

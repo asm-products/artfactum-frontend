@@ -46,6 +46,11 @@ body{
   position:relative;
   background: white;
 
+//  background: url(logo/Logo_+_256.png) no-repeat bottom center scroll;
+//    -webkit-background-size: cover;
+//   -moz-background-size: cover;
+//    background-size: cover;
+//    -o-background-size: cover;
   height:100vh;
   -webkit-transform-style: preserve-3d;
           transform-style: preserve-3d;
@@ -470,3 +475,8 @@ footer .breadcrumb{
   color:black;
 }
 
+.modal-dialog, .modal-content{
+  border: solid black 10px;
+  position:relative;
+  z-index:9999;
+}

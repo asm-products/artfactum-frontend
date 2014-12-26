@@ -5,7 +5,6 @@ var Router = window.ReactRouter,
     Routes = Router.Routes,
 	Link = Router.Link,
     RouteHandler = Router.RouteHandler;
-
 	
 var store = require('./../stores/store.js');
 var Dispatcher = require('./../dispatcher.js');

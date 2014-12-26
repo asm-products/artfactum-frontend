@@ -35,7 +35,7 @@ module.exports = function (grunt) {
 	browserify: {
       dist: {
         files: {
-          'app/build/main.js': ['app/scripts/jsx/main.js',],
+          'app/build/main.js': ['app/scripts/components/main.js',],
         }
       },
 	  options: {
@@ -46,8 +46,11 @@ module.exports = function (grunt) {
     // Watches files for changes and runs tasks based on the changed files
     watch: {
       react: {
-	    files: ['app/scripts/jsx/*.js', '<%= config.app %>/styles/{,*/}*.css' ],
-		tasks: ['browserify']
+	    files: ['app/scripts/components/{,*/}*.js', '<%= config.app %>/scripts/components/{,*/}*.css' ],
+		tasks: ['browserify'],
+		options: {
+		  livereload: true
+		}
 	  },
 	  bower: {
         files: ['bower.json'],

@@ -10,30 +10,370 @@ var Actions = {
 };
 
 module.exports = Actions;
-},{"./../dispatcher.js":2}],2:[function(require,module,exports){
+},{"./../dispatcher.js":9}],2:[function(require,module,exports){
+var css = "@media all and (max-width:500px) and (min-width: 300px) {\r\n\r\n.min-height div{\r\n\r\n  width:90%;\r\n  min-height: 18vh;\r\n\r\n}\r\n\r\nfigure{\r\n\r\n  min-height: 18vh;\r\n  \r\n}\r\n\r\n\r\n.gif{\r\n   height: 0em;\r\n   width:0;\r\n   opacity: 0;\r\n      \r\n}\r\n\r\n.egon{\r\n  top:-2.25em;\r\n}\r\n\r\n}"; (require("C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify"))(css); module.exports = css;
+},{"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify":13}],3:[function(require,module,exports){
+var css = "/*the height break point seems to be just over 450px;\r\n/*width breakpoint 350px;\r\n\r\n@font-face {\r\n  font-family: 'Open-Sans-600';\r\n  src: url(fonts/Open-Sans-600.ttf);\r\n}\r\n@font-face {\r\n  font-family: 'Open-Sans-regular';\r\n  src: url(fonts/Open-Sans-regular.ttf);\r\n}\r\n\t\r\n\r\nbody{\r\n  margin:0;\r\n  padding:0;\r\n  font-family: 'Open-Sans-600';\t\r\n}\r\n\r\n/*utility*/\r\n\r\n#underline{\r\n\r\n  text-decoration: underline;\r\n\r\n}\r\n\r\n/*for the language picker and sign-in button*/\r\n\r\n/*the entire page needs to be wrapped inside the parallax class and it needs\r\n  to have the appropriate height to keep a second scroller from appearing*/\r\n\t\r\n.parallax {\r\n  -webkit-perspective: 1px;\r\n          perspective: 1px;\r\n  top:.5vh;\r\n  overflow-x: hidden;\r\n  overflow-y: auto;\r\n  position:relative;\r\n  height:99vh;\r\n  background:white;\r\n}\r\n\r\n\r\n.parallax__group {\r\n  position:relative;\r\n  background: white;\r\n\r\n//  background: url(logo/Logo_+_256.png) no-repeat bottom center scroll;\r\n//    -webkit-background-size: cover;\r\n//   -moz-background-size: cover;\r\n//    background-size: cover;\r\n//    -o-background-size: cover;\r\n  height:100vh;\r\n  -webkit-transform-style: preserve-3d;\r\n          transform-style: preserve-3d;\r\n  width:100%;\r\n  -webkit-transform-style: preserve-3d;\r\n}\r\n  \r\n.parallax__group:nth-child(2){\r\n   background: white;\r\n}\r\n\r\n.parallax__layer {\r\n\r\n  position: absolute;\r\n  top: 0;\r\n  right: 0;\r\n  bottom: 0;\r\n  left: 0;\r\n  height:100vh;\r\n}\r\n\r\n.parallax__layer--base {\r\n\r\n  webkit-transform: translateZ(0);\r\n  transform: translateZ(0);\r\n  -webkit-transform: translateZ(0);\r\n\r\n\t}\r\n\r\n\r\n.parallax__layer--back {\r\n\r\n  -webkit-transform: translateZ(-1px);\r\n  transform: translateZ(-1px);\r\n  -webkit-transform: translateZ(-1px) scale(2);\r\n  width:100%;\r\n  \r\n   \r\n}\r\n\r\n.parallax__group {\r\n  position:relative;\r\n  background: rgba(130,130,230,0.01);\r\n  height:100vh;\r\n  -webkit-transform-style: preserve-3d;\r\n          transform-style: preserve-3d;\r\n  width:100%;\r\n  -webkit-transform-style: preserve-3d;\r\n}\r\n  \r\n.parallax__group:nth-child(2){\r\n  background: white;\r\n}\r\n\r\n/***\r\n three pages in total\r\n ***/\r\n\r\n.first-page{}\r\n\r\n.second-page, .third-page{\r\n  width:100%;\r\n  position:absolute;\r\n}\r\n \r\n.second-page{\r\n  top:45vh;\r\n  height:190vh;\r\n  background:white;\r\n}\r\n \r\n.third-page{\r\n  top:233vh;\r\n  left:0;\r\n  margin:0;\r\n  margin-top:1em;\r\n}\r\n\r\n/*wrap the second and third pages*/\r\n\r\n.under-back{\r\n  position:absolute;\r\n  width:100%;\r\n  top:200vh;\r\n}\r\n\r\n\r\n/*top header*/\r\n\r\n#signup-language,#signup-button{\r\n    position: absolute;\r\n    padding: 1vh;\r\n\tmargin: .75em;\r\n}\r\n\r\n#signup-button{\r\n  right:0;\r\n}\r\n\r\n/*hero-unit*/\t\r\n \r\n#jumbotron{\r\n  \r\n  position:relative;\r\n  top:-8%;\r\n  height:70%;\r\n  width:100%;\r\n  text-align:center;\r\n  color:black;\r\n  overflow:hidden:\r\n}\r\n  \r\n  \r\n#jumbotron img:nth-child(1){\r\n  \r\n  position:absolute;\r\n  z-index:0;\r\n  left:-25%;\r\n  top:-25%;\r\n  opacity:0.35;\r\n    \r\n}\r\n  \r\n#jumbotron img:nth-child(2){\r\n\r\n  top:.5em;\r\n  display:block;\r\n  position:relative;\r\n  z-index:0;\r\n  margin-left:auto;\r\n  margin-right:auto;\r\n  //background: rgba(300,300,300,0.5);\r\n  //border-radius:50%;\r\n}\r\n  \r\n.jumbo-inner{\r\n  \r\n  position:relative;\r\n  top:-14%;\r\n  font-size:1.4em;\r\n  margin-left:5%;\r\n  margin-right:5%;\r\n}\r\n  \r\n#jumbotron i{\r\n\r\n  margin-top:-.2em;\r\n  position:relative;\r\n  display:block;\r\n  margin-left:auto;\r\n  margin-right:auto;\r\n  width:90%;\r\n  font-size:.9em;\r\n  color:#000;\r\n \r\n}\r\n\r\n#jumbotron h2{\r\n  \r\n  color:black;\r\n  font-size:1.4em;\r\n  \r\n}\r\n\r\n\t\t\r\n.oval-button{\r\n  text-align:center;\r\n  color:white;\r\n  background: #e5635c;\r\n  padding: .75em;\r\n  position:relative;\r\n\tdisplay:block;\r\n\tmargin-left: auto;\r\n\tmargin-right:auto;\r\n  width:15em;\r\n\tborder-radius:20px;\r\n\tfont-family: 'Open-Sans-regular';\r\n\tfont-weight:bold;\r\n\tfont-size:1.2em;\r\n  }\r\n  \r\n.second-oval{\r\n\r\n  background:blue;\r\n\r\n}\r\n  \r\n  \r\n/*second section of the first page\r\n  the first page actually being two pages of vh (window height)\r\n */  \r\n  \r\n#section-two{\r\n\r\n  left:0;\r\n  width:90%;\r\n  height:100vh;\r\n  position:relative;\r\n  margin-left:auto;\r\n  margin-right:auto;\r\n  font-family: 'Open-Sans-regular';\r\n  font-size:1.2em;\r\n\r\n}\r\n\r\n/*wrap the icon section*/\r\n  \r\n    \r\n  \r\n  \r\narticle{\r\n  position:relative;\r\n  top:15%;\r\n  width:110%;\r\n  margin-left:auto;\r\n  margin-right:auto;\r\n  height:65%;\r\n}\r\n\r\n#signup-icons div{\r\n  margin-top:2em;\r\n}\r\n  \r\n/*statement*/\r\n  \r\n.below-article{\r\n\t\r\n\tposition:relative;\r\n\tbottom:20%;\r\n\tclear:float;\r\n\twidth:80%;\r\n\tpadding-top:1.5em;\r\n\tfont-size:1.4em;\r\n\tfont-style: italic;\r\n\tmargin-left:auto;\r\n\tmargin-right:auto;\r\n\ttext-align: center;\r\n\tfont-family: 'Open-Sans-600';\r\n}\r\n  \r\n  \r\n.center-wrapper .row{\r\n\r\n margin-top:3em;\r\n\r\n} \r\n  \r\n#section-two div{\r\n    \r\n\twidth: 25%;\r\n\theight:30%;\r\n\tfloat:left;\r\n\tfont-size:1.2em;\r\n\ttext-align:center;\r\n\t\r\n}\r\n  \r\n#section-two span{\r\n\r\n    \r\n\twidth: 8%;\r\n\theight:30%;\r\n\tfloat:left;\r\n\tfont-size:1.2em;\r\n\ttext-align:center;\r\n\t\r\n\r\n}\r\n  \r\n/*TODO make less global*/\r\n\r\n.min-height div{\r\n  \r\n  padding: 0 15px;\r\n  min-height: 40vh;\r\n \r\n}\r\n\r\n.min-height h3{\r\n\r\n  color:#e56e5c;\r\n\r\n  }\r\n\r\n.min-height p{\r\n\r\n  color: slategray;\r\n\r\n}\r\n\r\nfigure {\r\n\r\n  height:40vh;\r\n  min-width:40vh;\r\n  display:cover;\r\n  overflow:hidden;\r\n  \r\n\r\n}\r\n\r\nfigure img{\r\n\r\n  padding:1.1em;\r\n  padding-right:4em;\r\n  width: 100%;\r\n  height:100;\r\n  position:absolute;\r\n  left:0;\r\n  top:0;\r\n   box-shadow: 0 0 5px 2px #ccc;\r\n\r\n}\r\n\r\n.fair-heading{\r\n\r\n  position:relative;\r\n  top:3em;\r\n  color:#e56e5c;\r\n\r\n}\r\n\r\n\r\n.fair-heading p{\r\n\r\n  color:slategray;\r\n  padding-top:1.25em;\r\n  \r\n}\r\n\r\n.center-wrapper figure{\r\n  \r\n  padding:1em;\r\n  \r\n}\r\n\r\n\r\n.center-wrapper{\r\n\r\n  position:relative;\r\n  width:90%;\r\n  top:2em;\r\n  margin-right:auto;\r\n  margin-left:auto;\r\n\r\n}\r\n\r\n\r\n#near-footer{\r\n\r\n  padding-top:2.5em;\r\n  padding-bottom:3.2em;  \r\n  font-size:1em;\r\n  background: #e56e5c;\r\n  color:white;\r\n  width:100%;\r\n  position:relative;\r\n  \r\n}\r\n\r\n#near-footer h3{\r\n\r\n  \r\n  margin-top:1em;\r\n\r\n}\r\n\r\n#near-footer button{\r\n\r\n  margin-top:1.5em;\r\n  background: white;\r\n  color:black;\r\n  border: solid black 2px;\r\n  margin-left:4px;\r\n  box-shadow: 3px 3px 3px black;\r\n  \r\n}\r\n\r\nfooter{\r\n\r\n  font-size:1em;\r\n  text-decoration:underline;\r\n  width:110%;\r\n  color:white;\r\n  background:black;\r\n\r\n}\r\n\r\nfooter ul{\r\n\r\n  margin:2em;\r\n  margin-top:3em;\r\n\r\n}\r\n\r\nfooter ul li{\r\n\r\n  display: inline-block;\r\n  text-decoration: none;\r\n  color: white;\r\n\r\n}\r\n\r\nfooter ul li a{\r\n\r\n  display: inline-block;\r\n  text-decoration: none;\r\n  color: white;\r\n\r\n}\r\n\r\n\r\n.stretch{\r\n\r\n  position:relative;\r\n  background: black;\r\n\r\n}\r\n\r\nfooter .breadcrumb{\r\n  margin:2em;\r\n  width:80%;\r\n  color:black;\r\n}\r\n\r\n.modal-dialog, .modal-content{\r\n  border: solid black 10px;\r\n  position:relative;\r\n  z-index:9999;\r\n}"; (require("C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify"))(css); module.exports = css;
+},{"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify":13}],4:[function(require,module,exports){
 'use strict';
 
-/*
- * Dispatchers are simple action dispatchers for stores.
- * Stores handle the related action.
- */
- 
-var Flux = require('delorean').Flux;
+//css
 
- 
-var store = require('./stores/store.js');
- 
-var Dispatcher = Flux.createDispatcher({
-  setData: function (data) {
-    this.dispatch('incoming-data', data);
+require('./signup.css');
+require('./signup-phones.css');
+
+/*var Ajax = React.createClass({
+  getInitialState: function(){
+    return {data: []};
   },
-  getStores: function () {
-    return {increment: store};
+
+  componentDidMount: function() {
+    $.ajax({
+	  url: this.props.url,
+	  dataType: 'json',
+	  success: function(data) {
+	    this.setState( {data: data});
+	    this.props.onSuccess({data:data});
+	  }.bind(this),
+	  error: function(Ajax, status, err) {
+	    console.error(this.props.url, status, err.toString());
+	    this.props.onError({data: [this.props.url,status, err.toString() ]});
+	  }.bind(this)
+    });
+  },
+  render: function(){
+	return (
+	  <span></span> 
+	);
+ 
+  }
+
+});  
+
+
+
+var Signup = React.createClass({
+  getInitialState: function(){
+    return {data: []};
+  },
+
+  handleSuccess: function(e) {
+    //document.getElementById('info').innerHTML = JSON.stringify(e);
+    this.setState({data:e.data});
+    return;
+  },
+
+  handleError: function(e){
+    //document.getElementById('info').innerHTML = JSON.stringify(e);
+    return;
+  },
+
+  render: function(){
+    return ( 
+	  <div className='handleAjax'>
+	    <Ajax 
+		  onError={this.handleError} 
+		  onSuccess={this.handleSuccess} 
+		  ref='ajax' 
+		  url={this.props.url} 
+	    ></Ajax>
+	    <FirstChild_A data={this.state.data} />
+	  </div>
+    )
   }
 });
 
-module.exports = Dispatcher;
-},{"./stores/store.js":6,"delorean":21}],3:[function(require,module,exports){
+
+var FirstChild_A = React.createClass({
+
+  render: function(){
+  
+    var items = this.props.data.map( function(i){
+	  return (
+	    <li>{i.name}</li>
+	  );
+  
+    });
+    return (
+	  <div className='items'>
+        <TopNavBar data={this.props.data} >{this.props.children}</TopNavBar>
+	  </div>	 
+    );
+  }
+
+});
+
+*/
+var TopNavBar = React.createClass({displayName: 'TopNavBar',
+
+  render: function(){
+
+    return (
+	  React.createElement("div", {className: "topNavBar"}, 
+	      React.createElement("div", {className: "modal fade", id: "basicModal", tabindex: "-1", role: "dialog", 
+			    'aria-labelledby': "basicModal", 'aria-hidden': "true"}, 
+				React.createElement("div", {className: "modal-dialog"}, 
+				  React.createElement("div", {className: "modal-content"}, 
+				    React.createElement("div", {className: "modal-header"}, 
+					  React.createElement("button", {type: "button", className: "close", 'data-dismiss': "modal", 'aria-hiddden': "true"}, "x"), 
+	                  React.createElement("h4", {className: "modal-title", id: "myModalLabel"}, "Modal title")
+                    ), 
+                  React.createElement("div", {className: "modal-body"}, 
+                    React.createElement("h3", null, "Modal body")
+                  ), 
+                  React.createElement("div", {className: "modal-footer"}, 
+                    React.createElement("button", {type: "button", className: "btn btn-default", 'data-dismiss': "modal"}, "Close"), 
+           			React.createElement("button", {type: "button", className: "btn btn-primary"}, "Save Changes")
+                  )					
+                )					
+              )					
+            ), 				
+        React.createElement("div", {className: "parallax"}, 
+          React.createElement("div", {id: "first-page", className: "parallax__group"}, 
+	        React.createElement("div", {className: "parallax__layer parallax__layer--back"}, 
+              
+			  React.createElement("header", {id: "jumbotron"}, 
+			    
+				React.createElement("img", {src: "images/flowers_big.jpg"}), 
+				
+				React.createElement("img", {src: "images/logo_AF+_256.png", alt: "images/logo_AF+_.png"}), 
+					
+				React.createElement("div", {className: "jumbo-inner"}, 
+				React.createElement("h2", null, "A Better Way to Discover New Art"), 
+				React.createElement("i", {id: "artfactum-describe"}, 
+				  "Artfactum is an online marketplace where artists and art lovers create virtual galleries to showcase and sell art to a global community"
+				)
+				
+				)
+				
+						
+			  ), 
+		  	    
+				React.createElement("p", {id: "create-space"}, 
+				
+				  React.createElement("p", {className: "oval-button"}, React.createElement("span", null, "Launch Your Own Gallery")), 
+				  React.createElement("p", {className: "second-oval oval-button"}, React.createElement("span", null, "Discover"))
+			    
+				)
+			  
+			), 
+			
+			React.createElement("div", {className: "parallax__layer parallax__layer--base"}, 
+			  React.createElement("select", {className: "light", id: "signup-language"}, 
+				React.createElement("option", null, "English"), 
+				React.createElement("option", null, "Spanish")
+			  ), 
+			  React.createElement("button", {className: "light", id: "signup-button", 
+			    'data-toggle': "modal", 
+				'data-target': "#basicModal"}, "Sign up"
+			  )
+			  
+				
+				
+			  
+			), 
+
+			
+			React.createElement("div", {className: "under-back"}, 
+			
+			React.createElement("div", {className: "container-fluid tomato second-page"}, 
+				React.createElement("div", {className: "center-wrapper"}, 
+				React.createElement("div", {className: "row min-height"}, 
+				  React.createElement("div", {className: "col-xs-12 col-md-6"}, 
+				  React.createElement("h3", null, 
+					React.createElement("b", null, "Simple")
+				  ), 
+				  React.createElement("p", null, 
+					"Upload your gallery and upload your artworks"
+				  )
+				  ), 
+				   React.createElement("figure", {className: "col-xs-12 col-md-6"}, 
+				      React.createElement("img", {src: "images/artistspage_gif.gif"})
+				   
+				   )
+				), 
+				
+				React.createElement("div", {className: "row min-height"}, 
+				  React.createElement("figure", {className: "col-xs-6"}, 
+				    React.createElement("img", {src: "images/egon.jpg"})
+				  ), 
+				   React.createElement("div", {className: "col-xs-6"}, 
+					 React.createElement("h3", null, 
+					   React.createElement("b", null, "Cool")
+					), 
+					React.createElement("p", null, 
+					  "Curate the art you love while you recommend it"
+					)
+				  )
+				), 
+				
+				React.createElement("div", {className: "row min-height"}, 
+				  React.createElement("div", {className: "col-xs-6"}, 
+				  React.createElement("h3", null, 
+					React.createElement("b", null, "Effective")
+				  ), 
+				  React.createElement("p", null, 
+					"Find the best new art by the recommendations of who really knows, the artists and art lovers"
+				  )
+				  ), 
+				   React.createElement("figure", {className: "col-xs-6"}, 
+					 React.createElement("img", {src: "images/egon_land.jpg"})
+				   )
+				), 
+				  React.createElement("div", {className: "fair-heading row col-xs-12 text-center"}, 
+				  React.createElement("h2", {id: "underline"}, React.createElement("b", null, "And above all, fair")), 
+				  React.createElement("p", {className: "text-info"}, 
+					"If an artwork is sold, 90% for the artist, 7% for the person who recommended it, and 3% for the platform."
+				  )
+				)
+			  )
+            ), 
+              React.createElement("div", {className: "third-page"}, 			  
+			    
+				React.createElement("div", {className: "container", id: "near-footer"}, 
+				React.createElement("div", {className: "row"}, 
+					React.createElement("div", {className: "col-lg-8 col-md-8 col-xs-12 margin-top-1"}, 
+					  React.createElement("h3", null, "Do you want to be part of the Artfactum community?")
+					), 
+					React.createElement("div", {className: "col-lg-4 col-md-4 col-xs-12 margin-top-1"}, 
+					  React.createElement("div", {class: "btn-group"}, 
+					    React.createElement("button", {type: "button", class: "btn btn-default"}, "Middle"), 
+					    React.createElement("button", {type: "button", class: "btn btn-default"}, "Right")
+					  )
+					  
+					)
+					
+				)
+				), 
+				React.createElement("footer", {className: "row"}, 
+				  
+				  React.createElement("div", {className: "row"}, 
+					React.createElement("ul", null, 
+					  React.createElement("li", null, React.createElement("a", {href: "#"}, "About us | ")), 
+					  React.createElement("li", null, React.createElement("a", {href: "#"}, "Legal | ")), 
+					  React.createElement("li", null, React.createElement("a", {href: "#"}, "F.A.Q. | ")), 
+					  React.createElement("li", null, React.createElement("a", {href: "#"}, "Developers | ")), 
+					  React.createElement("li", null, React.createElement("a", {href: "#"}, "Ads/Sponsorship | ")), 
+					  React.createElement("li", null, React.createElement("a", {href: "#"}, "Contact| "))
+					)
+				  ), 
+				  
+				  React.createElement("div", {className: "row"}, 
+					React.createElement("ul", null, 
+					  React.createElement("li", null, React.createElement("p", {id: "underline"}, "Built with love on assembly"))
+					)
+				
+				  )
+				)			  
+				
+			  )	  
+				
+			)
+		
+		  ), 
+
+		React.createElement("div", {className: "parallax__group"}, 
+		React.createElement("div", {className: "parallax__layer parallax__layer--back"}), 
+		React.createElement("div", {className: "parallax__layer parallax__layer--base"}, 
+
+		React.createElement("div", {id: "section-two"}, 
+
+		React.createElement("article", {id: "signup-icons"}, 
+		 
+			React.createElement("div", null, 
+			  
+			React.createElement("img", {src: "icons/icons/png/32px/pencil2.png"}), 
+			React.createElement("p", null, "Create your own Gallery")
+			  
+			), 
+			
+			React.createElement("span", null), 
+			React.createElement("div", null, 
+			  React.createElement("img", {src: "icons/icons/png/32px/coin.png"}), 
+			  React.createElement("p", null, "Sell your artworks")
+			), 
+			React.createElement("span", null), 
+			React.createElement("div", null, 
+			  React.createElement("img", {src: "icons/icons/png/32px/happy.png"}), 
+			  React.createElement("p", null, "Get paid discovering art")
+			), 
+			React.createElement("div", null, 
+			  React.createElement("img", {src: "icons/icons/png/32px/users.png"}), 
+
+			  React.createElement("p", null, "A global community")
+			), 
+			React.createElement("span", null), 
+			React.createElement("div", null, 
+			  React.createElement("img", {src: "icons/icons/png/32px/volume-high.png"}), 
+			  React.createElement("p", null, "Democratized visibility")
+			), 
+			React.createElement("span", null), 
+			React.createElement("div", null, 
+			  React.createElement("img", {src: "icons/icons/png/32px/loop.png"}), 
+			  React.createElement("p", null, "Best commission ever")
+			)
+			
+		  )
+		  
+		), 
+		React.createElement("div", {className: "below-article"}, 
+			React.createElement("strong", null, "The artistic community you were waiting for")
+		  )
+		), 
+
+		React.createElement("div", {className: "parallax__group"}, 
+		React.createElement("div", {className: "parallax__layer parallax__layer--back"}
+
+		), 
+		React.createElement("div", {className: "parallax__layer parallax__layer--base"}
+
+		)
+
+		)
+
+      )
+    )
+  )
+
+  );
+  
+}
+
+});
+
+/*React.render(
+  <Signup url='data.json'/>,
+  document.getElementById('artfactum')
+);*/
+
+
+/*var Footer = React.createClass({
+render: function(){
+
+  return (
+ 
+	<footer className='container'>
+	  <div className='row'>
+		<ul className='breadcrumb'>
+		  <li><a href='#'>About us</a></li>
+		  <li><a href='#'>Legal</a></li>
+		  <li><a href='#'>F.A.Q.</a></li>
+		  <li><a href='#'>Developers</a></li>
+		  <li><a href='#'>Ads/Sponsorship</a></li>
+		  <li><a href='#'>Contact</a></li>
+		</ul>
+	  </div>
+	</footer>
+ 
+  );
+
+
+}
+});
+*/
+
+module.exports = TopNavBar;
+},{"./signup-phones.css":2,"./signup.css":3}],5:[function(require,module,exports){
 'use strict';
 
 
@@ -120,14 +460,16 @@ var TopNav = React.createClass({displayName: 'TopNav',
 });
 
 module.exports = TopNav;
-},{}],4:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 'use strict';
 
-var UserProfile = React.createFactory(require('./user-profile.js')),
-    TopNav = React.createFactory(require('./TopNav.js'));
-
-var store = require('./../stores/store.js');
-var Dispatcher = require('./../dispatcher.js');
+var UserProfile = React.createFactory(require('./user-profile/user-profile.js')),
+    TopNav = React.createFactory(require('./TopNav.js')),
+    Signup = React.createFactory(require('./Signup/signup.js'));
+	
+	
+var store = require('./../stores/store.js'),
+    Dispatcher = require('./../dispatcher.js');
 var Actions = require('./../actions/actions.js');
 var Flux = require('delorean').Flux;  
 	
@@ -188,6 +530,7 @@ var App = React.createClass({displayName: 'App',
 	    React.createElement(Link, {to: "welcome"}, React.createElement("button", null, "Welcome")), 
 	    React.createElement(Link, {to: "user-profile"}, React.createElement("button", null, "user profile")), 
 	    React.createElement(Link, {to: "topnav"}, React.createElement("button", null, "topnav")), 
+	    React.createElement(Link, {to: "signup"}, React.createElement("button", null, "signup")), 
  	    React.createElement("div", {className: "views"}, 
 		  React.createElement(RouteHandler, {data: this.state.data})
 	    )
@@ -201,6 +544,7 @@ var routes = (
 	React.createElement(Route, {path: "/user-profile", name: "user-profile", handler: UserProfile}), 
     React.createElement(Route, {path: "/", name: "welcome", handler: Welcome}), 
     React.createElement(Route, {path: "/topnav", name: "topnav", handler: TopNav}), 
+    React.createElement(Route, {path: "/signup", name: "signup", handler: Signup}), 
 	React.createElement(NotFoundRoute, {handler: NotFound}), 
 	React.createElement(DefaultRoute, {handler: Welcome, pageTitle: "Home"})
   )
@@ -216,7 +560,9 @@ Router.run(routes, Router.HistoryLocation, function (Handler,state) {
 
 
 
-},{"../../styles/router.css":8,"./../actions/actions.js":1,"./../dispatcher.js":2,"./../stores/store.js":6,"./TopNav.js":3,"./user-profile.js":5,"delorean":21}],5:[function(require,module,exports){
+},{"../../styles/router.css":12,"./../actions/actions.js":1,"./../dispatcher.js":9,"./../stores/store.js":10,"./Signup/signup.js":4,"./TopNav.js":5,"./user-profile/user-profile.js":8,"delorean":24}],7:[function(require,module,exports){
+var css = "\r\n.top-nav{\r\n\r\n  width: 98%;\r\n  display: block;\r\n  margin-left: auto;\r\n  margin-right:auto;\r\n  background: white;\r\n  \r\n}\r\n\r\n.tabs:active{\r\n\t\r\n\tcolor: tomato;\r\n\tbox-shadow: inset 0px -5px blue;\r\n    -webkit-transition: all 0.15s linear;\r\n\ttransition: all 0.15s linear;\r\n\t\r\n}\r\n\r\n.tabs:focus{\r\n\tcolor: tomato;\r\n\tbox-shadow: inset 0px -5px tomato;\r\n\r\n}\r\n\r\n\r\n.navbar{\r\n  background: white;\r\n  border: none;\r\n}\r\n\r\n.search{\r\n\r\n  border: none;\r\n  outline: none;\r\n  \r\n}\r\n\r\n.search-box{\r\n\r\n  overflow:hidden; \r\n\r\n}\r\n\r\n.user-profile-head{\r\n\r\n  height: 14em;\r\n  background: purple;\r\n  background-image: url(../images/mohai.jpg);\r\n \r\n\r\n}\r\n\r\n.user-profile-head h1{\r\n\r\n  position: relative;\r\n  top:1.5em;\r\n  width:100%;\r\n  height:7em;\r\n  color: white;\r\n \r\n}\r\n\r\n.photo-circle{\r\n  position:relative;\r\n  top:1em;\r\n  border: solid #eee 4px;\r\n  box-shadow: 0 0 4px 1px white;\r\n  border-radius: 50%;\r\n  width: 3em;\r\n  height: 3em;\r\n  display:block;\r\n  overflow:hidden;\r\n  margin-left:auto;\r\n  margin-right:auto;\r\n  display:cover;\r\n  background: white;\r\n}\r\n\r\n.inner-circle{\r\n\r\n  position:absolute;\r\n  z-index:9999;\r\n  width:100%;\r\n  height:100%;\r\n  top: .75em;\r\n}\r\n\r\n.user-profile-bottom{\r\n\r\n  position:relative;\r\n  top:300px;\r\n  height: 14em;\r\n  overflow:hidden;\r\n  background: #3a3a3a;\r\n  color:white;\r\n\r\n}\r\n\r\n\r\n\r\n.user-profile-forms{\r\n\r\n  width: 80%;\r\n  top:1em;\r\n\r\n}\r\n\r\n/*make width wider on wider screens*/\r\n\r\n.user-profile-forms article{\r\n  top:2em;\r\n  left:0; \r\n  width:90%;\r\n  height: 270px;\r\n \r\n}\r\n\r\narticle p{\r\n  margin-top:1em;\r\n}\r\n\r\narticle .btn-group{\r\n\r\n  margin-left:5em;\r\n  margin-right:5em;\r\n\r\n}\r\n\r\n.dropdown-toggle{\r\n  background:tomato;\r\n  color:white;\r\n}\r\n\r\n.button-wrapper{\r\n  position:relative;\r\n  top:1em;\r\n  width:100%;\r\n}\r\n\r\n.user-profile-logo-bottom{\r\n\r\n  width:200px;\r\n\r\n}\r\n\r\n.user-profile-top-logo{\r\n\r\n  width:3em;\r\n\r\n}\r\n\r\n.user-profile-search{\r\n  padding-top:.5em;\r\n}\r\n\r\n.top-logo-holder{\r\n  width: 50px;\r\n  height:50px;\r\n  \r\n}\r\n\r\n.article{\r\n  position: relative;\r\n  width:400px;\r\n  border: solid pink 1px;\r\n}\r\n\r\n\r\n\r\n.top-drop, .top-drop:active{\r\n\r\n  background: inherit;\r\n   \r\n}\r\n\r\n.top-drop:hover{\r\n  background: #d1ccca;\r\n}"; (require("C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify"))(css); module.exports = css;
+},{"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify":13}],8:[function(require,module,exports){
 'use strict'
 
 var Router = window.ReactRouter,
@@ -224,17 +570,15 @@ var Router = window.ReactRouter,
     Routes = Router.Routes,
 	Link = Router.Link,
     RouteHandler = Router.RouteHandler;
-
 	
-var store = require('./../stores/store.js');
-var Dispatcher = require('./../dispatcher.js');
-var Actions = require('./../actions/actions.js');
-var TopNav = require('./TopNav.js');
-
+var store = require('./../../stores/store.js');
+var Dispatcher = require('./../../dispatcher.js');
+var Actions = require('./../../actions/actions.js');
+var TopNav = require('./../TopNav.js');
 
 //css  
-require('../../styles/user-profile.css');
-require('../../styles/color-swatch.css');
+require('./user-profile.css');
+require('../../../styles/color-swatch.css');
  
 
 var UserProfile = React.createClass({displayName: 'UserProfile',
@@ -625,7 +969,30 @@ var UserProfile = React.createClass({displayName: 'UserProfile',
 
 
 module.exports = UserProfile;
-},{"../../styles/color-swatch.css":7,"../../styles/user-profile.css":9,"./../actions/actions.js":1,"./../dispatcher.js":2,"./../stores/store.js":6,"./TopNav.js":3}],6:[function(require,module,exports){
+},{"../../../styles/color-swatch.css":11,"./../../actions/actions.js":1,"./../../dispatcher.js":9,"./../../stores/store.js":10,"./../TopNav.js":5,"./user-profile.css":7}],9:[function(require,module,exports){
+'use strict';
+
+/*
+ * Dispatchers are simple action dispatchers for stores.
+ * Stores handle the related action.
+ */
+ 
+var Flux = require('delorean').Flux;
+
+ 
+var store = require('./stores/store.js');
+ 
+var Dispatcher = Flux.createDispatcher({
+  setData: function (data) {
+    this.dispatch('incoming-data', data);
+  },
+  getStores: function () {
+    return {increment: store};
+  }
+});
+
+module.exports = Dispatcher;
+},{"./stores/store.js":10,"delorean":24}],10:[function(require,module,exports){
 'use strict';
 
 var Flux = require('delorean').Flux;
@@ -644,13 +1011,11 @@ var Store = Flux.createStore({
 var store = new Store();
 
 module.exports = store;
-},{"delorean":21}],7:[function(require,module,exports){
+},{"delorean":24}],11:[function(require,module,exports){
 var css = "/*color swatch theme for artfactum signup page*/\r\n\r\n.tomato{\r\n  color:#e56e5c;\r\n}\r\n\r\n.tomato-background{\r\n  background:#e5635c;\r\n  color: white;\r\n}\r\n\r\n.dark-gray{\r\n\r\n  color: #3a3a3a;\r\n\r\n}\r\n\r\n.dark-gray-background{\r\n\r\n  background: #3a3a3a;\r\n  color:white;\r\n  \r\n}\r\n\r\n.chrome{\r\n\r\n  color: #d1ccca;\r\n\r\n}\r\n\r\n.chrome-background{\r\n\r\n  background: #d1ccca;\r\n  color: black;\r\n\r\n}\r\n\r\n.gray{\r\n  color: slategray;\r\n}\r\n"; (require("C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify"))(css); module.exports = css;
-},{"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify":10}],8:[function(require,module,exports){
+},{"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify":13}],12:[function(require,module,exports){
 var css = ".route-header{\r\n  position:absolute;\r\n  height:100px;\r\n  background: #eee;\r\n  padding:1em;\r\n  width:100%;\r\n  left:0;\r\n  top:0;\r\n}\r\n\r\n.views{\r\n\r\n  position:absolute;\r\n  top: 100px;\r\n  width:100%;\r\n  left:0;\r\n\r\n}"; (require("C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify"))(css); module.exports = css;
-},{"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify":10}],9:[function(require,module,exports){
-var css = "\r\n.top-nav{\r\n\r\n  width: 98%;\r\n  display: block;\r\n  margin-left: auto;\r\n  margin-right:auto;\r\n  background: white;\r\n  \r\n}\r\n\r\n.tabs:active{\r\n\t\r\n\tcolor: tomato;\r\n\tbox-shadow: inset 0px -5px blue;\r\n    -webkit-transition: all 0.15s linear;\r\n\ttransition: all 0.15s linear;\r\n\t\r\n}\r\n\r\n.tabs:focus{\r\n\tcolor: tomato;\r\n\tbox-shadow: inset 0px -5px tomato;\r\n\r\n}\r\n\r\n\r\n.navbar{\r\n  background: white;\r\n  border: none;\r\n}\r\n\r\n.search{\r\n\r\n  border: none;\r\n  outline: none;\r\n  \r\n}\r\n\r\n.search-box{\r\n\r\n  overflow:hidden; \r\n\r\n}\r\n\r\n.user-profile-head{\r\n\r\n  height: 14em;\r\n  background: purple;\r\n  background-image: url(../images/mohai.jpg);\r\n \r\n\r\n}\r\n\r\n.user-profile-head h1{\r\n\r\n  position: relative;\r\n  top:1.5em;\r\n  width:100%;\r\n  height:7em;\r\n  color: white;\r\n \r\n}\r\n\r\n.photo-circle{\r\n  position:relative;\r\n  top:1em;\r\n  border: solid #eee 4px;\r\n  box-shadow: 0 0 4px 1px white;\r\n  border-radius: 50%;\r\n  width: 3em;\r\n  height: 3em;\r\n  display:block;\r\n  overflow:hidden;\r\n  margin-left:auto;\r\n  margin-right:auto;\r\n  display:cover;\r\n  background: white;\r\n}\r\n\r\n.inner-circle{\r\n\r\n  position:absolute;\r\n  z-index:9999;\r\n  width:100%;\r\n  height:100%;\r\n  top: .75em;\r\n}\r\n\r\n.user-profile-bottom{\r\n\r\n  position:relative;\r\n  top:300px;\r\n  height: 14em;\r\n  overflow:hidden;\r\n  background: #3a3a3a;\r\n  color:white;\r\n\r\n}\r\n\r\n\r\n\r\n.user-profile-forms{\r\n\r\n  width: 80%;\r\n  top:1em;\r\n\r\n}\r\n\r\n/*make width wider on wider screens*/\r\n\r\n.user-profile-forms article{\r\n  top:2em;\r\n  left:0; \r\n  width:90%;\r\n  height: 270px;\r\n \r\n}\r\n\r\narticle p{\r\n  margin-top:1em;\r\n}\r\n\r\narticle .btn-group{\r\n\r\n  margin-left:5em;\r\n  margin-right:5em;\r\n\r\n}\r\n\r\n.dropdown-toggle{\r\n  background:tomato;\r\n  color:white;\r\n}\r\n\r\n.button-wrapper{\r\n  position:relative;\r\n  top:1em;\r\n  width:100%;\r\n}\r\n\r\n.user-profile-logo-bottom{\r\n\r\n  width:200px;\r\n\r\n}\r\n\r\n.user-profile-top-logo{\r\n\r\n  width:3em;\r\n\r\n}\r\n\r\n.user-profile-search{\r\n  padding-top:.5em;\r\n}\r\n\r\n.top-logo-holder{\r\n  width: 50px;\r\n  height:50px;\r\n  \r\n}\r\n\r\n.article{\r\n  position: relative;\r\n  width:400px;\r\n  border: solid pink 1px;\r\n}\r\n\r\n\r\n\r\n.top-drop, .top-drop:active{\r\n\r\n  background: inherit;\r\n   \r\n}\r\n\r\n.top-drop:hover{\r\n  background: #d1ccca;\r\n}"; (require("C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify"))(css); module.exports = css;
-},{"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify":10}],10:[function(require,module,exports){
+},{"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify":13}],13:[function(require,module,exports){
 module.exports = function (css, customDocument) {
   var doc = customDocument || document;
   if (doc.createStyleSheet) {
@@ -689,13 +1054,13 @@ module.exports.byUrl = function(url) {
   }
 };
 
-},{}],11:[function(require,module,exports){
+},{}],14:[function(require,module,exports){
 "use strict";
 var Promise = require("./promise/promise").Promise;
 var polyfill = require("./promise/polyfill").polyfill;
 exports.Promise = Promise;
 exports.polyfill = polyfill;
-},{"./promise/polyfill":15,"./promise/promise":16}],12:[function(require,module,exports){
+},{"./promise/polyfill":18,"./promise/promise":19}],15:[function(require,module,exports){
 "use strict";
 /* global toString */
 
@@ -789,7 +1154,7 @@ function all(promises) {
 }
 
 exports.all = all;
-},{"./utils":20}],13:[function(require,module,exports){
+},{"./utils":23}],16:[function(require,module,exports){
 (function (process,global){
 "use strict";
 var browserGlobal = (typeof window !== 'undefined') ? window : {};
@@ -853,7 +1218,7 @@ function asap(callback, arg) {
 
 exports.asap = asap;
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"_process":24}],14:[function(require,module,exports){
+},{"_process":27}],17:[function(require,module,exports){
 "use strict";
 var config = {
   instrument: false
@@ -869,7 +1234,7 @@ function configure(name, value) {
 
 exports.config = config;
 exports.configure = configure;
-},{}],15:[function(require,module,exports){
+},{}],18:[function(require,module,exports){
 (function (global){
 "use strict";
 /*global self*/
@@ -910,7 +1275,7 @@ function polyfill() {
 
 exports.polyfill = polyfill;
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./promise":16,"./utils":20}],16:[function(require,module,exports){
+},{"./promise":19,"./utils":23}],19:[function(require,module,exports){
 "use strict";
 var config = require("./config").config;
 var configure = require("./config").configure;
@@ -1122,7 +1487,7 @@ function publishRejection(promise) {
 }
 
 exports.Promise = Promise;
-},{"./all":12,"./asap":13,"./config":14,"./race":17,"./reject":18,"./resolve":19,"./utils":20}],17:[function(require,module,exports){
+},{"./all":15,"./asap":16,"./config":17,"./race":20,"./reject":21,"./resolve":22,"./utils":23}],20:[function(require,module,exports){
 "use strict";
 /* global toString */
 var isArray = require("./utils").isArray;
@@ -1212,7 +1577,7 @@ function race(promises) {
 }
 
 exports.race = race;
-},{"./utils":20}],18:[function(require,module,exports){
+},{"./utils":23}],21:[function(require,module,exports){
 "use strict";
 /**
   `RSVP.reject` returns a promise that will become rejected with the passed
@@ -1260,7 +1625,7 @@ function reject(reason) {
 }
 
 exports.reject = reject;
-},{}],19:[function(require,module,exports){
+},{}],22:[function(require,module,exports){
 "use strict";
 function resolve(value) {
   /*jshint validthis:true */
@@ -1276,7 +1641,7 @@ function resolve(value) {
 }
 
 exports.resolve = resolve;
-},{}],20:[function(require,module,exports){
+},{}],23:[function(require,module,exports){
 "use strict";
 function objectOrFunction(x) {
   return isFunction(x) || (typeof x === "object" && x !== null);
@@ -1299,7 +1664,7 @@ exports.objectOrFunction = objectOrFunction;
 exports.isFunction = isFunction;
 exports.isArray = isArray;
 exports.now = now;
-},{}],21:[function(require,module,exports){
+},{}],24:[function(require,module,exports){
 (function (DeLorean) {
   'use strict';
 
@@ -1939,7 +2304,7 @@ exports.now = now;
 
 })({});
 
-},{"./requirements":22}],22:[function(require,module,exports){
+},{"./requirements":25}],25:[function(require,module,exports){
 // ## Dependency injection file.
 
 // You can change dependencies using `DeLorean.Flux.define`. There are
@@ -1963,7 +2328,7 @@ if (typeof DeLorean !== 'undefined') {
   }
 }
 
-},{"es6-promise":11,"events":23}],23:[function(require,module,exports){
+},{"es6-promise":14,"events":26}],26:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -2266,7 +2631,7 @@ function isUndefined(arg) {
   return arg === void 0;
 }
 
-},{}],24:[function(require,module,exports){
+},{}],27:[function(require,module,exports){
 // shim for using process in browser
 
 var process = module.exports = {};
@@ -2354,4 +2719,4 @@ process.chdir = function (dir) {
     throw new Error('process.chdir is not supported');
 };
 
-},{}]},{},[4]);
+},{}]},{},[6]);

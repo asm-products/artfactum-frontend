@@ -1,6 +1,10 @@
 'use strict';
 
-//
+
+//css
+
+
+
 var Ajax = React.createClass({
   getInitialState: function(){
     return {data: []};
