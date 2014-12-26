@@ -1,133 +1,89 @@
 'use strict'
 
+var Router = window.ReactRouter,
+    Route = Router.Route,
+    Routes = Router.Routes,
+	Link = Router.Link,
+    RouteHandler = Router.RouteHandler;
+	
+var store = require('./../stores/store.js');
+var Dispatcher = require('./../dispatcher.js');
+var Actions = require('./../actions/actions.js');
+var TopNav = require('./TopNav.js');
+
+
 //css  
 require('../../styles/user-profile.css');
 require('../../styles/color-swatch.css');
+ 
 
 var UserProfile = React.createClass({
   
+  getDefaultProps: function(){
+  
+    return {
+	
+	  data: 'data'
+	
+	}
+  
+  },
+  
+  getInitialState: function(){
+  
+    return { username: 'user profile'
+	} 
+  
+  },
+  
+  statics: {
+  
+    handleCollapse: function(){
+	  
+	  return $('#af-navbar-collapse-1').collapse('hide');  
+      
+	}
+  
+  },
+  
   componentDidMount: function(){
-  
-    this.handleNavCollapse();
-  
+    
+	//save this for later
+	/*var self = this;
+	
+	store.onChange(function () {
+      
+	  if (this.isMounted()) {
+        self.setState({username: store.store.data});    
+      }
+    
+	}.bind(this));*/
+    
   },
   
-  handleNavCollapse: function(){
-	
-	  $('#af-navbar-collapse-1').collapse('hide');  
-	
-  },
+  componentWillUnmount: function() {
   
+  
+  },
+   
   render: function(){
-  
     
     return (
 	 
       <div className='user-profile'>	  
-	 
-	    <div className='container fluid'>
-	      <div className='row top-nav'>
-		    <nav className='navbar navbar-default' role='navigation'>
-			  <div className='navbar-header'>
-			    <button type='button' className='navbar-toggle' data-toggle='collapse'
-				  data-target='#af-navbar-collapse-1'>
-				  <span className='sr-only'>Navigate</span>
-				  <span className='icon-bar'></span>
-				  <span className='icon-bar'></span>
-				  <span className='icon-bar'></span>
-				</button>
-				<img className='top-logo-holder' src='images/logo_+_256.png' />
-		      </div>
-			  <div className='collaspe navbar-collapse' id='af-navbar-collapse-1'>
-			    <ul className='nav navbar-nav search-wrapper'>
-				  <li className='active search-box'>
-				    <form className='navbar-form navar-left' role='search'>
-
-					  <div className='form-group'>
-					    <div className='input-group'>
-					      <input type='text' className='search form-control' placeholder='Search' />
-					      <span className="input-group-addon glyphicon glyphicon-search"></span>
-					    </div>
-					  </div>
-					 
-					</form>
-				  </li>
-				  
-				  <li className='dropdown'>
-				    <a href="#" className="top-drop dropdown-toggle" data-toggle="dropdown">
-					  <span className="glyphicon glyphicon-align-justify"></span> 
-					</a>
-					<ul className="dropdown-menu">
-					  <li><a href="#">Action</a></li>
-					  <li><a href="#">Another action</a></li>
-					  <li><a href="#">Something</a></li>
-					  <li className="divider"></li>
-					  <li><a href="#">Separated link</a></li>
-					  <li className="divider"></li>
-					  <li><a href="#">One more separated </a></li>
-					</ul>
-				  </li>
-				  <li><a className='tabs'href='#'>Browse</a></li>
-				  <li><a className='tabs'href='#'>Collections</a></li>
-				  <li><a className='tabs'href='#'>Marketplace</a></li>
-				</ul>
-				
-				<ul className="nav navbar-nav navbar-right">
-				
-				  <li><a href="#">My Gallery</a></li>
-				  <li><a href="#">My Marketplace</a></li>
-				  <li className="dropdown">
-					<a href="#" className="top-drop dropdown-toggle" data-toggle="dropdown">
-					  <span className="glyphicon glyphicon-search"></span> 
-					  <b className="caret"></b>
-					</a>
-					<ul className="dropdown-menu">
-					  <li><a href="#">Action</a></li>
-					  <li><a href="#">Another action</a></li>
-					  <li><a href="#">Something else here</a></li>
-					  <li className="divider"></li>
-					  <li><a href="#">Separated link</a></li>
-					</ul>
-				  </li>
-				</ul>
-			  </div>{/*-- /.navbar-collapse --*/}
-								
-			
-			</nav>
-			
-			
-			{/*<div className='col-xs-5 col-md-3 col-lg-1'>
-		      <div className='top-logo-holder'>
-			    <img className='img-responsive' src='images/logo_+_256.png' />
-			  </div>
-		    </div>
-		    <div className='col-xs-6 col-md-3 col-lg-2'>
-		      <input className='search' type='search' placeholder='search...'/>
-		    </div>
-			<div className='col-xs-12 col-md-3 col-lg-5'>
-			  <menu>
-			    <menuitem># </menuitem>
-			    <menuitem>tabs </menuitem>
-			    <menuitem>tabs </menuitem>
-			    <menuitem>tabs </menuitem>
-			  </menu>
-			</div>
-			<div className='col-xs-12 col-md-3 col-lg-4'>
-			  <menu>
-			    <menuitem>My Gallery </menuitem>
-			    <menuitem>My Marketplace </menuitem>
-			    <menuitem>Avatar </menuitem>
-			  </menu>
-			</div>*/}
-			
-		  </div>{/end first row/}
 	    
+	    <div className='container fluid'>
+	    {this.props.data}    
+     	<TopNav></TopNav>
+		  
 		  <div className='row user-profile-head'>
-		  
-		  
+		   
 		    <div className='col-xs-12'>
 		    
-			  <h1 className='text-center vertical-align'>User Profile
+			  <h1 onClick={this.handleButtonClick} className='text-center vertical-align'>
+			  
+			    {this.state.username}
+			    
 			    <div className='photo-circle'>
 				  <div className='inner-circle'>
 				    <img src='images/camera.png' alt='camera' title='camera' />
@@ -136,7 +92,7 @@ var UserProfile = React.createClass({
 			  </h1>
 		    </div>
 		   
-		  </div>{/end second row/}
+		  </div>{/*end second row*/}
 		  
 		  <div className='row user-profile-menu'>
 		  
@@ -149,12 +105,11 @@ var UserProfile = React.createClass({
 			    <menuitem>Social | </menuitem>
 			    <menuitem>Background | </menuitem>
 			    <menuitem>Interests</menuitem>
-				
 			  </menu>
 			
 			</div>
 			
-		  </div>{/end third row/}
+		  </div>{/*end third row*/}
 			
 		  <div className='row user-profile-forms center-block'>
 			  
@@ -165,7 +120,7 @@ var UserProfile = React.createClass({
 	
 			</div>
           
-		  </div>{/end fourth row/}
+		  </div>{/*end fourth row*/}
 		  
 		  <div className='row user-profile-forms center-block'>
 		  
@@ -207,7 +162,7 @@ var UserProfile = React.createClass({
 			
 			</div>			
 		  
-		  </div>{/end fifth row/}
+		  </div>{/*end fifth row*/}
 		
 		  <div className='row user-profile-forms center-block'>
 			  
@@ -217,7 +172,7 @@ var UserProfile = React.createClass({
 			 
 			</div>
           
-		  </div>{/end sixth row/}
+		  </div>{/*end sixth row*/}
 		  
 		  <div className='row user-profile-forms center-block'>
 		  
@@ -252,7 +207,7 @@ var UserProfile = React.createClass({
 			
 			</div>			
 		  
-		  </div>{/end seventh row/}
+		  </div>{/*end seventh row*/}
 		
 		  <div className='row user-profile-forms center-block'>
 			  
@@ -282,9 +237,9 @@ var UserProfile = React.createClass({
 			
 			  </div>
 			
-		    </div>{/end sub-row/}
+		    </div>{/*end sub-row*/}
 		  
-		  </div>{/end eighth row/}
+		  </div>{/*end eighth row*/}
 		
 		  <div className='row user-profile-forms center-block'>
 			  
@@ -294,7 +249,7 @@ var UserProfile = React.createClass({
 			 
 			</div>
           
-		  </div>{/end ninth row/}
+		  </div>{/*end ninth row*/}
 		  
 		  <div className='row user-profile-forms center-block'>
 		  
@@ -330,22 +285,22 @@ var UserProfile = React.createClass({
 			
 			</div>			
 		  
-		  </div>{/end tenth row/}
+		  </div>{/*end tenth row*/}
 		
 		  <div className='row user-profile-forms center-block'> 
 			  
-	 	    <div className='col-xs-12'> 
+	 	    <div className='col-xs-12 '> 
 			    
 			  <h3 id='underline' className= ''>
 				Personal Interests
 		      </h3>
 			</div>
 			  
-		  </div> {/end 11th row/} 
+		  </div> {/*end 11th row*/} 
 		  
 		  <div className='row user-profile-forms center-block' > 
 		  
-		    <div className='col-xs-12 col-md-8 col-md-offset-4' > 
+		    <div className='col-xs-12 col-md-8 col-md-offset-2' > 
 			  
 			  <article>
 			  
@@ -404,11 +359,11 @@ var UserProfile = React.createClass({
 			
 			</div>			
 		  
-		  </div> {/end 12th row/} 
+		  </div> {/*end 12th row*/} 
 		
 		  <div className='row user-profile-bottom'> 
 		  
-		    <div className='col-xs-6 col-xs-offset-3'> 
+		    <div className='col-xs-12'> 
 		      
 			  <div className='user-profile-logo-bottom center-block' > 
 			    <img className='img-responsive padding1' src='images/Logo_AF_vector_white.png' alt='artfactum logo' title='artfactum logo' />
@@ -423,25 +378,30 @@ var UserProfile = React.createClass({
 		  
 		    </div>
 			
-			<div className='col-xs-10 col-xs-offset-1 padding1' >
+			<div className='col-xs-10 col-xs-offset-1 padding1'>
 			
 		      <span>Made with love on assembly</span>
 		  
 		    </div>
 		  
-		  </div> {/end 13th row/}
+		  </div> {/*end 13th row*/}
 		
 		</div>
 		
 	  </div>
-	
-	
-	
+		
 	);
+	
+  },
+  
+  handleButtonClick: function(){
+    
+    Actions.setData(Math.random());
 	
   }
   
 });
+
 
 
 module.exports = UserProfile;
