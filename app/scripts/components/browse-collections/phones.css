@@ -1,0 +1,19 @@
+
+
+@media (max-width:986px){
+
+
+.browse-categories{
+
+  display: block;
+  position:absolute;
+  right:12em;
+  
+}
+
+.browse-categories-dt{
+  display:none;
+}
+
+
+}

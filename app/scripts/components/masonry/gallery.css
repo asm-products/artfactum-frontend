@@ -1,0 +1,47 @@
+
+
+.list {
+  &.hidden{
+    pointer-events:none;
+    .item {
+      animation:disappear both ;
+      animation-direction: alternate;
+    }
+  }
+  perspective: 100vw;
+  width:100vw;
+  height:100vh;
+  display: flex;
+  flex-flow: column wrap;
+  &.reverse {
+    flex-flow: row-reverse wrap-reverse;
+  }
+}
+
+.item {
+  font-size:30px;
+  padding:20px;
+  height:100px;
+  width:calc(100vw / 3);
+  height:calc(100vh / 4);
+  animation: appear both;
+}
+
+@for $i from 1 through 12 {
+	.item:nth-child(#{$i}) {
+		background: lighten(teal, $i * 2 );
+     -webkit-animation-delay: #{$i/30+'s'} !important;
+     -webkit-animation-duration: #{$i/10+'s'} !important;
+	}
+}
+
+
+@keyframes appear {
+  from {opacity: 0; transform: scale(.8);}
+  to {opacity: 1; transform: scale(1)}
+}
+
+@keyframes disappear {
+  from {opacity: 1; transform: scale(1);}
+  to {opacity: 0; transform: scale(.9) rotateX(0deg) translateZ(-1500px);}
+}

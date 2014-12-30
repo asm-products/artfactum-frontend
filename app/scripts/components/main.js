@@ -1,14 +1,16 @@
 'use strict';
 
+
 var UserProfile = React.createFactory(require('./user-profile/user-profile.js')),
     TopNav = React.createFactory(require('./TopNav.js')),
-    Signup = React.createFactory(require('./Signup/signup.js'));
+    Signup = React.createFactory(require('./Signup/signup.js')),
+    BrowseCollections = React.createFactory(require('./browse-collections/browse-collections.js'));
 	
 	
 var store = require('./../stores/store.js'),
-    Dispatcher = require('./../dispatcher.js');
-var Actions = require('./../actions/actions.js');
-var Flux = require('delorean').Flux;  
+    Dispatcher = require('./../dispatcher.js'),
+    Actions = require('./../actions/actions.js'),
+    Flux = require('delorean').Flux;  
 	
 var Router = window.ReactRouter,
     Route = Router.Route,
@@ -68,6 +70,7 @@ var App = React.createClass({
 	    <Link to='user-profile'><button>user profile</button></Link>
 	    <Link to='topnav'><button>topnav</button></Link>
 	    <Link to='signup'><button>signup</button></Link>
+	    <Link to='browsecollections'><button>browse collections</button></Link>
  	    <div className='views'>
 		  <RouteHandler data={this.state.data} />
 	    </div>
@@ -82,6 +85,7 @@ var routes = (
     <Route path='/' name="welcome" handler={Welcome}/>
     <Route path='/topnav' name='topnav' handler={TopNav}/>
     <Route path='/signup' name='signup' handler={Signup}/>
+    <Route path='/browsecollections' name='browsecollections' handler={BrowseCollections}/>
 	<NotFoundRoute handler={NotFound} ></NotFoundRoute>
 	<DefaultRoute handler={Welcome} pageTitle="Home"/>
   </Route>
