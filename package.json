@@ -34,6 +34,8 @@
   "dependencies": {
     "connect-history-api-fallback": "0.0.5",
     "delorean": "^0.8.7",
+    "imagesloaded": "^3.1.8",
+    "masonry-layout": "^3.2.1",
     "material-ui": "^0.3.3",
     "react": "^0.12.2",
     "reactify": "^0.17.1"

@@ -1,0 +1,139 @@
+
+.sorter{
+
+  
+  width:100%;
+  position:relative;
+  
+}
+
+.sorter div{
+  position:absolute;
+  right: 4em;
+}
+
+.row{
+
+  //border: solid black 2px;
+  
+}
+
+.container{
+
+  margin:1.5em;
+  width: 95%;
+  position:relative;
+  margin-left:auto;
+  margin-right:auto;
+
+}
+
+.btn{
+
+  border-radius: 15px;
+  background: white;
+  border: tomato 2px solid;
+  color: tomato;
+  
+}
+
+
+.sort{
+
+  padding-left: 15px;
+  padding-right: 15px;
+  
+}
+
+.sorter{
+  
+  position:relative;
+  display:block;
+  width:100%;
+  height:2em;
+  
+}
+
+.masonry-row{
+  position:relative;
+  top:2em;
+}
+
+
+.list{
+  
+  width:100%;
+  margin:0;
+  padding:0;
+  
+}
+
+.list li{
+  position: relative;
+  text-align:right;
+  list-style:none;
+  width: 100%;
+  margin:0;
+  padding:0;
+  margin-top:5px;
+  color: slategray;
+}
+
+.list li a{
+  position:relative;
+  width:100%;
+  color: #000;
+  font-size:1.1em;
+}
+
+.item{
+  
+  width:140px;
+  padding:.25em;
+  
+}
+
+.item img{
+
+  box-shadow: 0 0 4px 1px rgba(10,30,10,0.4);
+
+}
+
+.masonry{
+
+  width:90%;
+  height:100%;
+  position:relative;
+  margin-top:2.5em;
+  margin-left:auto;
+  margin-right:auto;
+ 
+ 
+}
+
+.browse-categories-dt{
+  position:relative;
+  top:2.5em;
+}
+
+.browse-sort{
+
+  position:relative;
+
+}
+
+.masonries{
+  position:relative;
+  margin-left: auto;
+  margin-right:auto;
+  position:relative;
+  height:100%;
+  width: 96%;
+  overflow:hidden;
+}
+
+.browse-categories{
+
+  display: none;
+
+}
