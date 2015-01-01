@@ -1,23 +1,6 @@
 /*the height break point seems to be just over 450px;
-/*width breakpoint 350px;
-
-@font-face {
-  font-family: 'Open-Sans-600';
-  src: url(fonts/Open-Sans-600.ttf);
-}
-@font-face {
-  font-family: 'Open-Sans-regular';
-  src: url(fonts/Open-Sans-regular.ttf);
-}
-	
-
-body{
-  margin:0;
-  padding:0;
-  font-family: 'Open-Sans-600';	
-}
-
-/*utility*/
+ *width breakpoint 350px;
+ */
 
 #underline{
 
@@ -25,10 +8,10 @@ body{
 
 }
 
-/*for the language picker and sign-in button*/
-
-/*the entire page needs to be wrapped inside the parallax class and it needs
-  to have the appropriate height to keep a second scroller from appearing*/
+/*for the language picker and sign-in button
+ *the entire page needs to be wrapped inside the parallax class and it needs
+ *to have the appropriate height to keep a second scroller from appearing
+ */
 	
 .parallax {
   -webkit-perspective: 1px;
@@ -46,11 +29,6 @@ body{
   position:relative;
   background: white;
 
-//  background: url(logo/Logo_+_256.png) no-repeat bottom center scroll;
-//    -webkit-background-size: cover;
-//   -moz-background-size: cover;
-//    background-size: cover;
-//    -o-background-size: cover;
   height:100vh;
   -webkit-transform-style: preserve-3d;
           transform-style: preserve-3d;
@@ -78,8 +56,7 @@ body{
   transform: translateZ(0);
   -webkit-transform: translateZ(0);
 
-	}
-
+}
 
 .parallax__layer--back {
 
@@ -87,7 +64,6 @@ body{
   transform: translateZ(-1px);
   -webkit-transform: translateZ(-1px) scale(2);
   width:100%;
-  
    
 }
 
@@ -128,6 +104,7 @@ body{
   margin:0;
   margin-top:1em;
 }
+
 
 /*wrap the second and third pages*/
 
@@ -222,15 +199,15 @@ body{
   background: #e5635c;
   padding: .75em;
   position:relative;
-	display:block;
-	margin-left: auto;
-	margin-right:auto;
+  display:block;
+  margin-left: auto;
+  margin-right:auto;
   width:15em;
-	border-radius:20px;
-	font-family: 'Open-Sans-regular';
-	font-weight:bold;
-	font-size:1.2em;
-  }
+  border-radius:20px;
+  font-family: 'Open-Sans-regular';
+  font-weight:bold;
+  font-size:1.2em;
+}
   
 .second-oval{
 
@@ -244,7 +221,6 @@ body{
  */  
   
 #section-two{
-
   left:0;
   width:90%;
   height:100vh;
@@ -253,13 +229,9 @@ body{
   margin-right:auto;
   font-family: 'Open-Sans-regular';
   font-size:1.2em;
-
 }
 
 /*wrap the icon section*/
-  
-    
-  
   
 article{
   position:relative;
@@ -274,7 +246,8 @@ article{
   margin-top:2em;
 }
   
-/*statement*/
+
+  /*statement*/
   
 .below-article{
 	
@@ -400,8 +373,7 @@ figure img{
 
 #near-footer{
 
-  padding-top:2.5em;
-  padding-bottom:3.2em;  
+  top:1.5em;
   font-size:1em;
   background: #e56e5c;
   color:white;
@@ -410,70 +382,29 @@ figure img{
   
 }
 
-#near-footer h3{
-
-  
-  margin-top:1em;
-
-}
 
 #near-footer button{
 
   margin-top:1.5em;
   background: white;
   color:black;
-  border: solid black 2px;
+  border: solid black 3px;
+  border-radius: 10px;
+  padding:2px;
+  padding-left:5px;
+  padding-right:5px;
   margin-left:4px;
-  box-shadow: 3px 3px 3px black;
+  box-shadow: 0 0 3px rgba(10,10,10,0.3);
   
 }
 
-footer{
+.footer{
 
-  font-size:1em;
-  text-decoration:underline;
-  width:110%;
   color:white;
-  background:black;
-
-}
-
-footer ul{
-
-  margin:2em;
-  margin-top:3em;
-
-}
-
-footer ul li{
-
-  display: inline-block;
-  text-decoration: none;
-  color: white;
-
-}
-
-footer ul li a{
-
-  display: inline-block;
-  text-decoration: none;
-  color: white;
-
-}
-
-
-.stretch{
-
   position:relative;
-  background: black;
-
+ 
 }
 
-footer .breadcrumb{
-  margin:2em;
-  width:80%;
-  color:black;
-}
 
 .modal-dialog, .modal-content{
   border: solid black 10px;

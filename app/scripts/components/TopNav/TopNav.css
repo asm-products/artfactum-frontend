@@ -1,0 +1,50 @@
+.top-nav{
+
+  width: 98%;
+  display: block;
+  margin-left: auto;
+  margin-right:auto;
+  background: white;
+  
+}
+
+.tabs:active{
+	
+	color: tomato;
+	box-shadow: inset 0px -5px blue;
+    -webkit-transition: all 0.15s linear;
+	transition: all 0.15s linear;
+	
+}
+
+.tabs:focus{
+	color: tomato;
+	box-shadow: inset 0px -5px tomato;
+
+}
+
+
+.navbar{
+  background: white;
+  border: none;
+}
+
+.search{
+
+  border: none;
+  outline: none;
+  box-shadow: 0 0 0 0 white;
+  
+}
+
+.search-gl{
+  background: white;
+  border:none;
+  outline: none;
+}
+
+.search-box{
+
+  overflow:hidden; 
+ 
+}

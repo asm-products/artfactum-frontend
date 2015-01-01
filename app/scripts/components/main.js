@@ -2,9 +2,10 @@
 
 
 var UserProfile = React.createFactory(require('./user-profile/user-profile.js')),
-    TopNav = React.createFactory(require('./TopNav.js')),
+    TopNav = React.createFactory(require('./TopNav/TopNav.js')),
     Signup = React.createFactory(require('./Signup/signup.js')),
-    BrowseCollections = React.createFactory(require('./browse-collections/browse-collections.js'));
+    BrowseCollections = React.createFactory(require('./browse-collections/browse-collections.js')),
+    Footer = React.createFactory(require('./footer/footer.js'));
 	
 	
 var store = require('./../stores/store.js'),
@@ -21,7 +22,7 @@ var Router = window.ReactRouter,
 	RouteHandler = Router.RouteHandler;
 
 	
-require('../../styles/router.css');
+require('./main.css');
 
 
 //better to render to a container or to document.html?	
@@ -50,6 +51,35 @@ var NotFound = React.createClass({
   }
 });
 
+var About = React.createClass({
+  render: function() {
+    return <h2>About</h2>;
+  }
+});
+
+var Collections = React.createClass({
+  render: function() {
+    return <h2>Collections</h2>;
+  }
+});
+
+var Marketplace = React.createClass({
+  render: function() {
+    return <h2>Marketplace</h2>;
+  }
+});
+
+var MyGallery = React.createClass({
+  render: function() {
+    return <h2>Marketplace</h2>;
+  }
+});
+
+var MyMarketplace = React.createClass({
+  render: function() {
+    return <h2>Marketplace</h2>;
+  }
+});
 
 var App = React.createClass({
   
@@ -71,6 +101,7 @@ var App = React.createClass({
 	    <Link to='topnav'><button>topnav</button></Link>
 	    <Link to='signup'><button>signup</button></Link>
 	    <Link to='browsecollections'><button>browse collections</button></Link>
+	    <Link to='footer'><button>footer</button></Link>
  	    <div className='views'>
 		  <RouteHandler data={this.state.data} />
 	    </div>
@@ -85,12 +116,17 @@ var routes = (
     <Route path='/' name="welcome" handler={Welcome}/>
     <Route path='/topnav' name='topnav' handler={TopNav}/>
     <Route path='/signup' name='signup' handler={Signup}/>
+    <Route path='/footer' name='footer' handler={Footer}/>
+    <Route path='/about' name='about' handler={About}/>
     <Route path='/browsecollections' name='browsecollections' handler={BrowseCollections}/>
+    <Route path='/collections' name='collections' handler={Collections}/>
+    <Route path='/marketplace' name='marketplace' handler={Marketplace}/>
+    <Route path='/mygallery' name='mygallery' handler={MyGallery}/>
+    <Route path='/mymarketplace' name='mymarketplace' handler={MyMarketplace}/>
 	<NotFoundRoute handler={NotFound} ></NotFoundRoute>
 	<DefaultRoute handler={Welcome} pageTitle="Home"/>
   </Route>
 );
-
 
 
 Router.run(routes, Router.HistoryLocation, function (Handler,state) {

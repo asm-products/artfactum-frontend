@@ -1,6 +1,6 @@
 
-.sorter{
 
+.sorter{
   
   width:100%;
   position:relative;
@@ -18,17 +18,8 @@
   
 }
 
-.container{
 
-  margin:1.5em;
-  width: 95%;
-  position:relative;
-  margin-left:auto;
-  margin-right:auto;
-
-}
-
-.btn{
+.tomato-button{
 
   border-radius: 15px;
   background: white;
@@ -88,10 +79,11 @@
 
 .item{
   
-  width:140px;
+  width: 155px;
   padding:.25em;
   
 }
+
 
 .item img{
 

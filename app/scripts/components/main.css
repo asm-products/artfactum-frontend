@@ -1,0 +1,18 @@
+.route-header{
+  position:absolute;
+  height:100px;
+  background: #eee;
+  padding:1em;
+  width:100%;
+  left:0;
+  top:0;
+}
+
+.views{
+
+  position:absolute;
+  top: 100px;
+  width:100%;
+  left:0;
+
+}

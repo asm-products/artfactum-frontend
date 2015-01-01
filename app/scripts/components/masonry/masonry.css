@@ -34,3 +34,12 @@
 .masonry-gallery{
   perspective: 1500px;
 }
+
+#short{
+  
+  width:120px;
+}
+
+#long{
+  width:180px;
+}

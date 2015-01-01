@@ -23,7 +23,7 @@ var Masonry = React.createClass({
 	  
 	  msnry = new MasonryLayout( container, {
 	    //options
-	    columnWidth:150,
+	    columnWidth:160,
 	    itemSelector: '.item'
 	  });
     
@@ -33,14 +33,15 @@ var Masonry = React.createClass({
   
   componentDidUpdate: function(){
   
-   var container = document.querySelector('.masonry');
+    var container = document.querySelector('.masonry');
    
 	var msnry;
+	
     imagesLoaded( container, function(){
 	  
 	  msnry = new MasonryLayout( container, {
 	    //options
-	    columnWidth:150,
+	    columnWidth:160,
 	    itemSelector: '.item'
 	  });
 	     
@@ -48,6 +49,7 @@ var Masonry = React.createClass({
       
       setTimeout( function(){
 	    container.setAttribute('id','transition-middle');
+			
 	  },300);	  
 	 
       setTimeout( function(){
@@ -64,10 +66,11 @@ var Masonry = React.createClass({
   
   render: function(){
   
+    var widths = ['short','long','short','long','short','long','short','long','short'];
     var images = this.props.images.map( function(image,i) {
 	  return (
-	    <div key={image} >
-		  <div className="item">
+	    <div>
+		  <div ref='images' className="item">
 		      <img key='images' className='img-responsive' src={image} alt='picasso'/>		    
 		  </div>
 		</div>

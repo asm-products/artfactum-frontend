@@ -1,6 +1,14 @@
 'use strict';
 
 
+var Router = window.ReactRouter,
+    Route = Router.Route,
+    Routes = Router.Routes,
+	Link = Router.Link,
+    RouteHandler = Router.RouteHandler;
+
+require('./TopNav.css');
+	
 var TopNav = React.createClass({
 
   render: function(){
@@ -27,13 +35,12 @@ var TopNav = React.createClass({
 				  <div className='form-group'>
 					<div className='input-group'>
 					  <input type='text' className='search form-control' placeholder='Search' />
-					  <span className="input-group-addon glyphicon glyphicon-search"></span>
+					  <span className="search-gl input-group-addon glyphicon glyphicon-search"></span>
 					</div>
 				  </div>
 				 
 				</form>
-			  </li>
-			  
+			  </li>		  
 			  <li className='dropdown'>
 				<a href="#" className="top-drop dropdown-toggle" data-toggle="dropdown">
 				  <span className="glyphicon glyphicon-align-justify"></span> 
@@ -48,15 +55,15 @@ var TopNav = React.createClass({
 				  <li><a href="#">One more separated </a></li>
 				</ul>
 			  </li>
-			  <li><a className='tabs'href='#'>Browse</a></li>
-			  <li><a className='tabs'href='#'>Collections</a></li>
-			  <li><a className='tabs'href='#'>Marketplace</a></li>
+			  <li><Link className='tabs' to='browsecollections'>Browse</Link></li>
+			  <li><Link className='tabs' to='collections'>Collections</Link></li>
+			  <li><Link className='tabs' to='marketplace'>Marketplace</Link></li>
+			  
 			</ul>
 			
 			<ul className="nav navbar-nav navbar-right">
-			
-			  <li><a href="#">My Gallery</a></li>
-			  <li><a href="#">My Marketplace</a></li>
+			  <li><Link className='tabs' to='mygallery'>My Gallery</Link></li>
+			  <li><Link className='tabs' to='mymarketplace'>My Marketplace</Link></li>
 			  <li className="dropdown">
 				<a href="#" className="top-drop dropdown-toggle" data-toggle="dropdown">
 				  <span className="glyphicon glyphicon-search"></span> 

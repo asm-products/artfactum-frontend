@@ -7,7 +7,8 @@
 
   display: block;
   position:absolute;
-  right:12em;
+  right:12.5em;
+  z-index:9999;
   
 }
 

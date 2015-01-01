@@ -6,80 +6,132 @@ var Router = window.ReactRouter,
 	Link = Router.Link,
     RouteHandler = Router.RouteHandler;
 	
-var store = require('./../../stores/store.js');
-var Dispatcher = require('./../../dispatcher.js');
-var Actions = require('./../../actions/actions.js');
-var TopNav = require('./../TopNav.js');
-
-//css  
+var Actions = require('./../../actions/actions.js'),
+	TopNav = require('./../TopNav/TopNav.js'),
+	Footer = require('./../footer/footer.js');
+  
 require('./user-profile.css');
 require('../../../styles/color-swatch.css');
+ 
+$.fn.serializeObject = function()
+{
+    var o = {};
+    var a = this.serializeArray();
+    $.each(a, function() {
+        if (o[this.name] !== undefined) {
+            if (!o[this.name].push) {
+                o[this.name] = [o[this.name]];
+            }
+            o[this.name].push(this.value || '');
+        } else {
+            o[this.name] = this.value || '';
+        }
+    });
+    return o;
+}; 
  
 
 var UserProfile = React.createClass({
   
   getDefaultProps: function(){
-  
     return {
-	
 	  data: 'data'
-	
 	}
-  
   },
   
   getInitialState: function(){
-  
-    return { username: 'user profile'
+    return { 
+	  username: 'user profile'
 	} 
-  
-  },
-  
-  statics: {
-  
-    handleCollapse: function(){
-	  
-	  return $('#af-navbar-collapse-1').collapse('hide');  
-      
-	}
-  
   },
   
   componentDidMount: function(){
     
-	//save this for later
-	/*var self = this;
+	// Change this to the location of your server-side upload handler:
+	  
+    var url = '';
+    $('#fileupload').fileupload({
 	
-	store.onChange(function () {
-      
-	  if (this.isMounted()) {
-        self.setState({username: store.store.data});    
-      }
-    
-	}.bind(this));*/
-    
+        url: url,
+        dataType: 'json',
+        done: function (e, data) {
+            
+		  $.each(data.result.files, function (index, file) {
+          
+  		    $('<p></p>').text(file.name).appendTo('#files');
+				
+          });
+			
+        },
+		fail: function(){  
+		       
+		  alert('invalid url');
+            
+		},
+	    progressall: function (e, data) {
+            var progress = parseInt(data.loaded / data.total * 100, 10);
+            $('#progress .progress-bar').css(
+                'width',
+                progress + '%'
+            );
+        }
+    }).prop('disabled', !$.support.fileInput)
+        .parent().addClass($.support.fileInput ? undefined : 'disabled');    
+  
   },
   
-  componentWillUnmount: function() {
-  
-  
+  handleSubmit: function(e){  
+    e.preventDefault();
+	var userInput = JSON.stringify($(form).serializeObject());
+	/*Validate on the server
+	  If valid then save to the store 
+	  If not show a message
+	*/
+	
+	var modal = this.refs.modal.getDOMNode(),
+	    form = this.refs.form.getDOMNode();
+	$(modal).find('.modal-body').html('<p>' + $('form').serializeObject() + '</p>');
+	$(modal).modal('show');
+	Actions.setUserProfile(
+	  JSON.stringify($(form).serializeObject())
+	);
   },
-   
+  
   render: function(){
     
+	var data = this.props.data;
+    var userProfile = data.userProfile;
+	
     return (
 	 
       <div className='user-profile'>	  
 	    
-	    <div className='container fluid'>
-	    {this.props.data}    
-     	<TopNav></TopNav>
-		  
+		<TopNav></TopNav>
+		    <div className='modal fade' ref='modal' id='basicModal' tabindex='-1' role='dialog' 
+			    aria-labelledby='basicModal' aria-hidden='true'>
+				<div className='modal-dialog'>
+				  <div className='modal-content'>
+				    <div className='modal-header'>
+					  <button type='button' className='close' data-dismiss='modal' aria-hiddden='true'>x</button>
+	                  <h4 className='modal-title' id='myModalLabel'>Modal title</h4>
+                    </div>
+                  <div className='modal-body'>
+                    <h3>Modal body</h3>
+                  </div>
+                  <div className='modal-footer'>
+                    <button type='button' className='btn btn-default' data-dismiss='modal' >Close</button>
+           			<button type='button' className='btn btn-primary'>Save Changes</button>
+                  </div>					
+                </div>					
+              </div>					
+            </div>				
+	    <div className='container'>
+		    
 		  <div className='row user-profile-head'>
 		   
 		    <div className='col-xs-12'>
 		    
-			  <h1 onClick={this.handleButtonClick} className='text-center vertical-align'>
+			  <h1 className='text-center vertical-align'>
 			  
 			    {this.state.username}
 			    
@@ -95,26 +147,28 @@ var UserProfile = React.createClass({
 		  
 		  <div className='row user-profile-menu'>
 		  
-		    <div className='col-xs-12'>
-			
+		    <div className='col-xs-12'>			
 			  <menu>
 			  
-			    <menuitem>My Account | </menuitem>
-			    <menuitem>About Me | </menuitem>
-			    <menuitem>Social | </menuitem>
-			    <menuitem>Background | </menuitem>
-			    <menuitem>Interests</menuitem>
+			    <menuitem><a href='#myAccount'>My Account </a>| </menuitem>
+			    <menuitem><a href='#aboutMe'>About Me </a>| </menuitem>
+			    <menuitem><a href='#social'>Social </a>| </menuitem>
+			    <menuitem><a href='#background'>Background </a>| </menuitem>
+			    <menuitem><a href='#interests'>Interests</a></menuitem>
+			  
 			  </menu>
 			
 			</div>
 			
 		  </div>{/*end third row*/}
-			
+		  
+          <form ref='form' role='form' onSubmit={this.handleSubmit}>          
+		  
 		  <div className='row user-profile-forms center-block'>
 			  
 			<div className='col-xs-12'>
 			    
-			  <h3 id='underline' className=''>My Account</h3>
+			  <h3 id='myAccount' className='underline' >My Account</h3>
 			  <strong className=''>*required</strong>
 	
 			</div>
@@ -131,18 +185,16 @@ var UserProfile = React.createClass({
 			  
 			    <div className='input-group'>
 			    
-				  <input type='text' className='form-control' placeholder='username' />
-				  <span className='input-group-addon'>@</span>
-			  
+				  <input type='text' name='username' className='form-control' placeholder='username' required/>
+				  
                 </div>
 			
 			    <p>Artfactum url</p>
 			  
 			    <div className='input-group'>
 			    
-				  <input type='text' className='form-control' placeholder='url' />
-				  <span className='input-group-addon'>@</span>
-			  
+				  <input type='text' name='arfactumUrl' className='form-control' placeholder='url' required/>
+				  
                 </div>
 				
 				<div className='center-block button-wrapper'>
@@ -167,7 +219,7 @@ var UserProfile = React.createClass({
 			  
 			<div className='col-xs-12'>
 			    
-			  <h3 id='underline' className=''>About Me</h3>
+			  <h3 id='aboutMe' className='underline'>About Me</h3>
 			 
 			</div>
           
@@ -183,7 +235,7 @@ var UserProfile = React.createClass({
 			  
 			    <div className='input-group'>
 			    
-				  <input type='text' className='form-control' placeholder='country' />
+				  <input type='text' name='livingIn' className='form-control' placeholder='country' />
 				  <span className='input-group-addon'>@</span>
 			  
                 </div>
@@ -192,7 +244,7 @@ var UserProfile = React.createClass({
 			  
 			    <div className='input-group'>
 			    
-				  <input type='text' className='form-control' placeholder='url' />
+				  <input type='text' name='spokenLanguages' className='form-control' placeholder='url' />
 				  <span className='input-group-addon'>@</span>
 			  
                 </div>
@@ -212,7 +264,7 @@ var UserProfile = React.createClass({
 			  
 			<div className='col-xs-12'>
 			    
-			  <h3 id='underline' className=''>Social</h3>
+			  <h3 id='social' className='underline'>Social</h3>
 			 
 			</div>
 			
@@ -244,7 +296,7 @@ var UserProfile = React.createClass({
 			  
 			<div className='col-xs-12'>
 			    
-			  <h3 id='underline' className=''>Artistic Background</h3>
+			  <h3 id='background' className='underline'>Artistic Background</h3>
 			 
 			</div>
           
@@ -260,7 +312,7 @@ var UserProfile = React.createClass({
 			  
 			    <div className='input-group'>
 			    
-				  <input type='text' className='form-control' placeholder='country' />
+				  <input name='artisticDisciplines' type='text' className='form-control' placeholder='country' />
 			  
                 </div>
 				
@@ -272,14 +324,24 @@ var UserProfile = React.createClass({
 			    <p>Artistic CV</p>
 			    
 			    <div className='input-group'>
-			      
-				  <input type="text" className="form-control" />
-				  <span className="input-group-btn">
-                    <button className="btn btn-default" type="button">Browse</button>
+			      <span className="btn btn-success fileinput-button">
+                    <i className="glyphicon glyphicon-plus"></i>
+                    <span> Select file...</span>
+                    <input id="fileupload" type="file" name="files[]" multiple />
                   </span>
-                  
+				  <span id="files" className="files"></span>
+				  <p></p>  
+                  <div id="progress" className="progress">
+                    <div className="progress-bar progress-bar-success"></div>
+                  </div>
+	              <p></p>
                 </div>
-				
+	
+				  {/*<span className="input-group-btn">
+                    <button className="btn btn-default" type="button">Browse</button>
+                  </span>*/}
+              
+     			
 			  </article>
 			
 			</div>			
@@ -290,7 +352,7 @@ var UserProfile = React.createClass({
 			  
 	 	    <div className='col-xs-12 '> 
 			    
-			  <h3 id='underline' className= ''>
+			  <h3 id='interests' className='underline'>
 				Personal Interests
 		      </h3>
 			</div>
@@ -307,7 +369,7 @@ var UserProfile = React.createClass({
 			  
 			    <div className='input-group' > 
 			    
-				  <input type='text' className='form-control' placeholder='username' /> 
+				  <input type='text' name='favoriteArtStyles' className='form-control' placeholder='username' /> 
 			      
 				  <p className='gray'>Suggestions - 
 				    <button type='button' className='btn btn-default'>English</button>
@@ -320,7 +382,7 @@ var UserProfile = React.createClass({
 			  
 			    <div className='input-group' >
 			    
-				  <input type='text' className='form-control' placeholder='url' /> 
+				  <input type='text' name='featuredInterests' className='form-control' placeholder='url' /> 
 			      
 				  <p className='gray'>Suggestions - 
 				    <button type='button' className='btn btn-default'>English</button>
@@ -334,7 +396,7 @@ var UserProfile = React.createClass({
 			  
 				<div className='input-group'> 
 			    
-				  <input type='text' className='form-control' placeholder='influences' /> 
+				  <input type='text' name='influences' className='form-control' placeholder='influences' /> 
 			     
 				  <p className='gray'>Suggestions - 
 				    <button type='button' className='btn btn-default'>Surrealism</button>
@@ -346,56 +408,29 @@ var UserProfile = React.createClass({
 				<div className='center-block button-wrapper'> 
                   <div className='btn-group'> 
 				    
-					<button type='button' className='btn btn-active' > 
+					<button type='submit' className='btn btn-active' > 
                       Save
                     </button>
-                    
                   </div>
 				
 				</div>
-			
+		    
 			  </article>
 			
 			</div>			
 		  
 		  </div> {/*end 12th row*/} 
 		
-		  <div className='row user-profile-bottom'> 
-		  
-		    <div className='col-xs-12'> 
-		      
-			  <div className='user-profile-logo-bottom center-block' > 
-			    <img className='img-responsive padding1' src='images/Logo_AF_vector_white.png' alt='artfactum logo' title='artfactum logo' />
-		      </div>
-			  
-			</div>
-			
-			<div className='col-xs-10 col-xs-offset-1 padding1' > 
-			
-		      <span>About | </span><span>Legal | </span><span>FAQ | </span><span>Developers | </span> 
-			  <span>Ads | </span> <span>Contact</span>
-		  
-		    </div>
-			
-			<div className='col-xs-10 col-xs-offset-1 padding1'>
-			
-		      <span>Made with love on assembly</span>
-		  
-		    </div>
-		  
-		  </div> {/*end 13th row*/}
+		  </form>
 		
+		  <div className='row user-profile-bottom'> 
+		    <Footer></Footer>
+		  </div>{/*end 13th row*/}
 		</div>
 		
 	  </div>
 		
 	);
-	
-  },
-  
-  handleButtonClick: function(){
-    
-    Actions.setData(Math.random());
 	
   }
   
