@@ -505,7 +505,7 @@ var TopNav = React.createClass({displayName: 'TopNav',
 
 module.exports = TopNav;
 },{"./TopNav.css":7}],9:[function(require,module,exports){
-var css = "\r\n\r\n.sorter{\r\n  \r\n  width:100%;\r\n  position:relative;\r\n  \r\n}\r\n\r\n.sorter div{\r\n  position:absolute;\r\n  right: 4em;\r\n}\r\n\r\n.row{\r\n\r\n  //border: solid black 2px;\r\n  \r\n}\r\n\r\n\r\n.tomato-button{\r\n\r\n  border-radius: 15px;\r\n  background: white;\r\n  border: tomato 2px solid;\r\n  color: tomato;\r\n  \r\n}\r\n\r\n\r\n.sort{\r\n\r\n  padding-left: 15px;\r\n  padding-right: 15px;\r\n  \r\n}\r\n\r\n.sorter{\r\n  \r\n  position:relative;\r\n  display:block;\r\n  width:100%;\r\n  height:2em;\r\n  \r\n}\r\n\r\n.masonry-row{\r\n  position:relative;\r\n  top:2em;\r\n}\r\n\r\n\r\n.list{\r\n  \r\n  width:100%;\r\n  margin:0;\r\n  padding:0;\r\n  \r\n}\r\n\r\n.list li{\r\n  position: relative;\r\n  text-align:right;\r\n  list-style:none;\r\n  width: 100%;\r\n  margin:0;\r\n  padding:0;\r\n  margin-top:5px;\r\n  color: slategray;\r\n}\r\n\r\n.list li a{\r\n  position:relative;\r\n  width:100%;\r\n  color: #000;\r\n  font-size:1.1em;\r\n}\r\n\r\n.item{\r\n  \r\n  width: 155px;\r\n  padding:.25em;\r\n  \r\n}\r\n\r\n\r\n.item img{\r\n\r\n  box-shadow: 0 0 4px 1px rgba(10,30,10,0.4);\r\n\r\n}\r\n\r\n.masonry{\r\n\r\n  width:90%;\r\n  height:100%;\r\n  position:relative;\r\n  margin-top:2.5em;\r\n  margin-left:auto;\r\n  margin-right:auto;\r\n \r\n \r\n}\r\n\r\n.browse-categories-dt{\r\n  position:relative;\r\n  top:2.5em;\r\n}\r\n\r\n.browse-sort{\r\n\r\n  position:relative;\r\n\r\n}\r\n\r\n.masonries{\r\n  position:relative;\r\n  margin-left: auto;\r\n  margin-right:auto;\r\n  position:relative;\r\n  height:100%;\r\n  width: 96%;\r\n  overflow:hidden;\r\n}\r\n\r\n.browse-categories{\r\n\r\n  display: none;\r\n\r\n}\r\n"; (require("C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify"))(css); module.exports = css;
+var css = "\r\n\r\n.sorter{\r\n  \r\n  width:100%;\r\n  position:relative;\r\n  \r\n}\r\n\r\n.sorter div{\r\n  position:absolute;\r\n  right: 4em;\r\n}\r\n\r\n.row{\r\n\r\n  //border: solid black 2px;\r\n  \r\n}\r\n\r\n\r\n.tomato-button{\r\n\r\n  border-radius: 15px;\r\n  background: white;\r\n  border: tomato 2px solid;\r\n  color: tomato;\r\n  \r\n}\r\n\r\n\r\n.sort{\r\n\r\n  padding-left: 15px;\r\n  padding-right: 15px;\r\n  \r\n}\r\n\r\n.sorter{\r\n  \r\n  position:relative;\r\n  display:block;\r\n  width:100%;\r\n  height:2em;\r\n  \r\n}\r\n\r\n.masonry-row{\r\n  position:relative;\r\n  top:2em;\r\n}\r\n\r\n\r\n.list{\r\n  \r\n  width:100%;\r\n  margin:0;\r\n  padding:0;\r\n  margin-bottom: 3em;\r\n  \r\n}\r\n\r\n.browse-images{\r\n  position: relative;\r\n  text-align:right;\r\n  list-style:none;\r\n  width: 100%;\r\n  margin:0;\r\n  padding:0;\r\n  margin-top:5px;\r\n}\r\n\r\n\r\n\t\t  \r\n.notfocused{\r\n  position:relative;\r\n  width:100%;\r\n  color:slategray;\r\n  cursor:pointer;\r\n  -webkit-transition: color .4s ease;\r\n          transition: color .4s ease;\r\n}\r\n\r\n.focused{\r\n  \r\n  cursor:pointer;\r\n  position:relative;\r\n  width:100%;\r\n  color:tomato;\r\n  box-shadow: 0 0 3px tomato;\r\n  text-decoration:none;\r\n    -webkit-transition: color .4s linear;\r\n          transition: color .4s linear;\r\n    -webkit-transition: box-shadow .5s linear;\r\n          transition: box-shadow .5s linear;\r\n}\r\n\r\n\r\n.item{\r\n  \r\n  width: 155px;\r\n  padding:.25em;\r\n  \r\n}\r\n\r\n\r\n.item img{\r\n\r\n  box-shadow: 0 0 4px 1px rgba(10,30,10,0.4);\r\n\r\n}\r\n\r\n.masonry{\r\n\r\n  width:90%;\r\n  height:100%;\r\n  position:relative;\r\n  margin-top:2.5em;\r\n  margin-left:auto;\r\n  margin-right:auto;\r\n \r\n \r\n}\r\n\r\n.browse-categories-dt{\r\n  position:relative;\r\n  top:2.5em;\r\n}\r\n\r\n.browse-sort{\r\n\r\n  position:relative;\r\n\r\n}\r\n\r\n.masonries{\r\n  position:relative;\r\n  margin-left: auto;\r\n  margin-right:auto;\r\n  position:relative;\r\n  height:100%;\r\n  width: 96%;\r\n  overflow:hidden;\r\n}\r\n\r\n.browse-categories{\r\n\r\n  display: none;\r\n\r\n}\r\n"; (require("C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify"))(css); module.exports = css;
 },{"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify":23}],10:[function(require,module,exports){
 'use strict'
 
@@ -525,35 +525,34 @@ var BrowseCollections = React.createClass({displayName: 'BrowseCollections',
   getInitialState: function(){
   
     return ({
-	
-	  images: ['images/honey.jpg', 'images/city.jpg', 'images/picasso.png','images/egon.jpg','images/dogs.png', 'images/egon_land.jpg', 'images/flowers_big.jpg','images/Logo_+_vector.png'] 
-	  
-	});
+	  focusedOn: 0,
+	  images: ['images/honey.jpg','images/city.jpg', 'images/picasso.png','images/egon.jpg','images/dogs.png','images/egon_land.jpg','images/flowers_big.jpg', 'images/Logo_+_vector.png']
 
-  }, 
+	});
+	
+  },
   
   getDefaultProps: function(){
   
     return {
-	
 	  images: ['images/picasso.png','images/egon.jpg','images/dogs.png', 'images/egon_land.jpg', 'images/flowers_big.jpg','images/Logo_+_vector.png'],
-	  category: ['All', 'Applied', 'Digital', 'Original', 'Literature', 'Performing', 'Public', 'Music'],
+	  category: ['Categories', 'All Art', 'Applied Art', 'Digital Art', 'Original', 'Literature', 'Performing Art', 'Public Art', 'Music', 'Visual Art', 'Collage', 'Film/Video', 'Painting', 'Photography', 'Printmaking', 'Sculpture', 'Work on Paper', 'Work on Materials', 'Other Visual Art', 'Other Art'],
 	  sortingList: ['Recent', 'Most Curated', 'Most Viewed', 'Most Followed', 'Undiscovered', 'Oldest']
 	};
   
   },
-
+  
   handleClick: function(i,e){
     
 	var domNode = this.getDOMNode();
 	
 	var elem = domNode.querySelectorAll('.browse-images')[i],
-	    tag = $(elem).data('expression') + ' Art',
+	    tag = $(elem).data('expression'),
 	    self = this,
 		newImages = ['images/picasso.png','images/egon.jpg','images/dogs.png', 'images/egon_land.jpg', 'images/flowers_big.jpg','images/Logo_+_vector.png'],
 		images = [],
 		url;
-	
+		
 	//can use flickr for dummy data
 	url = 'http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?';
 	
@@ -569,7 +568,13 @@ var BrowseCollections = React.createClass({displayName: 'BrowseCollections',
 		}
 	  });
 	}).always( function(){
-	  self.setState({images:newImages});
+	
+ 	  self.setState({
+	    images:newImages,
+		focusedOn:i
+	  });
+	  
+	  
 	});
 
   },
@@ -587,15 +592,21 @@ var BrowseCollections = React.createClass({displayName: 'BrowseCollections',
   render: function(){
   
     var self = this;
-	
 	var categories = this.props.category.map( function(items,i) {	
-	  
+	  var f;
+	  if(i == self.state.focusedOn){
+	    f = 'focused';
+	  }
+	  else{
+	    f = 'notfocused';
+	  }
 	  return (
-	    React.createElement("li", {'data-expression': items, className: "browse-images"}, 
-		  React.createElement("a", {ref: "category", 
+	    React.createElement("li", {ref: "cat", 'data-expression': items, className: "browse-images"}, 
+		  React.createElement("p", {ref: "category", 
 		    onClick: self.handleClick.bind(self,i), 
 			key: i, 
-			href: "#"}, 
+			className: f, 
+            href: "#"}, 
 			items
 		  )
 		)	
@@ -1394,11 +1405,30 @@ var Store = Flux.createStore({
     
 	photoAttributes: {
 	
+	  photoUrl: null,
+	  title: 'untitled',
+	  ownerName: null,
+	  ownerUrl: null,
+	  description: null,
 	  dateUploaded: null,
 	  curatedIncrement: 0,
 	  followedIncrement: 0,
 	  viewedIncrement: 0,
-	  isUndiscovered: true
+	  isUndiscovered: true,
+	  categories: [],
+	  trendingTags: []
+	
+	},
+	
+	photoCategories: {
+	
+	  photos: [] //retrieve array of photoAttributes
+	
+	},
+	
+	trendingTags: {
+	
+	  photos: [] //retrieve array of photoAttributes
 	
 	}
     

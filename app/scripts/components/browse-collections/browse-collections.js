@@ -16,35 +16,34 @@ var BrowseCollections = React.createClass({
   getInitialState: function(){
   
     return ({
-	
-	  images: ['images/honey.jpg', 'images/city.jpg', 'images/picasso.png','images/egon.jpg','images/dogs.png', 'images/egon_land.jpg', 'images/flowers_big.jpg','images/Logo_+_vector.png'] 
-	  
-	});
+	  focusedOn: 0,
+	  images: ['images/honey.jpg','images/city.jpg', 'images/picasso.png','images/egon.jpg','images/dogs.png','images/egon_land.jpg','images/flowers_big.jpg', 'images/Logo_+_vector.png']
 
-  }, 
+	});
+	
+  },
   
   getDefaultProps: function(){
   
     return {
-	
 	  images: ['images/picasso.png','images/egon.jpg','images/dogs.png', 'images/egon_land.jpg', 'images/flowers_big.jpg','images/Logo_+_vector.png'],
-	  category: ['All', 'Applied', 'Digital', 'Original', 'Literature', 'Performing', 'Public', 'Music'],
+	  category: ['Categories', 'All Art', 'Applied Art', 'Digital Art', 'Original', 'Literature', 'Performing Art', 'Public Art', 'Music', 'Visual Art', 'Collage', 'Film/Video', 'Painting', 'Photography', 'Printmaking', 'Sculpture', 'Work on Paper', 'Work on Materials', 'Other Visual Art', 'Other Art'],
 	  sortingList: ['Recent', 'Most Curated', 'Most Viewed', 'Most Followed', 'Undiscovered', 'Oldest']
 	};
   
   },
-
+  
   handleClick: function(i,e){
     
 	var domNode = this.getDOMNode();
 	
 	var elem = domNode.querySelectorAll('.browse-images')[i],
-	    tag = $(elem).data('expression') + ' Art',
+	    tag = $(elem).data('expression'),
 	    self = this,
 		newImages = ['images/picasso.png','images/egon.jpg','images/dogs.png', 'images/egon_land.jpg', 'images/flowers_big.jpg','images/Logo_+_vector.png'],
 		images = [],
 		url;
-	
+		
 	//can use flickr for dummy data
 	url = 'http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?';
 	
@@ -60,7 +59,13 @@ var BrowseCollections = React.createClass({
 		}
 	  });
 	}).always( function(){
-	  self.setState({images:newImages});
+	
+ 	  self.setState({
+	    images:newImages,
+		focusedOn:i
+	  });
+	  
+	  
 	});
 
   },
@@ -78,17 +83,23 @@ var BrowseCollections = React.createClass({
   render: function(){
   
     var self = this;
-	
 	var categories = this.props.category.map( function(items,i) {	
-	  
+	  var f;
+	  if(i == self.state.focusedOn){
+	    f = 'focused';
+	  }
+	  else{
+	    f = 'notfocused';
+	  }
 	  return (
-	    <li data-expression={items} className='browse-images'>
-		  <a ref='category' 
+	    <li ref='cat' data-expression={items} className='browse-images'>
+		  <p ref='category' 
 		    onClick={self.handleClick.bind(self,i)} 
-			key={i} 
-			href='#'>
+			key={i}
+			className={f}
+            href='#'>
 			{items}
-		  </a>
+		  </p>
 		</li>	
 	  );
 	});
@@ -96,7 +107,7 @@ var BrowseCollections = React.createClass({
 	var sortingList = this.props.sortingList.map( function(items,i) {	
 	  
 	  return (
-	 	<li data-expression={items} onClick={self.handleSort.bind(self,i)} className='sortingList' >
+	 	<li data-expression={items} onClick={self.handleSort.bind(self,i)} className='sortingList'>
 		  <a ref='sort'
 			 key={i}
 			 href='#'>

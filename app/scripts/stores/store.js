@@ -11,6 +11,11 @@ var Store = Flux.createStore({
     
 	photoAttributes: {
 	
+	  photoUrl: null,
+	  title: 'untitled',
+	  ownerName: null,
+	  ownerUrl: null,
+	  description: null,
 	  dateUploaded: null,
 	  curatedIncrement: 0,
 	  followedIncrement: 0,
@@ -18,6 +23,18 @@ var Store = Flux.createStore({
 	  isUndiscovered: true,
 	  categories: [],
 	  trendingTags: []
+	
+	},
+	
+	photoCategories: {
+	
+	  photos: [] //retrieve array of photoAttributes
+	
+	},
+	
+	trendingTags: {
+	
+	  photos: [] //retrieve array of photoAttributes
 	
 	}
     

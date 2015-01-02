@@ -56,10 +56,11 @@
   width:100%;
   margin:0;
   padding:0;
+  margin-bottom: 3em;
   
 }
 
-.list li{
+.browse-images{
   position: relative;
   text-align:right;
   list-style:none;
@@ -67,15 +68,33 @@
   margin:0;
   padding:0;
   margin-top:5px;
-  color: slategray;
 }
 
-.list li a{
+
+		  
+.notfocused{
   position:relative;
   width:100%;
-  color: #000;
-  font-size:1.1em;
+  color:slategray;
+  cursor:pointer;
+  -webkit-transition: color .4s ease;
+          transition: color .4s ease;
 }
+
+.focused{
+  
+  cursor:pointer;
+  position:relative;
+  width:100%;
+  color:tomato;
+  box-shadow: 0 0 3px tomato;
+  text-decoration:none;
+    -webkit-transition: color .4s linear;
+          transition: color .4s linear;
+    -webkit-transition: box-shadow .5s linear;
+          transition: box-shadow .5s linear;
+}
+
 
 .item{
   
