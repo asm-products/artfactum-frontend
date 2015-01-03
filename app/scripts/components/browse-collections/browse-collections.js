@@ -2,14 +2,14 @@
 
 
 //js
-var TopNav = React.createFactory(require('./../TopNav/TopNav.js')),
+var Actions = require('./../../actions/actions.js'),
+    TopNav = React.createFactory(require('./../TopNav/TopNav.js')),
     Masonry = require('./../masonry/masonry.js');
-
+	
  
 //css
 require('./BrowseCollections.css');
 require('./phones.css');
-
 
 var BrowseCollections = React.createClass({
 
@@ -33,8 +33,16 @@ var BrowseCollections = React.createClass({
   
   },
   
+  
+  componentWillMount: function(){
+  
+    var url = 'photos.json';
+    Actions.fetchUserPhotos(url);
+  
+  }, 
+  
   handleClick: function(i,e){
-    
+        
 	var domNode = this.getDOMNode();
 	
 	var elem = domNode.querySelectorAll('.browse-images')[i],
@@ -42,8 +50,9 @@ var BrowseCollections = React.createClass({
 	    self = this,
 		newImages = ['images/picasso.png','images/egon.jpg','images/dogs.png', 'images/egon_land.jpg', 'images/flowers_big.jpg','images/Logo_+_vector.png'],
 		images = [],
-		url;
-		
+		url;			
+   
+   
 	//can use flickr for dummy data
 	url = 'http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?';
 	
@@ -64,8 +73,7 @@ var BrowseCollections = React.createClass({
 	    images:newImages,
 		focusedOn:i
 	  });
-	  
-	  
+	  	  
 	});
 
   },
@@ -73,7 +81,7 @@ var BrowseCollections = React.createClass({
   handleSort: function(i){
     
 	var domNode = this.getDOMNode();
-	
+
 	var elem = domNode.querySelectorAll('.sortingList')[i],
 	    tag = $(elem).data('expression');
 		alert(tag);
@@ -133,7 +141,6 @@ var BrowseCollections = React.createClass({
 				    {categories}
 				  </ul>
 				</div>
-				
 				<div className='sorter'>   
 				    <div className='btn-group'>
 			          <button className='btn btn-default dropdown-toggle tomato-button' data-toggle='dropdown'>
@@ -151,11 +158,10 @@ var BrowseCollections = React.createClass({
 				  </ul>
 			    </div>
 			    <div className='col-xs-12 col-md-10'>
-			      <Masonry images={this.state.images}></Masonry>
+			      <Masonry data={this.props.data} images={this.state.images}></Masonry>
 			    </div> 
 		      </div>{/*end row*/}
-		    </div>
-		  
+		    </div>		  
 		</div>		
 		
 	);

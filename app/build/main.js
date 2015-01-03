@@ -9,11 +9,22 @@ var Actions = {
   },
   setUserProfile: function (data) {
     Dispatcher.setUserProfile(data);
+  },
+  fetchUserPhotos: function(url){
+  
+      $.getJSON(url,{
+	    format: 'json'
+	  }).done( function(data){  
+	    Dispatcher.fetchUserPhotos(data);
+	  }).fail( function(e){
+	    alert('failed');
+	  });  
+	  
   }
 };
 
 module.exports = Actions;
-},{"./../dispatcher.js":20}],2:[function(require,module,exports){
+},{"./../dispatcher.js":22}],2:[function(require,module,exports){
 'use strict';
 
 var Router = window.ReactRouter,
@@ -62,11 +73,79 @@ var Footer = React.createClass({displayName: 'Footer',
 module.exports = Footer;
 },{"./footer.css":3}],3:[function(require,module,exports){
 var css = ".af-footer{\r\n  background: black;\r\n}\r\n\r\n.af-footer a,li{\r\n  color: white;\r\n}\r\n\r\n.af-footer p{\r\n  margin-left:1.5em;\r\n}\r\n\r\n.breadcrumbs{\r\n  color:white;\r\n  width:90%;\r\n  \r\n  background: #3a3a3a;\r\n\r\n  display:block;\r\n  position:relative;\r\n  margin-left:auto;\r\n  margin-right:auto;\r\n  text-align:justify;\r\n}\r\n\r\n.footerpages{\r\n  text-align:center;\r\n  color:white;\r\n}\r\n\r\n.footerpage{\r\n  width:380px;\r\n  padding:2px;\r\n  font-size:1.08em;\r\n  display:block;\r\n  position:relative;\r\n  margin-left:auto;\r\n  margin-right:auto;\r\n}\r\n\r\n@media (max-width:600px) {\r\n  .footerpage{\r\n    width:280px;\r\n  }\r\n}\r\n"; (require("C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify"))(css); module.exports = css;
-},{"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify":23}],4:[function(require,module,exports){
+},{"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify":25}],4:[function(require,module,exports){
+'use strict'
+
+require('./overlay.css');
+
+var ImageOverlay = React.createClass({displayName: 'ImageOverlay',
+
+  render: function(){
+    
+	var overlay = this.props.data.photoAttributes.map( function(item,i) {
+      return (
+	    React.createElement("div", {key: i, className: "overlaySection container"}, 
+		  React.createElement("div", {className: "container"}, 
+		    React.createElement("div", {className: "row"}, 
+              React.createElement("div", {className: "col-xs-4 pull-left"}, 
+			    React.createElement("dl", null, 
+				  React.createElement("dt", null, React.createElement("b", null, item.title)), 
+                  React.createElement("dd", null, React.createElement("small", null, item.ownerName))
+				)
+              ), 
+              React.createElement("div", {className: "col-xs-4 pull-right text-right"}, 
+                React.createElement("div", null, React.createElement("small", null, item.category))
+			  )
+		    ), /*end 1st row*/
+			React.createElement("div", {className: "row"}, 
+			  React.createElement("div", {className: "description"}, 
+			    item.description
+			  )
+			), /*end 2nd row*/
+			React.createElement("div", {className: "row"}, 
+			  React.createElement("div", {className: "btn-group btn-group-justified"}, 
+                React.createElement("button", {type: "button", className: "btn btn-default btn-md"}, 
+				  React.createElement("div", {className: "glyphicon glyphicon-share"}), 
+                  React.createElement("div", null, React.createElement("small", null, "Share"))
+                ), 
+				React.createElement("button", {type: "button", className: "btn btn-default btn-md"}, 
+				  React.createElement("div", {className: "glyphicon glyphicon-plus"}), 
+                  React.createElement("div", null, React.createElement("small", null, "Curate"))
+                ), 
+				React.createElement("button", {type: "button", className: "btn btn-default btn-md"}, 
+				  React.createElement("div", {className: "circle"}, React.createElement("small", null, item.curatedIncrement)), 
+			      React.createElement("div", null, React.createElement("small", null, "Curated"))
+                ), 
+				React.createElement("button", {type: "button", className: "btn btn-default btn-md"}, 
+				  React.createElement("div", {className: "glyphicon glyphicon-heart"}), 
+                  React.createElement("div", null, React.createElement("small", null, "Tip"))
+                ), 
+				React.createElement("button", {type: "button", className: "btn btn-default btn-md"}, 
+				  React.createElement("div", {className: "glyphicon glyphicon-user"}), 
+                  React.createElement("div", null, React.createElement("small", null, "Follow"))
+                )
+			  )
+			
+			)
+	      )
+		)
+	  );
+	});
+	return (
+	  React.createElement("div", {className: "overlay"}, overlay)
+	);
+  }
+
+});
+
+module.exports = ImageOverlay;
+},{"./overlay.css":5}],5:[function(require,module,exports){
+var css = ".overlay{\r\n\r\n  color:white;\r\n  position:absolute;\r\n  opacity:0;\r\n  width:100%;\r\n  height:100%;\r\n  background: rgba(20,20,20,0.0);\r\n\r\n}\r\n\r\n.overlay:hover{\r\nopacity:0.99;\r\n  background: rgba(20,20,20,0.7);\r\n  -webkit-transition: background .8s ease;\r\n          transition: background .8s ease;\r\n}\r\n\t\t  \r\n.overlay-clicked{\r\n  \r\n  opacity:0.99;\r\n  background: rgba(20,20,20,0.72);\r\n  -webkit-transition: background .8s ease;\r\n          transition: background .8s ease;\r\n\r\n}\r\n\r\n.overlaySection{\r\n\r\n  position:relative;\r\n  width: 100%;\r\n  height:100%;\r\n  border: solid 1px #eee;\r\n\r\n}\r\n\r\n.overlaySection .container{\r\n\r\n  margin:12px 18px 12px 0;\r\n  position:relative;\r\n  width: 100%;\r\n\r\n}\r\n\r\n\r\n.description{\r\n  \r\n  text-align: justify;\r\n  font-size: 0.8em;\r\n  font-style:italic;\r\n  margin-left:1.75em;\r\n  margin-right:2.5em;\r\n \r\n}\r\n\r\n.btn-group-justified{\r\n width:100%;\r\n}\r\n\r\n.btn-group-justified .btn{\r\n  color:white;\r\n  width:20%;\r\n  border: none;\r\n  margin-top:18px;\r\n  background: inherit;\r\n}\r\n\r\n.glyphicon:hover{\r\n  color: #e56e5c;\r\n}\r\n\r\n.glyphicon:active{\r\n  -webkit-transform: scale(1.3);\r\n          transform: scale(1.3);\r\n  -webkit-transition: -webkit-transform .5s liner;\r\n          transition: -webkit-transform .5s liner;\r\n\r\n\r\n}\r\n\r\n.btn small{\r\n  color: white;\r\n  font-size:9px;\r\n}\r\n\r\n\r\n"; (require("C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify"))(css); module.exports = css;
+},{"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify":25}],6:[function(require,module,exports){
 var css = "@media all and (max-width:500px) and (min-width: 300px) {\r\n\r\n.min-height div{\r\n\r\n  width:90%;\r\n  min-height: 18vh;\r\n\r\n}\r\n\r\nfigure{\r\n\r\n  min-height: 18vh;\r\n  \r\n}\r\n\r\n\r\n.gif{\r\n   height: 0em;\r\n   width:0;\r\n   opacity: 0;\r\n      \r\n}\r\n\r\n.egon{\r\n  top:-2.25em;\r\n}\r\n\r\n}"; (require("C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify"))(css); module.exports = css;
-},{"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify":23}],5:[function(require,module,exports){
+},{"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify":25}],7:[function(require,module,exports){
 var css = "/*the height break point seems to be just over 450px;\r\n *width breakpoint 350px;\r\n */\r\n\r\n#underline{\r\n\r\n  text-decoration: underline;\r\n\r\n}\r\n\r\n/*for the language picker and sign-in button\r\n *the entire page needs to be wrapped inside the parallax class and it needs\r\n *to have the appropriate height to keep a second scroller from appearing\r\n */\r\n\t\r\n.parallax {\r\n  -webkit-perspective: 1px;\r\n          perspective: 1px;\r\n  top:.5vh;\r\n  overflow-x: hidden;\r\n  overflow-y: auto;\r\n  position:relative;\r\n  height:99vh;\r\n  background:white;\r\n}\r\n\r\n\r\n.parallax__group {\r\n  position:relative;\r\n  background: white;\r\n\r\n  height:100vh;\r\n  -webkit-transform-style: preserve-3d;\r\n          transform-style: preserve-3d;\r\n  width:100%;\r\n  -webkit-transform-style: preserve-3d;\r\n}\r\n  \r\n.parallax__group:nth-child(2){\r\n   background: white;\r\n}\r\n\r\n.parallax__layer {\r\n\r\n  position: absolute;\r\n  top: 0;\r\n  right: 0;\r\n  bottom: 0;\r\n  left: 0;\r\n  height:100vh;\r\n}\r\n\r\n.parallax__layer--base {\r\n\r\n  webkit-transform: translateZ(0);\r\n  transform: translateZ(0);\r\n  -webkit-transform: translateZ(0);\r\n\r\n}\r\n\r\n.parallax__layer--back {\r\n\r\n  -webkit-transform: translateZ(-1px);\r\n  transform: translateZ(-1px);\r\n  -webkit-transform: translateZ(-1px) scale(2);\r\n  width:100%;\r\n   \r\n}\r\n\r\n.parallax__group {\r\n  position:relative;\r\n  background: rgba(130,130,230,0.01);\r\n  height:100vh;\r\n  -webkit-transform-style: preserve-3d;\r\n          transform-style: preserve-3d;\r\n  width:100%;\r\n  -webkit-transform-style: preserve-3d;\r\n}\r\n  \r\n.parallax__group:nth-child(2){\r\n  background: white;\r\n}\r\n\r\n/***\r\n three pages in total\r\n ***/\r\n\r\n.first-page{}\r\n\r\n.second-page, .third-page{\r\n  width:100%;\r\n  position:absolute;\r\n}\r\n \r\n.second-page{\r\n  top:45vh;\r\n  height:190vh;\r\n  background:white;\r\n}\r\n \r\n.third-page{\r\n  top:233vh;\r\n  left:0;\r\n  margin:0;\r\n  margin-top:1em;\r\n}\r\n\r\n\r\n/*wrap the second and third pages*/\r\n\r\n.under-back{\r\n  position:absolute;\r\n  width:100%;\r\n  top:200vh;\r\n}\r\n\r\n\r\n/*top header*/\r\n\r\n#signup-language,#signup-button{\r\n    position: absolute;\r\n    padding: 1vh;\r\n\tmargin: .75em;\r\n}\r\n\r\n#signup-button{\r\n  right:0;\r\n}\r\n\r\n/*hero-unit*/\t\r\n \r\n#jumbotron{\r\n  \r\n  position:relative;\r\n  top:-8%;\r\n  height:70%;\r\n  width:100%;\r\n  text-align:center;\r\n  color:black;\r\n  overflow:hidden:\r\n}\r\n  \r\n  \r\n#jumbotron img:nth-child(1){\r\n  \r\n  position:absolute;\r\n  z-index:0;\r\n  left:-25%;\r\n  top:-25%;\r\n  opacity:0.35;\r\n    \r\n}\r\n  \r\n#jumbotron img:nth-child(2){\r\n\r\n  top:.5em;\r\n  display:block;\r\n  position:relative;\r\n  z-index:0;\r\n  margin-left:auto;\r\n  margin-right:auto;\r\n  //background: rgba(300,300,300,0.5);\r\n  //border-radius:50%;\r\n}\r\n  \r\n.jumbo-inner{\r\n  \r\n  position:relative;\r\n  top:-14%;\r\n  font-size:1.4em;\r\n  margin-left:5%;\r\n  margin-right:5%;\r\n}\r\n  \r\n#jumbotron i{\r\n\r\n  margin-top:-.2em;\r\n  position:relative;\r\n  display:block;\r\n  margin-left:auto;\r\n  margin-right:auto;\r\n  width:90%;\r\n  font-size:.9em;\r\n  color:#000;\r\n \r\n}\r\n\r\n#jumbotron h2{\r\n  \r\n  color:black;\r\n  font-size:1.4em;\r\n  \r\n}\r\n\r\n\t\t\r\n.oval-button{\r\n  text-align:center;\r\n  color:white;\r\n  background: #e5635c;\r\n  padding: .75em;\r\n  position:relative;\r\n  display:block;\r\n  margin-left: auto;\r\n  margin-right:auto;\r\n  width:15em;\r\n  border-radius:20px;\r\n  font-family: 'Open-Sans-regular';\r\n  font-weight:bold;\r\n  font-size:1.2em;\r\n}\r\n  \r\n.second-oval{\r\n\r\n  background:blue;\r\n\r\n}\r\n  \r\n  \r\n/*second section of the first page\r\n  the first page actually being two pages of vh (window height)\r\n */  \r\n  \r\n#section-two{\r\n  left:0;\r\n  width:90%;\r\n  height:100vh;\r\n  position:relative;\r\n  margin-left:auto;\r\n  margin-right:auto;\r\n  font-family: 'Open-Sans-regular';\r\n  font-size:1.2em;\r\n}\r\n\r\n/*wrap the icon section*/\r\n  \r\narticle{\r\n  position:relative;\r\n  top:15%;\r\n  width:110%;\r\n  margin-left:auto;\r\n  margin-right:auto;\r\n  height:65%;\r\n}\r\n\r\n#signup-icons div{\r\n  margin-top:2em;\r\n}\r\n  \r\n\r\n  /*statement*/\r\n  \r\n.below-article{\r\n\t\r\n\tposition:relative;\r\n\tbottom:20%;\r\n\tclear:float;\r\n\twidth:80%;\r\n\tpadding-top:1.5em;\r\n\tfont-size:1.4em;\r\n\tfont-style: italic;\r\n\tmargin-left:auto;\r\n\tmargin-right:auto;\r\n\ttext-align: center;\r\n\tfont-family: 'Open-Sans-600';\r\n}\r\n  \r\n  \r\n.center-wrapper .row{\r\n\r\n margin-top:3em;\r\n\r\n} \r\n  \r\n#section-two div{\r\n    \r\n\twidth: 25%;\r\n\theight:30%;\r\n\tfloat:left;\r\n\tfont-size:1.2em;\r\n\ttext-align:center;\r\n\t\r\n}\r\n  \r\n#section-two span{\r\n\r\n    \r\n\twidth: 8%;\r\n\theight:30%;\r\n\tfloat:left;\r\n\tfont-size:1.2em;\r\n\ttext-align:center;\r\n\t\r\n\r\n}\r\n  \r\n/*TODO make less global*/\r\n\r\n.min-height div{\r\n  \r\n  padding: 0 15px;\r\n  min-height: 40vh;\r\n \r\n}\r\n\r\n.min-height h3{\r\n\r\n  color:#e56e5c;\r\n\r\n  }\r\n\r\n.min-height p{\r\n\r\n  color: slategray;\r\n\r\n}\r\n\r\nfigure {\r\n\r\n  height:40vh;\r\n  min-width:40vh;\r\n  display:cover;\r\n  overflow:hidden;\r\n  \r\n\r\n}\r\n\r\nfigure img{\r\n\r\n  padding:1.1em;\r\n  padding-right:4em;\r\n  width: 100%;\r\n  height:100;\r\n  position:absolute;\r\n  left:0;\r\n  top:0;\r\n   box-shadow: 0 0 5px 2px #ccc;\r\n\r\n}\r\n\r\n.fair-heading{\r\n\r\n  position:relative;\r\n  top:3em;\r\n  color:#e56e5c;\r\n\r\n}\r\n\r\n\r\n.fair-heading p{\r\n\r\n  color:slategray;\r\n  padding-top:1.25em;\r\n  \r\n}\r\n\r\n.center-wrapper figure{\r\n  \r\n  padding:1em;\r\n  \r\n}\r\n\r\n\r\n.center-wrapper{\r\n\r\n  position:relative;\r\n  width:90%;\r\n  top:2em;\r\n  margin-right:auto;\r\n  margin-left:auto;\r\n\r\n}\r\n\r\n\r\n#near-footer{\r\n\r\n  top:1.5em;\r\n  font-size:1em;\r\n  background: #e56e5c;\r\n  color:white;\r\n  width:100%;\r\n  position:relative;\r\n  \r\n}\r\n\r\n\r\n#near-footer button{\r\n\r\n  margin-top:1.5em;\r\n  background: white;\r\n  color:black;\r\n  border: solid black 3px;\r\n  border-radius: 10px;\r\n  padding:2px;\r\n  padding-left:5px;\r\n  padding-right:5px;\r\n  margin-left:4px;\r\n  box-shadow: 0 0 3px rgba(10,10,10,0.3);\r\n  \r\n}\r\n\r\n.footer{\r\n\r\n  color:white;\r\n  position:relative;\r\n \r\n}\r\n\r\n\r\n.modal-dialog, .modal-content{\r\n  border: solid black 10px;\r\n  position:relative;\r\n  z-index:9999;\r\n}"; (require("C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify"))(css); module.exports = css;
-},{"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify":23}],6:[function(require,module,exports){
+},{"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify":25}],8:[function(require,module,exports){
 'use strict';
 
 var Footer = React.createFactory(require('./../Footer/Footer.js'));
@@ -408,9 +487,9 @@ render: function(){
 */
 
 module.exports = TopNavBar;
-},{"./../Footer/Footer.js":2,"./signup-phones.css":4,"./signup.css":5}],7:[function(require,module,exports){
+},{"./../Footer/Footer.js":2,"./signup-phones.css":6,"./signup.css":7}],9:[function(require,module,exports){
 var css = ".top-nav{\r\n\r\n  width: 98%;\r\n  display: block;\r\n  margin-left: auto;\r\n  margin-right:auto;\r\n  background: white;\r\n  \r\n}\r\n\r\n.tabs:active{\r\n\t\r\n\tcolor: tomato;\r\n\tbox-shadow: inset 0px -5px blue;\r\n    -webkit-transition: all 0.15s linear;\r\n\ttransition: all 0.15s linear;\r\n\t\r\n}\r\n\r\n.tabs:focus{\r\n\tcolor: tomato;\r\n\tbox-shadow: inset 0px -5px tomato;\r\n\r\n}\r\n\r\n\r\n.navbar{\r\n  background: white;\r\n  border: none;\r\n}\r\n\r\n.search{\r\n\r\n  border: none;\r\n  outline: none;\r\n  box-shadow: 0 0 0 0 white;\r\n  \r\n}\r\n\r\n.search-gl{\r\n  background: white;\r\n  border:none;\r\n  outline: none;\r\n}\r\n\r\n.search-box{\r\n\r\n  overflow:hidden; \r\n \r\n}"; (require("C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify"))(css); module.exports = css;
-},{"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify":23}],8:[function(require,module,exports){
+},{"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify":25}],10:[function(require,module,exports){
 'use strict';
 
 
@@ -504,21 +583,21 @@ var TopNav = React.createClass({displayName: 'TopNav',
 });
 
 module.exports = TopNav;
-},{"./TopNav.css":7}],9:[function(require,module,exports){
-var css = "\r\n\r\n.sorter{\r\n  \r\n  width:100%;\r\n  position:relative;\r\n  \r\n}\r\n\r\n.sorter div{\r\n  position:absolute;\r\n  right: 4em;\r\n}\r\n\r\n.row{\r\n\r\n  //border: solid black 2px;\r\n  \r\n}\r\n\r\n\r\n.tomato-button{\r\n\r\n  border-radius: 15px;\r\n  background: white;\r\n  border: tomato 2px solid;\r\n  color: tomato;\r\n  \r\n}\r\n\r\n\r\n.sort{\r\n\r\n  padding-left: 15px;\r\n  padding-right: 15px;\r\n  \r\n}\r\n\r\n.sorter{\r\n  \r\n  position:relative;\r\n  display:block;\r\n  width:100%;\r\n  height:2em;\r\n  \r\n}\r\n\r\n.masonry-row{\r\n  position:relative;\r\n  top:2em;\r\n}\r\n\r\n\r\n.list{\r\n  \r\n  width:100%;\r\n  margin:0;\r\n  padding:0;\r\n  margin-bottom: 3em;\r\n  \r\n}\r\n\r\n.browse-images{\r\n  position: relative;\r\n  text-align:right;\r\n  list-style:none;\r\n  width: 100%;\r\n  margin:0;\r\n  padding:0;\r\n  margin-top:5px;\r\n}\r\n\r\n\r\n\t\t  \r\n.notfocused{\r\n  position:relative;\r\n  width:100%;\r\n  color:slategray;\r\n  cursor:pointer;\r\n  -webkit-transition: color .4s ease;\r\n          transition: color .4s ease;\r\n}\r\n\r\n.focused{\r\n  \r\n  cursor:pointer;\r\n  position:relative;\r\n  width:100%;\r\n  color:tomato;\r\n  box-shadow: 0 0 3px tomato;\r\n  text-decoration:none;\r\n    -webkit-transition: color .4s linear;\r\n          transition: color .4s linear;\r\n    -webkit-transition: box-shadow .5s linear;\r\n          transition: box-shadow .5s linear;\r\n}\r\n\r\n\r\n.item{\r\n  \r\n  width: 155px;\r\n  padding:.25em;\r\n  \r\n}\r\n\r\n\r\n.item img{\r\n\r\n  box-shadow: 0 0 4px 1px rgba(10,30,10,0.4);\r\n\r\n}\r\n\r\n.masonry{\r\n\r\n  width:90%;\r\n  height:100%;\r\n  position:relative;\r\n  margin-top:2.5em;\r\n  margin-left:auto;\r\n  margin-right:auto;\r\n \r\n \r\n}\r\n\r\n.browse-categories-dt{\r\n  position:relative;\r\n  top:2.5em;\r\n}\r\n\r\n.browse-sort{\r\n\r\n  position:relative;\r\n\r\n}\r\n\r\n.masonries{\r\n  position:relative;\r\n  margin-left: auto;\r\n  margin-right:auto;\r\n  position:relative;\r\n  height:100%;\r\n  width: 96%;\r\n  overflow:hidden;\r\n}\r\n\r\n.browse-categories{\r\n\r\n  display: none;\r\n\r\n}\r\n"; (require("C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify"))(css); module.exports = css;
-},{"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify":23}],10:[function(require,module,exports){
+},{"./TopNav.css":9}],11:[function(require,module,exports){
+var css = "\r\n\r\n\r\n\r\n.row{\r\n\r\n  //border: solid black 2px;\r\n  \r\n}\r\n\r\n\r\n.tomato-button{\r\n\r\n  border-radius: 15px;\r\n  background: white;\r\n  border: tomato 2px solid;\r\n  color: tomato;\r\n  \r\n}\r\n\r\n\r\n.sort{\r\n\r\n  padding-left: 15px;\r\n  padding-right: 15px;\r\n  \r\n}\r\n\r\n.sorter{\r\n\r\n  position:relative;\r\n  display:block;\r\n  width:100%;\r\n  height:1.5em;\r\n  \r\n}\r\n\r\n.sorter div{\r\n  position:absolute;\r\n  right: 2.5em;\r\n}\r\n\r\n\r\n.masonry-row{\r\n  position:relative;\r\n  top:2em;\r\n}\r\n\r\n\r\n.list{\r\n  \r\n  width:100%;\r\n  margin:0;\r\n  padding:0;\r\n  margin-bottom: 3em;\r\n  \r\n}\r\n\r\n.browse-images{\r\n  position: relative;\r\n  text-align:right;\r\n  list-style:none;\r\n  width: 100%;\r\n  margin:0;\r\n  padding:0;\r\n  margin-top:5px;\r\n}\r\n\r\n\r\n\t\t  \r\n.notfocused{\r\n \r\n  color:slategray;\r\n  cursor:pointer;\r\n  -webkit-transition: color .4s ease;\r\n          transition: color .4s ease;\r\n}\r\n\r\n.focused{\r\n  \r\n  cursor:pointer;\r\n  color:tomato;\r\n  \r\n  text-decoration:none;\r\n    -webkit-transition: color .4s linear;\r\n          transition: color .4s linear;\r\n}\r\n\r\n\r\n.browse-categories-dt{\r\n  position:relative;\r\n  top:2em;\r\n}\r\n\r\n.browse-sort{\r\n\r\n  position:relative;\r\n\r\n}\r\n\r\n\r\n.browse-categories{\r\n\r\n  display: none;\r\n\r\n}\r\n\r\n"; (require("C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify"))(css); module.exports = css;
+},{"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify":25}],12:[function(require,module,exports){
 'use strict'
 
 
 //js
-var TopNav = React.createFactory(require('./../TopNav/TopNav.js')),
+var Actions = require('./../../actions/actions.js'),
+    TopNav = React.createFactory(require('./../TopNav/TopNav.js')),
     Masonry = require('./../masonry/masonry.js');
-
+	
  
 //css
 require('./BrowseCollections.css');
 require('./phones.css');
-
 
 var BrowseCollections = React.createClass({displayName: 'BrowseCollections',
 
@@ -542,8 +621,16 @@ var BrowseCollections = React.createClass({displayName: 'BrowseCollections',
   
   },
   
+  
+  componentWillMount: function(){
+  
+    var url = 'photos.json';
+    Actions.fetchUserPhotos(url);
+  
+  }, 
+  
   handleClick: function(i,e){
-    
+        
 	var domNode = this.getDOMNode();
 	
 	var elem = domNode.querySelectorAll('.browse-images')[i],
@@ -551,8 +638,9 @@ var BrowseCollections = React.createClass({displayName: 'BrowseCollections',
 	    self = this,
 		newImages = ['images/picasso.png','images/egon.jpg','images/dogs.png', 'images/egon_land.jpg', 'images/flowers_big.jpg','images/Logo_+_vector.png'],
 		images = [],
-		url;
-		
+		url;			
+   
+   
 	//can use flickr for dummy data
 	url = 'http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?';
 	
@@ -573,8 +661,7 @@ var BrowseCollections = React.createClass({displayName: 'BrowseCollections',
 	    images:newImages,
 		focusedOn:i
 	  });
-	  
-	  
+	  	  
 	});
 
   },
@@ -582,7 +669,7 @@ var BrowseCollections = React.createClass({displayName: 'BrowseCollections',
   handleSort: function(i){
     
 	var domNode = this.getDOMNode();
-	
+
 	var elem = domNode.querySelectorAll('.sortingList')[i],
 	    tag = $(elem).data('expression');
 		alert(tag);
@@ -642,7 +729,6 @@ var BrowseCollections = React.createClass({displayName: 'BrowseCollections',
 				    categories
 				  )
 				), 
-				
 				React.createElement("div", {className: "sorter"}, 
 				    React.createElement("div", {className: "btn-group"}, 
 			          React.createElement("button", {className: "btn btn-default dropdown-toggle tomato-button", 'data-toggle': "dropdown"}, 
@@ -660,11 +746,10 @@ var BrowseCollections = React.createClass({displayName: 'BrowseCollections',
 				  )
 			    ), 
 			    React.createElement("div", {className: "col-xs-12 col-md-10"}, 
-			      React.createElement(Masonry, {images: this.state.images})
+			      React.createElement(Masonry, {data: this.props.data, images: this.state.images})
 			    )
 		      )/*end row*/
-		    )
-		  
+		    )		  
 		)		
 		
 	);
@@ -677,15 +762,15 @@ module.exports = BrowseCollections;
 
 
 
-},{"./../TopNav/TopNav.js":8,"./../masonry/masonry.js":17,"./BrowseCollections.css":9,"./phones.css":11}],11:[function(require,module,exports){
-var css = "\r\n\r\n@media (max-width:986px){\r\n\r\n\r\n.browse-categories{\r\n\r\n  display: block;\r\n  position:absolute;\r\n  right:12.5em;\r\n  z-index:9999;\r\n  \r\n}\r\n\r\n.browse-categories-dt{\r\n  display:none;\r\n}\r\n\r\n\r\n}"; (require("C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify"))(css); module.exports = css;
-},{"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify":23}],12:[function(require,module,exports){
+},{"./../../actions/actions.js":1,"./../TopNav/TopNav.js":10,"./../masonry/masonry.js":19,"./BrowseCollections.css":11,"./phones.css":13}],13:[function(require,module,exports){
+var css = "@media (max-width:986px){\r\n\r\n.browse-categories{\r\n  display: block;\r\n  position:absolute;\r\n  right:11em;\r\n  z-index:9999;\r\n}\r\n\r\n.browse-categories  ul{\r\n\r\n  height:300px;\r\n  overflow:auto;\r\n\r\n}\r\n\r\n.browse-categories-dt{\r\n  display:none;\r\n}\r\n\r\n\r\n.notfocused{\r\n  text-align: left;\r\n  margin:1em; \r\n}\r\n\r\n.focused{\r\n  text-align:left;\r\n  margin:1em;\r\n}\r\n\r\n}"; (require("C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify"))(css); module.exports = css;
+},{"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify":25}],14:[function(require,module,exports){
 module.exports=require(3)
-},{"C:\\Users\\Justin\\documents\\github\\af\\app\\scripts\\components\\Footer\\footer.css":3,"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify":23}],13:[function(require,module,exports){
+},{"C:\\Users\\Justin\\documents\\github\\af\\app\\scripts\\components\\Footer\\footer.css":3,"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify":25}],15:[function(require,module,exports){
 module.exports=require(2)
-},{"./footer.css":12,"C:\\Users\\Justin\\documents\\github\\af\\app\\scripts\\components\\Footer\\Footer.js":2}],14:[function(require,module,exports){
+},{"./footer.css":14,"C:\\Users\\Justin\\documents\\github\\af\\app\\scripts\\components\\Footer\\Footer.js":2}],16:[function(require,module,exports){
 var css = ".route-header{\r\n  position:absolute;\r\n  height:100px;\r\n  background: #eee;\r\n  padding:1em;\r\n  width:100%;\r\n  left:0;\r\n  top:0;\r\n}\r\n\r\n.views{\r\n\r\n  position:absolute;\r\n  top: 100px;\r\n  width:100%;\r\n  left:0;\r\n\r\n}"; (require("C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify"))(css); module.exports = css;
-},{"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify":23}],15:[function(require,module,exports){
+},{"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify":25}],17:[function(require,module,exports){
 'use strict';
 
 
@@ -693,7 +778,9 @@ var UserProfile = React.createFactory(require('./user-profile/user-profile.js'))
     TopNav = React.createFactory(require('./TopNav/TopNav.js')),
     Signup = React.createFactory(require('./Signup/signup.js')),
     BrowseCollections = React.createFactory(require('./browse-collections/browse-collections.js')),
-    Footer = React.createFactory(require('./footer/footer.js'));
+    Footer = React.createFactory(require('./footer/footer.js')),
+    Masonry = React.createFactory(require('./masonry/masonry.js'));
+   
 	
 	
 var store = require('./../stores/store.js'),
@@ -772,13 +859,15 @@ var MyMarketplace = React.createClass({displayName: 'MyMarketplace',
 var App = React.createClass({displayName: 'App',
   
   getInitialState: function(){
-    return {data: []}
+    return {data: store.store.data }
   },
   
   mixins: [Flux.mixins.storeListener],
   
   storeDidChange: function(Store){
-    this.setState({ data: store.store.data });
+    alert(JSON.stringify(store.store.data));
+	
+	this.setState({ data: store.store.data });
   },
   
   render: function() {
@@ -790,6 +879,7 @@ var App = React.createClass({displayName: 'App',
 	    React.createElement(Link, {to: "signup"}, React.createElement("button", null, "signup")), 
 	    React.createElement(Link, {to: "browsecollections"}, React.createElement("button", null, "browse collections")), 
 	    React.createElement(Link, {to: "footer"}, React.createElement("button", null, "footer")), 
+	    React.createElement(Link, {to: "masonry"}, React.createElement("button", null, "masonry")), 
  	    React.createElement("div", {className: "views"}, 
 		  React.createElement(RouteHandler, {data: this.state.data})
 	    )
@@ -807,6 +897,7 @@ var routes = (
     React.createElement(Route, {path: "/footer", name: "footer", handler: Footer}), 
     React.createElement(Route, {path: "/about", name: "about", handler: About}), 
     React.createElement(Route, {path: "/browsecollections", name: "browsecollections", handler: BrowseCollections}), 
+    React.createElement(Route, {path: "/masonry", name: "masonry", handler: Masonry}), 
     React.createElement(Route, {path: "/collections", name: "collections", handler: Collections}), 
     React.createElement(Route, {path: "/marketplace", name: "marketplace", handler: Marketplace}), 
     React.createElement(Route, {path: "/mygallery", name: "mygallery", handler: MyGallery}), 
@@ -825,12 +916,13 @@ Router.run(routes, Router.HistoryLocation, function (Handler,state) {
 
 
 
-},{"./../actions/actions.js":1,"./../dispatcher.js":20,"./../stores/store.js":21,"./Signup/signup.js":6,"./TopNav/TopNav.js":8,"./browse-collections/browse-collections.js":10,"./footer/footer.js":13,"./main.css":14,"./user-profile/user-profile.js":19,"delorean":34}],16:[function(require,module,exports){
-var css = "#transition-in{\r\n  transition: opacity .5s ease;\r\n  transition: transform .5s ease;\r\n  -webkit-transform: scale(1);\r\n  opacity: 1;\r\n   \r\n}\r\n#transition-out {\r\n  transition: opacity .5s ease;\r\n  transition: transform .5s ease;\r\n  -webkit-transform: scale(1) translateX(1000px);\r\n  opacity: .9;\r\n}\r\n\r\n#transition-middle {\r\n\r\n  transition: opacity: .1s ease;\r\n  transition: transform: .1s ease;\r\n  -webkit-transform: scale(0) translateX(0px);\r\n  opacity: .5;\r\n\r\n}\r\n\r\n@keyframes appear {\r\n  from {opacity: 0; transform: scale(.8);}\r\n  to {opacity: 1; transform: scale(1)}\r\n}\r\n\r\n@keyframes disappear {\r\n  from {opacity: 1; transform: scale(1);}\r\n  to {opacity: 0; transform: scale(.9) rotateX(0deg) translateZ(-1500px);}\r\n}\r\n\r\n.masonry-gallery{\r\n  perspective: 1500px;\r\n}\r\n\r\n#short{\r\n  \r\n  width:120px;\r\n}\r\n\r\n#long{\r\n  width:180px;\r\n}"; (require("C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify"))(css); module.exports = css;
-},{"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify":23}],17:[function(require,module,exports){
+},{"./../actions/actions.js":1,"./../dispatcher.js":22,"./../stores/store.js":23,"./Signup/signup.js":8,"./TopNav/TopNav.js":10,"./browse-collections/browse-collections.js":12,"./footer/footer.js":15,"./main.css":16,"./masonry/masonry.js":19,"./user-profile/user-profile.js":21,"delorean":36}],18:[function(require,module,exports){
+var css = "#transition-in{\r\n  transition: opacity .5s ease;\r\n  transition: transform .5s ease;\r\n  -webkit-transform: scale(1);\r\n  opacity: 1;\r\n   \r\n}\r\n#transition-out {\r\n  transition: opacity .5s ease;\r\n  transition: transform .5s ease;\r\n  -webkit-transform: scale(1) translateX(1000px);\r\n  opacity: .9;\r\n}\r\n\r\n#transition-middle {\r\n\r\n  transition: opacity: .1s ease;\r\n  transition: transform: .1s ease;\r\n  -webkit-transform: scale(0) translateX(0px);\r\n  opacity: .5;\r\n\r\n}\r\n\r\n@keyframes appear {\r\n  from {opacity: 0; transform: scale(.8);}\r\n  to {opacity: 1; transform: scale(1)}\r\n}\r\n\r\n@keyframes disappear {\r\n  from {opacity: 1; transform: scale(1);}\r\n  to {opacity: 0; transform: scale(.9) rotateX(0deg) translateZ(-1500px);}\r\n}\r\n\r\n.masonry-gallery{\r\n  perspective: 1500px;\r\n  overflow: hidden;\r\n}\r\n\r\n#short{\r\n  \r\n  width:120px;\r\n}\r\n\r\n#long{\r\n  width:180px;\r\n}\r\n\r\n.item{\r\n \r\n  width: 32%;\r\n  margin:.5%;  \r\n  \r\n}\r\n\r\n\r\n.item img{\r\n\r\n  box-shadow: 0 0 4px 1px rgba(10,30,10,0.4);\r\n\r\n}\r\n\r\n.masonry{\r\n\r\n  width:90%;\r\n  left:2.25em;\r\n  height:100%;\r\n  position:relative;\r\n  margin-top:2.25em;\r\n  margin-left:auto;\r\n  margin-right:auto;\r\n \r\n}\r\n\r\n@media (max-width:980px){\r\n.masonry{\r\n  left:0;\r\n}\r\n}\r\n\r\n.masonries{\r\n \r\n position:relative;\r\n  margin-left: auto;\r\n  margin-right:auto;\r\n  position:relative;\r\n  height:100%;\r\n  width: 100%;\r\n    \r\n}"; (require("C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify"))(css); module.exports = css;
+},{"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify":25}],19:[function(require,module,exports){
 'use strict';
 
 var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup,
+    ImageOverlay = React.createFactory(require('./../ImageOverlay/ImageOverlay.js')),
     MasonryLayout = require('masonry-layout'),
     imagesLoaded = require('imagesloaded');
 
@@ -839,9 +931,18 @@ require('./masonry.css');
 
 var Masonry = React.createClass({displayName: 'Masonry',
 
+  getDefaultProps: function(){
+  
+    return {
+	  images: ['images/picasso.png','images/egon.jpg','images/dogs.png', 'images/egon_land.jpg', 'images/flowers_big.jpg','images/Logo_+_vector.png']
+    }
+  },
+
   getInitialState: function(){
   
-    return ({images: ['images/honey.jpg', 'images/city.jpg', 'images/picasso.png','images/egon.jpg','images/dogs.png', 'images/egon_land.jpg', 'images/flowers_big.jpg','images/Logo_+_vector.png'] });
+    return ({images: ['images/honey.jpg', 'images/city.jpg', 'images/picasso.png','images/egon.jpg','images/dogs.png', 'images/egon_land.jpg', 'images/flowers_big.jpg','images/Logo_+_vector.png'],
+	clicked:false
+	});
 
   }, 
   
@@ -853,7 +954,6 @@ var Masonry = React.createClass({displayName: 'Masonry',
 	  
 	  msnry = new MasonryLayout( container, {
 	    //options
-	    columnWidth:160,
 	    itemSelector: '.item'
 	  });
     
@@ -861,47 +961,42 @@ var Masonry = React.createClass({displayName: 'Masonry',
 	
   },
   
-  componentDidUpdate: function(){
-  
-    var container = document.querySelector('.masonry');
+  componentDidUpdate: function(lastProps,lastState){
+    
+      var container = document.querySelector('.masonry');
    
-	var msnry;
+	  var msnry;
 	
-    imagesLoaded( container, function(){
+      imagesLoaded( container, function(){
 	  
-	  msnry = new MasonryLayout( container, {
-	    //options
-	    columnWidth:160,
-	    itemSelector: '.item'
-	  });
+	    msnry = new MasonryLayout( container, {
+	      //options
+	      itemSelector: '.item'
+	    });
 	     
-	  container.setAttribute('id','transition-out');
+	    container.setAttribute('id','transition-out');
       
-      setTimeout( function(){
-	    container.setAttribute('id','transition-middle');
+        setTimeout( function(){
+	      container.setAttribute('id','transition-middle');
 			
-	  },300);	  
+	    },300);	  
 	 
-      setTimeout( function(){
-	   container.setAttribute('id','transition-in');
-	  },400);
+        setTimeout( function(){
+	      container.setAttribute('id','transition-in');
+	    },400);
 	
-	});
-  
+	  });
+    
   },
-  
-  handleImageClick: function(i){
-   
-  },
-  
   render: function(){
-  
+    var self=this;
     var widths = ['short','long','short','long','short','long','short','long','short'];
     var images = this.props.images.map( function(image,i) {
 	  return (
 	    React.createElement("div", null, 
 		  React.createElement("div", {ref: "images", className: "item"}, 
-		      React.createElement("img", {key: "images", className: "img-responsive", src: image, alt: "picasso"})		    
+		    React.createElement(ImageOverlay, {data: self.props.data}), 
+		    React.createElement("img", {key: "images", className: "img-responsive", src: image, alt: "picasso"})		    
 		  )
 		)
 	  );
@@ -923,9 +1018,9 @@ var Masonry = React.createClass({displayName: 'Masonry',
 });
 
 module.exports = Masonry;
-},{"./masonry.css":16,"imagesloaded":38,"masonry-layout":41}],18:[function(require,module,exports){
+},{"./../ImageOverlay/ImageOverlay.js":4,"./masonry.css":18,"imagesloaded":40,"masonry-layout":43}],20:[function(require,module,exports){
 var css = ".user-profile .container{\r\n \r\n  width:100%;\r\n  \r\n\r\n}\r\n\r\n\r\n.user-profile-head{\r\n\r\n  height: 14em;\r\n  background: purple;\r\n  \r\n}\r\n\r\n.user-profile-head h1{\r\n\r\n  position: relative;\r\n  top:1.5em;\r\n  width:100%;\r\n  height:7em;\r\n  color: white;\r\n \r\n}\r\n\r\n.photo-circle{\r\n  position:relative;\r\n  top:1em;\r\n  border: solid #eee 4px;\r\n  box-shadow: 0 0 4px 1px white;\r\n  border-radius: 50%;\r\n  width: 3em;\r\n  height: 3em;\r\n  display:block;\r\n  overflow:hidden;\r\n  margin-left:auto;\r\n  margin-right:auto;\r\n  display:cover;\r\n  background: white;\r\n}\r\n\r\n.inner-circle{\r\n\r\n  position:absolute;\r\n  z-index:9999;\r\n  width:100%;\r\n  height:100%;\r\n  top: .75em;\r\n}\r\n\r\n.user-profile-bottom{\r\n\r\n  position:relative;\r\n  top:300px;\r\n  overflow:hidden;\r\n  background: #3a3a3a;\r\n  color:white;\r\n\r\n}\r\n\r\na:visited{\r\n  color: black;\r\n}\r\n\r\n.user-profile-forms{\r\n\r\n  width: 80%;\r\n  top:1em;\r\n\r\n}\r\n\r\n/*make width wider on wider screens*/\r\n\r\n.user-profile-forms article{\r\n  top:2em;\r\n  left:0; \r\n  width:90%;\r\n  height: 270px;\r\n \r\n}\r\n\r\narticle p{\r\n  margin-top:1em;\r\n}\r\n\r\narticle .btn-group{\r\n\r\n  margin-left:5em;\r\n  margin-right:5em;\r\n\r\n}\r\n\r\n.dropdown-toggle{\r\n  background:tomato;\r\n  color:white;\r\n}\r\n\r\n.button-wrapper{\r\n  position:relative;\r\n  top:1em;\r\n  width:100%;\r\n}\r\n\r\n.user-profile-logo-bottom{\r\n\r\n  width:200px;\r\n \r\n}\r\n\r\n.user-profile-top-logo{\r\n\r\n  width:3em;\r\n\r\n}\r\n\r\n.user-profile-search{\r\n  padding-top:.5em;\r\n}\r\n\r\n.top-logo-holder{\r\n  width: 50px;\r\n  height:50px;\r\n  \r\n}\r\n\r\n.article{\r\n  position: relative;\r\n  width:400px;\r\n  border: solid pink 1px;\r\n}\r\n\r\n\r\n\r\n.top-drop, .top-drop:active{\r\n\r\n  background: inherit;\r\n   \r\n}\r\n\r\n.top-drop:hover{\r\n  background: #d1ccca;\r\n}\r\n\r\n.footer{\r\n\r\n  color:white;\r\n  position:relative;\r\n \r\n}\r\n\r\n/*\r\n * jQuery File Upload Plugin CSS 1.3.0\r\n * https://github.com/blueimp/jQuery-File-Upload\r\n *\r\n * Copyright 2013, Sebastian Tschan\r\n * https://blueimp.net\r\n *\r\n * Licensed under the MIT license:\r\n * http://www.opensource.org/licenses/MIT\r\n */\r\n\r\n.fileinput-button {\r\n  position: relative;\r\n  overflow: hidden;\r\n}\r\n.fileinput-button input {\r\n  position: absolute;\r\n  top: 0;\r\n  right: 0;\r\n  margin: 0;\r\n  opacity: 0;\r\n  -ms-filter: 'alpha(opacity=0)';\r\n  font-size: 200px;\r\n  direction: ltr;\r\n  cursor: pointer;\r\n}\r\n\r\n/* Fixes for IE < 8 */\r\n@media screen\\9 {\r\n  .fileinput-button input {\r\n    filter: alpha(opacity=0);\r\n    font-size: 100%;\r\n    height: 100%;\r\n  }\r\n}\r\n"; (require("C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify"))(css); module.exports = css;
-},{"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify":23}],19:[function(require,module,exports){
+},{"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify":25}],21:[function(require,module,exports){
 'use strict'
 
 var Router = window.ReactRouter,
@@ -1367,7 +1462,7 @@ var UserProfile = React.createClass({displayName: 'UserProfile',
 
 
 module.exports = UserProfile;
-},{"../../../styles/color-swatch.css":22,"./../../actions/actions.js":1,"./../TopNav/TopNav.js":8,"./../footer/footer.js":13,"./user-profile.css":18}],20:[function(require,module,exports){
+},{"../../../styles/color-swatch.css":24,"./../../actions/actions.js":1,"./../TopNav/TopNav.js":10,"./../footer/footer.js":15,"./user-profile.css":20}],22:[function(require,module,exports){
 'use strict';
 
 /*
@@ -1386,12 +1481,15 @@ var Dispatcher = Flux.createDispatcher({
   setUserProfile: function (data) {
     this.dispatch('setUserProfile', data);
   },
+  fetchUserPhotos: function (data) {
+    this.dispatch('fetchUserPhotos', data[0].photos[0].photoAttributes);
+  },
   getStores: function () {
     return {increment: store};
   }
 });
 module.exports = Dispatcher;
-},{"./stores/store.js":21,"delorean":34}],21:[function(require,module,exports){
+},{"./stores/store.js":23,"delorean":36}],23:[function(require,module,exports){
 'use strict';
 
 var Flux = require('delorean').Flux;
@@ -1400,33 +1498,43 @@ var Flux = require('delorean').Flux;
 var Store = Flux.createStore({
   
   data: {
+  
+    signedIn: false,
     
 	userProfile: 'user profile',
     
-	photoAttributes: {
+	//photo model
+	photoAttributes: [{
 	
+	  id: null,
 	  photoUrl: null,
 	  title: 'untitled',
-	  ownerName: null,
+	  ownerName: 'owner',
 	  ownerUrl: null,
-	  description: null,
+	  description: 'photo description lorem ipsum artsum lorem ip ipsum describe',
 	  dateUploaded: null,
 	  curatedIncrement: 0,
 	  followedIncrement: 0,
 	  viewedIncrement: 0,
 	  isUndiscovered: true,
-	  categories: [],
+	  category: ['Art'],
 	  trendingTags: []
+	
+	}],
+	
+	userPhotos: {
+	
+	  photos: [] //all the user's photos
 	
 	},
 	
-	photoCategories: {
+	photosByCategory: {
 	
 	  photos: [] //retrieve array of photoAttributes
 	
 	},
 	
-	trendingTags: {
+	photosByTrendingTags: {
 	
 	  photos: [] //retrieve array of photoAttributes
 	
@@ -1435,24 +1543,34 @@ var Store = Flux.createStore({
   },
   
   setData: function (data) {
-    this.data = data;
+    this.data.setData = data;
     this.emit('change');
   },
+  
   setUserProfile: function(data) {  
     this.data.userProfile = data;
 	this.emit('change');
   },
+  
+  fetchUserPhotos: function(data){
+	this.data.photoAttributes = data;
+	this.emit('change');
+  },
+  
   actions: {
     'incoming-data': 'setData',
-	'setUserProfile': 'setUserProfile'
+	'setUserProfile': 'setUserProfile',
+	'fetchUserPhotos': 'fetchUserPhotos'
   }
+  
 });
+
 var store = new Store();
 
 module.exports = store;
-},{"delorean":34}],22:[function(require,module,exports){
+},{"delorean":36}],24:[function(require,module,exports){
 var css = "/*color swatch theme for artfactum signup page*/\r\n\r\n.tomato{\r\n  color:#e56e5c;\r\n}\r\n\r\n.tomato-background{\r\n  background:#e5635c;\r\n  color: white;\r\n}\r\n\r\n.dark-gray{\r\n\r\n  color: #3a3a3a;\r\n\r\n}\r\n\r\n.dark-gray-background{\r\n\r\n  background: #3a3a3a;\r\n  color:white;\r\n  \r\n}\r\n\r\n.chrome{\r\n\r\n  color: #d1ccca;\r\n\r\n}\r\n\r\n.chrome-background{\r\n\r\n  background: #d1ccca;\r\n  color: black;\r\n\r\n}\r\n\r\n.gray{\r\n  color: slategray;\r\n}\r\n"; (require("C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify"))(css); module.exports = css;
-},{"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify":23}],23:[function(require,module,exports){
+},{"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify":25}],25:[function(require,module,exports){
 module.exports = function (css, customDocument) {
   var doc = customDocument || document;
   if (doc.createStyleSheet) {
@@ -1491,13 +1609,13 @@ module.exports.byUrl = function(url) {
   }
 };
 
-},{}],24:[function(require,module,exports){
+},{}],26:[function(require,module,exports){
 "use strict";
 var Promise = require("./promise/promise").Promise;
 var polyfill = require("./promise/polyfill").polyfill;
 exports.Promise = Promise;
 exports.polyfill = polyfill;
-},{"./promise/polyfill":28,"./promise/promise":29}],25:[function(require,module,exports){
+},{"./promise/polyfill":30,"./promise/promise":31}],27:[function(require,module,exports){
 "use strict";
 /* global toString */
 
@@ -1591,7 +1709,7 @@ function all(promises) {
 }
 
 exports.all = all;
-},{"./utils":33}],26:[function(require,module,exports){
+},{"./utils":35}],28:[function(require,module,exports){
 (function (process,global){
 "use strict";
 var browserGlobal = (typeof window !== 'undefined') ? window : {};
@@ -1655,7 +1773,7 @@ function asap(callback, arg) {
 
 exports.asap = asap;
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"_process":37}],27:[function(require,module,exports){
+},{"_process":39}],29:[function(require,module,exports){
 "use strict";
 var config = {
   instrument: false
@@ -1671,7 +1789,7 @@ function configure(name, value) {
 
 exports.config = config;
 exports.configure = configure;
-},{}],28:[function(require,module,exports){
+},{}],30:[function(require,module,exports){
 (function (global){
 "use strict";
 /*global self*/
@@ -1712,7 +1830,7 @@ function polyfill() {
 
 exports.polyfill = polyfill;
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./promise":29,"./utils":33}],29:[function(require,module,exports){
+},{"./promise":31,"./utils":35}],31:[function(require,module,exports){
 "use strict";
 var config = require("./config").config;
 var configure = require("./config").configure;
@@ -1924,7 +2042,7 @@ function publishRejection(promise) {
 }
 
 exports.Promise = Promise;
-},{"./all":25,"./asap":26,"./config":27,"./race":30,"./reject":31,"./resolve":32,"./utils":33}],30:[function(require,module,exports){
+},{"./all":27,"./asap":28,"./config":29,"./race":32,"./reject":33,"./resolve":34,"./utils":35}],32:[function(require,module,exports){
 "use strict";
 /* global toString */
 var isArray = require("./utils").isArray;
@@ -2014,7 +2132,7 @@ function race(promises) {
 }
 
 exports.race = race;
-},{"./utils":33}],31:[function(require,module,exports){
+},{"./utils":35}],33:[function(require,module,exports){
 "use strict";
 /**
   `RSVP.reject` returns a promise that will become rejected with the passed
@@ -2062,7 +2180,7 @@ function reject(reason) {
 }
 
 exports.reject = reject;
-},{}],32:[function(require,module,exports){
+},{}],34:[function(require,module,exports){
 "use strict";
 function resolve(value) {
   /*jshint validthis:true */
@@ -2078,7 +2196,7 @@ function resolve(value) {
 }
 
 exports.resolve = resolve;
-},{}],33:[function(require,module,exports){
+},{}],35:[function(require,module,exports){
 "use strict";
 function objectOrFunction(x) {
   return isFunction(x) || (typeof x === "object" && x !== null);
@@ -2101,7 +2219,7 @@ exports.objectOrFunction = objectOrFunction;
 exports.isFunction = isFunction;
 exports.isArray = isArray;
 exports.now = now;
-},{}],34:[function(require,module,exports){
+},{}],36:[function(require,module,exports){
 (function (DeLorean) {
   'use strict';
 
@@ -2741,7 +2859,7 @@ exports.now = now;
 
 })({});
 
-},{"./requirements":35}],35:[function(require,module,exports){
+},{"./requirements":37}],37:[function(require,module,exports){
 // ## Dependency injection file.
 
 // You can change dependencies using `DeLorean.Flux.define`. There are
@@ -2765,7 +2883,7 @@ if (typeof DeLorean !== 'undefined') {
   }
 }
 
-},{"es6-promise":24,"events":36}],36:[function(require,module,exports){
+},{"es6-promise":26,"events":38}],38:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -3068,7 +3186,7 @@ function isUndefined(arg) {
   return arg === void 0;
 }
 
-},{}],37:[function(require,module,exports){
+},{}],39:[function(require,module,exports){
 // shim for using process in browser
 
 var process = module.exports = {};
@@ -3156,7 +3274,7 @@ process.chdir = function (dir) {
     throw new Error('process.chdir is not supported');
 };
 
-},{}],38:[function(require,module,exports){
+},{}],40:[function(require,module,exports){
 /*!
  * imagesLoaded v3.1.8
  * JavaScript is all like "You images are done yet or what?"
@@ -3493,7 +3611,7 @@ function makeArray( obj ) {
 
 });
 
-},{"eventie":39,"wolfy87-eventemitter":40}],39:[function(require,module,exports){
+},{"eventie":41,"wolfy87-eventemitter":42}],41:[function(require,module,exports){
 /*!
  * eventie v1.0.5
  * event binding helper
@@ -3577,7 +3695,7 @@ if ( typeof define === 'function' && define.amd ) {
 
 })( this );
 
-},{}],40:[function(require,module,exports){
+},{}],42:[function(require,module,exports){
 /*!
  * EventEmitter v4.2.11 - git.io/ee
  * Unlicense - http://unlicense.org/
@@ -4051,7 +4169,7 @@ if ( typeof define === 'function' && define.amd ) {
     }
 }.call(this));
 
-},{}],41:[function(require,module,exports){
+},{}],43:[function(require,module,exports){
 /*!
  * Masonry v3.2.1
  * Cascading grid layout library
@@ -4263,7 +4381,7 @@ if ( typeof define === 'function' && define.amd ) {
 
 })( window );
 
-},{"get-size":42,"outlayer":50}],42:[function(require,module,exports){
+},{"get-size":44,"outlayer":52}],44:[function(require,module,exports){
 /*!
  * getSize v1.2.2
  * measure size of elements
@@ -4515,7 +4633,7 @@ if ( typeof define === 'function' && define.amd ) {
 
 })( window );
 
-},{"desandro-get-style-property":43}],43:[function(require,module,exports){
+},{"desandro-get-style-property":45}],45:[function(require,module,exports){
 /*!
  * getStyleProperty v1.0.4
  * original by kangax
@@ -4572,7 +4690,7 @@ if ( typeof define === 'function' && define.amd ) {
 
 })( window );
 
-},{}],44:[function(require,module,exports){
+},{}],46:[function(require,module,exports){
 /**
  * Outlayer Item
  */
@@ -5104,9 +5222,9 @@ if ( typeof define === 'function' && define.amd ) {
 
 })( window );
 
-},{"desandro-get-style-property":45,"get-size":42,"wolfy87-eventemitter":49}],45:[function(require,module,exports){
-module.exports=require(43)
-},{"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\masonry-layout\\node_modules\\get-size\\node_modules\\desandro-get-style-property\\get-style-property.js":43}],46:[function(require,module,exports){
+},{"desandro-get-style-property":47,"get-size":44,"wolfy87-eventemitter":51}],47:[function(require,module,exports){
+module.exports=require(45)
+},{"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\masonry-layout\\node_modules\\get-size\\node_modules\\desandro-get-style-property\\get-style-property.js":45}],48:[function(require,module,exports){
 /**
  * matchesSelector v1.0.2
  * matchesSelector( element, '.selector' )
@@ -5211,7 +5329,7 @@ module.exports=require(43)
 
 })( Element.prototype );
 
-},{}],47:[function(require,module,exports){
+},{}],49:[function(require,module,exports){
 /*!
  * docReady v1.0.3
  * Cross browser DOMContentLoaded event emitter
@@ -5285,11 +5403,11 @@ if ( typeof define === 'function' && define.amd ) {
 
 })( window );
 
-},{"eventie":48}],48:[function(require,module,exports){
-module.exports=require(39)
-},{"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\imagesloaded\\node_modules\\eventie\\eventie.js":39}],49:[function(require,module,exports){
-module.exports=require(40)
-},{"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\imagesloaded\\node_modules\\wolfy87-eventemitter\\EventEmitter.js":40}],50:[function(require,module,exports){
+},{"eventie":50}],50:[function(require,module,exports){
+module.exports=require(41)
+},{"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\imagesloaded\\node_modules\\eventie\\eventie.js":41}],51:[function(require,module,exports){
+module.exports=require(42)
+},{"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\imagesloaded\\node_modules\\wolfy87-eventemitter\\EventEmitter.js":42}],52:[function(require,module,exports){
 /*!
  * Outlayer v1.3.0
  * the brains and guts of a layout library
@@ -6311,4 +6429,4 @@ if ( typeof define === 'function' && define.amd ) {
 
 })( window );
 
-},{"./item":44,"desandro-matches-selector":46,"doc-ready":47,"eventie":48,"get-size":42,"wolfy87-eventemitter":49}]},{},[15]);
+},{"./item":46,"desandro-matches-selector":48,"doc-ready":49,"eventie":50,"get-size":44,"wolfy87-eventemitter":51}]},{},[17]);

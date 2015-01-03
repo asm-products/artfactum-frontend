@@ -16,6 +16,9 @@ var Dispatcher = Flux.createDispatcher({
   setUserProfile: function (data) {
     this.dispatch('setUserProfile', data);
   },
+  fetchUserPhotos: function (data) {
+    this.dispatch('fetchUserPhotos', data[0].photos[0].photoAttributes);
+  },
   getStores: function () {
     return {increment: store};
   }

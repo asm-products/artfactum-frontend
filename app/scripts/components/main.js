@@ -5,7 +5,9 @@ var UserProfile = React.createFactory(require('./user-profile/user-profile.js'))
     TopNav = React.createFactory(require('./TopNav/TopNav.js')),
     Signup = React.createFactory(require('./Signup/signup.js')),
     BrowseCollections = React.createFactory(require('./browse-collections/browse-collections.js')),
-    Footer = React.createFactory(require('./footer/footer.js'));
+    Footer = React.createFactory(require('./footer/footer.js')),
+    Masonry = React.createFactory(require('./masonry/masonry.js'));
+   
 	
 	
 var store = require('./../stores/store.js'),
@@ -84,13 +86,15 @@ var MyMarketplace = React.createClass({
 var App = React.createClass({
   
   getInitialState: function(){
-    return {data: []}
+    return {data: store.store.data }
   },
   
   mixins: [Flux.mixins.storeListener],
   
   storeDidChange: function(Store){
-    this.setState({ data: store.store.data });
+    alert(JSON.stringify(store.store.data));
+	
+	this.setState({ data: store.store.data });
   },
   
   render: function() {
@@ -102,6 +106,7 @@ var App = React.createClass({
 	    <Link to='signup'><button>signup</button></Link>
 	    <Link to='browsecollections'><button>browse collections</button></Link>
 	    <Link to='footer'><button>footer</button></Link>
+	    <Link to='masonry'><button>masonry</button></Link>
  	    <div className='views'>
 		  <RouteHandler data={this.state.data} />
 	    </div>
@@ -119,6 +124,7 @@ var routes = (
     <Route path='/footer' name='footer' handler={Footer}/>
     <Route path='/about' name='about' handler={About}/>
     <Route path='/browsecollections' name='browsecollections' handler={BrowseCollections}/>
+    <Route path='/masonry' name='masonry' handler={Masonry}/>
     <Route path='/collections' name='collections' handler={Collections}/>
     <Route path='/marketplace' name='marketplace' handler={Marketplace}/>
     <Route path='/mygallery' name='mygallery' handler={MyGallery}/>

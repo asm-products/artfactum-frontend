@@ -8,6 +8,17 @@ var Actions = {
   },
   setUserProfile: function (data) {
     Dispatcher.setUserProfile(data);
+  },
+  fetchUserPhotos: function(url){
+  
+      $.getJSON(url,{
+	    format: 'json'
+	  }).done( function(data){  
+	    Dispatcher.fetchUserPhotos(data);
+	  }).fail( function(e){
+	    alert('failed');
+	  });  
+	  
   }
 };
 
