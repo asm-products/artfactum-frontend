@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<!-- saved from url=(0112)https://d1015h9unskp4y.cloudfront.net/attachments/1ea0def2-630a-4279-a085-cba3855dc3c3/Artfactum_Styleguide.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width = device-width, initial scale = 1.0">
+
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
+
+	<script src="./Artfactum_Styleguide_files/jquery.js"> </script>
+	
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="./Artfactum_Styleguide_files/bootstrap.min.js"></script>
+
+	
+
+    <link href="./Artfactum_Styleguide_files/css" rel="stylesheet" type="text/css">
+
+
+
+<style>
+
+body{
+/*background-color: #f8f8f8;
+*/
+background-color: white;
+font-weight: 400;
+color: #474747;
+
+
+font-family: 'Open Sans', sans-serif;
+}
+
+
+.title-wrapper{
+background: url(http://s28.postimg.org/gn6130lel/wallpaper_art_world_episode_famous_paintings_bac.jpg) no-repeat center center fixed; 
+ -webkit-background-size: cover;
+ -moz-background-size: cover;
+ -o-background-size: cover;
+ background-size: cover;
+
+ color: white;
+
+ padding-top: 2em;
+ padding-bottom: 4em;
+
+}
+
+/*some handy classes */
+.content-head{
+	margin: 2em;
+
+}
+
+.is-center{
+	text-align: center;
+}
+
+.white-text{
+	color: white;
+}
+
+.black-text{
+	color: black;
+}
+
+/*typography */
+
+.typography-wrapper{
+	margin-bottom: 2em;
+}
+
+.type{
+	font-size: 2em;
+	background-color: white;
+	border-radius: 0.1em;
+	padding: 1em;
+	margin-bottom: 0.5em;
+}		
+.light{
+	font-weight: 300;
+}
+.normal{
+	font-weight: 400;
+}
+.semi-bold{
+	font-weight: 600;
+}
+.bold{
+	font-weight: 700;
+}
+.heavy{
+	font-weight: 800;
+}
+
+
+
+/*colors wrapper and swatches*/
+.color-swatches-wrapper{
+	padding: 2em;
+	color: white;
+	margin-bottom: 2em;
+    background: url(http://s13.postimg.org/el966a5pj/free_wallpaper_40.jpg ) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover  
+}
+
+.primary-swatch{
+	height: 10em;
+	border-radius: 0.2em;
+	margin-bottom: 0.5em;
+}
+.secondary-swatch{
+	border-radius: 0.2em;
+	height: 8em;
+	width: 80%;
+	margin: 0 auto;
+	margin-bottom: 0.5em;
+}
+.first-color{
+	background-color: #52bad5;
+}
+.second-color{
+	background-color: #ffffff;
+	color: #474747; 
+}
+.third-color{
+	background-color: #f2f1f0;
+    color: #474747; 
+}
+.fourth-color{
+	background-color: #d1ccca;
+	color: #474747; 
+}
+.fifth-color{
+	background-color: #474747;
+}
+.sixth-color{
+	background-color: #3a3a3a;
+}
+.seventh-color{
+	background-color: #E56E5C;
+}
+.eighth-color{
+	background-color: #cc5746;
+}
+
+
+
+
+/*Buttons */
+.buttons{
+	margin: 0.5em;
+}
+button{
+	margin: 0.5em;
+	background-image: none;
+	box-shadow: none;
+	text-align: center;	 
+}
+.btn-flat, .round{
+	border-radius: 0.2em;
+	padding: 0.5em;
+	padding-left: 1.5em;
+	padding-right: 1.5em;
+}
+.btn-flat-form{
+	margin: 0;
+}
+.round{
+	border-radius: 2em;
+}
+.primary{
+	background-color: #E56E5C;
+	color: white;
+}
+.primary:hover{
+	background-color: #CC5746;
+	color: white;
+	-webkit-transition: background-color linear 0.2s; 
+	 transition: background-color linear 0.2s;
+}
+.secondary{
+	background-color: transparent;
+	color: #E56E5C;
+	border: 0.1em solid;
+	border-color: #E56E5C;
+	-webkit-transition: background-color linear 0.2s; 
+	 transition: background-color linear 0.2s;
+}
+.secondary:hover{
+	background-color: #E56E5C;
+	color: white;
+}
+.inactive{
+	background-color: #E56E5C;
+	opacity: 0.7;
+}
+.inactive:hover{
+	background-color: #E56E5C;
+	opacity: 0.7;
+}
+
+
+/*Forms*/
+.forms-wrapper > form{
+	margin: 1em;
+}
+.form-control{
+	background-image: none;
+	box-shadow: none;
+}
+
+
+/* Progress Bars */
+.progress-wrapper{
+	margin-bottom: 0em;
+}
+.progress{
+	background-color: #D1CCCA;
+	background-image: none;
+	box-shadow: none;
+}
+.progress-bar{
+	border-radius: 3px;
+	background-color: #E56E5C;
+	background-image: none;
+	box-shadow: none;
+}
+
+/* Dropdowns - Primary, Secondary, White */
+.dropdown-menu{
+	background-image: none;
+	box-shadow: none;
+}
+.dropdown-secondary{	
+	background-color: transparent;
+	color: #E56E5C;
+	border: 0.1em solid;
+	border-color: #E56E5C;
+}
+.dropdown-secondary>li>a{
+	color: #E56E5C;
+}
+
+.dropdown-menu>li>a:hover{
+	color: #52BAD5;
+	background-image: none;
+	background-color: rgba(0,200,255,0.1);
+	box-shadow: none;
+
+}
+.dropdown-white{
+	background-color: transparent;
+	color: white;
+	border: 0.1em solid;
+	border-color: white;
+}
+.dropdown-white>li>a{
+	color: #E56E5C;
+}
+.dropdown-white>li>a:hover{
+	color: #E56E5C;
+	background-image: none;
+	box-shadow: none;
+}
+
+
+/*logo variants */
+.logo-wrapper{
+
+	margin-top: 8em;
+	padding-top: 2em;
+	padding-bottom: 3em;
+	background-color: #E56E5C;
+
+}
+
+/*avatar size variants*/
+
+.avatars-wrapper{
+	padding: 2em;
+
+}
+.avatar-small{
+	margin-top: 4em;
+}
+
+.avatar-medium{
+	margin-top: 2em;
+}
+
+.avatar-large{
+	margin-top: 0em;
+}
+
+
+/*icons personalized and standard */
+.icons-wrapper{
+
+	 background: url(http://s13.postimg.org/el966a5pj/free_wallpaper_40.jpg ) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover  
+
+}
+
+/* pagination styling */
+
+.pagination >.active > a{
+	background-color: #E56E5C;
+	border-color: #E56E5C;
+}
+
+.pagination > .active > a:hover{
+	background-color: #CC5746;
+	border-color: #CC5746;
+
+}
+
+/* checkbox styles */
+
+
+/*tag styling */
+
+
+.tag{
+
+	margin: 0.5em;
+
+	width: 6em;
+
+	background-image: none;
+	box-shadow: none;
+
+
+	background-color: transparent;
+	border: 0.125em solid;
+	border-radius: 0.3em;
+	border-color: #E56E5C;
+
+	color: #333333;
+
+
+
+
+}
+
+
+.wrapper-wrapper{
+
+	
+}
+
+.video-wrapper{
+	background: url(http://i62.tinypic.com/qsjyaq.jpg)no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+
+    padding-bottom: 4em;
+}
+
+
+</style>
+
+
+
+
+
+
+
+</head>
+
+
+<body>
+
+
+<div class="title-wrapper">
+
+	<div class="content-head is-center">
+		
+		<img src="./Artfactum_Styleguide_files/Logo_AF_vector_white.png" alt="ARTFACTUM UI GUIDE" height="100px" width="auto">
+		<h4> UI Design Guide </h4>
+	</div>
+
+</div>
+
+
+<div class="typography-wrapper">
+
+		<div class="content-head is-center">
+			<h2> Typography </h2>
+			<h4> Open Sans </h4>
+		
+			<h6>  Open Sans was designed with an upright stress, open forms and a neutral, yet friendly appearance. <br>It was optimized for print, web, and mobile interfaces, and has excellent legibility characteristics in its letterforms </h6>
+		
+		</div>
+
+
+		<div class="row typography is-center">
+		
+			<div class="col-xs-6 col-md-1">
+		  		
+		  	</div>
+		
+		  	<div class="col-xs-12 col-md-2">
+		  		<div class="type light">
+		  			Artfactum <em> <br> Artfactum </em>
+		  		</div>
+		  		<p> 300 </p>
+		  	</div>
+		
+		  	<div class="col-xs-6 col-md-2">
+		  		<div class="type is-center normal">
+		  			Artfactum <em> <br> Artfactum </em>
+		  		</div>
+		  		<p> 400 </p>
+		  	</div>
+		
+		  	<div class="col-xs-6 col-md-2">
+		  		<div class="type is-center semi-bold">
+		  			Artfactum <em> <br> Artfactum </em>
+		  		</div>
+		  		<p> 600 </p>
+		  	</div>
+		
+		  	<div class="col-xs-6 col-md-2">
+		  		<div class="type is-center bold">
+		  			Artfactum <em> <br> Artfactum </em>
+		  		</div>
+		  		<p> 700 </p>
+		  	</div>
+		
+		  	<div class="col-xs-6 col-md-2">
+		  		<div class="type is-center heavy">
+		  			Artfactum <em> <br> Artfactum </em>
+		  		</div>
+		  		<p> 800 </p>
+		  	</div>
+		
+		  	<div class="col-xs-6 col-md-1">
+		  		
+		  	</div>
+		
+		  	<div class="col-md-1">
+		
+			</div>
+		</div>
+
+</div>
+
+
+
+<div class="color-swatches-wrapper">
+
+
+
+	<div class="content-head is-center">
+		<h2> Color Swatches </h2>
+	</div>
+
+	<div class="content-head is-center"> 
+		<h4> Primary Colors </h4>
+	</div>
+
+
+	<div class="row primary-color-swatches">
+	
+		<div class="col-xs-1 col-md-3"></div>
+	
+	
+		<div class="col-xs-12 col-md-2 is-center">
+			<div class="primary-swatch seventh-color">
+				
+			</div>
+				<p> #E56E5C </p>
+		</div>
+	
+		<div class="col-xs-12 col-md-2 is-center">
+			<div class="primary-swatch second-color">
+				
+			</div>
+				<p> #FFFFFF </p>
+		</div>
+	
+		<div class="col-xs-12 col-md-2 is-center">
+			<div class="primary-swatch sixth-color">
+				
+			</div>
+				<p> #474747 </p>
+		</div>
+	
+		
+	
+	  	<div class="col-xs-1 col-md-3"></div>
+	
+	
+	</div>
+
+	<div class="content-head is-center"> 
+		<h4> Secondary Colors </h4>
+	</div>
+
+
+	<div class="row primary-color-swatches is-center">
+	
+		<div class="col-xs-2 col-md-1"></div>
+	
+	
+		<div class="col-xs-4 col-md-2 is-center">
+			<div class="secondary-swatch eighth-color">
+				
+			</div>
+				<p> #CC5746</p>
+		</div>
+	
+		<div class="col-xs-4 col-md-2 is-center">
+			<div class="secondary-swatch third-color">
+				
+			</div>
+				<p> #F2F1F0 </p>
+		</div>
+	
+		<div class="col-xs-4 col-md-2 is-center">
+			<div class="secondary-swatch fourth-color">
+				
+			</div>
+				<p> #D1CCCA </p>
+		</div>
+
+		<div class="col-xs-4 col-md-2 is-center">
+			<div class="secondary-swatch fifth-color">
+				
+			</div>
+				<p> #3A3A3A</p>
+		</div>
+	
+		<div class="col-xs-4 col-md-2 is-center">
+			<div class="secondary-swatch first-color">
+				
+			</div>
+				<p> #52BAD5</p>
+		</div>
+	
+		
+		
+	
+	  	<div class="col-xs-1 col-md-1"></div>
+	</div>
+</div>
+
+
+
+
+
+<!-- BUTTONS -->
+
+<div class="col-md-6 button-wrapper is-center">
+
+	<div class="content-head"> 
+		<h2> Buttons &amp; Tags</h2>
+	</div>
+
+	<div class="col-xs-12 col-md-12 buttons is-center">
+		<button type="button" class="btn btn-flat primary">Primary</button>
+		<button type="button" class="btn btn-flat primary round">Primary Round</button>
+		<button type="button" class="btn btn-flat primary inactive">Inactive</button>
+		<button type="button" class="btn btn-flat primary round inactive">Round Inactive</button>
+	</div>
+	
+	<div class="col-xs-12 col-md-12 buttons is-center">
+		<button type="button" class="btn btn-flat secondary">Secondary</button>
+		<button type="button" class="btn btn-flat secondary round">Secondary Round</button>
+
+	</div>
+
+	<div class="col-xs-12 col-md-12 buttons is-center">
+		<button type="button" class="tag">cubism</button>
+		<button type="button" class="tag">classic</button>
+		<button type="button" class="tag">french</button>
+		<button type="button" class="tag">greco</button>
+	</div>
+
+
+</div>
+
+<!-- FORMS -->
+
+<div class="col-md-6 forms-wrapper is-center">
+
+	<div class="content-head is-center"> 
+		<h2> Forms</h2>
+	</div>
+
+	<form class="form-inline" role="form">
+	  
+	  <div class="form-group">
+	    
+	      <input class="form-control" placeholder="User Name">
+	   
+	  </div>
+
+	  <div class="form-group">
+	    
+	    <input class="form-control" id="exampleInputPassword2" placeholder="Password">
+	  </div>
+	  
+	  <button type="submit" class="btn btn-mdm btn-flat-form primary ">Login</button>
+
+
+	</form>
+
+	<form role="form">
+		<input class="form-control" id="disabledInput" type="text" placeholder="Disabled input here..." disabled="">
+	</form>
+
+	<form role="form">
+		<input class="form-control" type="text" placeholder="Readonly input here…" readonly="">
+	</form>
+
+	<form role="form">
+		<textarea class="form-control" rows="3" placeholder="This is where text goes..."></textarea>
+	</form>
+
+</div>
+
+
+
+
+<!-- PAGINATION -->
+
+<div class="col-md-6 pagination-wrapper is-center">
+
+	<div class="content-head is-center"> 
+		<h2> Pagination</h2>
+	</div>
+
+	<nav>
+
+  <ul class="pagination">
+    <li class="disabled"><a href="https://d1015h9unskp4y.cloudfront.net/attachments/1ea0def2-630a-4279-a085-cba3855dc3c3/Artfactum_Styleguide.html#"><span aria-hidden="true">«</span><span class="sr-only">Previous</span></a></li>
+    <li class="active"><a href="https://d1015h9unskp4y.cloudfront.net/attachments/1ea0def2-630a-4279-a085-cba3855dc3c3/Artfactum_Styleguide.html#">1 <span class="sr-only">(current)</span></a></li>
+    <li class="disabled"><a href="https://d1015h9unskp4y.cloudfront.net/attachments/1ea0def2-630a-4279-a085-cba3855dc3c3/Artfactum_Styleguide.html#">2<span aria-hidden="true"></span><span class="sr-only">Previous</span></a></li>
+    <li class="disabled"><a href="https://d1015h9unskp4y.cloudfront.net/attachments/1ea0def2-630a-4279-a085-cba3855dc3c3/Artfactum_Styleguide.html#">3<span aria-hidden="true"></span><span class="sr-only">Previous</span></a></li>
+     <li class="disabled"><a href="https://d1015h9unskp4y.cloudfront.net/attachments/1ea0def2-630a-4279-a085-cba3855dc3c3/Artfactum_Styleguide.html#">4<span aria-hidden="true"></span><span class="sr-only">Previous</span></a></li>
+    <li class="disabled"><a href="https://d1015h9unskp4y.cloudfront.net/attachments/1ea0def2-630a-4279-a085-cba3855dc3c3/Artfactum_Styleguide.html#">5<span aria-hidden="true"></span><span class="sr-only">Previous</span></a></li>
+    <li><a href="https://d1015h9unskp4y.cloudfront.net/attachments/1ea0def2-630a-4279-a085-cba3855dc3c3/Artfactum_Styleguide.html#"><span aria-hidden="true">»</span><span class="sr-only">Next</span></a>
+  </li></ul>
+</nav>
+
+</div>
+
+
+<div class="col-md-6 is-cneter">
+
+	<div class="content-head is-center"> 
+
+		<h2> Icons </h2>
+
+	</div>
+
+	<div class="is-center">
+			<img src="./Artfactum_Styleguide_files/icons_artfactum_2.png" height="100px" width="auto">
+	</div>
+
+</div>
+
+
+
+
+
+
+
+<!-- CHECKBOXES -->
+
+<div class="col-md-6 progress-wrapper">
+
+	<div class="content-head is-center"> 
+		<h2> Progress Bars</h2>
+	</div>
+
+	<div class="progress">
+	  <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+	   
+	  </div>
+	</div>
+
+	<div class="progress">
+	  <div class="progress-bar" role="progressbar" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100" style="width: 35%;">  35%
+	  </div>
+	</div>
+
+</div>
+
+
+<!-- DROPDOWNS -->
+<div class="col-md-6 dropdowns-wrapper is-center">
+
+	<div class="content-head is-center"> 
+		<h2> Dropdowns</h2>
+	</div>
+
+<div class="btn-group">
+  <button type="button" class="btn btn-flat primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+
+    Primary <span class="caret"></span>
+
+  </button>
+
+  <ul class="dropdown-menu" role="menu">
+    <li><a href="https://d1015h9unskp4y.cloudfront.net/attachments/1ea0def2-630a-4279-a085-cba3855dc3c3/Artfactum_Styleguide.html#">Action</a></li>
+    <li><a href="https://d1015h9unskp4y.cloudfront.net/attachments/1ea0def2-630a-4279-a085-cba3855dc3c3/Artfactum_Styleguide.html#">Another action</a></li>
+    <li><a href="https://d1015h9unskp4y.cloudfront.net/attachments/1ea0def2-630a-4279-a085-cba3855dc3c3/Artfactum_Styleguide.html#">Something else here</a></li>
+    <li class="divider"></li>
+    <li><a href="https://d1015h9unskp4y.cloudfront.net/attachments/1ea0def2-630a-4279-a085-cba3855dc3c3/Artfactum_Styleguide.html#">Separated link</a></li>
+  </ul>
+
+</div>
+
+<div class="btn-group">
+  <button type="button" class="btn btn-flat secondary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+
+    Secondary <span class="caret"></span>
+
+  </button>
+
+  <ul class="dropdown-menu dropdown-secondary" role="menu">
+    <li><a href="https://d1015h9unskp4y.cloudfront.net/attachments/1ea0def2-630a-4279-a085-cba3855dc3c3/Artfactum_Styleguide.html#">Action</a></li>
+    <li><a href="https://d1015h9unskp4y.cloudfront.net/attachments/1ea0def2-630a-4279-a085-cba3855dc3c3/Artfactum_Styleguide.html#">Another action</a></li>
+    <li><a href="https://d1015h9unskp4y.cloudfront.net/attachments/1ea0def2-630a-4279-a085-cba3855dc3c3/Artfactum_Styleguide.html#">Something else here</a></li>
+    <li class="divider"></li>
+    <li><a href="https://d1015h9unskp4y.cloudfront.net/attachments/1ea0def2-630a-4279-a085-cba3855dc3c3/Artfactum_Styleguide.html#">Separated link</a></li>
+  </ul>
+
+</div>
+
+<div class="btn-group">
+  <button type="button" class="btn btn-flat primary round dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+
+    Primary Round <span class="caret"></span>
+
+  </button>
+
+  <ul class="dropdown-menu" role="menu">
+    <li><a href="https://d1015h9unskp4y.cloudfront.net/attachments/1ea0def2-630a-4279-a085-cba3855dc3c3/Artfactum_Styleguide.html#">Action</a></li>
+    <li><a href="https://d1015h9unskp4y.cloudfront.net/attachments/1ea0def2-630a-4279-a085-cba3855dc3c3/Artfactum_Styleguide.html#">Another action</a></li>
+    <li><a href="https://d1015h9unskp4y.cloudfront.net/attachments/1ea0def2-630a-4279-a085-cba3855dc3c3/Artfactum_Styleguide.html#">Something else here</a></li>
+    <li class="divider"></li>
+    <li><a href="https://d1015h9unskp4y.cloudfront.net/attachments/1ea0def2-630a-4279-a085-cba3855dc3c3/Artfactum_Styleguide.html#">Separated link</a></li>
+  </ul>
+
+</div>
+
+<div class="btn-group">
+  <button type="button" class="btn btn-flat secondary round dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+
+    Secondary Round <span class="caret"></span>
+
+  </button>
+
+  <ul class="dropdown-menu dropdown-secondary" role="menu">
+    <li><a href="https://d1015h9unskp4y.cloudfront.net/attachments/1ea0def2-630a-4279-a085-cba3855dc3c3/Artfactum_Styleguide.html#">Action</a></li>
+    <li><a href="https://d1015h9unskp4y.cloudfront.net/attachments/1ea0def2-630a-4279-a085-cba3855dc3c3/Artfactum_Styleguide.html#">Another action</a></li>
+    <li><a href="https://d1015h9unskp4y.cloudfront.net/attachments/1ea0def2-630a-4279-a085-cba3855dc3c3/Artfactum_Styleguide.html#">Something else here</a></li>
+    <li class="divider"></li>
+    <li><a href="https://d1015h9unskp4y.cloudfront.net/attachments/1ea0def2-630a-4279-a085-cba3855dc3c3/Artfactum_Styleguide.html#">Separated link</a></li>
+  </ul>
+
+</div>
+
+</div>
+
+
+
+<div class="col-md-12 logo-wrapper is-center">
+
+	<div class="content-head is-center black-text"> 
+		<h2> Logo Variants</h2>
+	</div>
+
+	<div class="col-md-4 is-center">
+
+			<div>
+
+				<img src="./Artfactum_Styleguide_files/preview" height="100px" width="auto">
+				
+			</div>
+				
+	</div>
+
+	<div class="col-md-4 is-center">
+
+			<div>
+
+				<img src="./Artfactum_Styleguide_files/preview(1)" height="100px" width="auto">
+				
+			</div>
+				
+	</div>
+
+	<div class="col-md-4 is-center">
+
+			<div>
+
+				<img src="./Artfactum_Styleguide_files/preview(2)" height="100px" width="auto">
+				
+			</div>
+				
+	</div>
+
+</div>
+
+<div class="col-md-12 avatars-wrapper is-center">
+
+	<div class="content-head is-center"> 
+		<h2> Avatars </h2>
+	</div>
+
+	<div class="col-md-4 avatar-small is-center">
+
+			<div>
+
+				<img src="./Artfactum_Styleguide_files/Picasso.png" height="75px" width="auto">
+				
+			</div>
+				
+	</div>
+
+	<div class="col-md-4 avatar-medium is-center">
+
+			<div>
+
+				<img src="./Artfactum_Styleguide_files/Picasso.png" height="125px" width="auto">
+				
+			</div>
+				
+	</div>
+
+
+<div class="col-md-4 avatar-large is-center">
+
+			<div>
+				<img src="./Artfactum_Styleguide_files/Picasso.png" height="200px" width="auto">
+			</div>
+				
+	</div>
+
+
+</div>
+
+
+
+
+
+
+<div class="col-md-12 video-wrapper is-center">
+
+	<div class="content-head is-center white-text"> 
+		<h2> Video </h2>
+	</div>
+
+
+<iframe src="./Artfactum_Styleguide_files/95365778.html" width="500" height="281" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
+
+</div>
+
+
+<!--
+<div class="col-md-12 is-center">
+
+			<div>
+				<img src="http://i58.tinypic.com/2s7hmox.png" height="auto" width="90%">
+			</div>
+				
+	</div>
+
+
+</div>
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body></html>

@@ -9,9 +9,9 @@
   
 }
 
+
 .tabs:active{
 	
-	color: tomato;
 	box-shadow: inset 0px -5px blue;
     -webkit-transition: all 0.15s linear;
 	transition: all 0.15s linear;
@@ -22,6 +22,15 @@
 	color: tomato;
 	box-shadow: inset 0px -5px tomato;
 
+}
+
+.tabs:hover{
+  
+  
+	box-shadow: inset 0px -5px  5px blue;
+    -webkit-transition: all 0.85s linear;
+	transition: all 1.5s linear;
+  
 }
 
 

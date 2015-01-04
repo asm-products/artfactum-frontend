@@ -1,6 +1,6 @@
 'use strict';
 
-//css
+var Footer = React.createFactory(require('./../Footer/Footer.js'));
 
 require('./signup.css');
 require('./signup-phones.css');
@@ -87,12 +87,13 @@ var FirstChild_A = React.createClass({
 });
 
 */
-var TopNavBar = React.createClass({
+
+var Signup = React.createClass({
 
   render: function(){
 
     return (
-	  <div className='topNavBar'>
+	  <div className='signup'>
 	      <div className='modal fade' id='basicModal' tabindex='-1' role='dialog' 
 			    aria-labelledby='basicModal' aria-hidden='true'>
 				<div className='modal-dialog'>
@@ -211,45 +212,28 @@ var TopNavBar = React.createClass({
 				</div>
 			  </div>
             </div>
-              <div className='third-page'>			  
-			    
+              <div className='third-page'>			  			    
 				<div className='container' id='near-footer'>
-				<div className='row'>
+				  <div className='row'>
 					<div className='col-lg-8 col-md-8 col-xs-12 margin-top-1' >
 					  <h3>Do you want to be part of the Artfactum community?</h3>
 					</div>
 					<div className='col-lg-4 col-md-4 col-xs-12 margin-top-1'>
 					  <div class="btn-group">
-					    <button type="button" class="btn btn-default">Middle</button>
-					    <button type="button" class="btn btn-default">Right</button>
+					    <button type="button" class="btn btn-default">Social Login</button>
+					    <button type="button" class="btn btn-default">Social Login</button>
 					  </div>
 					  
 					</div>
 					
-				</div>
+				  </div>{/*end row*/}
 				</div>  
-				<footer className='row'>
-				  
-				  <div className='row'>
-					<ul>
-					  <li><a href='#'>About us | </a></li>
-					  <li><a href='#'>Legal | </a></li>
-					  <li><a href='#'>F.A.Q. | </a></li>
-					  <li><a href='#'>Developers | </a></li>
-					  <li><a href='#'>Ads/Sponsorship | </a></li>
-					  <li><a href='#'>Contact| </a></li>
-					</ul>
-				  </div>
-				  
-				  <div className='row'>
-					<ul>
-					  <li><p id='underline'>Built with love on assembly</p></li>
-					</ul>
+                
+				<div className='footer'>
+				  <Footer></Footer>
+				</div>
 				
-				  </div>
-				</footer>			  
-				
-			  </div>	  
+		      </div>	  
 				
 			</div>
 		
@@ -330,29 +314,5 @@ var TopNavBar = React.createClass({
 );*/
 
 
-/*var Footer = React.createClass({
-render: function(){
 
-  return (
- 
-	<footer className='container'>
-	  <div className='row'>
-		<ul className='breadcrumb'>
-		  <li><a href='#'>About us</a></li>
-		  <li><a href='#'>Legal</a></li>
-		  <li><a href='#'>F.A.Q.</a></li>
-		  <li><a href='#'>Developers</a></li>
-		  <li><a href='#'>Ads/Sponsorship</a></li>
-		  <li><a href='#'>Contact</a></li>
-		</ul>
-	  </div>
-	</footer>
- 
-  );
-
-
-}
-});
-*/
-
-module.exports = TopNavBar;
+module.exports = Signup

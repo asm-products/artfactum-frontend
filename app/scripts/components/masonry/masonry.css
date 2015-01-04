@@ -1,12 +1,12 @@
 #transition-in{
-  transition: opacity .5s ease;
+  transition: opacity 1s ease;
   transition: transform .5s ease;
   -webkit-transform: scale(1);
   opacity: 1;
    
 }
 #transition-out {
-  transition: opacity .5s ease;
+  transition: opacity 1s ease;
   transition: transform .5s ease;
   -webkit-transform: scale(1) translateX(1000px);
   opacity: .9;
@@ -33,4 +33,43 @@
 
 .masonry-gallery{
   perspective: 1500px;
+  overflow: hidden;
+}
+
+.masonries .item{ 
+  width: 32%;
+  margin:.5%;  
+}
+
+.masonries .item img{
+  box-shadow: 0 0 4px 1px rgba(10,30,10,0.4);
+}
+
+.masonry{
+
+  width:90%;
+  left:2.25em;
+  height:100%;
+  position:relative;
+  margin-top:2.25em;
+  margin-left:auto;
+  margin-right:auto;
+ 
+}
+
+@media (max-width:980px){
+  .masonry{
+    left:0;
+  }
+}
+
+.masonries{
+ 
+  position:relative;
+  margin-left: auto;
+  margin-right:auto;
+  position:relative;
+  height:100%;
+  width: 100%;
+    
 }

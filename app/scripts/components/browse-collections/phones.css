@@ -1,19 +1,32 @@
-
-
 @media (max-width:986px){
 
-
 .browse-categories{
-
   display: block;
   position:absolute;
-  right:12em;
-  
+  right:11em;
+  z-index:9999;
+}
+
+.browse-categories  ul{
+
+  height:300px;
+  overflow:auto;
+
 }
 
 .browse-categories-dt{
   display:none;
 }
 
+
+.notfocused{
+  text-align: left;
+  margin:1em; 
+}
+
+.focused{
+  text-align:left;
+  margin:1em;
+}
 
 }

@@ -6,7 +6,6 @@
  */
  
 var Flux = require('delorean').Flux;
-
  
 var store = require('./stores/store.js');
  
@@ -14,9 +13,14 @@ var Dispatcher = Flux.createDispatcher({
   setData: function (data) {
     this.dispatch('incoming-data', data);
   },
+  setUserProfile: function (data) {
+    this.dispatch('setUserProfile', data);
+  },
+  fetchUserPhotos: function (data) {
+    this.dispatch('fetchUserPhotos', data[0].photos);
+  },
   getStores: function () {
     return {increment: store};
   }
 });
-
 module.exports = Dispatcher;
