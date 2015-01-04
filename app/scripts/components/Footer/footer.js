@@ -15,7 +15,7 @@ var Footer = React.createClass({
       <div className='row af-footer'>
         <div className='col-xs-12'> 
 		      
-		  <div className='user-profile-logo-bottom center-block' > 
+		  <div className='logo center-block' > 
 		    <img className='img-responsive padding1' src='images/Logo_AF_vector_white.png' alt='artfactum logo' title='artfactum logo' />
 		  </div>
 		  

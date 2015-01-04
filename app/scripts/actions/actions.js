@@ -19,6 +19,8 @@ var Actions = {
 	    alert('failed');
 	  });  
 	  
+  },
+  followArtist: function(){
   }
 };
 

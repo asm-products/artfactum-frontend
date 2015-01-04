@@ -85,9 +85,9 @@
  three pages in total
  ***/
 
-.first-page{}
+.signup .first-page{}
 
-.second-page, .third-page{
+.signup .second-page, .third-page{
   width:100%;
   position:absolute;
 }

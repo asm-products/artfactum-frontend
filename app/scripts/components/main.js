@@ -28,6 +28,7 @@ require('./main.css');
 
 
 //better to render to a container or to document.html?	
+
 /*React.render (
   <UserProfile></UserProfile>,
   document.getElementById('container')
@@ -85,16 +86,22 @@ var MyMarketplace = React.createClass({
 
 var App = React.createClass({
   
-  getInitialState: function(){
+  getDefaultProps: function(){
     return {data: store.store.data }
+  },
+  
+  componentDidMount: function() {
+  
+    var url = 'photos.json';
+    Actions.fetchUserPhotos(url);
+  
   },
   
   mixins: [Flux.mixins.storeListener],
   
   storeDidChange: function(Store){
-    alert(JSON.stringify(store.store.data));
-	
-	this.setState({ data: store.store.data });
+    //alert(JSON.stringify(store.store.data));
+	this.props.data = store.store.data;
   },
   
   render: function() {
@@ -108,7 +115,7 @@ var App = React.createClass({
 	    <Link to='footer'><button>footer</button></Link>
 	    <Link to='masonry'><button>masonry</button></Link>
  	    <div className='views'>
-		  <RouteHandler data={this.state.data} />
+		  <RouteHandler {... this.props.data} />
 	    </div>
 	  </div>
 	);

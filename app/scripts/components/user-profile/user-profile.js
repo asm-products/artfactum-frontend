@@ -92,6 +92,7 @@ var UserProfile = React.createClass({
 	    form = this.refs.form.getDOMNode();
 	$(modal).find('.modal-body').html('<p>' + $('form').serializeObject() + '</p>');
 	$(modal).modal('show');
+	alert(JSON.stringify($(form).serializeObject()));
 	Actions.setUserProfile(
 	  JSON.stringify($(form).serializeObject())
 	);

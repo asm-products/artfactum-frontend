@@ -8,7 +8,7 @@
   
 }
 
-.tabs:active{
+.top-nav .tabs:active{
 	
 	color: tomato;
 	box-shadow: inset 0px -5px blue;
@@ -17,19 +17,24 @@
 	
 }
 
-.tabs:focus{
+.top-nav .tabs:focus{
 	color: tomato;
 	box-shadow: inset 0px -5px tomato;
 
 }
 
+.top-nav .top-logo-holder{
+  width: 50px;
+  height:50px;
+  
+}
 
-.navbar{
+.top-nav .navbar{
   background: white;
   border: none;
 }
 
-.search{
+.top-nav .search{
 
   border: none;
   outline: none;
@@ -37,13 +42,13 @@
   
 }
 
-.search-gl{
+.top-nav .search-gl{
   background: white;
   border:none;
   outline: none;
 }
 
-.search-box{
+.top-nav .search-box{
 
   overflow:hidden; 
  

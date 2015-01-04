@@ -1,16 +1,12 @@
-.user-profile .container{
- 
-  width:100%;
-  
 
+
+.user-profile .container{
+  width:100%;
 }
 
-
 .user-profile-head{
-
   height: 14em;
   background: purple;
-  
 }
 
 .user-profile-head h1{
@@ -23,7 +19,7 @@
  
 }
 
-.photo-circle{
+.user-profile .photo-circle{
   position:relative;
   top:1em;
   border: solid #eee 4px;
@@ -39,8 +35,7 @@
   background: white;
 }
 
-.inner-circle{
-
+.user-profile .inner-circle{
   position:absolute;
   z-index:9999;
   width:100%;
@@ -49,16 +44,14 @@
 }
 
 .user-profile-bottom{
-
   position:relative;
   top:300px;
   overflow:hidden;
   background: #3a3a3a;
   color:white;
-
 }
 
-a:visited{
+.user-profile a:visited{
   color: black;
 }
 
@@ -79,51 +72,30 @@ a:visited{
  
 }
 
-article p{
+.user-profile article p{
   margin-top:1em;
 }
 
-article .btn-group{
+.user-profile article .btn-group{
 
   margin-left:5em;
   margin-right:5em;
 
 }
 
-.dropdown-toggle{
-  background:tomato;
-  color:white;
+.user-profile .dropdown-toggle{
+
 }
 
-.button-wrapper{
+.user-profile .button-wrapper{
   position:relative;
   top:1em;
   width:100%;
 }
 
-.user-profile-logo-bottom{
 
-  width:200px;
- 
-}
 
-.user-profile-top-logo{
-
-  width:3em;
-
-}
-
-.user-profile-search{
-  padding-top:.5em;
-}
-
-.top-logo-holder{
-  width: 50px;
-  height:50px;
-  
-}
-
-.article{
+.user-profile .article{
   position: relative;
   width:400px;
   border: solid pink 1px;
@@ -131,21 +103,14 @@ article .btn-group{
 
 
 
-.top-drop, .top-drop:active{
+.user-profile .top-drop, .user-profile .top-drop:active{
 
   background: inherit;
    
 }
 
-.top-drop:hover{
+.user-profile .top-drop:hover{
   background: #d1ccca;
-}
-
-.footer{
-
-  color:white;
-  position:relative;
- 
 }
 
 /*

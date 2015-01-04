@@ -1,12 +1,12 @@
 #transition-in{
-  transition: opacity .5s ease;
+  transition: opacity 1s ease;
   transition: transform .5s ease;
   -webkit-transform: scale(1);
   opacity: 1;
    
 }
 #transition-out {
-  transition: opacity .5s ease;
+  transition: opacity 1s ease;
   transition: transform .5s ease;
   -webkit-transform: scale(1) translateX(1000px);
   opacity: .9;
@@ -36,27 +36,13 @@
   overflow: hidden;
 }
 
-#short{
-  
-  width:120px;
-}
-
-#long{
-  width:180px;
-}
-
-.item{
- 
+.masonries .item{ 
   width: 32%;
   margin:.5%;  
-  
 }
 
-
-.item img{
-
+.masonries .item img{
   box-shadow: 0 0 4px 1px rgba(10,30,10,0.4);
-
 }
 
 .masonry{
@@ -72,14 +58,14 @@
 }
 
 @media (max-width:980px){
-.masonry{
-  left:0;
-}
+  .masonry{
+    left:0;
+  }
 }
 
 .masonries{
  
- position:relative;
+  position:relative;
   margin-left: auto;
   margin-right:auto;
   position:relative;

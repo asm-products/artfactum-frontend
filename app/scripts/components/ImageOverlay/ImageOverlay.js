@@ -1,14 +1,51 @@
 'use strict'
 
+var Actions = require('./../../actions/actions.js');
+
 require('./overlay.css');
+
 
 var ImageOverlay = React.createClass({
 
-  render: function(){
+  getInitialState: function(){
+  
+    return ({isFollowing: 'Follow'});
+  
+  },
+
+  componentDidMount: function(){
+  
+    //match artist user if following with owner/artist name in photo attributes
+	var following = this.props.userProfile[0].following;
+	var owner = this.props.photoAttributes[0].ownerName;
+	this.state.isFollowing = following === owner ? 'Unfollow' : 'Follow';
     
-	var overlay = this.props.data.photoAttributes.map( function(item,i) {
+  },
+
+  handleFollowClick: function(){
+  
+    var elem = this.refs.follow.getDOMNode();
+	var text = $(elem).find('small').text();
+	
+	if(text == 'Follow') {
+	  this.setState({isFollowing:'Unfollow'});
+	}
+	else{
+	  this.setState({isFollowing:'Follow'});
+	}
+	
+	/*if use flux actions save to server but hold on rerender*/
+	
+  },
+
+  render: function(){
+    var self = this;
+	
+	var followClasses = this.state.isFollowing + ' glyphicon' + ' glyphicon-user';
+	
+	var overlay = this.props.photoAttributes.map( function(item,i) {
       return (
-	    <div key={i} className='overlaySection container'> 
+	    <div key={i} className='overlayWrapper'> 
 		  <div className='container'>
 		    <div className='row'>
               <div className='col-xs-4 pull-left'>
@@ -44,20 +81,21 @@ var ImageOverlay = React.createClass({
 				  <div className="glyphicon glyphicon-heart"></div> 
                   <div><small>Tip</small></div>
                 </button>
-				<button type="button" className="btn btn-default btn-md">
-				  <div className="glyphicon glyphicon-user"></div> 
-                  <div><small>Follow</small></div>
+				<button onClick={self.handleFollowClick} type="button" className="btn btn-default btn-md">
+				  <div className={followClasses}></div> 
+                  <div ref='follow'><small>{self.state.isFollowing}</small></div>
                 </button>
-			  </div>
-			
-			</div>
+			  </div>			
+			</div>{/*end 3rd row*/}
 	      </div>
 		</div>
 	  );
 	});
+	
 	return (
 	  <div className='overlay'>{overlay}</div>
 	);
+  
   }
 
 });

@@ -20,6 +20,8 @@ var Actions = {
 	    alert('failed');
 	  });  
 	  
+  },
+  followArtist: function(){
   }
 };
 
@@ -42,7 +44,7 @@ var Footer = React.createClass({displayName: 'Footer',
       React.createElement("div", {className: "row af-footer"}, 
         React.createElement("div", {className: "col-xs-12"}, 
 		      
-		  React.createElement("div", {className: "user-profile-logo-bottom center-block"}, 
+		  React.createElement("div", {className: "logo center-block"}, 
 		    React.createElement("img", {className: "img-responsive padding1", src: "images/Logo_AF_vector_white.png", alt: "artfactum logo", title: "artfactum logo"})
 		  )
 		  
@@ -72,19 +74,56 @@ var Footer = React.createClass({displayName: 'Footer',
 
 module.exports = Footer;
 },{"./footer.css":3}],3:[function(require,module,exports){
-var css = ".af-footer{\r\n  background: black;\r\n}\r\n\r\n.af-footer a,li{\r\n  color: white;\r\n}\r\n\r\n.af-footer p{\r\n  margin-left:1.5em;\r\n}\r\n\r\n.breadcrumbs{\r\n  color:white;\r\n  width:90%;\r\n  \r\n  background: #3a3a3a;\r\n\r\n  display:block;\r\n  position:relative;\r\n  margin-left:auto;\r\n  margin-right:auto;\r\n  text-align:justify;\r\n}\r\n\r\n.footerpages{\r\n  text-align:center;\r\n  color:white;\r\n}\r\n\r\n.footerpage{\r\n  width:380px;\r\n  padding:2px;\r\n  font-size:1.08em;\r\n  display:block;\r\n  position:relative;\r\n  margin-left:auto;\r\n  margin-right:auto;\r\n}\r\n\r\n@media (max-width:600px) {\r\n  .footerpage{\r\n    width:280px;\r\n  }\r\n}\r\n"; (require("C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify"))(css); module.exports = css;
+var css = ".af-footer{\r\n  background: black;\r\n}\r\n\r\n.af-footer .logo{\r\n  width:200px\r\n}\r\n\r\n.af-footer a,li{\r\n  color: white;\r\n}\r\n\r\n.af-footer p{\r\n  margin-left:1.5em;\r\n}\r\n\r\n.breadcrumbs{\r\n  color:white;\r\n  width:90%;\r\n  \r\n  background: #3a3a3a;\r\n\r\n  display:block;\r\n  position:relative;\r\n  margin-left:auto;\r\n  margin-right:auto;\r\n  text-align:justify;\r\n}\r\n\r\n.footerpages{\r\n  text-align:center;\r\n  color:white;\r\n}\r\n\r\n.footerpage{\r\n  width:380px;\r\n  padding:2px;\r\n  font-size:1.08em;\r\n  display:block;\r\n  position:relative;\r\n  margin-left:auto;\r\n  margin-right:auto;\r\n}\r\n\r\n@media (max-width:600px) {\r\n  .footerpage{\r\n    width:280px;\r\n  }\r\n}\r\n"; (require("C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify"))(css); module.exports = css;
 },{"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify":25}],4:[function(require,module,exports){
 'use strict'
 
+var Actions = require('./../../actions/actions.js');
+
 require('./overlay.css');
+
 
 var ImageOverlay = React.createClass({displayName: 'ImageOverlay',
 
-  render: function(){
+  getInitialState: function(){
+  
+    return ({isFollowing: 'Follow'});
+  
+  },
+
+  componentDidMount: function(){
+  
+    //match artist user if following with owner/artist name in photo attributes
+	var following = this.props.userProfile[0].following;
+	var owner = this.props.photoAttributes[0].ownerName;
+	this.state.isFollowing = following === owner ? 'Unfollow' : 'Follow';
     
-	var overlay = this.props.data.photoAttributes.map( function(item,i) {
+  },
+
+  handleFollowClick: function(){
+  
+    var elem = this.refs.follow.getDOMNode();
+	var text = $(elem).find('small').text();
+	
+	if(text == 'Follow') {
+	  this.setState({isFollowing:'Unfollow'});
+	}
+	else{
+	  this.setState({isFollowing:'Follow'});
+	}
+	
+	/*if use flux actions save to server but hold on rerender*/
+	
+  },
+
+  render: function(){
+    var self = this;
+	
+	var followClasses = this.state.isFollowing + ' glyphicon' + ' glyphicon-user';
+	
+	var overlay = this.props.photoAttributes.map( function(item,i) {
       return (
-	    React.createElement("div", {key: i, className: "overlaySection container"}, 
+	    React.createElement("div", {key: i, className: "overlayWrapper"}, 
 		  React.createElement("div", {className: "container"}, 
 		    React.createElement("div", {className: "row"}, 
               React.createElement("div", {className: "col-xs-4 pull-left"}, 
@@ -120,31 +159,32 @@ var ImageOverlay = React.createClass({displayName: 'ImageOverlay',
 				  React.createElement("div", {className: "glyphicon glyphicon-heart"}), 
                   React.createElement("div", null, React.createElement("small", null, "Tip"))
                 ), 
-				React.createElement("button", {type: "button", className: "btn btn-default btn-md"}, 
-				  React.createElement("div", {className: "glyphicon glyphicon-user"}), 
-                  React.createElement("div", null, React.createElement("small", null, "Follow"))
+				React.createElement("button", {onClick: self.handleFollowClick, type: "button", className: "btn btn-default btn-md"}, 
+				  React.createElement("div", {className: followClasses}), 
+                  React.createElement("div", {ref: "follow"}, React.createElement("small", null, self.state.isFollowing))
                 )
-			  )
-			
-			)
+			  )			
+			)/*end 3rd row*/
 	      )
 		)
 	  );
 	});
+	
 	return (
 	  React.createElement("div", {className: "overlay"}, overlay)
 	);
+  
   }
 
 });
 
 module.exports = ImageOverlay;
-},{"./overlay.css":5}],5:[function(require,module,exports){
-var css = ".overlay{\r\n\r\n  color:white;\r\n  position:absolute;\r\n  opacity:0;\r\n  width:100%;\r\n  height:100%;\r\n  background: rgba(20,20,20,0.0);\r\n\r\n}\r\n\r\n.overlay:hover{\r\nopacity:0.99;\r\n  background: rgba(20,20,20,0.7);\r\n  -webkit-transition: background .8s ease;\r\n          transition: background .8s ease;\r\n}\r\n\t\t  \r\n.overlay-clicked{\r\n  \r\n  opacity:0.99;\r\n  background: rgba(20,20,20,0.72);\r\n  -webkit-transition: background .8s ease;\r\n          transition: background .8s ease;\r\n\r\n}\r\n\r\n.overlaySection{\r\n\r\n  position:relative;\r\n  width: 100%;\r\n  height:100%;\r\n  border: solid 1px #eee;\r\n\r\n}\r\n\r\n.overlaySection .container{\r\n\r\n  margin:12px 18px 12px 0;\r\n  position:relative;\r\n  width: 100%;\r\n\r\n}\r\n\r\n\r\n.description{\r\n  \r\n  text-align: justify;\r\n  font-size: 0.8em;\r\n  font-style:italic;\r\n  margin-left:1.75em;\r\n  margin-right:2.5em;\r\n \r\n}\r\n\r\n.btn-group-justified{\r\n width:100%;\r\n}\r\n\r\n.btn-group-justified .btn{\r\n  color:white;\r\n  width:20%;\r\n  border: none;\r\n  margin-top:18px;\r\n  background: inherit;\r\n}\r\n\r\n.glyphicon:hover{\r\n  color: #e56e5c;\r\n}\r\n\r\n.glyphicon:active{\r\n  -webkit-transform: scale(1.3);\r\n          transform: scale(1.3);\r\n  -webkit-transition: -webkit-transform .5s liner;\r\n          transition: -webkit-transform .5s liner;\r\n\r\n\r\n}\r\n\r\n.btn small{\r\n  color: white;\r\n  font-size:9px;\r\n}\r\n\r\n\r\n"; (require("C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify"))(css); module.exports = css;
+},{"./../../actions/actions.js":1,"./overlay.css":5}],5:[function(require,module,exports){
+var css = ".overlay{\r\n\r\n  color:white;\r\n  position:absolute;\r\n  opacity:0;\r\n  width:100%;\r\n  height:100%;\r\n  background: rgba(20,20,20,0.0);\r\n\r\n}\r\n\r\n.overlay:hover{\r\nopacity:0.99;\r\n  background: rgba(20,20,20,0.7);\r\n  -webkit-transition: background .8s ease;\r\n          transition: background .8s ease;\r\n}\r\n\t\t  \r\n.overlay-clicked{\r\n  \r\n  opacity:0.99;\r\n  background: rgba(20,20,20,0.72);\r\n  -webkit-transition: background .8s ease;\r\n          transition: background .8s ease;\r\n\r\n}\r\n\r\n.overlayWrapper{\r\n\r\n  position:relative;\r\n  width: 100%;\r\n  height:100%;\r\n  border: solid 1px #eee;\r\n\r\n}\r\n\r\n.overlayWrapper .container{\r\n\r\n  margin:12px 18px 12px 0;\r\n  position:relative;\r\n  width: 100%;\r\n\r\n}\r\n\r\n.overlay .description{\r\n  \r\n  text-align: justify;\r\n  font-size: 0.8em;\r\n  font-style:italic;\r\n  margin-left:1.75em;\r\n  margin-right:2.5em;\r\n \r\n}\r\n\r\n.overlay .btn-group-justified{\r\n width:100%;\r\n}\r\n\r\n.overlay .btn-group-justified .btn{\r\n  color:white;\r\n  width:20%;\r\n  border: none;\r\n  margin-top:18px;\r\n  background: inherit;\r\n}\r\n\r\n.overlay .glyphicon:hover{\r\n  color: #e56e5c;\r\n}\r\n\r\n.overlay .glyphicon:active{\r\n  -webkit-transform: scale(1.3);\r\n          transform: scale(1.3);\r\n  -webkit-transition: -webkit-transform .5s liner;\r\n          transition: -webkit-transform .5s liner;\r\n}\r\n\r\n.overlay .btn small{\r\n  color: white;\r\n  font-size:9px;\r\n}\r\n\r\n\r\n.overlay  .follow{\r\n  color: white;\r\n}\r\n\r\n.overlay .Unfollow{\r\n  color: orange;\r\n}"; (require("C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify"))(css); module.exports = css;
 },{"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify":25}],6:[function(require,module,exports){
 var css = "@media all and (max-width:500px) and (min-width: 300px) {\r\n\r\n.min-height div{\r\n\r\n  width:90%;\r\n  min-height: 18vh;\r\n\r\n}\r\n\r\nfigure{\r\n\r\n  min-height: 18vh;\r\n  \r\n}\r\n\r\n\r\n.gif{\r\n   height: 0em;\r\n   width:0;\r\n   opacity: 0;\r\n      \r\n}\r\n\r\n.egon{\r\n  top:-2.25em;\r\n}\r\n\r\n}"; (require("C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify"))(css); module.exports = css;
 },{"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify":25}],7:[function(require,module,exports){
-var css = "/*the height break point seems to be just over 450px;\r\n *width breakpoint 350px;\r\n */\r\n\r\n#underline{\r\n\r\n  text-decoration: underline;\r\n\r\n}\r\n\r\n/*for the language picker and sign-in button\r\n *the entire page needs to be wrapped inside the parallax class and it needs\r\n *to have the appropriate height to keep a second scroller from appearing\r\n */\r\n\t\r\n.parallax {\r\n  -webkit-perspective: 1px;\r\n          perspective: 1px;\r\n  top:.5vh;\r\n  overflow-x: hidden;\r\n  overflow-y: auto;\r\n  position:relative;\r\n  height:99vh;\r\n  background:white;\r\n}\r\n\r\n\r\n.parallax__group {\r\n  position:relative;\r\n  background: white;\r\n\r\n  height:100vh;\r\n  -webkit-transform-style: preserve-3d;\r\n          transform-style: preserve-3d;\r\n  width:100%;\r\n  -webkit-transform-style: preserve-3d;\r\n}\r\n  \r\n.parallax__group:nth-child(2){\r\n   background: white;\r\n}\r\n\r\n.parallax__layer {\r\n\r\n  position: absolute;\r\n  top: 0;\r\n  right: 0;\r\n  bottom: 0;\r\n  left: 0;\r\n  height:100vh;\r\n}\r\n\r\n.parallax__layer--base {\r\n\r\n  webkit-transform: translateZ(0);\r\n  transform: translateZ(0);\r\n  -webkit-transform: translateZ(0);\r\n\r\n}\r\n\r\n.parallax__layer--back {\r\n\r\n  -webkit-transform: translateZ(-1px);\r\n  transform: translateZ(-1px);\r\n  -webkit-transform: translateZ(-1px) scale(2);\r\n  width:100%;\r\n   \r\n}\r\n\r\n.parallax__group {\r\n  position:relative;\r\n  background: rgba(130,130,230,0.01);\r\n  height:100vh;\r\n  -webkit-transform-style: preserve-3d;\r\n          transform-style: preserve-3d;\r\n  width:100%;\r\n  -webkit-transform-style: preserve-3d;\r\n}\r\n  \r\n.parallax__group:nth-child(2){\r\n  background: white;\r\n}\r\n\r\n/***\r\n three pages in total\r\n ***/\r\n\r\n.first-page{}\r\n\r\n.second-page, .third-page{\r\n  width:100%;\r\n  position:absolute;\r\n}\r\n \r\n.second-page{\r\n  top:45vh;\r\n  height:190vh;\r\n  background:white;\r\n}\r\n \r\n.third-page{\r\n  top:233vh;\r\n  left:0;\r\n  margin:0;\r\n  margin-top:1em;\r\n}\r\n\r\n\r\n/*wrap the second and third pages*/\r\n\r\n.under-back{\r\n  position:absolute;\r\n  width:100%;\r\n  top:200vh;\r\n}\r\n\r\n\r\n/*top header*/\r\n\r\n#signup-language,#signup-button{\r\n    position: absolute;\r\n    padding: 1vh;\r\n\tmargin: .75em;\r\n}\r\n\r\n#signup-button{\r\n  right:0;\r\n}\r\n\r\n/*hero-unit*/\t\r\n \r\n#jumbotron{\r\n  \r\n  position:relative;\r\n  top:-8%;\r\n  height:70%;\r\n  width:100%;\r\n  text-align:center;\r\n  color:black;\r\n  overflow:hidden:\r\n}\r\n  \r\n  \r\n#jumbotron img:nth-child(1){\r\n  \r\n  position:absolute;\r\n  z-index:0;\r\n  left:-25%;\r\n  top:-25%;\r\n  opacity:0.35;\r\n    \r\n}\r\n  \r\n#jumbotron img:nth-child(2){\r\n\r\n  top:.5em;\r\n  display:block;\r\n  position:relative;\r\n  z-index:0;\r\n  margin-left:auto;\r\n  margin-right:auto;\r\n  //background: rgba(300,300,300,0.5);\r\n  //border-radius:50%;\r\n}\r\n  \r\n.jumbo-inner{\r\n  \r\n  position:relative;\r\n  top:-14%;\r\n  font-size:1.4em;\r\n  margin-left:5%;\r\n  margin-right:5%;\r\n}\r\n  \r\n#jumbotron i{\r\n\r\n  margin-top:-.2em;\r\n  position:relative;\r\n  display:block;\r\n  margin-left:auto;\r\n  margin-right:auto;\r\n  width:90%;\r\n  font-size:.9em;\r\n  color:#000;\r\n \r\n}\r\n\r\n#jumbotron h2{\r\n  \r\n  color:black;\r\n  font-size:1.4em;\r\n  \r\n}\r\n\r\n\t\t\r\n.oval-button{\r\n  text-align:center;\r\n  color:white;\r\n  background: #e5635c;\r\n  padding: .75em;\r\n  position:relative;\r\n  display:block;\r\n  margin-left: auto;\r\n  margin-right:auto;\r\n  width:15em;\r\n  border-radius:20px;\r\n  font-family: 'Open-Sans-regular';\r\n  font-weight:bold;\r\n  font-size:1.2em;\r\n}\r\n  \r\n.second-oval{\r\n\r\n  background:blue;\r\n\r\n}\r\n  \r\n  \r\n/*second section of the first page\r\n  the first page actually being two pages of vh (window height)\r\n */  \r\n  \r\n#section-two{\r\n  left:0;\r\n  width:90%;\r\n  height:100vh;\r\n  position:relative;\r\n  margin-left:auto;\r\n  margin-right:auto;\r\n  font-family: 'Open-Sans-regular';\r\n  font-size:1.2em;\r\n}\r\n\r\n/*wrap the icon section*/\r\n  \r\narticle{\r\n  position:relative;\r\n  top:15%;\r\n  width:110%;\r\n  margin-left:auto;\r\n  margin-right:auto;\r\n  height:65%;\r\n}\r\n\r\n#signup-icons div{\r\n  margin-top:2em;\r\n}\r\n  \r\n\r\n  /*statement*/\r\n  \r\n.below-article{\r\n\t\r\n\tposition:relative;\r\n\tbottom:20%;\r\n\tclear:float;\r\n\twidth:80%;\r\n\tpadding-top:1.5em;\r\n\tfont-size:1.4em;\r\n\tfont-style: italic;\r\n\tmargin-left:auto;\r\n\tmargin-right:auto;\r\n\ttext-align: center;\r\n\tfont-family: 'Open-Sans-600';\r\n}\r\n  \r\n  \r\n.center-wrapper .row{\r\n\r\n margin-top:3em;\r\n\r\n} \r\n  \r\n#section-two div{\r\n    \r\n\twidth: 25%;\r\n\theight:30%;\r\n\tfloat:left;\r\n\tfont-size:1.2em;\r\n\ttext-align:center;\r\n\t\r\n}\r\n  \r\n#section-two span{\r\n\r\n    \r\n\twidth: 8%;\r\n\theight:30%;\r\n\tfloat:left;\r\n\tfont-size:1.2em;\r\n\ttext-align:center;\r\n\t\r\n\r\n}\r\n  \r\n/*TODO make less global*/\r\n\r\n.min-height div{\r\n  \r\n  padding: 0 15px;\r\n  min-height: 40vh;\r\n \r\n}\r\n\r\n.min-height h3{\r\n\r\n  color:#e56e5c;\r\n\r\n  }\r\n\r\n.min-height p{\r\n\r\n  color: slategray;\r\n\r\n}\r\n\r\nfigure {\r\n\r\n  height:40vh;\r\n  min-width:40vh;\r\n  display:cover;\r\n  overflow:hidden;\r\n  \r\n\r\n}\r\n\r\nfigure img{\r\n\r\n  padding:1.1em;\r\n  padding-right:4em;\r\n  width: 100%;\r\n  height:100;\r\n  position:absolute;\r\n  left:0;\r\n  top:0;\r\n   box-shadow: 0 0 5px 2px #ccc;\r\n\r\n}\r\n\r\n.fair-heading{\r\n\r\n  position:relative;\r\n  top:3em;\r\n  color:#e56e5c;\r\n\r\n}\r\n\r\n\r\n.fair-heading p{\r\n\r\n  color:slategray;\r\n  padding-top:1.25em;\r\n  \r\n}\r\n\r\n.center-wrapper figure{\r\n  \r\n  padding:1em;\r\n  \r\n}\r\n\r\n\r\n.center-wrapper{\r\n\r\n  position:relative;\r\n  width:90%;\r\n  top:2em;\r\n  margin-right:auto;\r\n  margin-left:auto;\r\n\r\n}\r\n\r\n\r\n#near-footer{\r\n\r\n  top:1.5em;\r\n  font-size:1em;\r\n  background: #e56e5c;\r\n  color:white;\r\n  width:100%;\r\n  position:relative;\r\n  \r\n}\r\n\r\n\r\n#near-footer button{\r\n\r\n  margin-top:1.5em;\r\n  background: white;\r\n  color:black;\r\n  border: solid black 3px;\r\n  border-radius: 10px;\r\n  padding:2px;\r\n  padding-left:5px;\r\n  padding-right:5px;\r\n  margin-left:4px;\r\n  box-shadow: 0 0 3px rgba(10,10,10,0.3);\r\n  \r\n}\r\n\r\n.footer{\r\n\r\n  color:white;\r\n  position:relative;\r\n \r\n}\r\n\r\n\r\n.modal-dialog, .modal-content{\r\n  border: solid black 10px;\r\n  position:relative;\r\n  z-index:9999;\r\n}"; (require("C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify"))(css); module.exports = css;
+var css = "/*the height break point seems to be just over 450px;\r\n *width breakpoint 350px;\r\n */\r\n\r\n#underline{\r\n\r\n  text-decoration: underline;\r\n\r\n}\r\n\r\n/*for the language picker and sign-in button\r\n *the entire page needs to be wrapped inside the parallax class and it needs\r\n *to have the appropriate height to keep a second scroller from appearing\r\n */\r\n\t\r\n.parallax {\r\n  -webkit-perspective: 1px;\r\n          perspective: 1px;\r\n  top:.5vh;\r\n  overflow-x: hidden;\r\n  overflow-y: auto;\r\n  position:relative;\r\n  height:99vh;\r\n  background:white;\r\n}\r\n\r\n\r\n.parallax__group {\r\n  position:relative;\r\n  background: white;\r\n\r\n  height:100vh;\r\n  -webkit-transform-style: preserve-3d;\r\n          transform-style: preserve-3d;\r\n  width:100%;\r\n  -webkit-transform-style: preserve-3d;\r\n}\r\n  \r\n.parallax__group:nth-child(2){\r\n   background: white;\r\n}\r\n\r\n.parallax__layer {\r\n\r\n  position: absolute;\r\n  top: 0;\r\n  right: 0;\r\n  bottom: 0;\r\n  left: 0;\r\n  height:100vh;\r\n}\r\n\r\n.parallax__layer--base {\r\n\r\n  webkit-transform: translateZ(0);\r\n  transform: translateZ(0);\r\n  -webkit-transform: translateZ(0);\r\n\r\n}\r\n\r\n.parallax__layer--back {\r\n\r\n  -webkit-transform: translateZ(-1px);\r\n  transform: translateZ(-1px);\r\n  -webkit-transform: translateZ(-1px) scale(2);\r\n  width:100%;\r\n   \r\n}\r\n\r\n.parallax__group {\r\n  position:relative;\r\n  background: rgba(130,130,230,0.01);\r\n  height:100vh;\r\n  -webkit-transform-style: preserve-3d;\r\n          transform-style: preserve-3d;\r\n  width:100%;\r\n  -webkit-transform-style: preserve-3d;\r\n}\r\n  \r\n.parallax__group:nth-child(2){\r\n  background: white;\r\n}\r\n\r\n/***\r\n three pages in total\r\n ***/\r\n\r\n.signup .first-page{}\r\n\r\n.signup .second-page, .third-page{\r\n  width:100%;\r\n  position:absolute;\r\n}\r\n \r\n.second-page{\r\n  top:45vh;\r\n  height:190vh;\r\n  background:white;\r\n}\r\n \r\n.third-page{\r\n  top:233vh;\r\n  left:0;\r\n  margin:0;\r\n  margin-top:1em;\r\n}\r\n\r\n\r\n/*wrap the second and third pages*/\r\n\r\n.under-back{\r\n  position:absolute;\r\n  width:100%;\r\n  top:200vh;\r\n}\r\n\r\n\r\n/*top header*/\r\n\r\n#signup-language,#signup-button{\r\n    position: absolute;\r\n    padding: 1vh;\r\n\tmargin: .75em;\r\n}\r\n\r\n#signup-button{\r\n  right:0;\r\n}\r\n\r\n/*hero-unit*/\t\r\n \r\n#jumbotron{\r\n  \r\n  position:relative;\r\n  top:-8%;\r\n  height:70%;\r\n  width:100%;\r\n  text-align:center;\r\n  color:black;\r\n  overflow:hidden:\r\n}\r\n  \r\n  \r\n#jumbotron img:nth-child(1){\r\n  \r\n  position:absolute;\r\n  z-index:0;\r\n  left:-25%;\r\n  top:-25%;\r\n  opacity:0.35;\r\n    \r\n}\r\n  \r\n#jumbotron img:nth-child(2){\r\n\r\n  top:.5em;\r\n  display:block;\r\n  position:relative;\r\n  z-index:0;\r\n  margin-left:auto;\r\n  margin-right:auto;\r\n  //background: rgba(300,300,300,0.5);\r\n  //border-radius:50%;\r\n}\r\n  \r\n.jumbo-inner{\r\n  \r\n  position:relative;\r\n  top:-14%;\r\n  font-size:1.4em;\r\n  margin-left:5%;\r\n  margin-right:5%;\r\n}\r\n  \r\n#jumbotron i{\r\n\r\n  margin-top:-.2em;\r\n  position:relative;\r\n  display:block;\r\n  margin-left:auto;\r\n  margin-right:auto;\r\n  width:90%;\r\n  font-size:.9em;\r\n  color:#000;\r\n \r\n}\r\n\r\n#jumbotron h2{\r\n  \r\n  color:black;\r\n  font-size:1.4em;\r\n  \r\n}\r\n\r\n\t\t\r\n.oval-button{\r\n  text-align:center;\r\n  color:white;\r\n  background: #e5635c;\r\n  padding: .75em;\r\n  position:relative;\r\n  display:block;\r\n  margin-left: auto;\r\n  margin-right:auto;\r\n  width:15em;\r\n  border-radius:20px;\r\n  font-family: 'Open-Sans-regular';\r\n  font-weight:bold;\r\n  font-size:1.2em;\r\n}\r\n  \r\n.second-oval{\r\n\r\n  background:blue;\r\n\r\n}\r\n  \r\n  \r\n/*second section of the first page\r\n  the first page actually being two pages of vh (window height)\r\n */  \r\n  \r\n#section-two{\r\n  left:0;\r\n  width:90%;\r\n  height:100vh;\r\n  position:relative;\r\n  margin-left:auto;\r\n  margin-right:auto;\r\n  font-family: 'Open-Sans-regular';\r\n  font-size:1.2em;\r\n}\r\n\r\n/*wrap the icon section*/\r\n  \r\narticle{\r\n  position:relative;\r\n  top:15%;\r\n  width:110%;\r\n  margin-left:auto;\r\n  margin-right:auto;\r\n  height:65%;\r\n}\r\n\r\n#signup-icons div{\r\n  margin-top:2em;\r\n}\r\n  \r\n\r\n  /*statement*/\r\n  \r\n.below-article{\r\n\t\r\n\tposition:relative;\r\n\tbottom:20%;\r\n\tclear:float;\r\n\twidth:80%;\r\n\tpadding-top:1.5em;\r\n\tfont-size:1.4em;\r\n\tfont-style: italic;\r\n\tmargin-left:auto;\r\n\tmargin-right:auto;\r\n\ttext-align: center;\r\n\tfont-family: 'Open-Sans-600';\r\n}\r\n  \r\n  \r\n.center-wrapper .row{\r\n\r\n margin-top:3em;\r\n\r\n} \r\n  \r\n#section-two div{\r\n    \r\n\twidth: 25%;\r\n\theight:30%;\r\n\tfloat:left;\r\n\tfont-size:1.2em;\r\n\ttext-align:center;\r\n\t\r\n}\r\n  \r\n#section-two span{\r\n\r\n    \r\n\twidth: 8%;\r\n\theight:30%;\r\n\tfloat:left;\r\n\tfont-size:1.2em;\r\n\ttext-align:center;\r\n\t\r\n\r\n}\r\n  \r\n/*TODO make less global*/\r\n\r\n.min-height div{\r\n  \r\n  padding: 0 15px;\r\n  min-height: 40vh;\r\n \r\n}\r\n\r\n.min-height h3{\r\n\r\n  color:#e56e5c;\r\n\r\n  }\r\n\r\n.min-height p{\r\n\r\n  color: slategray;\r\n\r\n}\r\n\r\nfigure {\r\n\r\n  height:40vh;\r\n  min-width:40vh;\r\n  display:cover;\r\n  overflow:hidden;\r\n  \r\n\r\n}\r\n\r\nfigure img{\r\n\r\n  padding:1.1em;\r\n  padding-right:4em;\r\n  width: 100%;\r\n  height:100;\r\n  position:absolute;\r\n  left:0;\r\n  top:0;\r\n   box-shadow: 0 0 5px 2px #ccc;\r\n\r\n}\r\n\r\n.fair-heading{\r\n\r\n  position:relative;\r\n  top:3em;\r\n  color:#e56e5c;\r\n\r\n}\r\n\r\n\r\n.fair-heading p{\r\n\r\n  color:slategray;\r\n  padding-top:1.25em;\r\n  \r\n}\r\n\r\n.center-wrapper figure{\r\n  \r\n  padding:1em;\r\n  \r\n}\r\n\r\n\r\n.center-wrapper{\r\n\r\n  position:relative;\r\n  width:90%;\r\n  top:2em;\r\n  margin-right:auto;\r\n  margin-left:auto;\r\n\r\n}\r\n\r\n\r\n#near-footer{\r\n\r\n  top:1.5em;\r\n  font-size:1em;\r\n  background: #e56e5c;\r\n  color:white;\r\n  width:100%;\r\n  position:relative;\r\n  \r\n}\r\n\r\n\r\n#near-footer button{\r\n\r\n  margin-top:1.5em;\r\n  background: white;\r\n  color:black;\r\n  border: solid black 3px;\r\n  border-radius: 10px;\r\n  padding:2px;\r\n  padding-left:5px;\r\n  padding-right:5px;\r\n  margin-left:4px;\r\n  box-shadow: 0 0 3px rgba(10,10,10,0.3);\r\n  \r\n}\r\n\r\n.footer{\r\n\r\n  color:white;\r\n  position:relative;\r\n \r\n}\r\n\r\n\r\n.modal-dialog, .modal-content{\r\n  border: solid black 10px;\r\n  position:relative;\r\n  z-index:9999;\r\n}"; (require("C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify"))(css); module.exports = css;
 },{"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify":25}],8:[function(require,module,exports){
 'use strict';
 
@@ -235,12 +275,13 @@ var FirstChild_A = React.createClass({
 });
 
 */
-var TopNavBar = React.createClass({displayName: 'TopNavBar',
+
+var Signup = React.createClass({displayName: 'Signup',
 
   render: function(){
 
     return (
-	  React.createElement("div", {className: "topNavBar"}, 
+	  React.createElement("div", {className: "signup"}, 
 	      React.createElement("div", {className: "modal fade", id: "basicModal", tabindex: "-1", role: "dialog", 
 			    'aria-labelledby': "basicModal", 'aria-hidden': "true"}, 
 				React.createElement("div", {className: "modal-dialog"}, 
@@ -461,34 +502,10 @@ var TopNavBar = React.createClass({displayName: 'TopNavBar',
 );*/
 
 
-/*var Footer = React.createClass({
-render: function(){
 
-  return (
- 
-	<footer className='container'>
-	  <div className='row'>
-		<ul className='breadcrumb'>
-		  <li><a href='#'>About us</a></li>
-		  <li><a href='#'>Legal</a></li>
-		  <li><a href='#'>F.A.Q.</a></li>
-		  <li><a href='#'>Developers</a></li>
-		  <li><a href='#'>Ads/Sponsorship</a></li>
-		  <li><a href='#'>Contact</a></li>
-		</ul>
-	  </div>
-	</footer>
- 
-  );
-
-
-}
-});
-*/
-
-module.exports = TopNavBar;
+module.exports = Signup
 },{"./../Footer/Footer.js":2,"./signup-phones.css":6,"./signup.css":7}],9:[function(require,module,exports){
-var css = ".top-nav{\r\n\r\n  width: 98%;\r\n  display: block;\r\n  margin-left: auto;\r\n  margin-right:auto;\r\n  background: white;\r\n  \r\n}\r\n\r\n.tabs:active{\r\n\t\r\n\tcolor: tomato;\r\n\tbox-shadow: inset 0px -5px blue;\r\n    -webkit-transition: all 0.15s linear;\r\n\ttransition: all 0.15s linear;\r\n\t\r\n}\r\n\r\n.tabs:focus{\r\n\tcolor: tomato;\r\n\tbox-shadow: inset 0px -5px tomato;\r\n\r\n}\r\n\r\n\r\n.navbar{\r\n  background: white;\r\n  border: none;\r\n}\r\n\r\n.search{\r\n\r\n  border: none;\r\n  outline: none;\r\n  box-shadow: 0 0 0 0 white;\r\n  \r\n}\r\n\r\n.search-gl{\r\n  background: white;\r\n  border:none;\r\n  outline: none;\r\n}\r\n\r\n.search-box{\r\n\r\n  overflow:hidden; \r\n \r\n}"; (require("C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify"))(css); module.exports = css;
+var css = ".top-nav{\r\n\r\n  width: 98%;\r\n  display: block;\r\n  margin-left: auto;\r\n  margin-right:auto;\r\n  background: white;\r\n  \r\n}\r\n\r\n.top-nav .tabs:active{\r\n\t\r\n\tcolor: tomato;\r\n\tbox-shadow: inset 0px -5px blue;\r\n    -webkit-transition: all 0.15s linear;\r\n\ttransition: all 0.15s linear;\r\n\t\r\n}\r\n\r\n.top-nav .tabs:focus{\r\n\tcolor: tomato;\r\n\tbox-shadow: inset 0px -5px tomato;\r\n\r\n}\r\n\r\n.top-nav .top-logo-holder{\r\n  width: 50px;\r\n  height:50px;\r\n  \r\n}\r\n\r\n.top-nav .navbar{\r\n  background: white;\r\n  border: none;\r\n}\r\n\r\n.top-nav .search{\r\n\r\n  border: none;\r\n  outline: none;\r\n  box-shadow: 0 0 0 0 white;\r\n  \r\n}\r\n\r\n.top-nav .search-gl{\r\n  background: white;\r\n  border:none;\r\n  outline: none;\r\n}\r\n\r\n.top-nav .search-box{\r\n\r\n  overflow:hidden; \r\n \r\n}"; (require("C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify"))(css); module.exports = css;
 },{"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify":25}],10:[function(require,module,exports){
 'use strict';
 
@@ -584,15 +601,14 @@ var TopNav = React.createClass({displayName: 'TopNav',
 
 module.exports = TopNav;
 },{"./TopNav.css":9}],11:[function(require,module,exports){
-var css = "\r\n\r\n\r\n\r\n.row{\r\n\r\n  //border: solid black 2px;\r\n  \r\n}\r\n\r\n\r\n.tomato-button{\r\n\r\n  border-radius: 15px;\r\n  background: white;\r\n  border: tomato 2px solid;\r\n  color: tomato;\r\n  \r\n}\r\n\r\n\r\n.sort{\r\n\r\n  padding-left: 15px;\r\n  padding-right: 15px;\r\n  \r\n}\r\n\r\n.sorter{\r\n\r\n  position:relative;\r\n  display:block;\r\n  width:100%;\r\n  height:1.5em;\r\n  \r\n}\r\n\r\n.sorter div{\r\n  position:absolute;\r\n  right: 2.5em;\r\n}\r\n\r\n\r\n.masonry-row{\r\n  position:relative;\r\n  top:2em;\r\n}\r\n\r\n\r\n.list{\r\n  \r\n  width:100%;\r\n  margin:0;\r\n  padding:0;\r\n  margin-bottom: 3em;\r\n  \r\n}\r\n\r\n.browse-images{\r\n  position: relative;\r\n  text-align:right;\r\n  list-style:none;\r\n  width: 100%;\r\n  margin:0;\r\n  padding:0;\r\n  margin-top:5px;\r\n}\r\n\r\n\r\n\t\t  \r\n.notfocused{\r\n \r\n  color:slategray;\r\n  cursor:pointer;\r\n  -webkit-transition: color .4s ease;\r\n          transition: color .4s ease;\r\n}\r\n\r\n.focused{\r\n  \r\n  cursor:pointer;\r\n  color:tomato;\r\n  \r\n  text-decoration:none;\r\n    -webkit-transition: color .4s linear;\r\n          transition: color .4s linear;\r\n}\r\n\r\n\r\n.browse-categories-dt{\r\n  position:relative;\r\n  top:2em;\r\n}\r\n\r\n.browse-sort{\r\n\r\n  position:relative;\r\n\r\n}\r\n\r\n\r\n.browse-categories{\r\n\r\n  display: none;\r\n\r\n}\r\n\r\n"; (require("C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify"))(css); module.exports = css;
+var css = ".browseCollections .tomato-button{\r\n\r\n  border-radius: 15px;\r\n  background: white;\r\n  border: tomato 2px solid;\r\n  color: tomato;\r\n  \r\n}\r\n\r\n.browseCollections .sort{\r\n  padding-left: 15px;\r\n  padding-right: 15px;\r\n  \r\n}\r\n\r\n.browseCollections .sorter{\r\n\r\n  position:relative;\r\n  display:block;\r\n  width:100%;\r\n  height:1.5em;\r\n  \r\n}\r\n\r\n.browseCollections .sorter div{\r\n  position:absolute;\r\n  right: 2.5em;\r\n}\r\n\r\n.browseCollections .list{\r\n  \r\n  width:100%;\r\n  margin:0;\r\n  padding:0;\r\n  margin-bottom: 3em;\r\n  \r\n}\r\n\r\n.browseCollections .browse-images{\r\n  position: relative;\r\n  text-align:right;\r\n  list-style:none;\r\n  width: 100%;\r\n  margin:0;\r\n  padding:0;\r\n  margin-top:5px;\r\n}\r\n\r\n\r\n\t\t  \r\n.browseCollections .notfocused{ \r\n  color:slategray;\r\n  cursor:pointer;\r\n  -webkit-transition: color .4s ease;\r\n          transition: color .4s ease;\r\n}\r\n\r\n.browseCollections .focused{\r\n  cursor:pointer;\r\n  color:tomato;\r\n  text-decoration:none;\r\n  -webkit-transition: color .4s linear;\r\n          transition: color .4s linear;\r\n}\r\n\r\n\r\n.browse-categories-dt{\r\n  position:relative;\r\n  top:2em;\r\n}\r\n\r\n.browse-sort{\r\n  position:relative;\r\n}\r\n\r\n\r\n.browse-categories{\r\n  display: none;\r\n}\r\n"; (require("C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify"))(css); module.exports = css;
 },{"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify":25}],12:[function(require,module,exports){
 'use strict'
 
 
 //js
-var Actions = require('./../../actions/actions.js'),
-    TopNav = React.createFactory(require('./../TopNav/TopNav.js')),
-    Masonry = require('./../masonry/masonry.js');
+  var TopNav = React.createFactory(require('./../TopNav/TopNav.js')),
+      Masonry = require('./../masonry/masonry.js');
 	
  
 //css
@@ -605,8 +621,6 @@ var BrowseCollections = React.createClass({displayName: 'BrowseCollections',
   
     return ({
 	  focusedOn: 0,
-	  images: ['images/honey.jpg','images/city.jpg', 'images/picasso.png','images/egon.jpg','images/dogs.png','images/egon_land.jpg','images/flowers_big.jpg', 'images/Logo_+_vector.png']
-
 	});
 	
   },
@@ -614,20 +628,11 @@ var BrowseCollections = React.createClass({displayName: 'BrowseCollections',
   getDefaultProps: function(){
   
     return {
-	  images: ['images/picasso.png','images/egon.jpg','images/dogs.png', 'images/egon_land.jpg', 'images/flowers_big.jpg','images/Logo_+_vector.png'],
 	  category: ['Categories', 'All Art', 'Applied Art', 'Digital Art', 'Original', 'Literature', 'Performing Art', 'Public Art', 'Music', 'Visual Art', 'Collage', 'Film/Video', 'Painting', 'Photography', 'Printmaking', 'Sculpture', 'Work on Paper', 'Work on Materials', 'Other Visual Art', 'Other Art'],
 	  sortingList: ['Recent', 'Most Curated', 'Most Viewed', 'Most Followed', 'Undiscovered', 'Oldest']
 	};
   
   },
-  
-  
-  componentWillMount: function(){
-  
-    var url = 'photos.json';
-    Actions.fetchUserPhotos(url);
-  
-  }, 
   
   handleClick: function(i,e){
         
@@ -639,7 +644,6 @@ var BrowseCollections = React.createClass({displayName: 'BrowseCollections',
 		newImages = ['images/picasso.png','images/egon.jpg','images/dogs.png', 'images/egon_land.jpg', 'images/flowers_big.jpg','images/Logo_+_vector.png'],
 		images = [],
 		url;			
-   
    
 	//can use flickr for dummy data
 	url = 'http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?';
@@ -661,6 +665,7 @@ var BrowseCollections = React.createClass({displayName: 'BrowseCollections',
 	    images:newImages,
 		focusedOn:i
 	  });
+	  
 	  	  
 	});
 
@@ -746,7 +751,7 @@ var BrowseCollections = React.createClass({displayName: 'BrowseCollections',
 				  )
 			    ), 
 			    React.createElement("div", {className: "col-xs-12 col-md-10"}, 
-			      React.createElement(Masonry, {data: this.props.data, images: this.state.images})
+			      React.createElement(Masonry, React.__spread({},   this.props))
 			    )
 		      )/*end row*/
 		    )		  
@@ -762,7 +767,7 @@ module.exports = BrowseCollections;
 
 
 
-},{"./../../actions/actions.js":1,"./../TopNav/TopNav.js":10,"./../masonry/masonry.js":19,"./BrowseCollections.css":11,"./phones.css":13}],13:[function(require,module,exports){
+},{"./../TopNav/TopNav.js":10,"./../masonry/masonry.js":19,"./BrowseCollections.css":11,"./phones.css":13}],13:[function(require,module,exports){
 var css = "@media (max-width:986px){\r\n\r\n.browse-categories{\r\n  display: block;\r\n  position:absolute;\r\n  right:11em;\r\n  z-index:9999;\r\n}\r\n\r\n.browse-categories  ul{\r\n\r\n  height:300px;\r\n  overflow:auto;\r\n\r\n}\r\n\r\n.browse-categories-dt{\r\n  display:none;\r\n}\r\n\r\n\r\n.notfocused{\r\n  text-align: left;\r\n  margin:1em; \r\n}\r\n\r\n.focused{\r\n  text-align:left;\r\n  margin:1em;\r\n}\r\n\r\n}"; (require("C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify"))(css); module.exports = css;
 },{"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify":25}],14:[function(require,module,exports){
 module.exports=require(3)
@@ -801,6 +806,7 @@ require('./main.css');
 
 
 //better to render to a container or to document.html?	
+
 /*React.render (
   <UserProfile></UserProfile>,
   document.getElementById('container')
@@ -858,16 +864,22 @@ var MyMarketplace = React.createClass({displayName: 'MyMarketplace',
 
 var App = React.createClass({displayName: 'App',
   
-  getInitialState: function(){
+  getDefaultProps: function(){
     return {data: store.store.data }
+  },
+  
+  componentDidMount: function() {
+  
+    var url = 'photos.json';
+    Actions.fetchUserPhotos(url);
+  
   },
   
   mixins: [Flux.mixins.storeListener],
   
   storeDidChange: function(Store){
-    alert(JSON.stringify(store.store.data));
-	
-	this.setState({ data: store.store.data });
+    //alert(JSON.stringify(store.store.data));
+	this.props.data = store.store.data;
   },
   
   render: function() {
@@ -881,7 +893,7 @@ var App = React.createClass({displayName: 'App',
 	    React.createElement(Link, {to: "footer"}, React.createElement("button", null, "footer")), 
 	    React.createElement(Link, {to: "masonry"}, React.createElement("button", null, "masonry")), 
  	    React.createElement("div", {className: "views"}, 
-		  React.createElement(RouteHandler, {data: this.state.data})
+		  React.createElement(RouteHandler, React.__spread({},   this.props.data))
 	    )
 	  )
 	);
@@ -917,7 +929,7 @@ Router.run(routes, Router.HistoryLocation, function (Handler,state) {
 
 
 },{"./../actions/actions.js":1,"./../dispatcher.js":22,"./../stores/store.js":23,"./Signup/signup.js":8,"./TopNav/TopNav.js":10,"./browse-collections/browse-collections.js":12,"./footer/footer.js":15,"./main.css":16,"./masonry/masonry.js":19,"./user-profile/user-profile.js":21,"delorean":36}],18:[function(require,module,exports){
-var css = "#transition-in{\r\n  transition: opacity .5s ease;\r\n  transition: transform .5s ease;\r\n  -webkit-transform: scale(1);\r\n  opacity: 1;\r\n   \r\n}\r\n#transition-out {\r\n  transition: opacity .5s ease;\r\n  transition: transform .5s ease;\r\n  -webkit-transform: scale(1) translateX(1000px);\r\n  opacity: .9;\r\n}\r\n\r\n#transition-middle {\r\n\r\n  transition: opacity: .1s ease;\r\n  transition: transform: .1s ease;\r\n  -webkit-transform: scale(0) translateX(0px);\r\n  opacity: .5;\r\n\r\n}\r\n\r\n@keyframes appear {\r\n  from {opacity: 0; transform: scale(.8);}\r\n  to {opacity: 1; transform: scale(1)}\r\n}\r\n\r\n@keyframes disappear {\r\n  from {opacity: 1; transform: scale(1);}\r\n  to {opacity: 0; transform: scale(.9) rotateX(0deg) translateZ(-1500px);}\r\n}\r\n\r\n.masonry-gallery{\r\n  perspective: 1500px;\r\n  overflow: hidden;\r\n}\r\n\r\n#short{\r\n  \r\n  width:120px;\r\n}\r\n\r\n#long{\r\n  width:180px;\r\n}\r\n\r\n.item{\r\n \r\n  width: 32%;\r\n  margin:.5%;  \r\n  \r\n}\r\n\r\n\r\n.item img{\r\n\r\n  box-shadow: 0 0 4px 1px rgba(10,30,10,0.4);\r\n\r\n}\r\n\r\n.masonry{\r\n\r\n  width:90%;\r\n  left:2.25em;\r\n  height:100%;\r\n  position:relative;\r\n  margin-top:2.25em;\r\n  margin-left:auto;\r\n  margin-right:auto;\r\n \r\n}\r\n\r\n@media (max-width:980px){\r\n.masonry{\r\n  left:0;\r\n}\r\n}\r\n\r\n.masonries{\r\n \r\n position:relative;\r\n  margin-left: auto;\r\n  margin-right:auto;\r\n  position:relative;\r\n  height:100%;\r\n  width: 100%;\r\n    \r\n}"; (require("C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify"))(css); module.exports = css;
+var css = "#transition-in{\r\n  transition: opacity 1s ease;\r\n  transition: transform .5s ease;\r\n  -webkit-transform: scale(1);\r\n  opacity: 1;\r\n   \r\n}\r\n#transition-out {\r\n  transition: opacity 1s ease;\r\n  transition: transform .5s ease;\r\n  -webkit-transform: scale(1) translateX(1000px);\r\n  opacity: .9;\r\n}\r\n\r\n#transition-middle {\r\n\r\n  transition: opacity: .1s ease;\r\n  transition: transform: .1s ease;\r\n  -webkit-transform: scale(0) translateX(0px);\r\n  opacity: .5;\r\n\r\n}\r\n\r\n@keyframes appear {\r\n  from {opacity: 0; transform: scale(.8);}\r\n  to {opacity: 1; transform: scale(1)}\r\n}\r\n\r\n@keyframes disappear {\r\n  from {opacity: 1; transform: scale(1);}\r\n  to {opacity: 0; transform: scale(.9) rotateX(0deg) translateZ(-1500px);}\r\n}\r\n\r\n.masonry-gallery{\r\n  perspective: 1500px;\r\n  overflow: hidden;\r\n}\r\n\r\n.masonries .item{ \r\n  width: 32%;\r\n  margin:.5%;  \r\n}\r\n\r\n.masonries .item img{\r\n  box-shadow: 0 0 4px 1px rgba(10,30,10,0.4);\r\n}\r\n\r\n.masonry{\r\n\r\n  width:90%;\r\n  left:2.25em;\r\n  height:100%;\r\n  position:relative;\r\n  margin-top:2.25em;\r\n  margin-left:auto;\r\n  margin-right:auto;\r\n \r\n}\r\n\r\n@media (max-width:980px){\r\n  .masonry{\r\n    left:0;\r\n  }\r\n}\r\n\r\n.masonries{\r\n \r\n  position:relative;\r\n  margin-left: auto;\r\n  margin-right:auto;\r\n  position:relative;\r\n  height:100%;\r\n  width: 100%;\r\n    \r\n}"; (require("C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify"))(css); module.exports = css;
 },{"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify":25}],19:[function(require,module,exports){
 'use strict';
 
@@ -926,100 +938,75 @@ var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup,
     MasonryLayout = require('masonry-layout'),
     imagesLoaded = require('imagesloaded');
 
+	
 //css
 require('./masonry.css');
 
 var Masonry = React.createClass({displayName: 'Masonry',
-
-  getDefaultProps: function(){
-  
-    return {
-	  images: ['images/picasso.png','images/egon.jpg','images/dogs.png', 'images/egon_land.jpg', 'images/flowers_big.jpg','images/Logo_+_vector.png']
-    }
-  },
-
-  getInitialState: function(){
-  
-    return ({images: ['images/honey.jpg', 'images/city.jpg', 'images/picasso.png','images/egon.jpg','images/dogs.png', 'images/egon_land.jpg', 'images/flowers_big.jpg','images/Logo_+_vector.png'],
-	clicked:false
-	});
-
-  }, 
-  
+ 
   componentDidMount: function(){
-   
-    var container = document.querySelector('.masonry');
-	var msnry;
+  
+    var container = document.querySelector('.masonry'),
+	  msnry;
     imagesLoaded( container, function(){
-	  
 	  msnry = new MasonryLayout( container, {
-	    //options
 	    itemSelector: '.item'
 	  });
-    
 	});
-	
   },
   
   componentDidUpdate: function(lastProps,lastState){
-    
-      var container = document.querySelector('.masonry');
-   
-	  var msnry;
-	
-      imagesLoaded( container, function(){
-	  
-	    msnry = new MasonryLayout( container, {
-	      //options
-	      itemSelector: '.item'
-	    });
-	     
-	    container.setAttribute('id','transition-out');
-      
-        setTimeout( function(){
-	      container.setAttribute('id','transition-middle');
-			
-	    },300);	  
-	 
-        setTimeout( function(){
-	      container.setAttribute('id','transition-in');
-	    },400);
-	
+    var container = document.querySelector('.masonry'),
+        msnry;
+    imagesLoaded( container, function(){
+	  msnry = new MasonryLayout( container, {
+	    itemSelector: '.item'
 	  });
-    
+	  container.setAttribute('id','transition-out');
+      setTimeout( function(){
+	    container.setAttribute('id','transition-middle');
+	  },500);	  
+	  setTimeout( function(){
+	    container.setAttribute('id','transition-in');
+	  },560);
+	
+	});
   },
+  
   render: function(){
-    var self=this;
-    var widths = ['short','long','short','long','short','long','short','long','short'];
-    var images = this.props.images.map( function(image,i) {
+    var self=this;  
+	
+	var images = this.props.userPhotos.photos.map( function(image,i) {
 	  return (
 	    React.createElement("div", null, 
 		  React.createElement("div", {ref: "images", className: "item"}, 
-		    React.createElement(ImageOverlay, {data: self.props.data}), 
-		    React.createElement("img", {key: "images", className: "img-responsive", src: image, alt: "picasso"})		    
+		    React.createElement(ImageOverlay, React.__spread({},   self.props)), 
+		    React.createElement("img", {key: "images", 
+			  className: "img-responsive", 
+			  src: image.photoAttributes[0].photoUrl, 
+			  alt: "photo"}
+			)		    
 		  )
 		)
 	  );
 	}.bind(this));
 	
     return (
-	 
 	  React.createElement("div", {className: "masonry-gallery"}, 
    	    React.createElement("div", {ref: "masonry", className: "masonry"}, 
 		  React.createElement("div", {key: "masonries", className: "masonries"}, 
-		      images	
+		    images	
 		  )
 	    )
 	  )
 	);
-  
   }
 
 });
 
 module.exports = Masonry;
 },{"./../ImageOverlay/ImageOverlay.js":4,"./masonry.css":18,"imagesloaded":40,"masonry-layout":43}],20:[function(require,module,exports){
-var css = ".user-profile .container{\r\n \r\n  width:100%;\r\n  \r\n\r\n}\r\n\r\n\r\n.user-profile-head{\r\n\r\n  height: 14em;\r\n  background: purple;\r\n  \r\n}\r\n\r\n.user-profile-head h1{\r\n\r\n  position: relative;\r\n  top:1.5em;\r\n  width:100%;\r\n  height:7em;\r\n  color: white;\r\n \r\n}\r\n\r\n.photo-circle{\r\n  position:relative;\r\n  top:1em;\r\n  border: solid #eee 4px;\r\n  box-shadow: 0 0 4px 1px white;\r\n  border-radius: 50%;\r\n  width: 3em;\r\n  height: 3em;\r\n  display:block;\r\n  overflow:hidden;\r\n  margin-left:auto;\r\n  margin-right:auto;\r\n  display:cover;\r\n  background: white;\r\n}\r\n\r\n.inner-circle{\r\n\r\n  position:absolute;\r\n  z-index:9999;\r\n  width:100%;\r\n  height:100%;\r\n  top: .75em;\r\n}\r\n\r\n.user-profile-bottom{\r\n\r\n  position:relative;\r\n  top:300px;\r\n  overflow:hidden;\r\n  background: #3a3a3a;\r\n  color:white;\r\n\r\n}\r\n\r\na:visited{\r\n  color: black;\r\n}\r\n\r\n.user-profile-forms{\r\n\r\n  width: 80%;\r\n  top:1em;\r\n\r\n}\r\n\r\n/*make width wider on wider screens*/\r\n\r\n.user-profile-forms article{\r\n  top:2em;\r\n  left:0; \r\n  width:90%;\r\n  height: 270px;\r\n \r\n}\r\n\r\narticle p{\r\n  margin-top:1em;\r\n}\r\n\r\narticle .btn-group{\r\n\r\n  margin-left:5em;\r\n  margin-right:5em;\r\n\r\n}\r\n\r\n.dropdown-toggle{\r\n  background:tomato;\r\n  color:white;\r\n}\r\n\r\n.button-wrapper{\r\n  position:relative;\r\n  top:1em;\r\n  width:100%;\r\n}\r\n\r\n.user-profile-logo-bottom{\r\n\r\n  width:200px;\r\n \r\n}\r\n\r\n.user-profile-top-logo{\r\n\r\n  width:3em;\r\n\r\n}\r\n\r\n.user-profile-search{\r\n  padding-top:.5em;\r\n}\r\n\r\n.top-logo-holder{\r\n  width: 50px;\r\n  height:50px;\r\n  \r\n}\r\n\r\n.article{\r\n  position: relative;\r\n  width:400px;\r\n  border: solid pink 1px;\r\n}\r\n\r\n\r\n\r\n.top-drop, .top-drop:active{\r\n\r\n  background: inherit;\r\n   \r\n}\r\n\r\n.top-drop:hover{\r\n  background: #d1ccca;\r\n}\r\n\r\n.footer{\r\n\r\n  color:white;\r\n  position:relative;\r\n \r\n}\r\n\r\n/*\r\n * jQuery File Upload Plugin CSS 1.3.0\r\n * https://github.com/blueimp/jQuery-File-Upload\r\n *\r\n * Copyright 2013, Sebastian Tschan\r\n * https://blueimp.net\r\n *\r\n * Licensed under the MIT license:\r\n * http://www.opensource.org/licenses/MIT\r\n */\r\n\r\n.fileinput-button {\r\n  position: relative;\r\n  overflow: hidden;\r\n}\r\n.fileinput-button input {\r\n  position: absolute;\r\n  top: 0;\r\n  right: 0;\r\n  margin: 0;\r\n  opacity: 0;\r\n  -ms-filter: 'alpha(opacity=0)';\r\n  font-size: 200px;\r\n  direction: ltr;\r\n  cursor: pointer;\r\n}\r\n\r\n/* Fixes for IE < 8 */\r\n@media screen\\9 {\r\n  .fileinput-button input {\r\n    filter: alpha(opacity=0);\r\n    font-size: 100%;\r\n    height: 100%;\r\n  }\r\n}\r\n"; (require("C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify"))(css); module.exports = css;
+var css = "\r\n\r\n.user-profile .container{\r\n  width:100%;\r\n}\r\n\r\n.user-profile-head{\r\n  height: 14em;\r\n  background: purple;\r\n}\r\n\r\n.user-profile-head h1{\r\n\r\n  position: relative;\r\n  top:1.5em;\r\n  width:100%;\r\n  height:7em;\r\n  color: white;\r\n \r\n}\r\n\r\n.user-profile .photo-circle{\r\n  position:relative;\r\n  top:1em;\r\n  border: solid #eee 4px;\r\n  box-shadow: 0 0 4px 1px white;\r\n  border-radius: 50%;\r\n  width: 3em;\r\n  height: 3em;\r\n  display:block;\r\n  overflow:hidden;\r\n  margin-left:auto;\r\n  margin-right:auto;\r\n  display:cover;\r\n  background: white;\r\n}\r\n\r\n.user-profile .inner-circle{\r\n  position:absolute;\r\n  z-index:9999;\r\n  width:100%;\r\n  height:100%;\r\n  top: .75em;\r\n}\r\n\r\n.user-profile-bottom{\r\n  position:relative;\r\n  top:300px;\r\n  overflow:hidden;\r\n  background: #3a3a3a;\r\n  color:white;\r\n}\r\n\r\n.user-profile a:visited{\r\n  color: black;\r\n}\r\n\r\n.user-profile-forms{\r\n\r\n  width: 80%;\r\n  top:1em;\r\n\r\n}\r\n\r\n/*make width wider on wider screens*/\r\n\r\n.user-profile-forms article{\r\n  top:2em;\r\n  left:0; \r\n  width:90%;\r\n  height: 270px;\r\n \r\n}\r\n\r\n.user-profile article p{\r\n  margin-top:1em;\r\n}\r\n\r\n.user-profile article .btn-group{\r\n\r\n  margin-left:5em;\r\n  margin-right:5em;\r\n\r\n}\r\n\r\n.user-profile .dropdown-toggle{\r\n\r\n}\r\n\r\n.user-profile .button-wrapper{\r\n  position:relative;\r\n  top:1em;\r\n  width:100%;\r\n}\r\n\r\n\r\n\r\n.user-profile .article{\r\n  position: relative;\r\n  width:400px;\r\n  border: solid pink 1px;\r\n}\r\n\r\n\r\n\r\n.user-profile .top-drop, .user-profile .top-drop:active{\r\n\r\n  background: inherit;\r\n   \r\n}\r\n\r\n.user-profile .top-drop:hover{\r\n  background: #d1ccca;\r\n}\r\n\r\n/*\r\n * jQuery File Upload Plugin CSS 1.3.0\r\n * https://github.com/blueimp/jQuery-File-Upload\r\n *\r\n * Copyright 2013, Sebastian Tschan\r\n * https://blueimp.net\r\n *\r\n * Licensed under the MIT license:\r\n * http://www.opensource.org/licenses/MIT\r\n */\r\n\r\n.fileinput-button {\r\n  position: relative;\r\n  overflow: hidden;\r\n}\r\n.fileinput-button input {\r\n  position: absolute;\r\n  top: 0;\r\n  right: 0;\r\n  margin: 0;\r\n  opacity: 0;\r\n  -ms-filter: 'alpha(opacity=0)';\r\n  font-size: 200px;\r\n  direction: ltr;\r\n  cursor: pointer;\r\n}\r\n\r\n/* Fixes for IE < 8 */\r\n@media screen\\9 {\r\n  .fileinput-button input {\r\n    filter: alpha(opacity=0);\r\n    font-size: 100%;\r\n    height: 100%;\r\n  }\r\n}\r\n"; (require("C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify"))(css); module.exports = css;
 },{"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify":25}],21:[function(require,module,exports){
 'use strict'
 
@@ -1115,6 +1102,7 @@ var UserProfile = React.createClass({displayName: 'UserProfile',
 	    form = this.refs.form.getDOMNode();
 	$(modal).find('.modal-body').html('<p>' + $('form').serializeObject() + '</p>');
 	$(modal).modal('show');
+	alert(JSON.stringify($(form).serializeObject()));
 	Actions.setUserProfile(
 	  JSON.stringify($(form).serializeObject())
 	);
@@ -1482,7 +1470,7 @@ var Dispatcher = Flux.createDispatcher({
     this.dispatch('setUserProfile', data);
   },
   fetchUserPhotos: function (data) {
-    this.dispatch('fetchUserPhotos', data[0].photos[0].photoAttributes);
+    this.dispatch('fetchUserPhotos', data[0].photos);
   },
   getStores: function () {
     return {increment: store};
@@ -1501,7 +1489,28 @@ var Store = Flux.createStore({
   
     signedIn: false,
     
-	userProfile: 'user profile',
+	userProfile: [{
+	
+	  username: "username",
+	  artfactumUrl: null,
+	  livingIn: 'country',
+	  spokenLanguages: [],
+	  artisticDisciplines: [],
+	  favoriteArtStyles: [],
+	  featuredInterests: [],
+	  influences: [],
+	  artisticCV: null,
+	  profile: 'artist', //either artist or art lover
+      bornIn: 'country',
+      birthDate: null,
+      socialConnections: {
+	    facebook: false,
+		twitter: false,
+		googlePlus: false
+	  },
+	  following: ['artist']
+	  
+	}],
     
 	//photo model
 	photoAttributes: [{
@@ -1553,7 +1562,7 @@ var Store = Flux.createStore({
   },
   
   fetchUserPhotos: function(data){
-	this.data.photoAttributes = data;
+	this.data.userPhotos.photos = data;
 	this.emit('change');
   },
   

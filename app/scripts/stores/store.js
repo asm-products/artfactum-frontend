@@ -9,7 +9,28 @@ var Store = Flux.createStore({
   
     signedIn: false,
     
-	userProfile: 'user profile',
+	userProfile: [{
+	
+	  username: "username",
+	  artfactumUrl: null,
+	  livingIn: 'country',
+	  spokenLanguages: [],
+	  artisticDisciplines: [],
+	  favoriteArtStyles: [],
+	  featuredInterests: [],
+	  influences: [],
+	  artisticCV: null,
+	  profile: 'artist', //either artist or art lover
+      bornIn: 'country',
+      birthDate: null,
+      socialConnections: {
+	    facebook: false,
+		twitter: false,
+		googlePlus: false
+	  },
+	  following: ['artist']
+	  
+	}],
     
 	//photo model
 	photoAttributes: [{
@@ -61,7 +82,7 @@ var Store = Flux.createStore({
   },
   
   fetchUserPhotos: function(data){
-	this.data.photoAttributes = data;
+	this.data.userPhotos.photos = data;
 	this.emit('change');
   },
   

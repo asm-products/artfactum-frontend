@@ -2,9 +2,8 @@
 
 
 //js
-var Actions = require('./../../actions/actions.js'),
-    TopNav = React.createFactory(require('./../TopNav/TopNav.js')),
-    Masonry = require('./../masonry/masonry.js');
+  var TopNav = React.createFactory(require('./../TopNav/TopNav.js')),
+      Masonry = require('./../masonry/masonry.js');
 	
  
 //css
@@ -17,8 +16,6 @@ var BrowseCollections = React.createClass({
   
     return ({
 	  focusedOn: 0,
-	  images: ['images/honey.jpg','images/city.jpg', 'images/picasso.png','images/egon.jpg','images/dogs.png','images/egon_land.jpg','images/flowers_big.jpg', 'images/Logo_+_vector.png']
-
 	});
 	
   },
@@ -26,20 +23,11 @@ var BrowseCollections = React.createClass({
   getDefaultProps: function(){
   
     return {
-	  images: ['images/picasso.png','images/egon.jpg','images/dogs.png', 'images/egon_land.jpg', 'images/flowers_big.jpg','images/Logo_+_vector.png'],
 	  category: ['Categories', 'All Art', 'Applied Art', 'Digital Art', 'Original', 'Literature', 'Performing Art', 'Public Art', 'Music', 'Visual Art', 'Collage', 'Film/Video', 'Painting', 'Photography', 'Printmaking', 'Sculpture', 'Work on Paper', 'Work on Materials', 'Other Visual Art', 'Other Art'],
 	  sortingList: ['Recent', 'Most Curated', 'Most Viewed', 'Most Followed', 'Undiscovered', 'Oldest']
 	};
   
   },
-  
-  
-  componentWillMount: function(){
-  
-    var url = 'photos.json';
-    Actions.fetchUserPhotos(url);
-  
-  }, 
   
   handleClick: function(i,e){
         
@@ -51,7 +39,6 @@ var BrowseCollections = React.createClass({
 		newImages = ['images/picasso.png','images/egon.jpg','images/dogs.png', 'images/egon_land.jpg', 'images/flowers_big.jpg','images/Logo_+_vector.png'],
 		images = [],
 		url;			
-   
    
 	//can use flickr for dummy data
 	url = 'http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?';
@@ -73,6 +60,7 @@ var BrowseCollections = React.createClass({
 	    images:newImages,
 		focusedOn:i
 	  });
+	  
 	  	  
 	});
 
@@ -158,7 +146,7 @@ var BrowseCollections = React.createClass({
 				  </ul>
 			    </div>
 			    <div className='col-xs-12 col-md-10'>
-			      <Masonry data={this.props.data} images={this.state.images}></Masonry>
+			      <Masonry {... this.props}></Masonry>
 			    </div> 
 		      </div>{/*end row*/}
 		    </div>		  

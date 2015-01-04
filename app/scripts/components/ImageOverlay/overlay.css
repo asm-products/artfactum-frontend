@@ -25,7 +25,7 @@ opacity:0.99;
 
 }
 
-.overlaySection{
+.overlayWrapper{
 
   position:relative;
   width: 100%;
@@ -34,7 +34,7 @@ opacity:0.99;
 
 }
 
-.overlaySection .container{
+.overlayWrapper .container{
 
   margin:12px 18px 12px 0;
   position:relative;
@@ -42,8 +42,7 @@ opacity:0.99;
 
 }
 
-
-.description{
+.overlay .description{
   
   text-align: justify;
   font-size: 0.8em;
@@ -53,11 +52,11 @@ opacity:0.99;
  
 }
 
-.btn-group-justified{
+.overlay .btn-group-justified{
  width:100%;
 }
 
-.btn-group-justified .btn{
+.overlay .btn-group-justified .btn{
   color:white;
   width:20%;
   border: none;
@@ -65,22 +64,27 @@ opacity:0.99;
   background: inherit;
 }
 
-.glyphicon:hover{
+.overlay .glyphicon:hover{
   color: #e56e5c;
 }
 
-.glyphicon:active{
+.overlay .glyphicon:active{
   -webkit-transform: scale(1.3);
           transform: scale(1.3);
   -webkit-transition: -webkit-transform .5s liner;
           transition: -webkit-transform .5s liner;
-
-
 }
 
-.btn small{
+.overlay .btn small{
   color: white;
   font-size:9px;
 }
 
 
+.overlay  .follow{
+  color: white;
+}
+
+.overlay .Unfollow{
+  color: orange;
+}

@@ -1,15 +1,4 @@
-
-
-
-
-.row{
-
-  //border: solid black 2px;
-  
-}
-
-
-.tomato-button{
+.browseCollections .tomato-button{
 
   border-radius: 15px;
   background: white;
@@ -18,15 +7,13 @@
   
 }
 
-
-.sort{
-
+.browseCollections .sort{
   padding-left: 15px;
   padding-right: 15px;
   
 }
 
-.sorter{
+.browseCollections .sorter{
 
   position:relative;
   display:block;
@@ -35,19 +22,12 @@
   
 }
 
-.sorter div{
+.browseCollections .sorter div{
   position:absolute;
   right: 2.5em;
 }
 
-
-.masonry-row{
-  position:relative;
-  top:2em;
-}
-
-
-.list{
+.browseCollections .list{
   
   width:100%;
   margin:0;
@@ -56,7 +36,7 @@
   
 }
 
-.browse-images{
+.browseCollections .browse-images{
   position: relative;
   text-align:right;
   list-style:none;
@@ -68,21 +48,18 @@
 
 
 		  
-.notfocused{
- 
+.browseCollections .notfocused{ 
   color:slategray;
   cursor:pointer;
   -webkit-transition: color .4s ease;
           transition: color .4s ease;
 }
 
-.focused{
-  
+.browseCollections .focused{
   cursor:pointer;
   color:tomato;
-  
   text-decoration:none;
-    -webkit-transition: color .4s linear;
+  -webkit-transition: color .4s linear;
           transition: color .4s linear;
 }
 
@@ -93,15 +70,10 @@
 }
 
 .browse-sort{
-
   position:relative;
-
 }
 
 
 .browse-categories{
-
   display: none;
-
 }
-

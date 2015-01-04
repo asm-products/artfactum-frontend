@@ -2,6 +2,10 @@
   background: black;
 }
 
+.af-footer .logo{
+  width:200px
+}
+
 .af-footer a,li{
   color: white;
 }

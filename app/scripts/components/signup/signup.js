@@ -87,12 +87,13 @@ var FirstChild_A = React.createClass({
 });
 
 */
-var TopNavBar = React.createClass({
+
+var Signup = React.createClass({
 
   render: function(){
 
     return (
-	  <div className='topNavBar'>
+	  <div className='signup'>
 	      <div className='modal fade' id='basicModal' tabindex='-1' role='dialog' 
 			    aria-labelledby='basicModal' aria-hidden='true'>
 				<div className='modal-dialog'>
@@ -313,29 +314,5 @@ var TopNavBar = React.createClass({
 );*/
 
 
-/*var Footer = React.createClass({
-render: function(){
 
-  return (
- 
-	<footer className='container'>
-	  <div className='row'>
-		<ul className='breadcrumb'>
-		  <li><a href='#'>About us</a></li>
-		  <li><a href='#'>Legal</a></li>
-		  <li><a href='#'>F.A.Q.</a></li>
-		  <li><a href='#'>Developers</a></li>
-		  <li><a href='#'>Ads/Sponsorship</a></li>
-		  <li><a href='#'>Contact</a></li>
-		</ul>
-	  </div>
-	</footer>
- 
-  );
-
-
-}
-});
-*/
-
-module.exports = TopNavBar;
+module.exports = Signup
