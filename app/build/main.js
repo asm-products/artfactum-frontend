@@ -1022,8 +1022,7 @@ var UserProfile = React.createClass({displayName: 'UserProfile',
     return (
 	 
       React.createElement("div", {className: "user-profile"}, 	  
-	   
-		React.createElement(TopNav, null), 
+	   React.createElement(TopNav, null), 
 		    React.createElement("div", {className: "modal fade", ref: "modal", id: "basicModal", tabindex: "-1", role: "dialog", 
 			    'aria-labelledby': "basicModal", 'aria-hidden': "true"}, 
 				React.createElement("div", {className: "modal-dialog"}, 
@@ -1395,29 +1394,33 @@ var Store = Flux.createStore({
   
     signedIn: false,
     
-	userProfile: {
+	scheme: {
 	
-	  username: "username",
-	  artfactumUrl: null,
-	  livingIn: 'country',
-	  spokenLanguages: [],
-	  artisticDisciplines: [],
-	  favoriteArtStyles: [],
-	  featuredInterests: [],
-	  influences: [],
-	  artisticCV: null,
-	  profile: 'artist', //either artist or art lover
-      bornIn: 'country',
-      birthDate: null,
-      socialConnections: {
-	    facebook: false,
-		twitter: false,
-		googlePlus: false
-	  },
-	  following: ['artist']
+	  userProfile: {
+	
+	    username: "username",
+	    artfactumUrl: null,
+	    livingIn: 'country',
+	    spokenLanguages: [],
+	    artisticDisciplines: [],
+	    favoriteArtStyles: [],
+	    featuredInterests: [],
+	    influences: [],
+	    artisticCV: null,
+	    profile: 'artist', //either artist or art lover
+        bornIn: 'country',
+        birthDate: null,
+        socialConnections: {
+	      facebook: false,
+		  twitter: false,
+		  googlePlus: false
+	    },
+	    following: ['artist']
 	  
-	},
+	  },
     
+	},
+	
 	//photo model
 	photoAttributes: {
 	

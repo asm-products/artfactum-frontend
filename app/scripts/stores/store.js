@@ -9,29 +9,33 @@ var Store = Flux.createStore({
   
     signedIn: false,
     
-	userProfile: {
+	scheme: {
 	
-	  username: "username",
-	  artfactumUrl: null,
-	  livingIn: 'country',
-	  spokenLanguages: [],
-	  artisticDisciplines: [],
-	  favoriteArtStyles: [],
-	  featuredInterests: [],
-	  influences: [],
-	  artisticCV: null,
-	  profile: 'artist', //either artist or art lover
-      bornIn: 'country',
-      birthDate: null,
-      socialConnections: {
-	    facebook: false,
-		twitter: false,
-		googlePlus: false
-	  },
-	  following: ['artist']
+	  userProfile: {
+	
+	    username: "username",
+	    artfactumUrl: null,
+	    livingIn: 'country',
+	    spokenLanguages: [],
+	    artisticDisciplines: [],
+	    favoriteArtStyles: [],
+	    featuredInterests: [],
+	    influences: [],
+	    artisticCV: null,
+	    profile: 'artist', //either artist or art lover
+        bornIn: 'country',
+        birthDate: null,
+        socialConnections: {
+	      facebook: false,
+		  twitter: false,
+		  googlePlus: false
+	    },
+	    following: ['artist']
 	  
-	},
+	  },
     
+	},
+	
 	//photo model
 	photoAttributes: {
 	
