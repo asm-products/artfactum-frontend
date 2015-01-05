@@ -9,7 +9,7 @@ var Store = Flux.createStore({
   
     signedIn: false,
     
-	userProfile: [{
+	userProfile: {
 	
 	  username: "username",
 	  artfactumUrl: null,
@@ -30,10 +30,10 @@ var Store = Flux.createStore({
 	  },
 	  following: ['artist']
 	  
-	}],
+	},
     
 	//photo model
-	photoAttributes: [{
+	photoAttributes: {
 	
 	  id: null,
 	  photoUrl: null,
@@ -49,7 +49,7 @@ var Store = Flux.createStore({
 	  category: ['Art'],
 	  trendingTags: []
 	
-	}],
+	},
 	
 	userPhotos: {
 	

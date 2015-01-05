@@ -112,6 +112,7 @@ var Signup = React.createClass({
 				      <img src='images/egon_land.jpg' />
 				    </figure>
 				  </div>{/*end row*/}
+
 				  
 				  <div className='fair-heading row col-xs-12 text-center'> 
 				    <h2 id='underline' ><b>And above all, fair</b></h2>

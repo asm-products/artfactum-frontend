@@ -85,21 +85,21 @@ require('./overlay.css');
 
 var ImageOverlay = React.createClass({displayName: 'ImageOverlay',
 
+  isFollowing: 'follow',
+  
   getInitialState: function(){
-  
-    return ({isFollowing: 'Follow'});
-  
-  },
-
-  componentDidMount: function(){
-  
-    //match artist user if following with owner/artist name in photo attributes
-	var following = this.props.userProfile[0].following;
-	var owner = this.props.photoAttributes[0].ownerName;
-	this.state.isFollowing = following === owner ? 'Unfollow' : 'Follow';
     
+    //match artist user if following with owner/artist name in photo attributes
+	var following = this.props.userProfile.following;
+	var owner = this.props.photoAttributes.ownerName;
+	var toFollow = following == owner ? 'Unfollow' : 'Follow'
+	  
+	return ({
+	  isFollowing: toFollow
+	});
+	
   },
-
+  
   handleFollowClick: function(){
   
     var elem = this.refs.follow.getDOMNode();
@@ -117,28 +117,29 @@ var ImageOverlay = React.createClass({displayName: 'ImageOverlay',
   },
 
   render: function(){
-    var self = this;
+    
+	var self = this;
 	
 	var followClasses = this.state.isFollowing + ' glyphicon' + ' glyphicon-user';
 	
-	var overlay = this.props.photoAttributes.map( function(item,i) {
-      return (
-	    React.createElement("div", {key: i, className: "overlayWrapper"}, 
+	  return (
+	  React.createElement("div", {className: "overlay"}, 
+	    React.createElement("div", {className: "overlayWrapper"}, 
 		  React.createElement("div", {className: "container"}, 
 		    React.createElement("div", {className: "row"}, 
               React.createElement("div", {className: "col-xs-4 pull-left"}, 
 			    React.createElement("dl", null, 
-				  React.createElement("dt", null, React.createElement("b", null, item.title)), 
-                  React.createElement("dd", null, React.createElement("small", null, item.ownerName))
+				  React.createElement("dt", null, React.createElement("b", null, this.props.photoAttributes.title)), 
+                  React.createElement("dd", null, React.createElement("small", null, this.props.photoAttributes.ownerName))
 				)
               ), 
               React.createElement("div", {className: "col-xs-4 pull-right text-right"}, 
-                React.createElement("div", null, React.createElement("small", null, item.category))
+                React.createElement("div", null, React.createElement("small", null, this.props.photoAttributes.category))
 			  )
 		    ), /*end 1st row*/
 			React.createElement("div", {className: "row"}, 
 			  React.createElement("div", {className: "description"}, 
-			    item.description
+			    this.props.photoAttributes.description
 			  )
 			), /*end 2nd row*/
 			React.createElement("div", {className: "row"}, 
@@ -152,7 +153,7 @@ var ImageOverlay = React.createClass({displayName: 'ImageOverlay',
                   React.createElement("div", null, React.createElement("small", null, "Curate"))
                 ), 
 				React.createElement("button", {type: "button", className: "btn btn-default btn-md"}, 
-				  React.createElement("div", {className: "circle"}, React.createElement("small", null, item.curatedIncrement)), 
+				  React.createElement("div", {className: "circle"}, React.createElement("small", null, this.props.photoAttributes.curatedIncrement)), 
 			      React.createElement("div", null, React.createElement("small", null, "Curated"))
                 ), 
 				React.createElement("button", {type: "button", className: "btn btn-default btn-md"}, 
@@ -167,13 +168,10 @@ var ImageOverlay = React.createClass({displayName: 'ImageOverlay',
 			)/*end 3rd row*/
 	      )
 		)
+	  )
 	  );
-	});
 	
-	return (
-	  React.createElement("div", {className: "overlay"}, overlay)
-	);
-  
+	
   }
 
 });
@@ -300,6 +298,7 @@ var Signup = React.createClass({displayName: 'Signup',
 				      React.createElement("img", {src: "images/egon_land.jpg"})
 				    )
 				  ), /*end row*/
+
 				  
 				  React.createElement("div", {className: "fair-heading row col-xs-12 text-center"}, 
 				    React.createElement("h2", {id: "underline"}, React.createElement("b", null, "And above all, fair")), 
@@ -774,7 +773,7 @@ var App = React.createClass({displayName: 'App',
     return {data: store.store.data }
   },
   
-  componentDidMount: function() {
+  componentWillMount: function() {
   
     var url = 'photos.json';
     Actions.fetchUserPhotos(url);
@@ -886,15 +885,16 @@ var Masonry = React.createClass({displayName: 'Masonry',
 	  return (
 	    React.createElement("div", null, 
 		  React.createElement("div", {ref: "images", className: "item"}, 
-		    React.createElement(ImageOverlay, React.__spread({},   self.props)), 
+		    React.createElement(ImageOverlay, {userProfile: this.props.userProfile, photoAttributes: image.photoAttributes}), 
 		    React.createElement("img", {key: "images", 
 			  className: "img-responsive", 
-			  src: image.photoAttributes[0].photoUrl, 
+			  src: image.photoAttributes.photoUrl, 
 			  alt: "photo"}
 			)		    
 		  )
 		)
 	  );
+	  
 	}.bind(this));
 	
     return (
@@ -1022,7 +1022,7 @@ var UserProfile = React.createClass({displayName: 'UserProfile',
     return (
 	 
       React.createElement("div", {className: "user-profile"}, 	  
-	    
+	   
 		React.createElement(TopNav, null), 
 		    React.createElement("div", {className: "modal fade", ref: "modal", id: "basicModal", tabindex: "-1", role: "dialog", 
 			    'aria-labelledby': "basicModal", 'aria-hidden': "true"}, 
@@ -1395,7 +1395,7 @@ var Store = Flux.createStore({
   
     signedIn: false,
     
-	userProfile: [{
+	userProfile: {
 	
 	  username: "username",
 	  artfactumUrl: null,
@@ -1416,10 +1416,10 @@ var Store = Flux.createStore({
 	  },
 	  following: ['artist']
 	  
-	}],
+	},
     
 	//photo model
-	photoAttributes: [{
+	photoAttributes: {
 	
 	  id: null,
 	  photoUrl: null,
@@ -1435,7 +1435,7 @@ var Store = Flux.createStore({
 	  category: ['Art'],
 	  trendingTags: []
 	
-	}],
+	},
 	
 	userPhotos: {
 	

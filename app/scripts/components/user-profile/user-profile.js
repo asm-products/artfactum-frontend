@@ -106,7 +106,7 @@ var UserProfile = React.createClass({
     return (
 	 
       <div className='user-profile'>	  
-	    
+	   
 		<TopNav></TopNav>
 		    <div className='modal fade' ref='modal' id='basicModal' tabindex='-1' role='dialog' 
 			    aria-labelledby='basicModal' aria-hidden='true'>

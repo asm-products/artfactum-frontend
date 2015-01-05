@@ -7,21 +7,21 @@ require('./overlay.css');
 
 var ImageOverlay = React.createClass({
 
+  isFollowing: 'follow',
+  
   getInitialState: function(){
-  
-    return ({isFollowing: 'Follow'});
-  
-  },
-
-  componentDidMount: function(){
-  
-    //match artist user if following with owner/artist name in photo attributes
-	var following = this.props.userProfile[0].following;
-	var owner = this.props.photoAttributes[0].ownerName;
-	this.state.isFollowing = following === owner ? 'Unfollow' : 'Follow';
     
+    //match artist user if following with owner/artist name in photo attributes
+	var following = this.props.userProfile.following;
+	var owner = this.props.photoAttributes.ownerName;
+	var toFollow = following == owner ? 'Unfollow' : 'Follow'
+	  
+	return ({
+	  isFollowing: toFollow
+	});
+	
   },
-
+  
   handleFollowClick: function(){
   
     var elem = this.refs.follow.getDOMNode();
@@ -39,28 +39,29 @@ var ImageOverlay = React.createClass({
   },
 
   render: function(){
-    var self = this;
+    
+	var self = this;
 	
 	var followClasses = this.state.isFollowing + ' glyphicon' + ' glyphicon-user';
 	
-	var overlay = this.props.photoAttributes.map( function(item,i) {
-      return (
-	    <div key={i} className='overlayWrapper'> 
+	  return (
+	  <div className='overlay'>
+	    <div className='overlayWrapper'> 
 		  <div className='container'>
 		    <div className='row'>
               <div className='col-xs-4 pull-left'>
 			    <dl>
-				  <dt><b>{item.title}</b></dt>
-                  <dd><small>{item.ownerName}</small></dd>
+				  <dt><b>{this.props.photoAttributes.title}</b></dt>
+                  <dd><small>{this.props.photoAttributes.ownerName}</small></dd>
 				</dl>
               </div>
               <div className='col-xs-4 pull-right text-right'>
-                <div><small>{item.category}</small></div>
+                <div><small>{this.props.photoAttributes.category}</small></div>
 			  </div>
 		    </div>{/*end 1st row*/}
 			<div className='row'>
 			  <div className='description'>
-			    {item.description}
+			    {this.props.photoAttributes.description}
 			  </div>
 			</div>{/*end 2nd row*/}
 			<div className='row'>
@@ -74,7 +75,7 @@ var ImageOverlay = React.createClass({
                   <div><small>Curate</small></div>
                 </button>
 				<button type="button" className="btn btn-default btn-md">
-				  <div className='circle'><small>{item.curatedIncrement}</small></div>
+				  <div className='circle'><small>{this.props.photoAttributes.curatedIncrement}</small></div>
 			      <div><small>Curated</small></div>
                 </button>
 				<button type="button" className="btn btn-default btn-md">
@@ -89,13 +90,10 @@ var ImageOverlay = React.createClass({
 			</div>{/*end 3rd row*/}
 	      </div>
 		</div>
+	  </div>
 	  );
-	});
 	
-	return (
-	  <div className='overlay'>{overlay}</div>
-	);
-  
+	
   }
 
 });

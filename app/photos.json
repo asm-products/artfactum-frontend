@@ -1,6 +1,6 @@
 [{
   "photos": [{
-     "photoAttributes": [{
+     "photoAttributes": {
 	
 	  "id": null,
 	  "photoUrl": "images/honey.jpg",
@@ -16,10 +16,10 @@
 	  "category": ["Art"],
 	  "trendingTags": []
 	
-	}]
+	}
   	},
 	{
-     "photoAttributes": [{
+     "photoAttributes": {
 	
 	  "id": null,
 	  "photoUrl": "images/egon.jpg",
@@ -35,9 +35,9 @@
 	  "category": ["Art"],
 	  "trendingTags": []
 	
-	}]
+	}
   	},{
-     "photoAttributes": [{
+     "photoAttributes": {
 	
 	  "id": null,
 	  "photoUrl": "images/picasso.png",
@@ -53,6 +53,6 @@
 	  "category": ["Art"],
 	  "trendingTags": []
 	
-	}]
+	}
   	}]
 }]
