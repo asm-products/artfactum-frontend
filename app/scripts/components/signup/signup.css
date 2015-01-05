@@ -87,24 +87,42 @@
 
 .signup .first-page{}
 
-.signup .second-page, .third-page{
+.signup{
   width:100%;
   position:absolute;
 }
  
 .second-page{
-  top:45vh;
-  height:190vh;
+  top:30vh;
+  position:relative; 
   background:white;
 }
  
 .third-page{
-  top:233vh;
+  top:40vh;
+  position:relative;
   left:0;
   margin:0;
   margin-top:1em;
+
 }
 
+.signup .third-page .container{
+
+  padding-top: 3em;
+
+}
+
+.signup .near-footer{
+
+  top:1.5em;
+  font-size:1em;
+  background: #e56e5c;
+  color:white;
+  width:100%;
+  position:relative;
+  
+}
 
 /*wrap the second and third pages*/
 
@@ -117,19 +135,19 @@
 
 /*top header*/
 
-#signup-language,#signup-button{
+.signup-language, .signup-button{
     position: absolute;
     padding: 1vh;
 	margin: .75em;
 }
 
-#signup-button{
+.signup-button{
   right:0;
 }
 
 /*hero-unit*/	
  
-#jumbotron{
+.signup .jumbo{
   
   position:relative;
   top:-8%;
@@ -138,10 +156,12 @@
   text-align:center;
   color:black;
   overflow:hidden:
+
 }
+
   
   
-#jumbotron img:nth-child(1){
+.signup .jumbo img:nth-child(1){
   
   position:absolute;
   z-index:0;
@@ -151,7 +171,7 @@
     
 }
   
-#jumbotron img:nth-child(2){
+.signup .jumbo img:nth-child(2){
 
   top:.5em;
   display:block;
@@ -159,8 +179,7 @@
   z-index:0;
   margin-left:auto;
   margin-right:auto;
-  //background: rgba(300,300,300,0.5);
-  //border-radius:50%;
+  
 }
   
 .jumbo-inner{
@@ -170,9 +189,10 @@
   font-size:1.4em;
   margin-left:5%;
   margin-right:5%;
+
 }
   
-#jumbotron i{
+.signup .jumbo i{
 
   margin-top:-.2em;
   position:relative;
@@ -185,7 +205,7 @@
  
 }
 
-#jumbotron h2{
+.signup .jumbo h2{
   
   color:black;
   font-size:1.4em;
@@ -193,7 +213,7 @@
 }
 
 		
-.oval-button{
+.signup .oval-button{
   text-align:center;
   color:white;
   background: #e5635c;
@@ -209,7 +229,7 @@
   font-size:1.2em;
 }
   
-.second-oval{
+.signup .second-oval{
 
   background:blue;
 
@@ -233,24 +253,27 @@
 
 /*wrap the icon section*/
   
-article{
+.signup article{
   position:relative;
-  top:15%;
+  top:11%;
   width:110%;
   margin-left:auto;
   margin-right:auto;
   height:65%;
 }
 
-#signup-icons div{
-  margin-top:2em;
+.signup .signup-icons div{
+  margin-top:3em;
+}
+
+.signup .signup-icons p{
+  padding-top:1em;
 }
   
 
   /*statement*/
   
-.below-article{
-	
+.below-article{	
 	position:relative;
 	bottom:20%;
 	clear:float;
@@ -295,53 +318,54 @@ article{
   
 /*TODO make less global*/
 
-.min-height div{
+.signup.min-height div{
   
   padding: 0 15px;
-  min-height: 40vh;
+  min-height: 50vh;
  
 }
 
-.min-height h3{
+.signup .min-height h3{
 
   color:#e56e5c;
 
-  }
+}
 
-.min-height p{
+.signup .min-height p{
 
   color: slategray;
 
 }
 
-figure {
+.signup figure {
 
-  height:40vh;
-  min-width:40vh;
+  height:45vh;
+  min-width:45vh;
   display:cover;
   overflow:hidden;
   
 
 }
 
-figure img{
+.signup figure img{
 
   padding:1.1em;
-  padding-right:4em;
+  padding-right:5em;
   width: 100%;
   height:100;
   position:absolute;
   left:0;
   top:0;
-   box-shadow: 0 0 5px 2px #ccc;
+  box-shadow: 0 0 5px 2px #ccc;
 
 }
 
-.fair-heading{
+.signup .fair-heading{
 
   position:relative;
   top:3em;
   color:#e56e5c;
+  background:white;
 
 }
 
@@ -371,42 +395,23 @@ figure img{
 }
 
 
-#near-footer{
-
-  top:1.5em;
-  font-size:1em;
-  background: #e56e5c;
-  color:white;
-  width:100%;
-  position:relative;
-  
-}
-
-
-#near-footer button{
+.signup .near-footer button{
 
   margin-top:1.5em;
-  background: white;
-  color:black;
-  border: solid black 3px;
-  border-radius: 10px;
-  padding:2px;
-  padding-left:5px;
-  padding-right:5px;
-  margin-left:4px;
   box-shadow: 0 0 3px rgba(10,10,10,0.3);
   
 }
 
-.footer{
+.signup .footer{
 
-  color:white;
   position:relative;
- 
+  color:white;
+  top:2.8em;
+  
 }
 
 
-.modal-dialog, .modal-content{
+.signup .modal-dialog, .modal-content{
   border: solid black 10px;
   position:relative;
   z-index:9999;

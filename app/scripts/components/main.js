@@ -90,7 +90,7 @@ var App = React.createClass({
     return {data: store.store.data }
   },
   
-  componentDidMount: function() {
+  componentWillMount: function() {
   
     var url = 'photos.json';
     Actions.fetchUserPhotos(url);

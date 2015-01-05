@@ -74,7 +74,7 @@ var Footer = React.createClass({displayName: 'Footer',
 
 module.exports = Footer;
 },{"./footer.css":3}],3:[function(require,module,exports){
-var css = ".af-footer{\r\n  background: black;\r\n}\r\n\r\n.af-footer .logo{\r\n  width:200px\r\n}\r\n\r\n.af-footer a,li{\r\n  color: white;\r\n}\r\n\r\n.af-footer p{\r\n  margin-left:1.5em;\r\n}\r\n\r\n.breadcrumbs{\r\n  color:white;\r\n  width:90%;\r\n  \r\n  background: #3a3a3a;\r\n\r\n  display:block;\r\n  position:relative;\r\n  margin-left:auto;\r\n  margin-right:auto;\r\n  text-align:justify;\r\n}\r\n\r\n.footerpages{\r\n  text-align:center;\r\n  color:white;\r\n}\r\n\r\n.footerpage{\r\n  width:380px;\r\n  padding:2px;\r\n  font-size:1.08em;\r\n  display:block;\r\n  position:relative;\r\n  margin-left:auto;\r\n  margin-right:auto;\r\n}\r\n\r\n@media (max-width:600px) {\r\n  .footerpage{\r\n    width:280px;\r\n  }\r\n}\r\n"; (require("C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify"))(css); module.exports = css;
+var css = ".af-footer{\r\n  background: black;\r\n}\r\n\r\n.af-footer .logo{\r\n  width:200px\r\n}\r\n\r\n.af-footer a,li{\r\n  color: white;\r\n}\r\n\r\n.af-footer p{\r\n  margin-left:1.5em;\r\n}\r\n\r\n.af-footer .breadcrumbs{\r\n  color:white;\r\n  width:90%;\r\n  \r\n  background: #3a3a3a;\r\n\r\n  display:block;\r\n  position:relative;\r\n  margin-left:auto;\r\n  margin-right:auto;\r\n  text-align:justify;\r\n}\r\n\r\n.footerpages{\r\n  text-align:center;\r\n  color:white;\r\n}\r\n\r\n.footerpage{\r\n  width:380px;\r\n  padding:2px;\r\n  font-size:1.08em;\r\n  display:block;\r\n  position:relative;\r\n  margin-left:auto;\r\n  margin-right:auto;\r\n}\r\n\r\n@media (max-width:600px) {\r\n  .footerpage{\r\n    width:280px;\r\n  }\r\n}\r\n"; (require("C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify"))(css); module.exports = css;
 },{"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify":25}],4:[function(require,module,exports){
 'use strict'
 
@@ -85,21 +85,21 @@ require('./overlay.css');
 
 var ImageOverlay = React.createClass({displayName: 'ImageOverlay',
 
+  isFollowing: 'follow',
+  
   getInitialState: function(){
-  
-    return ({isFollowing: 'Follow'});
-  
-  },
-
-  componentDidMount: function(){
-  
-    //match artist user if following with owner/artist name in photo attributes
-	var following = this.props.userProfile[0].following;
-	var owner = this.props.photoAttributes[0].ownerName;
-	this.state.isFollowing = following === owner ? 'Unfollow' : 'Follow';
     
+    //match artist user if following with owner/artist name in photo attributes
+	var following = this.props.userProfile.following;
+	var owner = this.props.photoAttributes.ownerName;
+	var toFollow = following == owner ? 'Unfollow' : 'Follow'
+	  
+	return ({
+	  isFollowing: toFollow
+	});
+	
   },
-
+  
   handleFollowClick: function(){
   
     var elem = this.refs.follow.getDOMNode();
@@ -117,28 +117,29 @@ var ImageOverlay = React.createClass({displayName: 'ImageOverlay',
   },
 
   render: function(){
-    var self = this;
+    
+	var self = this;
 	
 	var followClasses = this.state.isFollowing + ' glyphicon' + ' glyphicon-user';
 	
-	var overlay = this.props.photoAttributes.map( function(item,i) {
-      return (
-	    React.createElement("div", {key: i, className: "overlayWrapper"}, 
+	  return (
+	  React.createElement("div", {className: "overlay"}, 
+	    React.createElement("div", {className: "overlayWrapper"}, 
 		  React.createElement("div", {className: "container"}, 
 		    React.createElement("div", {className: "row"}, 
               React.createElement("div", {className: "col-xs-4 pull-left"}, 
 			    React.createElement("dl", null, 
-				  React.createElement("dt", null, React.createElement("b", null, item.title)), 
-                  React.createElement("dd", null, React.createElement("small", null, item.ownerName))
+				  React.createElement("dt", null, React.createElement("b", null, this.props.photoAttributes.title)), 
+                  React.createElement("dd", null, React.createElement("small", null, this.props.photoAttributes.ownerName))
 				)
               ), 
               React.createElement("div", {className: "col-xs-4 pull-right text-right"}, 
-                React.createElement("div", null, React.createElement("small", null, item.category))
+                React.createElement("div", null, React.createElement("small", null, this.props.photoAttributes.category))
 			  )
 		    ), /*end 1st row*/
 			React.createElement("div", {className: "row"}, 
 			  React.createElement("div", {className: "description"}, 
-			    item.description
+			    this.props.photoAttributes.description
 			  )
 			), /*end 2nd row*/
 			React.createElement("div", {className: "row"}, 
@@ -152,7 +153,7 @@ var ImageOverlay = React.createClass({displayName: 'ImageOverlay',
                   React.createElement("div", null, React.createElement("small", null, "Curate"))
                 ), 
 				React.createElement("button", {type: "button", className: "btn btn-default btn-md"}, 
-				  React.createElement("div", {className: "circle"}, React.createElement("small", null, item.curatedIncrement)), 
+				  React.createElement("div", {className: "circle"}, React.createElement("small", null, this.props.photoAttributes.curatedIncrement)), 
 			      React.createElement("div", null, React.createElement("small", null, "Curated"))
                 ), 
 				React.createElement("button", {type: "button", className: "btn btn-default btn-md"}, 
@@ -167,13 +168,10 @@ var ImageOverlay = React.createClass({displayName: 'ImageOverlay',
 			)/*end 3rd row*/
 	      )
 		)
+	  )
 	  );
-	});
 	
-	return (
-	  React.createElement("div", {className: "overlay"}, overlay)
-	);
-  
+	
   }
 
 });
@@ -182,9 +180,9 @@ module.exports = ImageOverlay;
 },{"./../../actions/actions.js":1,"./overlay.css":5}],5:[function(require,module,exports){
 var css = ".overlay{\r\n\r\n  color:white;\r\n  position:absolute;\r\n  opacity:0;\r\n  width:100%;\r\n  height:100%;\r\n  background: rgba(20,20,20,0.0);\r\n\r\n}\r\n\r\n.overlay:hover{\r\nopacity:0.99;\r\n  background: rgba(20,20,20,0.7);\r\n  -webkit-transition: background .8s ease;\r\n          transition: background .8s ease;\r\n}\r\n\t\t  \r\n.overlay-clicked{\r\n  \r\n  opacity:0.99;\r\n  background: rgba(20,20,20,0.72);\r\n  -webkit-transition: background .8s ease;\r\n          transition: background .8s ease;\r\n\r\n}\r\n\r\n.overlayWrapper{\r\n\r\n  position:relative;\r\n  width: 100%;\r\n  height:100%;\r\n  border: solid 1px #eee;\r\n\r\n}\r\n\r\n.overlayWrapper .container{\r\n\r\n  margin:12px 18px 12px 0;\r\n  position:relative;\r\n  width: 100%;\r\n\r\n}\r\n\r\n.overlay .description{\r\n  \r\n  text-align: justify;\r\n  font-size: 0.8em;\r\n  font-style:italic;\r\n  margin-left:1.75em;\r\n  margin-right:2.5em;\r\n \r\n}\r\n\r\n.overlay .btn-group-justified{\r\n width:100%;\r\n}\r\n\r\n.overlay .btn-group-justified .btn{\r\n  color:white;\r\n  width:20%;\r\n  border: none;\r\n  margin-top:18px;\r\n  background: inherit;\r\n}\r\n\r\n.overlay .glyphicon:hover{\r\n  color: #e56e5c;\r\n}\r\n\r\n.overlay .glyphicon:active{\r\n  -webkit-transform: scale(1.3);\r\n          transform: scale(1.3);\r\n  -webkit-transition: -webkit-transform .5s liner;\r\n          transition: -webkit-transform .5s liner;\r\n}\r\n\r\n.overlay .btn small{\r\n  color: white;\r\n  font-size:9px;\r\n}\r\n\r\n\r\n.overlay  .follow{\r\n  color: white;\r\n}\r\n\r\n.overlay .Unfollow{\r\n  color: orange;\r\n}"; (require("C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify"))(css); module.exports = css;
 },{"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify":25}],6:[function(require,module,exports){
-var css = "@media all and (max-width:500px) and (min-width: 300px) {\r\n\r\n.min-height div{\r\n\r\n  width:90%;\r\n  min-height: 18vh;\r\n\r\n}\r\n\r\nfigure{\r\n\r\n  min-height: 18vh;\r\n  \r\n}\r\n\r\n\r\n.gif{\r\n   height: 0em;\r\n   width:0;\r\n   opacity: 0;\r\n      \r\n}\r\n\r\n.egon{\r\n  top:-2.25em;\r\n}\r\n\r\n}"; (require("C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify"))(css); module.exports = css;
+var css = "@media all and (max-width:600px) {\r\n\r\n.signup .simple-row div{\r\n\r\n  min-height: 45vh;\r\n  \r\n  \r\n}\r\n\r\n.signup figure{\r\n\r\n  min-height: 45vh;\r\n  \r\n}\r\n\r\n\r\n\r\n.signup .center-wrapper figure{\r\n  \r\n  padding:0;\r\n  \r\n}\r\n\r\n\r\n.signup .center-wrapper{\r\n\r\n  position:relative;\r\n  width:110%;\r\n  top:2em;\r\n  margin-right:auto;\r\n  margin-left:auto;\r\n\r\n}\r\n\r\n.signup .honey{\r\n   \r\n   width:100%;\r\n    \r\n}\r\n\r\n.signup .cool{\r\n\r\n  width:85%;\r\n\r\n}\r\n\r\n.signup .signup-icons{\r\n  font-size: .75em;\r\n  padding-top: 1.1em;\r\n}\r\n\r\n.signup .below-article{\r\n  bottom: 25%;\r\n  font-size: 1.4em;\r\n}\r\n  \r\n\r\n.signup .simple{\r\n  position:absolute;\r\n  width: 100%; \r\n  text-align: center;\r\n  z-index: 10;\r\n  background: rgba(10,20,40,0.3);\r\n}\r\n\r\n.signup .oval-button {\r\n   font-size: 1em;\r\n   top:-2%;\r\n}\r\n\r\n.signup .simple-row h3{\r\n\r\n  padding: .8em;\r\n  padding-top:3em;\r\n  color: white;  \r\n  text-decoration: underline;\r\n  \r\n}\r\n\r\n.signup .jumbo-inner{\r\n  font-size: 1.1em;\r\n  top: -21%;\r\n}\r\n\r\n.signup .simple-row p{\r\n\r\n  color: white;\r\n\r\n}\r\n\r\n.signup .honey img{\r\n\r\n  padding: 0;\r\n  padding-right: 0;\r\n  width: 100%;\r\n  height:100;\r\n  position:absolute;\r\n  left:0;\r\n  top:0;\r\n  box-shadow: 0 0 0 0 white;\r\n\r\n}\r\n\r\n.signup .egon{\r\n  top:-2.25em;\r\n}\r\n\r\n}"; (require("C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify"))(css); module.exports = css;
 },{"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify":25}],7:[function(require,module,exports){
-var css = "/*the height break point seems to be just over 450px;\r\n *width breakpoint 350px;\r\n */\r\n\r\n#underline{\r\n\r\n  text-decoration: underline;\r\n\r\n}\r\n\r\n/*for the language picker and sign-in button\r\n *the entire page needs to be wrapped inside the parallax class and it needs\r\n *to have the appropriate height to keep a second scroller from appearing\r\n */\r\n\t\r\n.parallax {\r\n  -webkit-perspective: 1px;\r\n          perspective: 1px;\r\n  top:.5vh;\r\n  overflow-x: hidden;\r\n  overflow-y: auto;\r\n  position:relative;\r\n  height:99vh;\r\n  background:white;\r\n}\r\n\r\n\r\n.parallax__group {\r\n  position:relative;\r\n  background: white;\r\n\r\n  height:100vh;\r\n  -webkit-transform-style: preserve-3d;\r\n          transform-style: preserve-3d;\r\n  width:100%;\r\n  -webkit-transform-style: preserve-3d;\r\n}\r\n  \r\n.parallax__group:nth-child(2){\r\n   background: white;\r\n}\r\n\r\n.parallax__layer {\r\n\r\n  position: absolute;\r\n  top: 0;\r\n  right: 0;\r\n  bottom: 0;\r\n  left: 0;\r\n  height:100vh;\r\n}\r\n\r\n.parallax__layer--base {\r\n\r\n  webkit-transform: translateZ(0);\r\n  transform: translateZ(0);\r\n  -webkit-transform: translateZ(0);\r\n\r\n}\r\n\r\n.parallax__layer--back {\r\n\r\n  -webkit-transform: translateZ(-1px);\r\n  transform: translateZ(-1px);\r\n  -webkit-transform: translateZ(-1px) scale(2);\r\n  width:100%;\r\n   \r\n}\r\n\r\n.parallax__group {\r\n  position:relative;\r\n  background: rgba(130,130,230,0.01);\r\n  height:100vh;\r\n  -webkit-transform-style: preserve-3d;\r\n          transform-style: preserve-3d;\r\n  width:100%;\r\n  -webkit-transform-style: preserve-3d;\r\n}\r\n  \r\n.parallax__group:nth-child(2){\r\n  background: white;\r\n}\r\n\r\n/***\r\n three pages in total\r\n ***/\r\n\r\n.signup .first-page{}\r\n\r\n.signup .second-page, .third-page{\r\n  width:100%;\r\n  position:absolute;\r\n}\r\n \r\n.second-page{\r\n  top:45vh;\r\n  height:190vh;\r\n  background:white;\r\n}\r\n \r\n.third-page{\r\n  top:233vh;\r\n  left:0;\r\n  margin:0;\r\n  margin-top:1em;\r\n}\r\n\r\n\r\n/*wrap the second and third pages*/\r\n\r\n.under-back{\r\n  position:absolute;\r\n  width:100%;\r\n  top:200vh;\r\n}\r\n\r\n\r\n/*top header*/\r\n\r\n#signup-language,#signup-button{\r\n    position: absolute;\r\n    padding: 1vh;\r\n\tmargin: .75em;\r\n}\r\n\r\n#signup-button{\r\n  right:0;\r\n}\r\n\r\n/*hero-unit*/\t\r\n \r\n#jumbotron{\r\n  \r\n  position:relative;\r\n  top:-8%;\r\n  height:70%;\r\n  width:100%;\r\n  text-align:center;\r\n  color:black;\r\n  overflow:hidden:\r\n}\r\n  \r\n  \r\n#jumbotron img:nth-child(1){\r\n  \r\n  position:absolute;\r\n  z-index:0;\r\n  left:-25%;\r\n  top:-25%;\r\n  opacity:0.35;\r\n    \r\n}\r\n  \r\n#jumbotron img:nth-child(2){\r\n\r\n  top:.5em;\r\n  display:block;\r\n  position:relative;\r\n  z-index:0;\r\n  margin-left:auto;\r\n  margin-right:auto;\r\n  //background: rgba(300,300,300,0.5);\r\n  //border-radius:50%;\r\n}\r\n  \r\n.jumbo-inner{\r\n  \r\n  position:relative;\r\n  top:-14%;\r\n  font-size:1.4em;\r\n  margin-left:5%;\r\n  margin-right:5%;\r\n}\r\n  \r\n#jumbotron i{\r\n\r\n  margin-top:-.2em;\r\n  position:relative;\r\n  display:block;\r\n  margin-left:auto;\r\n  margin-right:auto;\r\n  width:90%;\r\n  font-size:.9em;\r\n  color:#000;\r\n \r\n}\r\n\r\n#jumbotron h2{\r\n  \r\n  color:black;\r\n  font-size:1.4em;\r\n  \r\n}\r\n\r\n\t\t\r\n.oval-button{\r\n  text-align:center;\r\n  color:white;\r\n  background: #e5635c;\r\n  padding: .75em;\r\n  position:relative;\r\n  display:block;\r\n  margin-left: auto;\r\n  margin-right:auto;\r\n  width:15em;\r\n  border-radius:20px;\r\n  font-family: 'Open-Sans-regular';\r\n  font-weight:bold;\r\n  font-size:1.2em;\r\n}\r\n  \r\n.second-oval{\r\n\r\n  background:blue;\r\n\r\n}\r\n  \r\n  \r\n/*second section of the first page\r\n  the first page actually being two pages of vh (window height)\r\n */  \r\n  \r\n#section-two{\r\n  left:0;\r\n  width:90%;\r\n  height:100vh;\r\n  position:relative;\r\n  margin-left:auto;\r\n  margin-right:auto;\r\n  font-family: 'Open-Sans-regular';\r\n  font-size:1.2em;\r\n}\r\n\r\n/*wrap the icon section*/\r\n  \r\narticle{\r\n  position:relative;\r\n  top:15%;\r\n  width:110%;\r\n  margin-left:auto;\r\n  margin-right:auto;\r\n  height:65%;\r\n}\r\n\r\n#signup-icons div{\r\n  margin-top:2em;\r\n}\r\n  \r\n\r\n  /*statement*/\r\n  \r\n.below-article{\r\n\t\r\n\tposition:relative;\r\n\tbottom:20%;\r\n\tclear:float;\r\n\twidth:80%;\r\n\tpadding-top:1.5em;\r\n\tfont-size:1.4em;\r\n\tfont-style: italic;\r\n\tmargin-left:auto;\r\n\tmargin-right:auto;\r\n\ttext-align: center;\r\n\tfont-family: 'Open-Sans-600';\r\n}\r\n  \r\n  \r\n.center-wrapper .row{\r\n\r\n margin-top:3em;\r\n\r\n} \r\n  \r\n#section-two div{\r\n    \r\n\twidth: 25%;\r\n\theight:30%;\r\n\tfloat:left;\r\n\tfont-size:1.2em;\r\n\ttext-align:center;\r\n\t\r\n}\r\n  \r\n#section-two span{\r\n\r\n    \r\n\twidth: 8%;\r\n\theight:30%;\r\n\tfloat:left;\r\n\tfont-size:1.2em;\r\n\ttext-align:center;\r\n\t\r\n\r\n}\r\n  \r\n/*TODO make less global*/\r\n\r\n.min-height div{\r\n  \r\n  padding: 0 15px;\r\n  min-height: 40vh;\r\n \r\n}\r\n\r\n.min-height h3{\r\n\r\n  color:#e56e5c;\r\n\r\n  }\r\n\r\n.min-height p{\r\n\r\n  color: slategray;\r\n\r\n}\r\n\r\nfigure {\r\n\r\n  height:40vh;\r\n  min-width:40vh;\r\n  display:cover;\r\n  overflow:hidden;\r\n  \r\n\r\n}\r\n\r\nfigure img{\r\n\r\n  padding:1.1em;\r\n  padding-right:4em;\r\n  width: 100%;\r\n  height:100;\r\n  position:absolute;\r\n  left:0;\r\n  top:0;\r\n   box-shadow: 0 0 5px 2px #ccc;\r\n\r\n}\r\n\r\n.fair-heading{\r\n\r\n  position:relative;\r\n  top:3em;\r\n  color:#e56e5c;\r\n\r\n}\r\n\r\n\r\n.fair-heading p{\r\n\r\n  color:slategray;\r\n  padding-top:1.25em;\r\n  \r\n}\r\n\r\n.center-wrapper figure{\r\n  \r\n  padding:1em;\r\n  \r\n}\r\n\r\n\r\n.center-wrapper{\r\n\r\n  position:relative;\r\n  width:90%;\r\n  top:2em;\r\n  margin-right:auto;\r\n  margin-left:auto;\r\n\r\n}\r\n\r\n\r\n#near-footer{\r\n\r\n  top:1.5em;\r\n  font-size:1em;\r\n  background: #e56e5c;\r\n  color:white;\r\n  width:100%;\r\n  position:relative;\r\n  \r\n}\r\n\r\n\r\n#near-footer button{\r\n\r\n  margin-top:1.5em;\r\n  background: white;\r\n  color:black;\r\n  border: solid black 3px;\r\n  border-radius: 10px;\r\n  padding:2px;\r\n  padding-left:5px;\r\n  padding-right:5px;\r\n  margin-left:4px;\r\n  box-shadow: 0 0 3px rgba(10,10,10,0.3);\r\n  \r\n}\r\n\r\n.footer{\r\n\r\n  color:white;\r\n  position:relative;\r\n \r\n}\r\n\r\n\r\n.modal-dialog, .modal-content{\r\n  border: solid black 10px;\r\n  position:relative;\r\n  z-index:9999;\r\n}"; (require("C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify"))(css); module.exports = css;
+var css = "/*the height break point seems to be just over 450px;\r\n *width breakpoint 350px;\r\n */\r\n\r\n#underline{\r\n\r\n  text-decoration: underline;\r\n\r\n}\r\n\r\n/*for the language picker and sign-in button\r\n *the entire page needs to be wrapped inside the parallax class and it needs\r\n *to have the appropriate height to keep a second scroller from appearing\r\n */\r\n\t\r\n.parallax {\r\n  -webkit-perspective: 1px;\r\n          perspective: 1px;\r\n  top:.5vh;\r\n  overflow-x: hidden;\r\n  overflow-y: auto;\r\n  position:relative;\r\n  height:99vh;\r\n  background:white;\r\n}\r\n\r\n\r\n.parallax__group {\r\n  position:relative;\r\n  background: white;\r\n\r\n  height:100vh;\r\n  -webkit-transform-style: preserve-3d;\r\n          transform-style: preserve-3d;\r\n  width:100%;\r\n  -webkit-transform-style: preserve-3d;\r\n}\r\n  \r\n.parallax__group:nth-child(2){\r\n   background: white;\r\n}\r\n\r\n.parallax__layer {\r\n\r\n  position: absolute;\r\n  top: 0;\r\n  right: 0;\r\n  bottom: 0;\r\n  left: 0;\r\n  height:100vh;\r\n}\r\n\r\n.parallax__layer--base {\r\n\r\n  webkit-transform: translateZ(0);\r\n  transform: translateZ(0);\r\n  -webkit-transform: translateZ(0);\r\n\r\n}\r\n\r\n.parallax__layer--back {\r\n\r\n  -webkit-transform: translateZ(-1px);\r\n  transform: translateZ(-1px);\r\n  -webkit-transform: translateZ(-1px) scale(2);\r\n  width:100%;\r\n   \r\n}\r\n\r\n.parallax__group {\r\n  position:relative;\r\n  background: rgba(130,130,230,0.01);\r\n  height:100vh;\r\n  -webkit-transform-style: preserve-3d;\r\n          transform-style: preserve-3d;\r\n  width:100%;\r\n  -webkit-transform-style: preserve-3d;\r\n}\r\n  \r\n.parallax__group:nth-child(2){\r\n  background: white;\r\n}\r\n\r\n/***\r\n three pages in total\r\n ***/\r\n\r\n.signup .first-page{}\r\n\r\n.signup{\r\n  width:100%;\r\n  position:absolute;\r\n}\r\n \r\n.second-page{\r\n  top:30vh;\r\n  position:relative; \r\n  background:white;\r\n}\r\n \r\n.third-page{\r\n  top:40vh;\r\n  position:relative;\r\n  left:0;\r\n  margin:0;\r\n  margin-top:1em;\r\n\r\n}\r\n\r\n.signup .third-page .container{\r\n\r\n  padding-top: 3em;\r\n\r\n}\r\n\r\n.signup .near-footer{\r\n\r\n  top:1.5em;\r\n  font-size:1em;\r\n  background: #e56e5c;\r\n  color:white;\r\n  width:100%;\r\n  position:relative;\r\n  \r\n}\r\n\r\n/*wrap the second and third pages*/\r\n\r\n.under-back{\r\n  position:absolute;\r\n  width:100%;\r\n  top:200vh;\r\n}\r\n\r\n\r\n/*top header*/\r\n\r\n.signup-language, .signup-button{\r\n    position: absolute;\r\n    padding: 1vh;\r\n\tmargin: .75em;\r\n}\r\n\r\n.signup-button{\r\n  right:0;\r\n}\r\n\r\n/*hero-unit*/\t\r\n \r\n.signup .jumbo{\r\n  \r\n  position:relative;\r\n  top:-8%;\r\n  height:70%;\r\n  width:100%;\r\n  text-align:center;\r\n  color:black;\r\n  overflow:hidden:\r\n\r\n}\r\n\r\n  \r\n  \r\n.signup .jumbo img:nth-child(1){\r\n  \r\n  position:absolute;\r\n  z-index:0;\r\n  left:-25%;\r\n  top:-25%;\r\n  opacity:0.35;\r\n    \r\n}\r\n  \r\n.signup .jumbo img:nth-child(2){\r\n\r\n  top:.5em;\r\n  display:block;\r\n  position:relative;\r\n  z-index:0;\r\n  margin-left:auto;\r\n  margin-right:auto;\r\n  \r\n}\r\n  \r\n.jumbo-inner{\r\n  \r\n  position:relative;\r\n  top:-14%;\r\n  font-size:1.4em;\r\n  margin-left:5%;\r\n  margin-right:5%;\r\n\r\n}\r\n  \r\n.signup .jumbo i{\r\n\r\n  margin-top:-.2em;\r\n  position:relative;\r\n  display:block;\r\n  margin-left:auto;\r\n  margin-right:auto;\r\n  width:90%;\r\n  font-size:.9em;\r\n  color:#000;\r\n \r\n}\r\n\r\n.signup .jumbo h2{\r\n  \r\n  color:black;\r\n  font-size:1.4em;\r\n  \r\n}\r\n\r\n\t\t\r\n.signup .oval-button{\r\n  text-align:center;\r\n  color:white;\r\n  background: #e5635c;\r\n  padding: .75em;\r\n  position:relative;\r\n  display:block;\r\n  margin-left: auto;\r\n  margin-right:auto;\r\n  width:15em;\r\n  border-radius:20px;\r\n  font-family: 'Open-Sans-regular';\r\n  font-weight:bold;\r\n  font-size:1.2em;\r\n}\r\n  \r\n.signup .second-oval{\r\n\r\n  background:blue;\r\n\r\n}\r\n  \r\n  \r\n/*second section of the first page\r\n  the first page actually being two pages of vh (window height)\r\n */  \r\n  \r\n#section-two{\r\n  left:0;\r\n  width:90%;\r\n  height:100vh;\r\n  position:relative;\r\n  margin-left:auto;\r\n  margin-right:auto;\r\n  font-family: 'Open-Sans-regular';\r\n  font-size:1.2em;\r\n}\r\n\r\n/*wrap the icon section*/\r\n  \r\n.signup article{\r\n  position:relative;\r\n  top:11%;\r\n  width:110%;\r\n  margin-left:auto;\r\n  margin-right:auto;\r\n  height:65%;\r\n}\r\n\r\n.signup .signup-icons div{\r\n  margin-top:3em;\r\n}\r\n\r\n.signup .signup-icons p{\r\n  padding-top:1em;\r\n}\r\n  \r\n\r\n  /*statement*/\r\n  \r\n.below-article{\t\r\n\tposition:relative;\r\n\tbottom:20%;\r\n\tclear:float;\r\n\twidth:80%;\r\n\tpadding-top:1.5em;\r\n\tfont-size:1.4em;\r\n\tfont-style: italic;\r\n\tmargin-left:auto;\r\n\tmargin-right:auto;\r\n\ttext-align: center;\r\n\tfont-family: 'Open-Sans-600';\r\n}\r\n  \r\n  \r\n.center-wrapper .row{\r\n\r\n margin-top:3em;\r\n\r\n} \r\n  \r\n#section-two div{\r\n    \r\n\twidth: 25%;\r\n\theight:30%;\r\n\tfloat:left;\r\n\tfont-size:1.2em;\r\n\ttext-align:center;\r\n\t\r\n}\r\n  \r\n#section-two span{\r\n\r\n    \r\n\twidth: 8%;\r\n\theight:30%;\r\n\tfloat:left;\r\n\tfont-size:1.2em;\r\n\ttext-align:center;\r\n\t\r\n\r\n}\r\n  \r\n/*TODO make less global*/\r\n\r\n.signup.min-height div{\r\n  \r\n  padding: 0 15px;\r\n  min-height: 50vh;\r\n \r\n}\r\n\r\n.signup .min-height h3{\r\n\r\n  color:#e56e5c;\r\n\r\n}\r\n\r\n.signup .min-height p{\r\n\r\n  color: slategray;\r\n\r\n}\r\n\r\n.signup figure {\r\n\r\n  height:45vh;\r\n  min-width:45vh;\r\n  display:cover;\r\n  overflow:hidden;\r\n  \r\n\r\n}\r\n\r\n.signup figure img{\r\n\r\n  padding:1.1em;\r\n  padding-right:5em;\r\n  width: 100%;\r\n  height:100;\r\n  position:absolute;\r\n  left:0;\r\n  top:0;\r\n  box-shadow: 0 0 5px 2px #ccc;\r\n\r\n}\r\n\r\n.signup .fair-heading{\r\n\r\n  position:relative;\r\n  top:3em;\r\n  color:#e56e5c;\r\n  background:white;\r\n\r\n}\r\n\r\n\r\n.fair-heading p{\r\n\r\n  color:slategray;\r\n  padding-top:1.25em;\r\n  \r\n}\r\n\r\n.center-wrapper figure{\r\n  \r\n  padding:1em;\r\n  \r\n}\r\n\r\n\r\n.center-wrapper{\r\n\r\n  position:relative;\r\n  width:90%;\r\n  top:2em;\r\n  margin-right:auto;\r\n  margin-left:auto;\r\n\r\n}\r\n\r\n\r\n.signup .near-footer button{\r\n\r\n  margin-top:1.5em;\r\n  box-shadow: 0 0 3px rgba(10,10,10,0.3);\r\n  \r\n}\r\n\r\n.signup .footer{\r\n\r\n  position:relative;\r\n  color:white;\r\n  top:2.8em;\r\n  \r\n}\r\n\r\n\r\n.signup .modal-dialog, .modal-content{\r\n  border: solid black 10px;\r\n  position:relative;\r\n  z-index:9999;\r\n}"; (require("C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify"))(css); module.exports = css;
 },{"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify":25}],8:[function(require,module,exports){
 'use strict';
 
@@ -193,88 +191,7 @@ var Footer = React.createFactory(require('./../Footer/Footer.js'));
 require('./signup.css');
 require('./signup-phones.css');
 
-/*var Ajax = React.createClass({
-  getInitialState: function(){
-    return {data: []};
-  },
 
-  componentDidMount: function() {
-    $.ajax({
-	  url: this.props.url,
-	  dataType: 'json',
-	  success: function(data) {
-	    this.setState( {data: data});
-	    this.props.onSuccess({data:data});
-	  }.bind(this),
-	  error: function(Ajax, status, err) {
-	    console.error(this.props.url, status, err.toString());
-	    this.props.onError({data: [this.props.url,status, err.toString() ]});
-	  }.bind(this)
-    });
-  },
-  render: function(){
-	return (
-	  <span></span> 
-	);
- 
-  }
-
-});  
-
-
-
-var Signup = React.createClass({
-  getInitialState: function(){
-    return {data: []};
-  },
-
-  handleSuccess: function(e) {
-    //document.getElementById('info').innerHTML = JSON.stringify(e);
-    this.setState({data:e.data});
-    return;
-  },
-
-  handleError: function(e){
-    //document.getElementById('info').innerHTML = JSON.stringify(e);
-    return;
-  },
-
-  render: function(){
-    return ( 
-	  <div className='handleAjax'>
-	    <Ajax 
-		  onError={this.handleError} 
-		  onSuccess={this.handleSuccess} 
-		  ref='ajax' 
-		  url={this.props.url} 
-	    ></Ajax>
-	    <FirstChild_A data={this.state.data} />
-	  </div>
-    )
-  }
-});
-
-
-var FirstChild_A = React.createClass({
-
-  render: function(){
-  
-    var items = this.props.data.map( function(i){
-	  return (
-	    <li>{i.name}</li>
-	  );
-  
-    });
-    return (
-	  <div className='items'>
-        <TopNavBar data={this.props.data} >{this.props.children}</TopNavBar>
-	  </div>	 
-    );
-  }
-
-});
-
-*/
 
 var Signup = React.createClass({displayName: 'Signup',
 
@@ -282,145 +199,138 @@ var Signup = React.createClass({displayName: 'Signup',
 
     return (
 	  React.createElement("div", {className: "signup"}, 
-	      React.createElement("div", {className: "modal fade", id: "basicModal", tabindex: "-1", role: "dialog", 
-			    'aria-labelledby': "basicModal", 'aria-hidden': "true"}, 
-				React.createElement("div", {className: "modal-dialog"}, 
-				  React.createElement("div", {className: "modal-content"}, 
-				    React.createElement("div", {className: "modal-header"}, 
-					  React.createElement("button", {type: "button", className: "close", 'data-dismiss': "modal", 'aria-hiddden': "true"}, "x"), 
-	                  React.createElement("h4", {className: "modal-title", id: "myModalLabel"}, "Modal title")
-                    ), 
-                  React.createElement("div", {className: "modal-body"}, 
-                    React.createElement("h3", null, "Modal body")
-                  ), 
-                  React.createElement("div", {className: "modal-footer"}, 
-                    React.createElement("button", {type: "button", className: "btn btn-default", 'data-dismiss': "modal"}, "Close"), 
-           			React.createElement("button", {type: "button", className: "btn btn-primary"}, "Save Changes")
-                  )					
-                )					
+	    
+		/*modal*/
+		React.createElement("div", {className: "modal fade", id: "basicModal", tabindex: "-1", role: "dialog", 
+	      'aria-labelledby': "basicModal", 'aria-hidden': "true"}, 
+		  React.createElement("div", {className: "modal-dialog"}, 
+		    React.createElement("div", {className: "modal-content"}, 
+			  React.createElement("div", {className: "modal-header"}, 
+			    React.createElement("button", {type: "button", className: "close", 'data-dismiss': "modal", 'aria-hiddden': "true"}, "x"), 
+	            React.createElement("h4", {className: "modal-title", id: "myModalLabel"}, "Modal title")
+              ), 
+              React.createElement("div", {className: "modal-body"}, 
+                React.createElement("h3", null, "Modal body")
+              ), 
+              React.createElement("div", {className: "modal-footer"}, 
+                React.createElement("button", {type: "button", className: "btn btn-default", 'data-dismiss': "modal"}, "Close"), 
+           	    React.createElement("button", {type: "button", className: "btn btn-primary"}, "Save Changes")
               )					
-            ), 				
-        React.createElement("div", {className: "parallax"}, 
+            )					
+          )					
+        ), 				
+        
+		/*main page*/
+		React.createElement("div", {className: "parallax"}, 
           React.createElement("div", {id: "first-page", className: "parallax__group"}, 
 	        React.createElement("div", {className: "parallax__layer parallax__layer--back"}, 
-              
-			  React.createElement("header", {id: "jumbotron"}, 
-			    
-				React.createElement("img", {src: "images/flowers_big.jpg"}), 
-				
+              React.createElement("header", {className: "jumbo"}, 
+			    React.createElement("img", {src: "images/flowers_big.jpg"}), 
 				React.createElement("img", {src: "images/logo_AF+_256.png", alt: "images/logo_AF+_.png"}), 
-					
 				React.createElement("div", {className: "jumbo-inner"}, 
-				React.createElement("h2", null, "A Better Way to Discover New Art"), 
-				React.createElement("i", {id: "artfactum-describe"}, 
-				  "Artfactum is an online marketplace where artists and art lovers create virtual galleries to showcase and sell art to a global community"
+				  React.createElement("h2", null, "A Better Way to Discover New Art"), 
+				  React.createElement("i", null, 
+				    "Artfactum is an online marketplace where artists and art lovers create virtual galleries to showcase and sell art to a global community"
+				  )
 				)
-				
-				)
-				
-						
 			  ), 
 		  	    
-				React.createElement("p", {id: "create-space"}, 
-				
-				  React.createElement("p", {className: "oval-button"}, React.createElement("span", null, "Launch Your Own Gallery")), 
-				  React.createElement("p", {className: "second-oval oval-button"}, React.createElement("span", null, "Discover"))
-			    
-				)
+			  React.createElement("p", null, 
+				React.createElement("p", {className: "oval-button"}, React.createElement("span", null, "Launch Your Own Gallery")), 
+				React.createElement("p", {className: "second-oval oval-button"}, React.createElement("span", null, "Discover"))
+			  )
 			  
-			), 
+			), /*end parallax back*/
 			
 			React.createElement("div", {className: "parallax__layer parallax__layer--base"}, 
-			  React.createElement("select", {className: "light", id: "signup-language"}, 
+			  React.createElement("select", {className: "light signup-language"}, 
 				React.createElement("option", null, "English"), 
 				React.createElement("option", null, "Spanish")
 			  ), 
-			  React.createElement("button", {className: "light", id: "signup-button", 
+			  React.createElement("button", {className: "light signup-button", 
 			    'data-toggle': "modal", 
 				'data-target': "#basicModal"}, "Sign up"
 			  )
-			  
-				
-				
-			  
 			), 
-
 			
 			React.createElement("div", {className: "under-back"}, 
 			
-			React.createElement("div", {className: "container-fluid tomato second-page"}, 
+			  React.createElement("div", {className: "container-fluid tomato second-page"}, 
 				React.createElement("div", {className: "center-wrapper"}, 
-				React.createElement("div", {className: "row min-height"}, 
-				  React.createElement("div", {className: "col-xs-12 col-md-6"}, 
-				  React.createElement("h3", null, 
-					React.createElement("b", null, "Simple")
-				  ), 
-				  React.createElement("p", null, 
-					"Upload your gallery and upload your artworks"
-				  )
-				  ), 
-				   React.createElement("figure", {className: "col-xs-12 col-md-6"}, 
-				      React.createElement("img", {src: "images/artistspage_gif.gif"})
-				   
-				   )
-				), 
+				  React.createElement("div", {className: "row min-height simple-row"}, 
+				    React.createElement("div", {className: "col-xs-12 col-md-6 simple"}, 
+				      React.createElement("h3", null, 
+					    React.createElement("b", null, "Simple")
+				      ), 
+				      React.createElement("p", null, 
+					    "Upload your gallery and your artworks"
+				      )
+				    ), 
+				    React.createElement("figure", {className: "col-xs-12 col-md-6 honey"}, 
+				      React.createElement("img", {src: "images/honey.jpg"})
+				    )
+				  ), /*end row*/
+				  
+				  React.createElement("div", {className: "row min-height"}, 
+				    React.createElement("figure", {className: "col-xs-12 col-md-6"}, 
+				      React.createElement("img", {src: "images/egon.jpg"})
+				    ), 
+				    React.createElement("div", {className: "col-xs-11 col-md-6 cool"}, 
+					  React.createElement("h3", null, 
+					    React.createElement("b", null, "Cool")
+					  ), 
+					  React.createElement("p", null, 
+					    "Curate the art you love while you recommend it"
+					  )
+				    )
+				  ), /*end row*/
 				
-				React.createElement("div", {className: "row min-height"}, 
-				  React.createElement("figure", {className: "col-xs-6"}, 
-				    React.createElement("img", {src: "images/egon.jpg"})
-				  ), 
-				   React.createElement("div", {className: "col-xs-6"}, 
-					 React.createElement("h3", null, 
-					   React.createElement("b", null, "Cool")
-					), 
-					React.createElement("p", null, 
-					  "Curate the art you love while you recommend it"
-					)
-				  )
-				), 
-				
-				React.createElement("div", {className: "row min-height"}, 
-				  React.createElement("div", {className: "col-xs-6"}, 
-				  React.createElement("h3", null, 
-					React.createElement("b", null, "Effective")
-				  ), 
-				  React.createElement("p", null, 
-					"Find the best new art by the recommendations of who really knows, the artists and art lovers"
-				  )
-				  ), 
-				   React.createElement("figure", {className: "col-xs-6"}, 
-					 React.createElement("img", {src: "images/egon_land.jpg"})
-				   )
-				), 
+				  React.createElement("div", {className: "row min-height simple-row"}, 
+				    React.createElement("div", {className: "col-xs-12 col-md-6 simple"}, 
+				      React.createElement("h3", null, 
+					    React.createElement("b", null, "Effective")
+				      ), 
+				      React.createElement("p", null, 
+					    "Find the best new art by the recommendations of who really knows, the artists and art lovers"
+				      )
+				    ), 
+				    React.createElement("figure", {className: "col-xs-12 col-md-6 honey"}, 
+				      React.createElement("img", {src: "images/egon_land.jpg"})
+				    )
+				  ), /*end row*/
+
+				  
 				  React.createElement("div", {className: "fair-heading row col-xs-12 text-center"}, 
-				  React.createElement("h2", {id: "underline"}, React.createElement("b", null, "And above all, fair")), 
-				  React.createElement("p", {className: "text-info"}, 
+				    React.createElement("h2", {id: "underline"}, React.createElement("b", null, "And above all, fair")), 
+				    React.createElement("p", {className: "text-info"}, 
 					"If an artwork is sold, 90% for the artist, 7% for the person who recommended it, and 3% for the platform."
-				  )
-				)
-			  )
-            ), 
-              React.createElement("div", {className: "third-page"}, 			  			    
-				React.createElement("div", {className: "container", id: "near-footer"}, 
+				    )
+				  )/*end row*/
+				  
+			    )
+              ), 
+              
+			  React.createElement("div", {className: "third-page"}, 			  			    
+				React.createElement("div", {className: "container near-footer"}, 
 				  React.createElement("div", {className: "row"}, 
-					React.createElement("div", {className: "col-lg-8 col-md-8 col-xs-12 margin-top-1"}, 
+					React.createElement("div", {className: "col-lg-8 col-md-8 col-xs-12"}, 
 					  React.createElement("h3", null, "Do you want to be part of the Artfactum community?")
 					), 
-					React.createElement("div", {className: "col-lg-4 col-md-4 col-xs-12 margin-top-1"}, 
-					  React.createElement("div", {class: "btn-group"}, 
-					    React.createElement("button", {type: "button", class: "btn btn-default"}, "Social Login"), 
-					    React.createElement("button", {type: "button", class: "btn btn-default"}, "Social Login")
+					React.createElement("div", {className: "col-lg-4 col-md-4 col-xs-12"}, 
+					  React.createElement("div", {className: "btn-group"}, 
+					    React.createElement("button", {type: "button", className: "btn btn-default"}, "Facebook"), 
+					    React.createElement("button", {type: "button", className: "btn btn-default"}, "Twitter")
 					  )
 					  
 					)
 					
-				  )/*end row*/
-				), 
-                
-				React.createElement("div", {className: "footer"}, 
-				  React.createElement(Footer, null)
-				)
+				  ), /*end row*/
 				
+				  React.createElement("div", {className: "row footer"}, 
+				    React.createElement(Footer, null)
+				  )
+				
+			    )
 		      )	  
 				
 			)
@@ -433,7 +343,7 @@ var Signup = React.createClass({displayName: 'Signup',
 
 		React.createElement("div", {id: "section-two"}, 
 
-		React.createElement("article", {id: "signup-icons"}, 
+		React.createElement("article", {className: "signup-icons"}, 
 		 
 			React.createElement("div", null, 
 			  
@@ -495,11 +405,6 @@ var Signup = React.createClass({displayName: 'Signup',
 }
 
 });
-
-/*React.render(
-  <Signup url='data.json'/>,
-  document.getElementById('artfactum')
-);*/
 
 
 
@@ -868,7 +773,7 @@ var App = React.createClass({displayName: 'App',
     return {data: store.store.data }
   },
   
-  componentDidMount: function() {
+  componentWillMount: function() {
   
     var url = 'photos.json';
     Actions.fetchUserPhotos(url);
@@ -980,15 +885,16 @@ var Masonry = React.createClass({displayName: 'Masonry',
 	  return (
 	    React.createElement("div", null, 
 		  React.createElement("div", {ref: "images", className: "item"}, 
-		    React.createElement(ImageOverlay, React.__spread({},   self.props)), 
+		    React.createElement(ImageOverlay, {userProfile: this.props.userProfile, photoAttributes: image.photoAttributes}), 
 		    React.createElement("img", {key: "images", 
 			  className: "img-responsive", 
-			  src: image.photoAttributes[0].photoUrl, 
+			  src: image.photoAttributes.photoUrl, 
 			  alt: "photo"}
 			)		    
 		  )
 		)
 	  );
+	  
 	}.bind(this));
 	
     return (
@@ -1116,8 +1022,7 @@ var UserProfile = React.createClass({displayName: 'UserProfile',
     return (
 	 
       React.createElement("div", {className: "user-profile"}, 	  
-	    
-		React.createElement(TopNav, null), 
+	   React.createElement(TopNav, null), 
 		    React.createElement("div", {className: "modal fade", ref: "modal", id: "basicModal", tabindex: "-1", role: "dialog", 
 			    'aria-labelledby': "basicModal", 'aria-hidden': "true"}, 
 				React.createElement("div", {className: "modal-dialog"}, 
@@ -1489,31 +1394,35 @@ var Store = Flux.createStore({
   
     signedIn: false,
     
-	userProfile: [{
+	scheme: {
 	
-	  username: "username",
-	  artfactumUrl: null,
-	  livingIn: 'country',
-	  spokenLanguages: [],
-	  artisticDisciplines: [],
-	  favoriteArtStyles: [],
-	  featuredInterests: [],
-	  influences: [],
-	  artisticCV: null,
-	  profile: 'artist', //either artist or art lover
-      bornIn: 'country',
-      birthDate: null,
-      socialConnections: {
-	    facebook: false,
-		twitter: false,
-		googlePlus: false
-	  },
-	  following: ['artist']
+	  userProfile: {
+	
+	    username: "username",
+	    artfactumUrl: null,
+	    livingIn: 'country',
+	    spokenLanguages: [],
+	    artisticDisciplines: [],
+	    favoriteArtStyles: [],
+	    featuredInterests: [],
+	    influences: [],
+	    artisticCV: null,
+	    profile: 'artist', //either artist or art lover
+        bornIn: 'country',
+        birthDate: null,
+        socialConnections: {
+	      facebook: false,
+		  twitter: false,
+		  googlePlus: false
+	    },
+	    following: ['artist']
 	  
-	}],
+	  },
     
+	},
+	
 	//photo model
-	photoAttributes: [{
+	photoAttributes: {
 	
 	  id: null,
 	  photoUrl: null,
@@ -1529,7 +1438,7 @@ var Store = Flux.createStore({
 	  category: ['Art'],
 	  trendingTags: []
 	
-	}],
+	},
 	
 	userPhotos: {
 	

@@ -47,15 +47,16 @@ var Masonry = React.createClass({
 	  return (
 	    <div>
 		  <div ref='images' className="item">
-		    <ImageOverlay {... self.props} ></ImageOverlay>
+		    <ImageOverlay userProfile={this.props.userProfile} photoAttributes={image.photoAttributes} ></ImageOverlay>
 		    <img key='images' 
-			  className='img-responsive' 
-			  src={image.photoAttributes[0].photoUrl} 
+			  className='img-responsive'
+			  src={image.photoAttributes.photoUrl} 
 			  alt='photo'
 			/>		    
 		  </div>
 		</div>
 	  );
+	  
 	}.bind(this));
 	
     return (
