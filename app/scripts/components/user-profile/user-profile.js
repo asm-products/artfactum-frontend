@@ -9,7 +9,8 @@ var Router = window.ReactRouter,
 var Actions = require('./../../actions/actions.js'),
 	TopNav = require('./../TopNav/TopNav.js'),
 	Footer = require('./../footer/footer.js');
-  
+ 
+ 
 require('./user-profile.css');
 require('../../../styles/color-swatch.css');
  
@@ -47,9 +48,11 @@ var UserProfile = React.createClass({
   
   componentDidMount: function(){
     
+	 var php = 'http://localhost:8000';
+	
 	// Change this to the location of your server-side upload handler:
 	  
-    var url = '';
+    var url = php;
     $('#fileupload').fileupload({
 	
         url: url,
@@ -91,8 +94,8 @@ var UserProfile = React.createClass({
 	var modal = this.refs.modal.getDOMNode(),
 	    form = this.refs.form.getDOMNode();
 	$(modal).find('.modal-body').html('<p>' + $('form').serializeObject() + '</p>');
-	$(modal).modal('show');
-	alert(JSON.stringify($(form).serializeObject()));
+	//$(modal).modal('show');
+	//alert(JSON.stringify($(form).serializeObject()));
 	Actions.setUserProfile(
 	  JSON.stringify($(form).serializeObject())
 	);

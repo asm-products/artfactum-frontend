@@ -24,22 +24,6 @@
   background:white;
 }
 
-
-.parallax__group {
-  position:relative;
-  background: white;
-
-  height:100vh;
-  -webkit-transform-style: preserve-3d;
-          transform-style: preserve-3d;
-  width:100%;
-  -webkit-transform-style: preserve-3d;
-}
-  
-.parallax__group:nth-child(2){
-   background: white;
-}
-
 .parallax__layer {
 
   position: absolute;
