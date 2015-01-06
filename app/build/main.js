@@ -182,7 +182,7 @@ var css = ".overlay{\r\n\r\n  color:white;\r\n  position:absolute;\r\n  opacity:
 },{"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify":25}],6:[function(require,module,exports){
 var css = "@media all and (max-width:600px) {\r\n\r\n.signup .simple-row div{\r\n\r\n  min-height: 45vh;\r\n  \r\n  \r\n}\r\n\r\n.signup figure{\r\n\r\n  min-height: 45vh;\r\n  \r\n}\r\n\r\n\r\n\r\n.signup .center-wrapper figure{\r\n  \r\n  padding:0;\r\n  \r\n}\r\n\r\n\r\n.signup .center-wrapper{\r\n\r\n  position:relative;\r\n  width:110%;\r\n  top:2em;\r\n  margin-right:auto;\r\n  margin-left:auto;\r\n\r\n}\r\n\r\n.signup .honey{\r\n   \r\n   width:100%;\r\n    \r\n}\r\n\r\n.signup .cool{\r\n\r\n  width:85%;\r\n\r\n}\r\n\r\n.signup .signup-icons{\r\n  font-size: .75em;\r\n  padding-top: 1.1em;\r\n}\r\n\r\n.signup .below-article{\r\n  bottom: 25%;\r\n  font-size: 1.4em;\r\n}\r\n  \r\n\r\n.signup .simple{\r\n  position:absolute;\r\n  width: 100%; \r\n  text-align: center;\r\n  z-index: 10;\r\n  background: rgba(10,20,40,0.3);\r\n}\r\n\r\n.signup .oval-button {\r\n   font-size: 1em;\r\n   top:-2%;\r\n}\r\n\r\n.signup .simple-row h3{\r\n\r\n  padding: .8em;\r\n  padding-top:3em;\r\n  color: white;  \r\n  text-decoration: underline;\r\n  \r\n}\r\n\r\n.signup .jumbo-inner{\r\n  font-size: 1.1em;\r\n  top: -21%;\r\n}\r\n\r\n.signup .simple-row p{\r\n\r\n  color: white;\r\n\r\n}\r\n\r\n.signup .honey img{\r\n\r\n  padding: 0;\r\n  padding-right: 0;\r\n  width: 100%;\r\n  height:100;\r\n  position:absolute;\r\n  left:0;\r\n  top:0;\r\n  box-shadow: 0 0 0 0 white;\r\n\r\n}\r\n\r\n.signup .egon{\r\n  top:-2.25em;\r\n}\r\n\r\n}"; (require("C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify"))(css); module.exports = css;
 },{"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify":25}],7:[function(require,module,exports){
-var css = "/*the height break point seems to be just over 450px;\r\n *width breakpoint 350px;\r\n */\r\n\r\n#underline{\r\n\r\n  text-decoration: underline;\r\n\r\n}\r\n\r\n/*for the language picker and sign-in button\r\n *the entire page needs to be wrapped inside the parallax class and it needs\r\n *to have the appropriate height to keep a second scroller from appearing\r\n */\r\n\t\r\n.parallax {\r\n  -webkit-perspective: 1px;\r\n          perspective: 1px;\r\n  top:.5vh;\r\n  overflow-x: hidden;\r\n  overflow-y: auto;\r\n  position:relative;\r\n  height:99vh;\r\n  background:white;\r\n}\r\n\r\n\r\n.parallax__group {\r\n  position:relative;\r\n  background: white;\r\n\r\n  height:100vh;\r\n  -webkit-transform-style: preserve-3d;\r\n          transform-style: preserve-3d;\r\n  width:100%;\r\n  -webkit-transform-style: preserve-3d;\r\n}\r\n  \r\n.parallax__group:nth-child(2){\r\n   background: white;\r\n}\r\n\r\n.parallax__layer {\r\n\r\n  position: absolute;\r\n  top: 0;\r\n  right: 0;\r\n  bottom: 0;\r\n  left: 0;\r\n  height:100vh;\r\n}\r\n\r\n.parallax__layer--base {\r\n\r\n  webkit-transform: translateZ(0);\r\n  transform: translateZ(0);\r\n  -webkit-transform: translateZ(0);\r\n\r\n}\r\n\r\n.parallax__layer--back {\r\n\r\n  -webkit-transform: translateZ(-1px);\r\n  transform: translateZ(-1px);\r\n  -webkit-transform: translateZ(-1px) scale(2);\r\n  width:100%;\r\n   \r\n}\r\n\r\n.parallax__group {\r\n  position:relative;\r\n  background: rgba(130,130,230,0.01);\r\n  height:100vh;\r\n  -webkit-transform-style: preserve-3d;\r\n          transform-style: preserve-3d;\r\n  width:100%;\r\n  -webkit-transform-style: preserve-3d;\r\n}\r\n  \r\n.parallax__group:nth-child(2){\r\n  background: white;\r\n}\r\n\r\n/***\r\n three pages in total\r\n ***/\r\n\r\n.signup .first-page{}\r\n\r\n.signup{\r\n  width:100%;\r\n  position:absolute;\r\n}\r\n \r\n.second-page{\r\n  top:30vh;\r\n  position:relative; \r\n  background:white;\r\n}\r\n \r\n.third-page{\r\n  top:40vh;\r\n  position:relative;\r\n  left:0;\r\n  margin:0;\r\n  margin-top:1em;\r\n\r\n}\r\n\r\n.signup .third-page .container{\r\n\r\n  padding-top: 3em;\r\n\r\n}\r\n\r\n.signup .near-footer{\r\n\r\n  top:1.5em;\r\n  font-size:1em;\r\n  background: #e56e5c;\r\n  color:white;\r\n  width:100%;\r\n  position:relative;\r\n  \r\n}\r\n\r\n/*wrap the second and third pages*/\r\n\r\n.under-back{\r\n  position:absolute;\r\n  width:100%;\r\n  top:200vh;\r\n}\r\n\r\n\r\n/*top header*/\r\n\r\n.signup-language, .signup-button{\r\n    position: absolute;\r\n    padding: 1vh;\r\n\tmargin: .75em;\r\n}\r\n\r\n.signup-button{\r\n  right:0;\r\n}\r\n\r\n/*hero-unit*/\t\r\n \r\n.signup .jumbo{\r\n  \r\n  position:relative;\r\n  top:-8%;\r\n  height:70%;\r\n  width:100%;\r\n  text-align:center;\r\n  color:black;\r\n  overflow:hidden:\r\n\r\n}\r\n\r\n  \r\n  \r\n.signup .jumbo img:nth-child(1){\r\n  \r\n  position:absolute;\r\n  z-index:0;\r\n  left:-25%;\r\n  top:-25%;\r\n  opacity:0.35;\r\n    \r\n}\r\n  \r\n.signup .jumbo img:nth-child(2){\r\n\r\n  top:.5em;\r\n  display:block;\r\n  position:relative;\r\n  z-index:0;\r\n  margin-left:auto;\r\n  margin-right:auto;\r\n  \r\n}\r\n  \r\n.jumbo-inner{\r\n  \r\n  position:relative;\r\n  top:-14%;\r\n  font-size:1.4em;\r\n  margin-left:5%;\r\n  margin-right:5%;\r\n\r\n}\r\n  \r\n.signup .jumbo i{\r\n\r\n  margin-top:-.2em;\r\n  position:relative;\r\n  display:block;\r\n  margin-left:auto;\r\n  margin-right:auto;\r\n  width:90%;\r\n  font-size:.9em;\r\n  color:#000;\r\n \r\n}\r\n\r\n.signup .jumbo h2{\r\n  \r\n  color:black;\r\n  font-size:1.4em;\r\n  \r\n}\r\n\r\n\t\t\r\n.signup .oval-button{\r\n  text-align:center;\r\n  color:white;\r\n  background: #e5635c;\r\n  padding: .75em;\r\n  position:relative;\r\n  display:block;\r\n  margin-left: auto;\r\n  margin-right:auto;\r\n  width:15em;\r\n  border-radius:20px;\r\n  font-family: 'Open-Sans-regular';\r\n  font-weight:bold;\r\n  font-size:1.2em;\r\n}\r\n  \r\n.signup .second-oval{\r\n\r\n  background:blue;\r\n\r\n}\r\n  \r\n  \r\n/*second section of the first page\r\n  the first page actually being two pages of vh (window height)\r\n */  \r\n  \r\n#section-two{\r\n  left:0;\r\n  width:90%;\r\n  height:100vh;\r\n  position:relative;\r\n  margin-left:auto;\r\n  margin-right:auto;\r\n  font-family: 'Open-Sans-regular';\r\n  font-size:1.2em;\r\n}\r\n\r\n/*wrap the icon section*/\r\n  \r\n.signup article{\r\n  position:relative;\r\n  top:11%;\r\n  width:110%;\r\n  margin-left:auto;\r\n  margin-right:auto;\r\n  height:65%;\r\n}\r\n\r\n.signup .signup-icons div{\r\n  margin-top:3em;\r\n}\r\n\r\n.signup .signup-icons p{\r\n  padding-top:1em;\r\n}\r\n  \r\n\r\n  /*statement*/\r\n  \r\n.below-article{\t\r\n\tposition:relative;\r\n\tbottom:20%;\r\n\tclear:float;\r\n\twidth:80%;\r\n\tpadding-top:1.5em;\r\n\tfont-size:1.4em;\r\n\tfont-style: italic;\r\n\tmargin-left:auto;\r\n\tmargin-right:auto;\r\n\ttext-align: center;\r\n\tfont-family: 'Open-Sans-600';\r\n}\r\n  \r\n  \r\n.center-wrapper .row{\r\n\r\n margin-top:3em;\r\n\r\n} \r\n  \r\n#section-two div{\r\n    \r\n\twidth: 25%;\r\n\theight:30%;\r\n\tfloat:left;\r\n\tfont-size:1.2em;\r\n\ttext-align:center;\r\n\t\r\n}\r\n  \r\n#section-two span{\r\n\r\n    \r\n\twidth: 8%;\r\n\theight:30%;\r\n\tfloat:left;\r\n\tfont-size:1.2em;\r\n\ttext-align:center;\r\n\t\r\n\r\n}\r\n  \r\n/*TODO make less global*/\r\n\r\n.signup.min-height div{\r\n  \r\n  padding: 0 15px;\r\n  min-height: 50vh;\r\n \r\n}\r\n\r\n.signup .min-height h3{\r\n\r\n  color:#e56e5c;\r\n\r\n}\r\n\r\n.signup .min-height p{\r\n\r\n  color: slategray;\r\n\r\n}\r\n\r\n.signup figure {\r\n\r\n  height:45vh;\r\n  min-width:45vh;\r\n  display:cover;\r\n  overflow:hidden;\r\n  \r\n\r\n}\r\n\r\n.signup figure img{\r\n\r\n  padding:1.1em;\r\n  padding-right:5em;\r\n  width: 100%;\r\n  height:100;\r\n  position:absolute;\r\n  left:0;\r\n  top:0;\r\n  box-shadow: 0 0 5px 2px #ccc;\r\n\r\n}\r\n\r\n.signup .fair-heading{\r\n\r\n  position:relative;\r\n  top:3em;\r\n  color:#e56e5c;\r\n  background:white;\r\n\r\n}\r\n\r\n\r\n.fair-heading p{\r\n\r\n  color:slategray;\r\n  padding-top:1.25em;\r\n  \r\n}\r\n\r\n.center-wrapper figure{\r\n  \r\n  padding:1em;\r\n  \r\n}\r\n\r\n\r\n.center-wrapper{\r\n\r\n  position:relative;\r\n  width:90%;\r\n  top:2em;\r\n  margin-right:auto;\r\n  margin-left:auto;\r\n\r\n}\r\n\r\n\r\n.signup .near-footer button{\r\n\r\n  margin-top:1.5em;\r\n  box-shadow: 0 0 3px rgba(10,10,10,0.3);\r\n  \r\n}\r\n\r\n.signup .footer{\r\n\r\n  position:relative;\r\n  color:white;\r\n  top:2.8em;\r\n  \r\n}\r\n\r\n\r\n.signup .modal-dialog, .modal-content{\r\n  border: solid black 10px;\r\n  position:relative;\r\n  z-index:9999;\r\n}"; (require("C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify"))(css); module.exports = css;
+var css = "/*the height break point seems to be just over 450px;\r\n *width breakpoint 350px;\r\n */\r\n\r\n#underline{\r\n\r\n  text-decoration: underline;\r\n\r\n}\r\n\r\n/*for the language picker and sign-in button\r\n *the entire page needs to be wrapped inside the parallax class and it needs\r\n *to have the appropriate height to keep a second scroller from appearing\r\n */\r\n\t\r\n.parallax {\r\n  -webkit-perspective: 1px;\r\n          perspective: 1px;\r\n  top:.5vh;\r\n  overflow-x: hidden;\r\n  overflow-y: auto;\r\n  position:relative;\r\n  height:99vh;\r\n  background:white;\r\n}\r\n\r\n.parallax__layer {\r\n\r\n  position: absolute;\r\n  top: 0;\r\n  right: 0;\r\n  bottom: 0;\r\n  left: 0;\r\n  height:100vh;\r\n}\r\n\r\n.parallax__layer--base {\r\n\r\n  webkit-transform: translateZ(0);\r\n  transform: translateZ(0);\r\n  -webkit-transform: translateZ(0);\r\n\r\n}\r\n\r\n.parallax__layer--back {\r\n\r\n  -webkit-transform: translateZ(-1px);\r\n  transform: translateZ(-1px);\r\n  -webkit-transform: translateZ(-1px) scale(2);\r\n  width:100%;\r\n   \r\n}\r\n\r\n.parallax__group {\r\n  position:relative;\r\n  background: rgba(130,130,230,0.01);\r\n  height:100vh;\r\n  -webkit-transform-style: preserve-3d;\r\n          transform-style: preserve-3d;\r\n  width:100%;\r\n  -webkit-transform-style: preserve-3d;\r\n}\r\n  \r\n.parallax__group:nth-child(2){\r\n  background: white;\r\n}\r\n\r\n/***\r\n three pages in total\r\n ***/\r\n\r\n.signup .first-page{}\r\n\r\n.signup{\r\n  width:100%;\r\n  position:absolute;\r\n}\r\n \r\n.second-page{\r\n  top:30vh;\r\n  position:relative; \r\n  background:white;\r\n}\r\n \r\n.third-page{\r\n  top:40vh;\r\n  position:relative;\r\n  left:0;\r\n  margin:0;\r\n  margin-top:1em;\r\n\r\n}\r\n\r\n.signup .third-page .container{\r\n\r\n  padding-top: 3em;\r\n\r\n}\r\n\r\n.signup .near-footer{\r\n\r\n  top:1.5em;\r\n  font-size:1em;\r\n  background: #e56e5c;\r\n  color:white;\r\n  width:100%;\r\n  position:relative;\r\n  \r\n}\r\n\r\n/*wrap the second and third pages*/\r\n\r\n.under-back{\r\n  position:absolute;\r\n  width:100%;\r\n  top:200vh;\r\n}\r\n\r\n\r\n/*top header*/\r\n\r\n.signup-language, .signup-button{\r\n    position: absolute;\r\n    padding: 1vh;\r\n\tmargin: .75em;\r\n}\r\n\r\n.signup-button{\r\n  right:0;\r\n}\r\n\r\n/*hero-unit*/\t\r\n \r\n.signup .jumbo{\r\n  \r\n  position:relative;\r\n  top:-8%;\r\n  height:70%;\r\n  width:100%;\r\n  text-align:center;\r\n  color:black;\r\n  overflow:hidden:\r\n\r\n}\r\n\r\n  \r\n  \r\n.signup .jumbo img:nth-child(1){\r\n  \r\n  position:absolute;\r\n  z-index:0;\r\n  left:-25%;\r\n  top:-25%;\r\n  opacity:0.35;\r\n    \r\n}\r\n  \r\n.signup .jumbo img:nth-child(2){\r\n\r\n  top:.5em;\r\n  display:block;\r\n  position:relative;\r\n  z-index:0;\r\n  margin-left:auto;\r\n  margin-right:auto;\r\n  \r\n}\r\n  \r\n.jumbo-inner{\r\n  \r\n  position:relative;\r\n  top:-14%;\r\n  font-size:1.4em;\r\n  margin-left:5%;\r\n  margin-right:5%;\r\n\r\n}\r\n  \r\n.signup .jumbo i{\r\n\r\n  margin-top:-.2em;\r\n  position:relative;\r\n  display:block;\r\n  margin-left:auto;\r\n  margin-right:auto;\r\n  width:90%;\r\n  font-size:.9em;\r\n  color:#000;\r\n \r\n}\r\n\r\n.signup .jumbo h2{\r\n  \r\n  color:black;\r\n  font-size:1.4em;\r\n  \r\n}\r\n\r\n\t\t\r\n.signup .oval-button{\r\n  text-align:center;\r\n  color:white;\r\n  background: #e5635c;\r\n  padding: .75em;\r\n  position:relative;\r\n  display:block;\r\n  margin-left: auto;\r\n  margin-right:auto;\r\n  width:15em;\r\n  border-radius:20px;\r\n  font-family: 'Open-Sans-regular';\r\n  font-weight:bold;\r\n  font-size:1.2em;\r\n}\r\n  \r\n.signup .second-oval{\r\n\r\n  background:blue;\r\n\r\n}\r\n  \r\n  \r\n/*second section of the first page\r\n  the first page actually being two pages of vh (window height)\r\n */  \r\n  \r\n#section-two{\r\n  left:0;\r\n  width:90%;\r\n  height:100vh;\r\n  position:relative;\r\n  margin-left:auto;\r\n  margin-right:auto;\r\n  font-family: 'Open-Sans-regular';\r\n  font-size:1.2em;\r\n}\r\n\r\n/*wrap the icon section*/\r\n  \r\n.signup article{\r\n  position:relative;\r\n  top:11%;\r\n  width:110%;\r\n  margin-left:auto;\r\n  margin-right:auto;\r\n  height:65%;\r\n}\r\n\r\n.signup .signup-icons div{\r\n  margin-top:3em;\r\n}\r\n\r\n.signup .signup-icons p{\r\n  padding-top:1em;\r\n}\r\n  \r\n\r\n  /*statement*/\r\n  \r\n.below-article{\t\r\n\tposition:relative;\r\n\tbottom:20%;\r\n\tclear:float;\r\n\twidth:80%;\r\n\tpadding-top:1.5em;\r\n\tfont-size:1.4em;\r\n\tfont-style: italic;\r\n\tmargin-left:auto;\r\n\tmargin-right:auto;\r\n\ttext-align: center;\r\n\tfont-family: 'Open-Sans-600';\r\n}\r\n  \r\n  \r\n.center-wrapper .row{\r\n\r\n margin-top:3em;\r\n\r\n} \r\n  \r\n#section-two div{\r\n    \r\n\twidth: 25%;\r\n\theight:30%;\r\n\tfloat:left;\r\n\tfont-size:1.2em;\r\n\ttext-align:center;\r\n\t\r\n}\r\n  \r\n#section-two span{\r\n\r\n    \r\n\twidth: 8%;\r\n\theight:30%;\r\n\tfloat:left;\r\n\tfont-size:1.2em;\r\n\ttext-align:center;\r\n\t\r\n\r\n}\r\n  \r\n/*TODO make less global*/\r\n\r\n.signup.min-height div{\r\n  \r\n  padding: 0 15px;\r\n  min-height: 50vh;\r\n \r\n}\r\n\r\n.signup .min-height h3{\r\n\r\n  color:#e56e5c;\r\n\r\n}\r\n\r\n.signup .min-height p{\r\n\r\n  color: slategray;\r\n\r\n}\r\n\r\n.signup figure {\r\n\r\n  height:45vh;\r\n  min-width:45vh;\r\n  display:cover;\r\n  overflow:hidden;\r\n  \r\n\r\n}\r\n\r\n.signup figure img{\r\n\r\n  padding:1.1em;\r\n  padding-right:5em;\r\n  width: 100%;\r\n  height:100;\r\n  position:absolute;\r\n  left:0;\r\n  top:0;\r\n  box-shadow: 0 0 5px 2px #ccc;\r\n\r\n}\r\n\r\n.signup .fair-heading{\r\n\r\n  position:relative;\r\n  top:3em;\r\n  color:#e56e5c;\r\n  background:white;\r\n\r\n}\r\n\r\n\r\n.fair-heading p{\r\n\r\n  color:slategray;\r\n  padding-top:1.25em;\r\n  \r\n}\r\n\r\n.center-wrapper figure{\r\n  \r\n  padding:1em;\r\n  \r\n}\r\n\r\n\r\n.center-wrapper{\r\n\r\n  position:relative;\r\n  width:90%;\r\n  top:2em;\r\n  margin-right:auto;\r\n  margin-left:auto;\r\n\r\n}\r\n\r\n\r\n.signup .near-footer button{\r\n\r\n  margin-top:1.5em;\r\n  box-shadow: 0 0 3px rgba(10,10,10,0.3);\r\n  \r\n}\r\n\r\n.signup .footer{\r\n\r\n  position:relative;\r\n  color:white;\r\n  top:2.8em;\r\n  \r\n}\r\n\r\n\r\n.signup .modal-dialog, .modal-content{\r\n  border: solid black 10px;\r\n  position:relative;\r\n  z-index:9999;\r\n}"; (require("C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify"))(css); module.exports = css;
 },{"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify":25}],8:[function(require,module,exports){
 'use strict';
 
@@ -190,7 +190,6 @@ var Footer = React.createFactory(require('./../Footer/Footer.js'));
 
 require('./signup.css');
 require('./signup-phones.css');
-
 
 
 var Signup = React.createClass({displayName: 'Signup',
@@ -251,7 +250,7 @@ var Signup = React.createClass({displayName: 'Signup',
 			    'data-toggle': "modal", 
 				'data-target': "#basicModal"}, "Sign up"
 			  )
-			), 
+			), /*end parallax base*/
 			
 			React.createElement("div", {className: "under-back"}, 
 			
@@ -320,8 +319,7 @@ var Signup = React.createClass({displayName: 'Signup',
 					  React.createElement("div", {className: "btn-group"}, 
 					    React.createElement("button", {type: "button", className: "btn btn-default"}, "Facebook"), 
 					    React.createElement("button", {type: "button", className: "btn btn-default"}, "Twitter")
-					  )
-					  
+					  )					  
 					)
 					
 				  ), /*end row*/
@@ -332,7 +330,6 @@ var Signup = React.createClass({displayName: 'Signup',
 				
 			    )
 		      )	  
-				
 			)
 		
 		  ), 
@@ -384,18 +381,9 @@ var Signup = React.createClass({displayName: 'Signup',
 		React.createElement("div", {className: "below-article"}, 
 			React.createElement("strong", null, "The artistic community you were waiting for")
 		  )
-		), 
-
-		React.createElement("div", {className: "parallax__group"}, 
-		React.createElement("div", {className: "parallax__layer parallax__layer--back"}
-
-		), 
-		React.createElement("div", {className: "parallax__layer parallax__layer--base"}
-
 		)
 
-		)
-
+	
       )
     )
   )
@@ -679,10 +667,9 @@ module.exports=require(3)
 },{"C:\\Users\\Justin\\documents\\github\\af\\app\\scripts\\components\\Footer\\footer.css":3,"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify":25}],15:[function(require,module,exports){
 module.exports=require(2)
 },{"./footer.css":14,"C:\\Users\\Justin\\documents\\github\\af\\app\\scripts\\components\\Footer\\Footer.js":2}],16:[function(require,module,exports){
-var css = ".route-header{\r\n  position:absolute;\r\n  height:100px;\r\n  background: #eee;\r\n  padding:1em;\r\n  width:100%;\r\n  left:0;\r\n  top:0;\r\n}\r\n\r\n.views{\r\n\r\n  position:absolute;\r\n  top: 100px;\r\n  width:100%;\r\n  left:0;\r\n\r\n}"; (require("C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify"))(css); module.exports = css;
+var css = ".browsehappy {\r\n  margin: 0.2em 0;\r\n  background: #ccc;\r\n  color: #000;\r\n  padding: 0.2em 0;\r\n}\r\n\r\n@font-face {\r\n  font-family: 'Open-Sans-600';\r\n  src: url(fonts/Open-Sans-600.ttf);\r\n}\r\n\r\n@font-face {\r\n  font-family: 'Open-Sans-300';\r\n  src: url(fonts/Open-Sans-300.ttf);\r\n}\r\n\r\n@font-face {\r\n  font-family: 'Open-Sans-regular';\r\n  src: url(fonts/Open-Sans-regular.ttf);\r\n}\r\n\t\r\n\r\nbody{\r\n  margin:0;\r\n  padding:0;\r\n  font-family: 'Open-Sans-600';\t\r\n  -webkit-font-smoothing: antialiased;\r\n}\r\n\r\n.user-profile{\r\n  width:100%;\r\n  position:absolute;\r\n  top:1em;\r\n  left:0;\r\n}\r\n\r\n.padding1{\r\n  padding: 1em;  \r\n}\r\n\r\n.fluid{\r\n  width: 100%;\r\n}\r\n\r\n.center-block {\r\n  display: block;\r\n  margin-left: auto;\r\n  margin-right: auto;\r\n}\r\n\r\n.vertical-align{\r\n   vertical-align:middle;\r\n}\r\n\r\n\r\n.route-header{\r\n  position:absolute;\r\n  height:100px;\r\n  background: #eee;\r\n  padding:1em;\r\n  width:100%;\r\n  left:0;\r\n  top:0;\r\n}\r\n\r\n.views{\r\n\r\n  position:absolute;\r\n  top: 100px;\r\n  width:100%;\r\n  left:0;\r\n\r\n}"; (require("C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify"))(css); module.exports = css;
 },{"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify":25}],17:[function(require,module,exports){
 'use strict';
-
 
 var UserProfile = React.createFactory(require('./user-profile/user-profile.js')),
     TopNav = React.createFactory(require('./TopNav/TopNav.js')),
@@ -691,7 +678,7 @@ var UserProfile = React.createFactory(require('./user-profile/user-profile.js'))
     Footer = React.createFactory(require('./footer/footer.js')),
     Masonry = React.createFactory(require('./masonry/masonry.js'));
    
-	
+   
 	
 var store = require('./../stores/store.js'),
     Dispatcher = require('./../dispatcher.js'),
@@ -706,6 +693,7 @@ var Router = window.ReactRouter,
     NotFoundRoute = Router.NotFoundRoute, 
 	RouteHandler = Router.RouteHandler;
 
+	
 	
 require('./main.css');
 
@@ -925,7 +913,8 @@ var Router = window.ReactRouter,
 var Actions = require('./../../actions/actions.js'),
 	TopNav = require('./../TopNav/TopNav.js'),
 	Footer = require('./../footer/footer.js');
-  
+ 
+ 
 require('./user-profile.css');
 require('../../../styles/color-swatch.css');
  
@@ -963,9 +952,11 @@ var UserProfile = React.createClass({displayName: 'UserProfile',
   
   componentDidMount: function(){
     
+	 var php = 'http://localhost:8000';
+	
 	// Change this to the location of your server-side upload handler:
 	  
-    var url = '';
+    var url = php;
     $('#fileupload').fileupload({
 	
         url: url,
@@ -1007,8 +998,8 @@ var UserProfile = React.createClass({displayName: 'UserProfile',
 	var modal = this.refs.modal.getDOMNode(),
 	    form = this.refs.form.getDOMNode();
 	$(modal).find('.modal-body').html('<p>' + $('form').serializeObject() + '</p>');
-	$(modal).modal('show');
-	alert(JSON.stringify($(form).serializeObject()));
+	//$(modal).modal('show');
+	//alert(JSON.stringify($(form).serializeObject()));
 	Actions.setUserProfile(
 	  JSON.stringify($(form).serializeObject())
 	);
@@ -1394,8 +1385,6 @@ var Store = Flux.createStore({
   
     signedIn: false,
     
-	scheme: {
-	
 	  userProfile: {
 	
 	    username: "username",
@@ -1419,8 +1408,6 @@ var Store = Flux.createStore({
 	  
 	  },
     
-	},
-	
 	//photo model
 	photoAttributes: {
 	

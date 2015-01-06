@@ -6,7 +6,6 @@ require('./signup.css');
 require('./signup-phones.css');
 
 
-
 var Signup = React.createClass({
 
   render: function(){
@@ -65,7 +64,7 @@ var Signup = React.createClass({
 			    data-toggle='modal'
 				data-target='#basicModal'>Sign up
 			  </button>
-			</div>
+			</div>{/*end parallax base*/}
 			
 			<div className='under-back'>
 			
@@ -134,8 +133,7 @@ var Signup = React.createClass({
 					  <div className="btn-group">
 					    <button type="button" className="btn btn-default">Facebook</button>
 					    <button type="button" className="btn btn-default">Twitter</button>
-					  </div>
-					  
+					  </div>					  
 					</div>
 					
 				  </div>{/*end row*/}
@@ -146,7 +144,6 @@ var Signup = React.createClass({
 				
 			    </div>
 		      </div>	  
-				
 			</div>
 		
 		  </div> 
@@ -200,16 +197,7 @@ var Signup = React.createClass({
 		  </div>
 		</div>
 
-		<div className='parallax__group'>
-		<div className="parallax__layer parallax__layer--back">
-
-		</div>
-		<div className="parallax__layer parallax__layer--base">
-
-		</div>  
-
-		</div>
-
+	
       </div>
     </div>
   </div>

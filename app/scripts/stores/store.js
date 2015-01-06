@@ -9,8 +9,6 @@ var Store = Flux.createStore({
   
     signedIn: false,
     
-	scheme: {
-	
 	  userProfile: {
 	
 	    username: "username",
@@ -34,8 +32,6 @@ var Store = Flux.createStore({
 	  
 	  },
     
-	},
-	
 	//photo model
 	photoAttributes: {
 	
