@@ -10,6 +10,8 @@ var Actions = require('./../../actions/actions.js'),
 	TopNav = require('./../TopNav/TopNav.js'),
 	Footer = require('./../footer/footer.js');
  
+var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
+
  
 require('./user-profile.css');
 require('../../../styles/color-swatch.css');
@@ -47,12 +49,10 @@ var UserProfile = React.createClass({
   },
   
   componentDidMount: function(){
-    
-	 var php = 'http://localhost:8000';
-	
+    	
 	// Change this to the location of your server-side upload handler:
-	  
-    var url = php;
+    var url = '';
+  
     $('#fileupload').fileupload({
 	
         url: url,
@@ -94,7 +94,7 @@ var UserProfile = React.createClass({
 	var modal = this.refs.modal.getDOMNode(),
 	    form = this.refs.form.getDOMNode();
 	$(modal).find('.modal-body').html('<p>' + $('form').serializeObject() + '</p>');
-	//$(modal).modal('show');
+	$(modal).modal('show');
 	//alert(JSON.stringify($(form).serializeObject()));
 	Actions.setUserProfile(
 	  JSON.stringify($(form).serializeObject())
@@ -133,18 +133,17 @@ var UserProfile = React.createClass({
 		  <div className='row user-profile-head'>
 		   
 		    <div className='col-xs-12'>
-		    
-			  <h1 className='text-center vertical-align'>
-			  
-			    {this.state.username}
+		      <h1 className='text-center vertical-align'>
 			    
+				username
+				
 			    <div className='photo-circle'>
 				  <div className='inner-circle'>
 				    <img src='images/camera.png' alt='camera' title='camera' />
 				  </div>
 				</div>
 			  </h1>
-		    </div>
+			</div>
 		   
 		  </div>{/*end second row*/}
 		  

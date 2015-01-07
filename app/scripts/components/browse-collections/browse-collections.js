@@ -1,20 +1,23 @@
 'use strict'
 
 
-//js
-  var TopNav = React.createFactory(require('./../TopNav/TopNav.js')),
-      Masonry = require('./../masonry/masonry.js');
+var TopNav = React.createFactory(require('./../TopNav/TopNav.js')),
+    Masonry = require('./../masonry/masonry.js');
 	
- 
-//css
 require('./BrowseCollections.css');
 require('./phones.css');
 
+
 var BrowseCollections = React.createClass({
+
+  propTypes: {
+    //todo add proptypes
+  },
 
   getInitialState: function(){
   
     return ({
+	  //need to highlight the category the user clicks
 	  focusedOn: 0,
 	});
 	
@@ -29,12 +32,16 @@ var BrowseCollections = React.createClass({
   
   },
   
+  //todo - change to category click
   handleClick: function(i,e){
         
 	var domNode = this.getDOMNode();
 	
+	//what got clicked
 	var elem = domNode.querySelectorAll('.browse-images')[i],
-	    tag = $(elem).data('expression'),
+	    
+		//get the category associated with category clicked
+		tag = $(elem).data('expression'),
 	    self = this,
 		newImages = ['images/picasso.png','images/egon.jpg','images/dogs.png', 'images/egon_land.jpg', 'images/flowers_big.jpg','images/Logo_+_vector.png'],
 		images = [],
@@ -43,6 +50,7 @@ var BrowseCollections = React.createClass({
 	//can use flickr for dummy data
 	url = 'http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?';
 	
+	//fetch data
 	$.getJSON(url,{
 	  tags: tag,
 	  tagmode: 'any',
@@ -59,8 +67,7 @@ var BrowseCollections = React.createClass({
  	  self.setState({
 	    images:newImages,
 		focusedOn:i
-	  });
-	  
+	  });	  
 	  	  
 	});
 

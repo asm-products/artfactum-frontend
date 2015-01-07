@@ -5,7 +5,8 @@ var UserProfile = React.createFactory(require('./user-profile/user-profile.js'))
     Signup = React.createFactory(require('./Signup/signup.js')),
     BrowseCollections = React.createFactory(require('./browse-collections/browse-collections.js')),
     Footer = React.createFactory(require('./footer/footer.js')),
-    Masonry = React.createFactory(require('./masonry/masonry.js'));
+    Masonry = React.createFactory(require('./masonry/masonry.js')),
+    ParallaxPage = React.createFactory(require('./ParallaxPage/ParallaxPage.js'));
    
    
 	
@@ -114,6 +115,7 @@ var App = React.createClass({
 	    <Link to='browsecollections'><button>browse collections</button></Link>
 	    <Link to='footer'><button>footer</button></Link>
 	    <Link to='masonry'><button>masonry</button></Link>
+	    <Link to='parallaxpage'><button>Parallax</button></Link>
  	    <div className='views'>
 		  <RouteHandler {... this.props.data} />
 	    </div>
@@ -132,6 +134,7 @@ var routes = (
     <Route path='/about' name='about' handler={About}/>
     <Route path='/browsecollections' name='browsecollections' handler={BrowseCollections}/>
     <Route path='/masonry' name='masonry' handler={Masonry}/>
+    <Route path='/parallaxpage' name='parallaxpage' handler={ParallaxPage}/>
     <Route path='/collections' name='collections' handler={Collections}/>
     <Route path='/marketplace' name='marketplace' handler={Marketplace}/>
     <Route path='/mygallery' name='mygallery' handler={MyGallery}/>
