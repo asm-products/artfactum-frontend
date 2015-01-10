@@ -1,4 +1,6 @@
-
+.user-profile .underline{
+  text-decoration: underline;
+}
 
 .user-profile .container{
   width:100%;
@@ -17,6 +19,14 @@
   height:7em;
   color: white;
  
+}
+
+.user-profile .artist{
+  border-radius: 20px;
+  padding-left:20px;
+  padding-right:20px;
+  background: #e56e5c;
+  color:white;
 }
 
 .user-profile .photo-circle{
@@ -62,56 +72,64 @@
 
 }
 
+.user-profile .social{
+  margin-bottom:4em;
+}
+
+
+.user-profile .input-group-addon{
+  background: white;
+  color: green;
+}
+
+.user-profile .help-block{
+  margin-top: -.75em;
+}
+
+.user-profile .help-block button{
+  margin-left: 10px;
+  border: solid 2px tomato;
+  padding: .1em .5em .1em .5em;
+}
+
+.user-profile .social-buttons{
+  margin-top: 1em;
+}
+
 /*make width wider on wider screens*/
 
 .user-profile-forms article{
-  top:2em;
+ 
+  margin-top:2em;
   left:0; 
-  width:90%;
+  width:100%;
   height: 270px;
  
 }
 
-.user-profile article p{
-  margin-top:1em;
+.user-profile .my-account{
+  width:80%;
+  position:relative;
+  top:2em;
 }
 
-.user-profile article .btn-group{
 
-  margin-left:5em;
-  margin-right:5em;
+.user-profile .input-group{
 
-}
-
-.user-profile .dropdown-toggle{
+  width:100%;
+  padding-top:2px;
+  padding-bottom:1em;
 
 }
 
 .user-profile .button-wrapper{
   position:relative;
   top:1em;
-  width:100%;
+  width:100px;
 }
 
 
 
-.user-profile .article{
-  position: relative;
-  width:400px;
-  border: solid pink 1px;
-}
-
-
-
-.user-profile .top-drop, .user-profile .top-drop:active{
-
-  background: inherit;
-   
-}
-
-.user-profile .top-drop:hover{
-  background: #d1ccca;
-}
 
 /*
  * jQuery File Upload Plugin CSS 1.3.0

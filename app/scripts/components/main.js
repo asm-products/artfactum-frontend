@@ -22,7 +22,6 @@ var Router = window.ReactRouter,
     DefaultRoute = Router.DefaultRoute,
     NotFoundRoute = Router.NotFoundRoute, 
 	RouteHandler = Router.RouteHandler;
-
 	
 	
 require('./main.css');

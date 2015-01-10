@@ -4,25 +4,40 @@
 var Dispatcher = require('./../dispatcher.js');
 
 var Actions = {
+ 
   setData: function (data) {
     Dispatcher.setData(data);
   },
+  
   setUserProfile: function (data) {
     Dispatcher.setUserProfile(data);
   },
+  
   fetchUserPhotos: function(url){
   
-      $.getJSON(url,{
+      $.getJSON( url,{
 	    format: 'json'
 	  }).done( function(data){  
+	  
 	    Dispatcher.fetchUserPhotos(data);
+	  
 	  }).fail( function(e){
-	    alert('failed');
+	    
+		alert('failed');
+	  
 	  });  
 	  
   },
+  
   followArtist: function(){
+  
+  },
+  
+  ajax: function(){
+  
+  
   }
+
 };
 
 module.exports = Actions;
@@ -209,10 +224,10 @@ var ParallaxPage = React.createClass({displayName: 'ParallaxPage',
   
   componentDidMount: function(){
     
-	var group = this.refs.group.getDOMNode();
-    var back = this.refs.back.getDOMNode();
-    var base = this.refs.base.getDOMNode();
-    var below = this.refs.below.getDOMNode();
+	var group = this.refs.group.getDOMNode(),
+        back = this.refs.back.getDOMNode(),
+        base = this.refs.base.getDOMNode(),
+        below = this.refs.below.getDOMNode();
 	group.style.height = this.props.groupHeight;
 	back.style.height = this.props.backLayerHeight;
 	base.style.height = this.props.baseLayerHeight;
@@ -469,7 +484,7 @@ var Signup = React.createClass({displayName: 'Signup',
 
 module.exports = Signup
 },{"./../Footer/Footer.js":2,"./signup-phones.css":8,"./signup.css":9}],11:[function(require,module,exports){
-var css = ".top-nav{\r\n\r\n  width: 98%;\r\n  display: block;\r\n  margin-left: auto;\r\n  margin-right:auto;\r\n  background: white;\r\n  \r\n}\r\n\r\n.top-nav .tabs:active{\r\n\t\r\n\tcolor: tomato;\r\n\tbox-shadow: inset 0px -5px blue;\r\n    -webkit-transition: all 0.15s linear;\r\n\ttransition: all 0.15s linear;\r\n\t\r\n}\r\n\r\n.top-nav .tabs:focus{\r\n\tcolor: tomato;\r\n\tbox-shadow: inset 0px -5px tomato;\r\n\r\n}\r\n\r\n.top-nav .top-logo-holder{\r\n  width: 50px;\r\n  height:50px;\r\n  \r\n}\r\n\r\n.top-nav .navbar{\r\n  background: white;\r\n  border: none;\r\n}\r\n\r\n.top-nav .search{\r\n\r\n  border: none;\r\n  outline: none;\r\n  box-shadow: 0 0 0 0 white;\r\n  \r\n}\r\n\r\n.top-nav .search-gl{\r\n  background: white;\r\n  border:none;\r\n  outline: none;\r\n}\r\n\r\n.top-nav .search-box{\r\n\r\n  overflow:hidden; \r\n \r\n}"; (require("C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify"))(css); module.exports = css;
+var css = ".top-nav{\r\n\r\n  width: 98%;\r\n  display: block;\r\n  margin-left: auto;\r\n  margin-right:auto;\r\n  background: white;\r\n  \r\n}\r\n\r\n.top-nav .tabs:active{\r\n\t\r\n\tcolor: tomato;\r\n\tbox-shadow: inset 0px -5px blue;\r\n    -webkit-transition: all 0.15s linear;\r\n\ttransition: all 0.15s linear;\r\n\t\r\n}\r\n\r\n.top-nav .tabs:focus{\r\n\tcolor: tomato;\r\n\tbox-shadow: inset 0px -5px tomato;\r\n\r\n}\r\n\r\n.top-nav .top-logo-holder{\r\n  width: 50px;\r\n  height:50px;\r\n  \r\n}\r\n\r\n.top-nav .navbar{\r\n  background: white;\r\n  border: none;\r\n}\r\n\r\n.top-nav .search{\r\n\r\n  border: none;\r\n  outline: none;\r\n  box-shadow: 0 0 0 0 white;\r\n  \r\n}\r\n\r\n.top-nav .search-gl{\r\n  background: white;\r\n  border:none;\r\n  outline: none;\r\n}\r\n\r\n.top-nav .search-box{\r\n\r\n  overflow:hidden; \r\n \r\n}\r\n\r\n.top-nav .top-drop, .top-nav .top-drop:active{\r\n  \r\n  background: inherit;\r\n   \r\n}\r\n\r\n.top-nav .top-drop:hover{\r\n  background: #d1ccca;\r\n}\r\n\r\n.top-nav .userAvatar {\r\n  height: 1.7em;\r\n  width: 1.7em;\r\n  position:relative;\r\n  box-shadow: 0 0 4px 1px #eee;\r\n  display:cover;\r\n  overflow: hidden;\r\n  border-radius:50%;\r\n}\r\n\r\n.top-nav .userAvatar img{\r\n  position:relative;\r\n  margin-right:2px;\r\n  width:100%;\r\n}\r\n\r\n"; (require("C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify"))(css); module.exports = css;
 },{"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify":27}],12:[function(require,module,exports){
 'use strict';
 
@@ -539,8 +554,11 @@ var TopNav = React.createClass({displayName: 'TopNav',
 			  React.createElement("li", null, React.createElement(Link, {className: "tabs", to: "mymarketplace"}, "My Marketplace")), 
 			  React.createElement("li", {className: "dropdown"}, 
 				React.createElement("a", {href: "#", className: "top-drop dropdown-toggle", 'data-toggle': "dropdown"}, 
-				  React.createElement("span", {className: "glyphicon glyphicon-search"}), 
-				  React.createElement("b", {className: "caret"})
+				  
+				  React.createElement("div", {className: "userAvatar"}, 
+				    React.createElement("img", {src: "images/dogs.png", className: ""})
+				  )
+				 
 				), 
 				React.createElement("ul", {className: "dropdown-menu"}, 
 				  React.createElement("li", null, React.createElement("a", {href: "#"}, "Action")), 
@@ -579,10 +597,16 @@ require('./phones.css');
 
 var BrowseCollections = React.createClass({displayName: 'BrowseCollections',
 
+  propTypes: {
+    //todo add proptypes
+  },
+
   getInitialState: function(){
   
     return ({
+	  //need to highlight the category the user clicks
 	  focusedOn: 0,
+	  
 	});
 	
   },
@@ -596,20 +620,26 @@ var BrowseCollections = React.createClass({displayName: 'BrowseCollections',
   
   },
   
+  //todo - change to category click
   handleClick: function(i,e){
         
 	var domNode = this.getDOMNode();
 	
+	//what got clicked
 	var elem = domNode.querySelectorAll('.browse-images')[i],
-	    tag = $(elem).data('expression'),
+	    
+		//get the category associated with category clicked
+		tag = $(elem).data('expression'),
 	    self = this,
 		newImages = ['images/picasso.png','images/egon.jpg','images/dogs.png', 'images/egon_land.jpg', 'images/flowers_big.jpg','images/Logo_+_vector.png'],
 		images = [],
 		url;			
    
 	//can use flickr for dummy data
-	url = 'http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?';
+	//url = 'http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?';
 	
+	//todo: abstract this
+	//fetch data
 	$.getJSON(url,{
 	  tags: tag,
 	  tagmode: 'any',
@@ -626,8 +656,7 @@ var BrowseCollections = React.createClass({displayName: 'BrowseCollections',
  	  self.setState({
 	    images:newImages,
 		focusedOn:i
-	  });
-	  
+	  });	  
 	  	  
 	});
 
@@ -762,7 +791,6 @@ var Router = window.ReactRouter,
     DefaultRoute = Router.DefaultRoute,
     NotFoundRoute = Router.NotFoundRoute, 
 	RouteHandler = Router.RouteHandler;
-
 	
 	
 require('./main.css');
@@ -972,7 +1000,7 @@ var Masonry = React.createClass({displayName: 'Masonry',
 
 module.exports = Masonry;
 },{"./../ImageOverlay/ImageOverlay.js":4,"./masonry.css":20,"imagesloaded":42,"masonry-layout":45}],22:[function(require,module,exports){
-var css = "\r\n\r\n.user-profile .container{\r\n  width:100%;\r\n}\r\n\r\n.user-profile-head{\r\n  height: 14em;\r\n  background: purple;\r\n}\r\n\r\n.user-profile-head h1{\r\n\r\n  position: relative;\r\n  top:1.5em;\r\n  width:100%;\r\n  height:7em;\r\n  color: white;\r\n \r\n}\r\n\r\n.user-profile .photo-circle{\r\n  position:relative;\r\n  top:1em;\r\n  border: solid #eee 4px;\r\n  box-shadow: 0 0 4px 1px white;\r\n  border-radius: 50%;\r\n  width: 3em;\r\n  height: 3em;\r\n  display:block;\r\n  overflow:hidden;\r\n  margin-left:auto;\r\n  margin-right:auto;\r\n  display:cover;\r\n  background: white;\r\n}\r\n\r\n.user-profile .inner-circle{\r\n  position:absolute;\r\n  z-index:9999;\r\n  width:100%;\r\n  height:100%;\r\n  top: .75em;\r\n}\r\n\r\n.user-profile-bottom{\r\n  position:relative;\r\n  top:300px;\r\n  overflow:hidden;\r\n  background: #3a3a3a;\r\n  color:white;\r\n}\r\n\r\n.user-profile a:visited{\r\n  color: black;\r\n}\r\n\r\n.user-profile-forms{\r\n\r\n  width: 80%;\r\n  top:1em;\r\n\r\n}\r\n\r\n/*make width wider on wider screens*/\r\n\r\n.user-profile-forms article{\r\n  top:2em;\r\n  left:0; \r\n  width:90%;\r\n  height: 270px;\r\n \r\n}\r\n\r\n.user-profile article p{\r\n  margin-top:1em;\r\n}\r\n\r\n.user-profile article .btn-group{\r\n\r\n  margin-left:5em;\r\n  margin-right:5em;\r\n\r\n}\r\n\r\n.user-profile .dropdown-toggle{\r\n\r\n}\r\n\r\n.user-profile .button-wrapper{\r\n  position:relative;\r\n  top:1em;\r\n  width:100%;\r\n}\r\n\r\n\r\n\r\n.user-profile .article{\r\n  position: relative;\r\n  width:400px;\r\n  border: solid pink 1px;\r\n}\r\n\r\n\r\n\r\n.user-profile .top-drop, .user-profile .top-drop:active{\r\n\r\n  background: inherit;\r\n   \r\n}\r\n\r\n.user-profile .top-drop:hover{\r\n  background: #d1ccca;\r\n}\r\n\r\n/*\r\n * jQuery File Upload Plugin CSS 1.3.0\r\n * https://github.com/blueimp/jQuery-File-Upload\r\n *\r\n * Copyright 2013, Sebastian Tschan\r\n * https://blueimp.net\r\n *\r\n * Licensed under the MIT license:\r\n * http://www.opensource.org/licenses/MIT\r\n */\r\n\r\n.fileinput-button {\r\n  position: relative;\r\n  overflow: hidden;\r\n}\r\n.fileinput-button input {\r\n  position: absolute;\r\n  top: 0;\r\n  right: 0;\r\n  margin: 0;\r\n  opacity: 0;\r\n  -ms-filter: 'alpha(opacity=0)';\r\n  font-size: 200px;\r\n  direction: ltr;\r\n  cursor: pointer;\r\n}\r\n\r\n/* Fixes for IE < 8 */\r\n@media screen\\9 {\r\n  .fileinput-button input {\r\n    filter: alpha(opacity=0);\r\n    font-size: 100%;\r\n    height: 100%;\r\n  }\r\n}\r\n"; (require("C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify"))(css); module.exports = css;
+var css = ".user-profile .underline{\r\n  text-decoration: underline;\r\n}\r\n\r\n.user-profile .container{\r\n  width:100%;\r\n}\r\n\r\n.user-profile-head{\r\n  height: 14em;\r\n  background: purple;\r\n}\r\n\r\n.user-profile-head h1{\r\n\r\n  position: relative;\r\n  top:1.5em;\r\n  width:100%;\r\n  height:7em;\r\n  color: white;\r\n \r\n}\r\n\r\n.user-profile .artist{\r\n  border-radius: 20px;\r\n  padding-left:20px;\r\n  padding-right:20px;\r\n  background: #e56e5c;\r\n  color:white;\r\n}\r\n\r\n.user-profile .photo-circle{\r\n  position:relative;\r\n  top:1em;\r\n  border: solid #eee 4px;\r\n  box-shadow: 0 0 4px 1px white;\r\n  border-radius: 50%;\r\n  width: 3em;\r\n  height: 3em;\r\n  display:block;\r\n  overflow:hidden;\r\n  margin-left:auto;\r\n  margin-right:auto;\r\n  display:cover;\r\n  background: white;\r\n}\r\n\r\n.user-profile .inner-circle{\r\n  position:absolute;\r\n  z-index:9999;\r\n  width:100%;\r\n  height:100%;\r\n  top: .75em;\r\n}\r\n\r\n.user-profile-bottom{\r\n  position:relative;\r\n  top:300px;\r\n  overflow:hidden;\r\n  background: #3a3a3a;\r\n  color:white;\r\n}\r\n\r\n.user-profile a:visited{\r\n  color: black;\r\n}\r\n\r\n.user-profile-forms{\r\n\r\n  width: 80%;\r\n  top:1em;\r\n\r\n}\r\n\r\n.user-profile .social{\r\n  margin-bottom:4em;\r\n}\r\n\r\n\r\n.user-profile .input-group-addon{\r\n  background: white;\r\n  color: green;\r\n}\r\n\r\n.user-profile .help-block{\r\n  margin-top: -.75em;\r\n}\r\n\r\n.user-profile .help-block button{\r\n  margin-left: 10px;\r\n  border: solid 2px tomato;\r\n  padding: .1em .5em .1em .5em;\r\n}\r\n\r\n.user-profile .social-buttons{\r\n  margin-top: 1em;\r\n}\r\n\r\n/*make width wider on wider screens*/\r\n\r\n.user-profile-forms article{\r\n \r\n  margin-top:2em;\r\n  left:0; \r\n  width:100%;\r\n  height: 270px;\r\n \r\n}\r\n\r\n.user-profile .my-account{\r\n  width:80%;\r\n  position:relative;\r\n  top:2em;\r\n}\r\n\r\n\r\n.user-profile .input-group{\r\n\r\n  width:100%;\r\n  padding-top:2px;\r\n  padding-bottom:1em;\r\n\r\n}\r\n\r\n.user-profile .button-wrapper{\r\n  position:relative;\r\n  top:1em;\r\n  width:100px;\r\n}\r\n\r\n\r\n\r\n\r\n/*\r\n * jQuery File Upload Plugin CSS 1.3.0\r\n * https://github.com/blueimp/jQuery-File-Upload\r\n *\r\n * Copyright 2013, Sebastian Tschan\r\n * https://blueimp.net\r\n *\r\n * Licensed under the MIT license:\r\n * http://www.opensource.org/licenses/MIT\r\n */\r\n\r\n.fileinput-button {\r\n  position: relative;\r\n  overflow: hidden;\r\n}\r\n.fileinput-button input {\r\n  position: absolute;\r\n  top: 0;\r\n  right: 0;\r\n  margin: 0;\r\n  opacity: 0;\r\n  -ms-filter: 'alpha(opacity=0)';\r\n  font-size: 200px;\r\n  direction: ltr;\r\n  cursor: pointer;\r\n}\r\n\r\n/* Fixes for IE < 8 */\r\n@media screen\\9 {\r\n  .fileinput-button input {\r\n    filter: alpha(opacity=0);\r\n    font-size: 100%;\r\n    height: 100%;\r\n  }\r\n}\r\n"; (require("C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify"))(css); module.exports = css;
 },{"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify":27}],23:[function(require,module,exports){
 'use strict'
 
@@ -1142,16 +1170,6 @@ var UserProfile = React.createClass({displayName: 'UserProfile',
 		  
           React.createElement("form", {ref: "form", role: "form", onSubmit: this.handleSubmit}, 
 		  
-		  React.createElement("div", {className: "row user-profile-forms center-block"}, 
-			  
-			React.createElement("div", {className: "col-xs-12"}, 
-			    
-			  React.createElement("h3", {id: "myAccount", className: "underline"}, "My Account"), 
-			  React.createElement("strong", {className: ""}, "*required")
-	
-			)
-          
-		  ), /*end fourth row*/
 		  
 		  React.createElement("div", {className: "row user-profile-forms center-block"}, 
 		  
@@ -1159,75 +1177,77 @@ var UserProfile = React.createClass({displayName: 'UserProfile',
 			  
 			  React.createElement("article", null, 
 			  
-			    React.createElement("p", null, "username"), 
-			  
-			    React.createElement("div", {className: "input-group"}, 
+			    React.createElement("h3", {className: "underline"}, "My Account"), 
+			    React.createElement("strong", null, "*required"), 
 			    
-				  React.createElement("input", {type: "text", name: "username", className: "form-control", placeholder: "username", required: true})
-				  
-                ), 
+				React.createElement("div", {className: "center-block my-account"}, 
+			      
+				  React.createElement("span", null, "username"), 
+			      React.createElement("div", {className: "input-group"}, 
+			    
+				    React.createElement("input", {type: "text", name: "username", className: "form-control", placeholder: "username", required: true}), 
+				   React.createElement("span", {className: "input-group-addon"}, React.createElement("span", {className: "glyphicon glyphicon-ok"}))
+                  ), 
 			
-			    React.createElement("p", null, "Artfactum url"), 
+			      React.createElement("span", null, "Artfactum url"), 
 			  
-			    React.createElement("div", {className: "input-group"}, 
+			      React.createElement("div", {className: "input-group"}, 
 			    
-				  React.createElement("input", {type: "text", name: "arfactumUrl", className: "form-control", placeholder: "url", required: true})
-				  
-                ), 
+				    React.createElement("input", {type: "text", name: "arfactumUrl", className: "form-control", placeholder: "url", required: true}), 
+				     React.createElement("span", {className: "input-group-addon"}, React.createElement("span", {className: "glyphicon glyphicon-ok"}))
+                  ), 
 				
-				React.createElement("div", {className: "center-block button-wrapper"}, 
-                  React.createElement("div", {className: "btn-group"}, 
-				    React.createElement("button", {type: "button", className: "btn btn-default dropdown-toggle", 'data-toggle': "dropdown"}, 
-                      "Artist ", React.createElement("span", {className: "caret"})
-                    ), 
-                    React.createElement("ul", {className: "dropdown-menu", role: "menu"}, 
-                      React.createElement("li", null, React.createElement("a", {href: "#"}, "Artist")), 
-                      React.createElement("li", null, React.createElement("a", {href: "#"}, "Art Lover"))
+				  React.createElement("div", {className: "center-block button-wrapper"}, 
+                    React.createElement("div", {className: "btn-group"}, 
+				      React.createElement("button", {type: "button", className: "btn btn-default dropdown-toggle artist", 'data-toggle': "dropdown"}, 
+                        "Artist ", React.createElement("span", {className: "caret"})
+                      ), 
+                      React.createElement("ul", {className: "dropdown-menu", role: "menu"}, 
+                        React.createElement("li", null, React.createElement("a", {href: "#"}, "Artist")), 
+                        React.createElement("li", null, React.createElement("a", {href: "#"}, "Art Lover"))
+                      )
                     )
-                  )
-				)
-			
+				  )
+			    )
 			  )
 			
 			)			
 		  
 		  ), /*end fifth row*/
 		
-		  React.createElement("div", {className: "row user-profile-forms center-block"}, 
-			  
-			React.createElement("div", {className: "col-xs-12"}, 
+	
+    	  React.createElement("div", {className: "row user-profile-forms center-block"}, 
+	        React.createElement("div", {className: "col-xs-12 col-md-8 col-md-offset-2"}, 
 			    
 			  React.createElement("h3", {id: "aboutMe", className: "underline"}, "About Me")
-			 
-			)
-          
-		  ), /*end sixth row*/
-		  
-		  React.createElement("div", {className: "row user-profile-forms center-block"}, 
-		  
-		    React.createElement("div", {className: "col-xs-12 col-md-8 col-md-offset-2"}, 
+			  		 
+			), 
+           	
+		    
+			React.createElement("div", {className: "col-xs-12 col-md-8 col-md-offset-2"}, 
 			  
 			  React.createElement("article", null, 
 			  
-			    React.createElement("p", null, "Living in"), 
+			    React.createElement("span", null, "Living in"), 
 			  
 			    React.createElement("div", {className: "input-group"}, 
 			    
-				  React.createElement("input", {type: "text", name: "livingIn", className: "form-control", placeholder: "country"}), 
-				  React.createElement("span", {className: "input-group-addon"}, "@")
+				  React.createElement("input", {type: "text", name: "livingIn", className: "form-control", placeholder: "country", required: true}), 
+				  React.createElement("span", {className: "input-group-addon"}, React.createElement("span", {className: "glyphicon glyphicon-ok"}))
 			  
                 ), 
 			
-			    React.createElement("p", null, "Spoken languages"), 
+			    React.createElement("span", null, "Spoken languages"), 
 			  
 			    React.createElement("div", {className: "input-group"}, 
 			    
-				  React.createElement("input", {type: "text", name: "spokenLanguages", className: "form-control", placeholder: "url"}), 
-				  React.createElement("span", {className: "input-group-addon"}, "@")
+				  React.createElement("input", {type: "text", name: "spokenLanguages", className: "form-control", placeholder: "url", required: true}), 
+				   React.createElement("span", {className: "input-group-addon"}, React.createElement("span", {className: "glyphicon glyphicon-ok"}))
+			  
 			  
                 ), 
 				
-				React.createElement("p", {className: "gray"}, "Suggestions -",  
+				React.createElement("p", {className: "gray help-block"}, "Suggestions",   
 				  React.createElement("button", {type: "button", className: "btn btn-default"}, "English"), 
 				  React.createElement("button", {type: "button", className: "btn btn-default"}, "Spanish")
 				)
@@ -1238,9 +1258,9 @@ var UserProfile = React.createClass({displayName: 'UserProfile',
 		  
 		  ), /*end seventh row*/
 		
-		  React.createElement("div", {className: "row user-profile-forms center-block"}, 
+		  React.createElement("div", {className: "row user-profile-forms center-block social"}, 
 			  
-			React.createElement("div", {className: "col-xs-12"}, 
+			React.createElement("div", {className: "col-xs-12 col-md-8 col-md-offset-2 "}, 
 			    
 			  React.createElement("h3", {id: "social", className: "underline"}, "Social")
 			 
@@ -1248,19 +1268,19 @@ var UserProfile = React.createClass({displayName: 'UserProfile',
 			
 		    React.createElement("div", {className: "row center-block"}, 
 			
-			  React.createElement("div", {className: "col-xs-12 col-md-4 padding1"}, 
+			  React.createElement("div", {className: "col-xs-12 col-md-4 padding1 social-buttons"}, 
 			
 			    React.createElement("span", {className: "btn-lg btn-primary center-block"}, "Facebook")
 			
 			  ), 
           
-		      React.createElement("div", {className: "col-xs-12 col-md-4 padding1"}, 
+		      React.createElement("div", {className: "col-xs-12 col-md-4 padding1 social-buttons"}, 
 			
 			    React.createElement("span", {className: "btn-lg btn-primary center-block"}, "Twitter")
 			
 			  ), 
 			
-			  React.createElement("div", {className: "col-xs-12 col-md-4 padding1"}, 
+			  React.createElement("div", {className: "col-xs-12 col-md-4 padding1 social-buttons"}, 
 			
 			    React.createElement("span", {className: "btn-lg btn-primary center-block"}, "Google+")
 			
@@ -1272,7 +1292,7 @@ var UserProfile = React.createClass({displayName: 'UserProfile',
 		
 		  React.createElement("div", {className: "row user-profile-forms center-block"}, 
 			  
-			React.createElement("div", {className: "col-xs-12"}, 
+			React.createElement("div", {className: "col-xs-12 col-md-8 col-md-offset-2"}, 
 			    
 			  React.createElement("h3", {id: "background", className: "underline"}, "Artistic Background")
 			 
@@ -1286,7 +1306,7 @@ var UserProfile = React.createClass({displayName: 'UserProfile',
 			  
 			  React.createElement("article", null, 
 			  
-			    React.createElement("p", null, "Artistic Disciplines"), 
+			    React.createElement("span", null, "Artistic Disciplines"), 
 			  
 			    React.createElement("div", {className: "input-group"}, 
 			    
@@ -1294,7 +1314,7 @@ var UserProfile = React.createClass({displayName: 'UserProfile',
 			  
                 ), 
 				
-				React.createElement("p", {className: "gray"}, "Suggestions -",  
+				React.createElement("p", {className: "gray help-block"}, "Suggestions",   
 				  React.createElement("button", {type: "button", className: "btn btn-default"}, "Photography"), 
 				  React.createElement("button", {type: "button", className: "btn btn-default"}, "Painting")
 				), 
@@ -1328,7 +1348,7 @@ var UserProfile = React.createClass({displayName: 'UserProfile',
 		
 		  React.createElement("div", {className: "row user-profile-forms center-block"}, 
 			  
-	 	    React.createElement("div", {className: "col-xs-12 "}, 
+	 	    React.createElement("div", {className: "col-xs-12 col-md-8 col-md-offset-2"}, 
 			    
 			  React.createElement("h3", {id: "interests", className: "underline"}, 
 				"Personal Interests"
@@ -1343,45 +1363,41 @@ var UserProfile = React.createClass({displayName: 'UserProfile',
 			  
 			  React.createElement("article", null, 
 			  
-			    React.createElement("p", null, "Favorite art styles"), 
+			    React.createElement("span", null, "Favorite art styles"), 
 			  
 			    React.createElement("div", {className: "input-group"}, 
 			    
-				  React.createElement("input", {type: "text", name: "favoriteArtStyles", className: "form-control", placeholder: "username"}), 
-			      
-				  React.createElement("p", {className: "gray"}, "Suggestions -",  
-				    React.createElement("button", {type: "button", className: "btn btn-default"}, "English"), 
-				    React.createElement("button", {type: "button", className: "btn btn-default"}, "Spanish")
-				  )
-				  
-				), 
-			
-			    React.createElement("p", null, "Featured interests"), 
-			  
-			    React.createElement("div", {className: "input-group"}, 
-			    
-				  React.createElement("input", {type: "text", name: "featuredInterests", className: "form-control", placeholder: "url"}), 
-			      
-				  React.createElement("p", {className: "gray"}, "Suggestions -",  
-				    React.createElement("button", {type: "button", className: "btn btn-default"}, "English"), 
-				    React.createElement("button", {type: "button", className: "btn btn-default"}, "Spanish")
-				  )
-                
-				), 
-				 
+				  React.createElement("input", {type: "text", name: "favoriteArtStyles", className: "form-control", placeholder: "username"})
+			    ), 
 				
-				React.createElement("p", null, "Influences"), 
+				  React.createElement("p", {className: "gray help-block"}, "Suggestions",   
+				    React.createElement("button", {type: "button", className: "btn btn-default"}, "English"), 
+				    React.createElement("button", {type: "button", className: "btn btn-default"}, "Spanish")
+				  ), 
+			
+			    React.createElement("span", null, "Featured interests"), 
+			  
+			    React.createElement("div", {className: "input-group"}, 
+			    
+				  React.createElement("input", {type: "text", name: "featuredInterests", className: "form-control", placeholder: "url"})
+			      
+				), 
+				  React.createElement("p", {className: "gray help-block"}, "Suggestions",   
+				    React.createElement("button", {type: "button", className: "btn btn-default"}, "English"), 
+				    React.createElement("button", {type: "button", className: "btn btn-default"}, "Spanish")
+				  ), 
+				
+				React.createElement("span", null, "Influences"), 
 			  
 				React.createElement("div", {className: "input-group"}, 
 			    
-				  React.createElement("input", {type: "text", name: "influences", className: "form-control", placeholder: "influences"}), 
-			     
-				  React.createElement("p", {className: "gray"}, "Suggestions -",  
+				  React.createElement("input", {type: "text", name: "influences", className: "form-control", placeholder: "influences"})
+			    ), 
+				  React.createElement("div", {className: "gray help-block"}, "Suggestions",   
 				    React.createElement("button", {type: "button", className: "btn btn-default"}, "Surrealism"), 
 				    React.createElement("button", {type: "button", className: "btn btn-default"}, "Cubism")
-				  )
-				
-				), 
+				  ), 
+			
 				
 				React.createElement("div", {className: "center-block button-wrapper"}, 
                   React.createElement("div", {className: "btn-group"}, 

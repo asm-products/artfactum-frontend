@@ -66,8 +66,11 @@ var TopNav = React.createClass({
 			  <li><Link className='tabs' to='mymarketplace'>My Marketplace</Link></li>
 			  <li className="dropdown">
 				<a href="#" className="top-drop dropdown-toggle" data-toggle="dropdown">
-				  <span className="glyphicon glyphicon-search"></span> 
-				  <b className="caret"></b>
+				  
+				  <div className='userAvatar'>
+				    <img src='images/dogs.png' className="" />
+				  </div>
+				 
 				</a>
 				<ul className="dropdown-menu">
 				  <li><a href="#">Action</a></li>
