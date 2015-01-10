@@ -166,16 +166,6 @@ var UserProfile = React.createClass({
 		  
           <form ref='form' role='form' onSubmit={this.handleSubmit}>          
 		  
-		  <div className='row user-profile-forms center-block'>
-			  
-			<div className='col-xs-12'>
-			    
-			  <h3 id='myAccount' className='underline' >My Account</h3>
-			  <strong className=''>*required</strong>
-	
-			</div>
-          
-		  </div>{/*end fourth row*/}
 		  
 		  <div className='row user-profile-forms center-block'>
 		  
@@ -183,75 +173,77 @@ var UserProfile = React.createClass({
 			  
 			  <article>
 			  
-			    <p>username</p>
-			  
-			    <div className='input-group'>
+			    <h3 className='underline' >My Account</h3>
+			    <strong>*required</strong>
 			    
-				  <input type='text' name='username' className='form-control' placeholder='username' required/>
-				  
-                </div>
-			
-			    <p>Artfactum url</p>
-			  
-			    <div className='input-group'>
+				<div className='center-block my-account'>  
+			      
+				  <span>username</span>
+			      <div className='input-group'>
 			    
-				  <input type='text' name='arfactumUrl' className='form-control' placeholder='url' required/>
-				  
-                </div>
-				
-				<div className='center-block button-wrapper'>
-                  <div className='btn-group'>
-				    <button type="button" className="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                      Artist <span className="caret"></span>
-                    </button>
-                    <ul className="dropdown-menu" role="menu">
-                      <li><a href="#">Artist</a></li>
-                      <li><a href="#">Art Lover</a></li>
-                    </ul>
+				    <input type='text' name='username' className='form-control' placeholder='username' required/>
+				   <span className='input-group-addon'><span className="glyphicon glyphicon-ok"></span></span>
                   </div>
-				</div>
 			
+			      <span>Artfactum url</span>
+			  
+			      <div className='input-group'>
+			    
+				    <input type='text' name='arfactumUrl' className='form-control' placeholder='url' required/>
+				     <span className='input-group-addon'><span className="glyphicon glyphicon-ok"></span></span>
+                  </div>
+				
+				  <div className='center-block button-wrapper'>
+                    <div className='btn-group'>
+				      <button type="button" className="btn btn-default dropdown-toggle artist" data-toggle="dropdown">
+                        Artist <span className="caret"></span>
+                      </button>
+                      <ul className="dropdown-menu" role="menu">
+                        <li><a href="#">Artist</a></li>
+                        <li><a href="#">Art Lover</a></li>
+                      </ul>
+                    </div>
+				  </div>
+			    </div>
 			  </article>
 			
 			</div>			
 		  
 		  </div>{/*end fifth row*/}
 		
-		  <div className='row user-profile-forms center-block'>
-			  
-			<div className='col-xs-12'>
+	
+    	  <div className='row user-profile-forms center-block'>
+	        <div className='col-xs-12 col-md-8 col-md-offset-2'>
 			    
 			  <h3 id='aboutMe' className='underline'>About Me</h3>
-			 
+			  		 
 			</div>
-          
-		  </div>{/*end sixth row*/}
-		  
-		  <div className='row user-profile-forms center-block'>
-		  
-		    <div className='col-xs-12 col-md-8 col-md-offset-2'>
+           	
+		    
+			<div className='col-xs-12 col-md-8 col-md-offset-2'>
 			  
 			  <article>
 			  
-			    <p>Living in</p>
+			    <span>Living in</span>
 			  
 			    <div className='input-group'>
 			    
-				  <input type='text' name='livingIn' className='form-control' placeholder='country' />
-				  <span className='input-group-addon'>@</span>
+				  <input type='text' name='livingIn' className='form-control' placeholder='country' required/>
+				  <span className='input-group-addon'><span className="glyphicon glyphicon-ok"></span></span>
 			  
                 </div>
 			
-			    <p>Spoken languages</p>
+			    <span>Spoken languages</span>
 			  
 			    <div className='input-group'>
 			    
-				  <input type='text' name='spokenLanguages' className='form-control' placeholder='url' />
-				  <span className='input-group-addon'>@</span>
+				  <input type='text' name='spokenLanguages' className='form-control' placeholder='url' required/>
+				   <span className='input-group-addon'><span className="glyphicon glyphicon-ok"></span></span>
+			  
 			  
                 </div>
 				
-				<p className='gray'>Suggestions - 
+				<p className='gray help-block'>Suggestions  
 				  <button type='button' className='btn btn-default'>English</button>
 				  <button type='button' className='btn btn-default'>Spanish</button>
 				</p>
@@ -262,9 +254,9 @@ var UserProfile = React.createClass({
 		  
 		  </div>{/*end seventh row*/}
 		
-		  <div className='row user-profile-forms center-block'>
+		  <div className='row user-profile-forms center-block social'>
 			  
-			<div className='col-xs-12'>
+			<div className='col-xs-12 col-md-8 col-md-offset-2 '>
 			    
 			  <h3 id='social' className='underline'>Social</h3>
 			 
@@ -272,19 +264,19 @@ var UserProfile = React.createClass({
 			
 		    <div className='row center-block'>
 			
-			  <div className='col-xs-12 col-md-4 padding1'>
+			  <div className='col-xs-12 col-md-4 padding1 social-buttons'>
 			
 			    <span className='btn-lg btn-primary center-block'>Facebook</span>
 			
 			  </div>
           
-		      <div className='col-xs-12 col-md-4 padding1'>
+		      <div className='col-xs-12 col-md-4 padding1 social-buttons'>
 			
 			    <span className='btn-lg btn-primary center-block'>Twitter</span>
 			
 			  </div>
 			
-			  <div className='col-xs-12 col-md-4 padding1'>
+			  <div className='col-xs-12 col-md-4 padding1 social-buttons'>
 			
 			    <span className='btn-lg btn-primary center-block'>Google+</span>
 			
@@ -296,7 +288,7 @@ var UserProfile = React.createClass({
 		
 		  <div className='row user-profile-forms center-block'>
 			  
-			<div className='col-xs-12'>
+			<div className='col-xs-12 col-md-8 col-md-offset-2'>
 			    
 			  <h3 id='background' className='underline'>Artistic Background</h3>
 			 
@@ -310,7 +302,7 @@ var UserProfile = React.createClass({
 			  
 			  <article>
 			  
-			    <p>Artistic Disciplines</p>
+			    <span>Artistic Disciplines</span>
 			  
 			    <div className='input-group'>
 			    
@@ -318,7 +310,7 @@ var UserProfile = React.createClass({
 			  
                 </div>
 				
-				<p className='gray'>Suggestions - 
+				<p className='gray help-block'>Suggestions  
 				  <button type='button' className='btn btn-default'>Photography</button>
 				  <button type='button' className='btn btn-default'>Painting</button>
 				</p>
@@ -352,7 +344,7 @@ var UserProfile = React.createClass({
 		
 		  <div className='row user-profile-forms center-block'> 
 			  
-	 	    <div className='col-xs-12 '> 
+	 	    <div className='col-xs-12 col-md-8 col-md-offset-2'> 
 			    
 			  <h3 id='interests' className='underline'>
 				Personal Interests
@@ -367,45 +359,41 @@ var UserProfile = React.createClass({
 			  
 			  <article>
 			  
-			    <p>Favorite art styles</p>
+			    <span>Favorite art styles</span>
 			  
 			    <div className='input-group' > 
 			    
 				  <input type='text' name='favoriteArtStyles' className='form-control' placeholder='username' /> 
-			      
-				  <p className='gray'>Suggestions - 
+			    </div>
+				
+				  <p className='gray help-block'>Suggestions  
 				    <button type='button' className='btn btn-default'>English</button>
 				    <button type='button' className='btn btn-default'>Spanish</button>
 				  </p>
-				  
-				</div> 
 			
-			    <p>Featured interests</p> 
+			    <span>Featured interests</span> 
 			  
 			    <div className='input-group' >
 			    
 				  <input type='text' name='featuredInterests' className='form-control' placeholder='url' /> 
 			      
-				  <p className='gray'>Suggestions - 
+				</div>
+				  <p className='gray help-block'>Suggestions  
 				    <button type='button' className='btn btn-default'>English</button>
 				    <button type='button' className='btn btn-default'>Spanish</button>
 				  </p>
-                
-				</div>
-				 
 				
-				<p>Influences</p> 
+				<span>Influences</span> 
 			  
 				<div className='input-group'> 
 			    
 				  <input type='text' name='influences' className='form-control' placeholder='influences' /> 
-			     
-				  <p className='gray'>Suggestions - 
+			    </div>     
+				  <div className='gray help-block'>Suggestions  
 				    <button type='button' className='btn btn-default'>Surrealism</button>
 				    <button type='button' className='btn btn-default'>Cubism</button>
-				  </p>
-				
-				</div> 
+				  </div>
+			
 				
 				<div className='center-block button-wrapper'> 
                   <div className='btn-group'> 

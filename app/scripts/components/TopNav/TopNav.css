@@ -53,3 +53,30 @@
   overflow:hidden; 
  
 }
+
+.top-nav .top-drop, .top-nav .top-drop:active{
+  
+  background: inherit;
+   
+}
+
+.top-nav .top-drop:hover{
+  background: #d1ccca;
+}
+
+.top-nav .userAvatar {
+  height: 1.7em;
+  width: 1.7em;
+  position:relative;
+  box-shadow: 0 0 4px 1px #eee;
+  display:cover;
+  overflow: hidden;
+  border-radius:50%;
+}
+
+.top-nav .userAvatar img{
+  position:relative;
+  margin-right:2px;
+  width:100%;
+}
+

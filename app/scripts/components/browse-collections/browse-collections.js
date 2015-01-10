@@ -19,6 +19,7 @@ var BrowseCollections = React.createClass({
     return ({
 	  //need to highlight the category the user clicks
 	  focusedOn: 0,
+	  
 	});
 	
   },
@@ -48,8 +49,9 @@ var BrowseCollections = React.createClass({
 		url;			
    
 	//can use flickr for dummy data
-	url = 'http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?';
+	//url = 'http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?';
 	
+	//todo: abstract this
 	//fetch data
 	$.getJSON(url,{
 	  tags: tag,

@@ -25,10 +25,10 @@ var ParallaxPage = React.createClass({
   
   componentDidMount: function(){
     
-	var group = this.refs.group.getDOMNode();
-    var back = this.refs.back.getDOMNode();
-    var base = this.refs.base.getDOMNode();
-    var below = this.refs.below.getDOMNode();
+	var group = this.refs.group.getDOMNode(),
+        back = this.refs.back.getDOMNode(),
+        base = this.refs.base.getDOMNode(),
+        below = this.refs.below.getDOMNode();
 	group.style.height = this.props.groupHeight;
 	back.style.height = this.props.backLayerHeight;
 	base.style.height = this.props.baseLayerHeight;
