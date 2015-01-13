@@ -51,6 +51,7 @@ var BrowseCollections = React.createClass({
 	//can use flickr for dummy data
 	//url = 'http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?';
 	
+	
 	//todo: abstract this
 	//fetch data
 	$.getJSON(url,{

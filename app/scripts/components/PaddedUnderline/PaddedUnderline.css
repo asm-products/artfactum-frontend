@@ -1,0 +1,8 @@
+.paddedUnderline .focused{
+  
+  box-shadow: inset 0px -3px #e56e5c;
+  -webkit-transition: all 0.15s linear;
+  transition: all 0.15s linear;
+
+  
+}

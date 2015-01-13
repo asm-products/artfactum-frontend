@@ -16,7 +16,8 @@ var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 require('./user-profile.css');
 require('../../../styles/color-swatch.css');
  
-$.fn.serializeObject = function()
+
+ $.fn.serializeObject = function()
 {
     var o = {};
     var a = this.serializeArray();
@@ -33,7 +34,6 @@ $.fn.serializeObject = function()
     return o;
 }; 
  
-
 var UserProfile = React.createClass({
   
   getDefaultProps: function(){
@@ -51,54 +51,51 @@ var UserProfile = React.createClass({
   componentDidMount: function(){
     	
 	// Change this to the location of your server-side upload handler:
-    var url = '';
+    var url = '',
+	elem = $('#fileupload');
+	Actions.fileUpload(elem,url);
+	var domNode = this.getDOMNode();
+	var $suggestionButton = $(domNode).find('.help-block').find('button');
+	$suggestionButton.click( this.handleSuggestionButton );
+   
+  },
   
-    $('#fileupload').fileupload({
+  handleSuggestionButton: function(e){
+    
+	var textArray = [];
+    var text = e.target.innerHTML;
+	var parent = e.target.parentNode;
+	var prev = parent.previousSibling;
+	var elem = prev.firstChild;
+	if(elem.value){
+	  textArray.push(elem.value);
+	}
+	textArray.push(text);
+	elem.value = textArray.join();
+  
+  },
+  
+  componentWillUnmount: function() {
 	
-        url: url,
-        dataType: 'json',
-        done: function (e, data) {
-            
-		  $.each(data.result.files, function (index, file) {
-          
-  		    $('<p></p>').text(file.name).appendTo('#files');
-				
-          });
-			
-        },
-		fail: function(){  
-		       
-		  alert('invalid url');
-            
-		},
-	    progressall: function (e, data) {
-            var progress = parseInt(data.loaded / data.total * 100, 10);
-            $('#progress .progress-bar').css(
-                'width',
-                progress + '%'
-            );
-        }
-    }).prop('disabled', !$.support.fileInput)
-        .parent().addClass($.support.fileInput ? undefined : 'disabled');    
+    var elem = $('#fileupload');
+	//double check this
+	Actions.unbindfileUpload(elem);
   
   },
   
   handleSubmit: function(e){  
-    e.preventDefault();
+    
+	e.preventDefault();
 	var userInput = JSON.stringify($(form).serializeObject());
-	/*Validate on the server
-	  If valid then save to the store 
-	  If not show a message
-	*/
 	
 	var modal = this.refs.modal.getDOMNode(),
 	    form = this.refs.form.getDOMNode();
 	$(modal).find('.modal-body').html('<p>' + $('form').serializeObject() + '</p>');
 	$(modal).modal('show');
-	//alert(JSON.stringify($(form).serializeObject()));
 	Actions.setUserProfile(
 	  JSON.stringify($(form).serializeObject())
 	);
+  
   },
   
   render: function(){
@@ -239,7 +236,6 @@ var UserProfile = React.createClass({
 			    
 				  <input type='text' name='spokenLanguages' className='form-control' placeholder='url' required/>
 				   <span className='input-group-addon'><span className="glyphicon glyphicon-ok"></span></span>
-			  
 			  
                 </div>
 				
