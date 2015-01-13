@@ -6,7 +6,8 @@ var UserProfile = React.createFactory(require('./user-profile/user-profile.js'))
     BrowseCollections = React.createFactory(require('./browse-collections/browse-collections.js')),
     Footer = React.createFactory(require('./footer/footer.js')),
     Masonry = React.createFactory(require('./masonry/masonry.js')),
-    ParallaxPage = React.createFactory(require('./ParallaxPage/ParallaxPage.js'));
+    ParallaxPage = React.createFactory(require('./ParallaxPage/ParallaxPage.js')),
+    PaddedUnderline = React.createFactory(require('./PaddedUnderline/PaddedUnderline.js'));
    
    
 	
@@ -115,6 +116,7 @@ var App = React.createClass({
 	    <Link to='footer'><button>footer</button></Link>
 	    <Link to='masonry'><button>masonry</button></Link>
 	    <Link to='parallaxpage'><button>Parallax</button></Link>
+	    <Link to='paddedunderline'><button>PaddedUnderline</button></Link>
  	    <div className='views'>
 		  <RouteHandler {... this.props.data} />
 	    </div>
@@ -134,6 +136,7 @@ var routes = (
     <Route path='/browsecollections' name='browsecollections' handler={BrowseCollections}/>
     <Route path='/masonry' name='masonry' handler={Masonry}/>
     <Route path='/parallaxpage' name='parallaxpage' handler={ParallaxPage}/>
+    <Route path='/paddedunderline' name='paddedunderline' handler={PaddedUnderline}/>
     <Route path='/collections' name='collections' handler={Collections}/>
     <Route path='/marketplace' name='marketplace' handler={Marketplace}/>
     <Route path='/mygallery' name='mygallery' handler={MyGallery}/>

@@ -19,7 +19,7 @@ var Store = Flux.createStore({
 	    favoriteArtStyles: [],
 	    featuredInterests: [],
 	    influences: [],
-	    artisticCV: null,
+	    artisticCV: {/*data object*/},
 	    profile: 'artist', //either artist or art lover
         bornIn: 'country',
         birthDate: null,
@@ -86,10 +86,18 @@ var Store = Flux.createStore({
 	this.emit('change');
   },
   
+  setCVFile: function(data) {
+  
+    this.data.userProfile.artisticCV = data;
+	this.emit('change');
+  
+  },
+  
   actions: {
     'incoming-data': 'setData',
 	'setUserProfile': 'setUserProfile',
-	'fetchUserPhotos': 'fetchUserPhotos'
+	'fetchUserPhotos': 'fetchUserPhotos',
+	'setCVFile': 'setCVFile'
   }
   
 });
