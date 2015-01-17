@@ -8,7 +8,8 @@ var Router = window.ReactRouter,
 	
 var Actions = require('./../../actions/actions.js'),
 	TopNav = require('./../TopNav/TopNav.js'),
-	Footer = require('./../footer/footer.js');
+	Footer = require('./../footer/footer.js'),
+	PaddedUnderline = require('./../PaddedUnderline/PaddedUnderline.js');
  
 var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 
@@ -144,22 +145,19 @@ var UserProfile = React.createClass({
 		   
 		  </div>{/*end second row*/}
 		  
-		  <div className='row user-profile-menu'>
-		  
-		    <div className='col-xs-12'>			
+		
+		 	  
 			  <menu>
 			  
-			    <menuitem><a href='#myAccount'>My Account </a>| </menuitem>
-			    <menuitem><a href='#aboutMe'>About Me </a>| </menuitem>
-			    <menuitem><a href='#social'>Social </a>| </menuitem>
-			    <menuitem><a href='#background'>Background </a>| </menuitem>
+			    <menuitem><a href='#myAccount'>My Account</a> | </menuitem>
+			    <menuitem><a href='#aboutMe'>About Me</a> | </menuitem>
+			    <menuitem><a href='#social'>Social</a> | </menuitem>
+			    <menuitem><a href='#background'>Background</a> | </menuitem>
 			    <menuitem><a href='#interests'>Interests</a></menuitem>
 			  
 			  </menu>
 			
-			</div>
 			
-		  </div>{/*end third row*/}
 		  
           <form ref='form' role='form' onSubmit={this.handleSubmit}>          
 		  
@@ -170,8 +168,10 @@ var UserProfile = React.createClass({
 			  
 			  <article>
 			  
-			    <h3 className='underline' >My Account</h3>
-			    <strong>*required</strong>
+			    <PaddedUnderline className='form-headers' template={<b>My Account</b>} isFocused='true'>
+				  My Account
+				</PaddedUnderline>
+				<strong>*required</strong>
 			    
 				<div className='center-block my-account'>  
 			      
@@ -209,10 +209,11 @@ var UserProfile = React.createClass({
 		  </div>{/*end fifth row*/}
 		
 	
-    	  <div className='row user-profile-forms center-block'>
+    	  <div className='row user-profile-forms aboutme center-block'>
 	        <div className='col-xs-12 col-md-8 col-md-offset-2'>
-			    
-			  <h3 id='aboutMe' className='underline'>About Me</h3>
+			 
+			  <PaddedUnderline className='form-headers' template={<b id='aboutMe'>About Me</b>} isFocused=  'true'> 
+			  </PaddedUnderline>  
 			  		 
 			</div>
            	
@@ -221,16 +222,16 @@ var UserProfile = React.createClass({
 			  
 			  <article>
 			  
-			    <span>Living in</span>
+			    <span className='section'>Living in</span>
 			  
 			    <div className='input-group'>
-			    
+			      
 				  <input type='text' name='livingIn' className='form-control' placeholder='country' required/>
 				  <span className='input-group-addon'><span className="glyphicon glyphicon-ok"></span></span>
 			  
                 </div>
 			
-			    <span>Spoken languages</span>
+			    <span className='section'>Spoken languages</span>
 			  
 			    <div className='input-group'>
 			    
@@ -253,12 +254,13 @@ var UserProfile = React.createClass({
 		  <div className='row user-profile-forms center-block social'>
 			  
 			<div className='col-xs-12 col-md-8 col-md-offset-2 '>
-			    
-			  <h3 id='social' className='underline'>Social</h3>
-			 
+			  
+              <PaddedUnderline id='social' className='form-headers' template={<b>Social</b>} isFocused='true'>
+			  </PaddedUnderline>			  
+			  
 			</div>
 			
-		    <div className='row center-block'>
+		    <div className='row center-block all-social'>
 			
 			  <div className='col-xs-12 col-md-4 padding1 social-buttons'>
 			
@@ -286,7 +288,8 @@ var UserProfile = React.createClass({
 			  
 			<div className='col-xs-12 col-md-8 col-md-offset-2'>
 			    
-			  <h3 id='background' className='underline'>Artistic Background</h3>
+			  <PaddedUnderline id='background' className='form-headers' template={<b>Artistic Background</b>} isFocused='true'>
+			  </PaddedUnderline>
 			 
 			</div>
           
@@ -341,10 +344,9 @@ var UserProfile = React.createClass({
 		  <div className='row user-profile-forms center-block'> 
 			  
 	 	    <div className='col-xs-12 col-md-8 col-md-offset-2'> 
-			    
-			  <h3 id='interests' className='underline'>
-				Personal Interests
-		      </h3>
+              <PaddedUnderline id='interests' className='form-headers' template={<b>Personal Interests</b>} isFocused='true'>
+			  </PaddedUnderline>			    
+			  
 			</div>
 			  
 		  </div> {/*end 11th row*/} 
@@ -355,6 +357,7 @@ var UserProfile = React.createClass({
 			  
 			  <article>
 			  
+			  <div className='section row container'>
 			    <span>Favorite art styles</span>
 			  
 			    <div className='input-group' > 
@@ -366,7 +369,8 @@ var UserProfile = React.createClass({
 				    <button type='button' className='btn btn-default'>English</button>
 				    <button type='button' className='btn btn-default'>Spanish</button>
 				  </p>
-			
+			  </div>
+			  <div className='section row container'>
 			    <span>Featured interests</span> 
 			  
 			    <div className='input-group' >
@@ -378,7 +382,8 @@ var UserProfile = React.createClass({
 				    <button type='button' className='btn btn-default'>English</button>
 				    <button type='button' className='btn btn-default'>Spanish</button>
 				  </p>
-				
+			  </div>
+			  <div className='section row container'>
 				<span>Influences</span> 
 			  
 				<div className='input-group'> 
@@ -389,7 +394,7 @@ var UserProfile = React.createClass({
 				    <button type='button' className='btn btn-default'>Surrealism</button>
 				    <button type='button' className='btn btn-default'>Cubism</button>
 				  </div>
-			
+			  </div>
 				
 				<div className='center-block button-wrapper'> 
                   <div className='btn-group'> 

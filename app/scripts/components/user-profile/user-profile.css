@@ -11,6 +11,22 @@
   background: purple;
 }
 
+.user-profile-menu{
+  border: solid black 2px;
+  
+}
+
+.user-profile .aboutme{ 
+ margin-top:1em;
+}
+
+.user-profile menu{
+
+//  position:absolute;
+  //margin-top:1.5em;
+  //margin-left:0;
+}
+
 .user-profile-head h1{
 
   position: relative;
@@ -72,28 +88,35 @@
 
 }
 
-.user-profile .social{
-  margin-bottom:4em;
-
+.user-profile .all-social{
+  top:2em;
+  padding-bottom:2em;
+  position:relative;
 }
 
-.user-profile .input-group-addon{
+.user-profile .social{
+  margin-bottom:4em;
+}
+
+.user-profile-forms .input-group-addon{
   background: white;
   color: green;
 }
 
 .user-profile .help-block{
   margin-top: -.75em;
+  margin-left: 1em;
+  font-size:0.88em;
 }
 
 .user-profile .help-block button{
-  margin-left: 10px;
+  margin-left: 8px;
   border: solid 1px tomato;
   padding: .1em .5em .1em .5em;
 }
 
 .user-profile .social-buttons{
-  margin-top: 2.5em;
+  margin-top: .5em;
 }
 
 /*make width wider on wider screens*/
@@ -107,6 +130,13 @@
  
 }
 
+
+.user-profile .section{
+  
+  padding-bottom: 1em;
+  
+}
+
 .user-profile .my-account{
   width:80%;
   position:relative;
@@ -114,10 +144,11 @@
 }
 
 
-.user-profile .input-group{
+.user-profile-forms .input-group{
 
   width:100%;
-  padding-top:2px;
+
+  padding-top:4px;
   padding-bottom:1em;
 
 }

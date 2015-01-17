@@ -19,6 +19,9 @@ var Dispatcher = Flux.createDispatcher({
   fetchUserPhotos: function (data) {
     this.dispatch('fetchUserPhotos', data[0].photos);
   },
+  setFeaturedCollections: function (data) {
+    this.dispatch('setFeaturedCollections', data[0].featuredCollections);
+  },
   setCVFile: function( data ){
     this.dispatch('setCVFile', data);
   },

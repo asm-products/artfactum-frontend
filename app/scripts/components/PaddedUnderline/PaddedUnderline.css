@@ -4,5 +4,13 @@
   -webkit-transition: all 0.15s linear;
   transition: all 0.15s linear;
 
-  
 }
+
+.paddedUnderline .regular{
+ 
+  font-size:1.4em;
+  padding: .15em .4em .15em .5em;
+  margin:0;
+ 
+}
+

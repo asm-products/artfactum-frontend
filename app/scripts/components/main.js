@@ -7,8 +7,8 @@ var UserProfile = React.createFactory(require('./user-profile/user-profile.js'))
     Footer = React.createFactory(require('./footer/footer.js')),
     Masonry = React.createFactory(require('./masonry/masonry.js')),
     ParallaxPage = React.createFactory(require('./ParallaxPage/ParallaxPage.js')),
-    PaddedUnderline = React.createFactory(require('./PaddedUnderline/PaddedUnderline.js'));
-   
+    PaddedUnderline = React.createFactory(require('./PaddedUnderline/PaddedUnderline.js')),
+    PhotoCollections = React.createFactory(require('./PhotoCollections/PhotoCollections.js'));
    
 	
 var store = require('./../stores/store.js'),
@@ -23,7 +23,6 @@ var Router = window.ReactRouter,
     DefaultRoute = Router.DefaultRoute,
     NotFoundRoute = Router.NotFoundRoute, 
 	RouteHandler = Router.RouteHandler;
-	
 	
 require('./main.css');
 
@@ -95,6 +94,8 @@ var App = React.createClass({
   
     var url = 'photos.json';
     Actions.fetchUserPhotos(url);
+	var featureUrl = 'featuredCollections.json';
+    Actions.fetchFeaturedCollections(featureUrl);
   
   },
   
@@ -117,6 +118,7 @@ var App = React.createClass({
 	    <Link to='masonry'><button>masonry</button></Link>
 	    <Link to='parallaxpage'><button>Parallax</button></Link>
 	    <Link to='paddedunderline'><button>PaddedUnderline</button></Link>
+	    <Link to='photocollections'><button>PhotoCollections</button></Link>
  	    <div className='views'>
 		  <RouteHandler {... this.props.data} />
 	    </div>
@@ -137,6 +139,7 @@ var routes = (
     <Route path='/masonry' name='masonry' handler={Masonry}/>
     <Route path='/parallaxpage' name='parallaxpage' handler={ParallaxPage}/>
     <Route path='/paddedunderline' name='paddedunderline' handler={PaddedUnderline}/>
+    <Route path='/photocollections' name='photocollections' handler={PhotoCollections}/>
     <Route path='/collections' name='collections' handler={Collections}/>
     <Route path='/marketplace' name='marketplace' handler={Marketplace}/>
     <Route path='/mygallery' name='mygallery' handler={MyGallery}/>

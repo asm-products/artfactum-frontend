@@ -1,5 +1,8 @@
 'use strict';
 
+var Actions = require('./../../Actions/actions.js'),
+    Channel = Actions.channel('paddedUnderline');
+	
 require('./PaddedUnderline.css');
 
 var PaddedUnderline = React.createClass({
@@ -8,9 +11,15 @@ var PaddedUnderline = React.createClass({
   
     return ({
 	
-	  template: <span>underlined</span>,
+	  template: <strong>underlined</strong>,
+	  variation: 'regular',
 	  dynamic: true,
-	  isFocused: false
+	  isFocused: false,
+	  actions: [{
+	    action: function(){ return 'bug' },
+	    name: 'action'
+	  }],
+	  acceptActions: true
 	
 	});
   
@@ -19,20 +28,43 @@ var PaddedUnderline = React.createClass({
   componentDidMount: function() {
   
     this.handleStyles();
-  
+	if(this.props.acceptActions){
+	  this.assignActions(this.props.actions);
+	}
+	
   },
   
   componentDidUpdate: function(){
   
     this.handleStyles();
+	if(this.props.acceptActions){
+	  this.assignActions(this.props.actions);
+	}
   
+  },
+  
+  assignActions: function(actions) {
+    
+	if(Channel){
+	  for(var i=0;i<actions.length;i++){
+	    Channel[actions[i].name] = actions[i].action;
+	  }
+	}
+	
   },
   
   handleStyles: function(){
   
+    var variation = this.props.variation;
     var elem = this.getDOMNode().children[0];
-    elem.style.padding = '.45em .6em .45em .6em';
-  
+	
+	if(variation === 'regular'){
+	  $(elem).addClass('regular');
+	  $(this.getDOMNode()).css({
+	    marginBottom:'.5em'
+	  });
+	}
+    
     var self = this;
 	if(!self.props.dynamic) {
 	  elem.style.boxShadow = 'inset 0 -3px #e56e5c';
@@ -57,6 +89,7 @@ var PaddedUnderline = React.createClass({
 	    $(elem).addClass('focused');
 	  }
 	});
+	
   },
 
   render: function(){

@@ -4,6 +4,18 @@ var Dispatcher = require('./../dispatcher.js');
 
 var Actions = {
  
+  channel: function(channel) {
+  
+    return this.channels[channel]; 
+  
+  },
+  
+  channels: {
+  
+    paddedUnderline: null
+  
+  },
+ 
   setData: function (data) {
     Dispatcher.setData(data);
   },
@@ -27,6 +39,22 @@ var Actions = {
 	  
 	  });  
 	  
+  },
+  
+  fetchFeaturedCollections: function(url) {
+  
+    $.getJSON( url,{
+	  format: 'json'
+	}).done( function(data) {
+	
+	  Dispatcher.setFeaturedCollections(data);
+	  
+	}).fail( function(e){
+	
+	  alert('unable to load');
+	  
+	});
+	
   },
   
   followArtist: function(){

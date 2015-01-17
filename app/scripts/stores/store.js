@@ -67,7 +67,13 @@ var Store = Flux.createStore({
 	
 	  photos: [] //retrieve array of photoAttributes
 	
-	}
+	},
+	
+	featuredCollections: [{
+	   featuredCollection: {
+	     title: "title",
+	   }
+	}]
     
   },
   
@@ -86,6 +92,11 @@ var Store = Flux.createStore({
 	this.emit('change');
   },
   
+  setFeaturedCollections: function(data){
+    this.data.featuredCollections = data;
+	this.emit('change');
+  },
+  
   setCVFile: function(data) {
   
     this.data.userProfile.artisticCV = data;
@@ -97,6 +108,7 @@ var Store = Flux.createStore({
     'incoming-data': 'setData',
 	'setUserProfile': 'setUserProfile',
 	'fetchUserPhotos': 'fetchUserPhotos',
+	'setFeaturedCollections': 'setFeaturedCollections',
 	'setCVFile': 'setCVFile'
   }
   

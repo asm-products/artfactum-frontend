@@ -1,11 +1,28 @@
-body{
+@font-face {
+  font-family: 'Open-Sans-600';
+  src: url(fonts/Open-Sans-600.ttf);
+}
 
+@font-face {
+  font-family: 'Open-Sans-300';
+  src: url(fonts/Open-Sans-300.ttf);
+}
+
+@font-face {
+  font-family: 'Open-Sans-regular';
+  src: url(fonts/Open-Sans-regular.ttf);
+}
+
+
+body{
   background-color: #f8f8f8;
   background-color: white;
   font-weight: 400;
   color: #474747;
-  font-family: 'Open Sans', sans-serif;
-
+  margin:0;
+  padding:0;
+  font-family: 'Open-Sans-600', sans-serif;	
+  -webkit-font-smoothing: antialiased;
 }
 
 
@@ -272,7 +289,6 @@ button{
 /*icons personalized and standard */
 .icons-wrapper{
 
-	 background: url(http://s13.postimg.org/el966a5pj/free_wallpaper_40.jpg ) no-repeat center center fixed; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -293,45 +309,30 @@ button{
 
 }
 
-/* checkbox styles */
 
 
 /*tag styling */
 
-
 .tag{
 
 	margin: 0.5em;
-
 	width: 6em;
-
 	background-image: none;
 	box-shadow: none;
-
-
 	background-color: transparent;
 	border: 0.125em solid;
 	border-radius: 0.3em;
 	border-color: #E56E5C;
-
 	color: #333333;
 
-
 }
 
-
-.wrapper-wrapper{
-
-	
-}
 
 .video-wrapper{
-	background: url(http://i62.tinypic.com/qsjyaq.jpg)no-repeat center center fixed; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-
     padding-bottom: 4em;
 }
 
@@ -341,32 +342,7 @@ button{
   background: #ccc;
   color: #000;
   padding: 0.2em 0;
-}
-
-@font-face {
-  font-family: 'Open-Sans-600';
-  src: url(fonts/Open-Sans-600.ttf);
-}
-
-@font-face {
-  font-family: 'Open-Sans-300';
-  src: url(fonts/Open-Sans-300.ttf);
-}
-
-@font-face {
-  font-family: 'Open-Sans-regular';
-  src: url(fonts/Open-Sans-regular.ttf);
-}
-	
-
-body{
-  margin:0;
-  padding:0;
-  font-family: 'Open-Sans-600';	
-  -webkit-font-smoothing: antialiased;
-}
-
-
+}	
 
 .user-profile{
   width:100%;
@@ -377,6 +353,18 @@ body{
 
 .padding1{
   padding: 1em;  
+}
+
+.margin-top2{
+  margin-top: 2em;
+}
+
+.margin-top3{
+  margin-top: 3em;
+}
+
+.eighty{
+  width: 80%
 }
 
 .fluid{
