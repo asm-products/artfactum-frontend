@@ -15,6 +15,8 @@ module.exports = function (grunt) {
 
   // Load grunt tasks automatically
   require('load-grunt-tasks')(grunt);
+  
+  var historyApiFallback = require('connect-history-api-fallback');
 
   // Configurable paths
   var config = {
@@ -28,9 +30,29 @@ module.exports = function (grunt) {
     // Project settings
     config: config,
 
+	
+	
+	browserify: {
+      dist: {
+        files: {
+          'app/build/main.js': ['app/scripts/components/main.js',],
+        }
+      },
+	  options: {
+	    transform: ['cssify', 'reactify']
+	  }
+    },
+	
     // Watches files for changes and runs tasks based on the changed files
     watch: {
-      bower: {
+      react: {
+	    files: ['app/scripts/components/{,*/}*.js', '<%= config.app %>/scripts/components/{,*/}*.css' ],
+		tasks: ['browserify'],
+		options: {
+		  livereload: true
+		}
+	  },
+	  bower: {
         files: ['bower.json'],
         tasks: ['wiredep']
       },
@@ -48,17 +70,17 @@ module.exports = function (grunt) {
       gruntfile: {
         files: ['Gruntfile.js']
       },
-      styles: {
-        files: ['<%= config.app %>/styles/{,*/}*.css'],
-        tasks: ['newer:copy:styles', 'autoprefixer']
-      },
+      //styles: {
+        //files: ['<%= config.app %>/styles/{,*/}*.css'],
+        //tasks: ['newer:copy:styles', 'autoprefixer']
+      //},
       livereload: {
         options: {
           livereload: '<%= connect.options.livereload %>'
         },
         files: [
           '<%= config.app %>/{,*/}*.html',
-          '.tmp/styles/{,*/}*.css',
+          '<%= config.app %>/styles/{,*/}*.css',
           '<%= config.app %>/images/{,*/}*'
         ]
       }
@@ -77,9 +99,10 @@ module.exports = function (grunt) {
         options: {
           middleware: function(connect) {
             return [
-              connect.static('.tmp'),
+              connect.static('app'),
               connect().use('/bower_components', connect.static('./bower_components')),
-              connect.static(config.app)
+              connect().use(historyApiFallback).listen(3000),
+			  connect.static(config.app)
             ];
           }
         }
@@ -129,7 +152,7 @@ module.exports = function (grunt) {
       },
       all: [
         'Gruntfile.js',
-        '<%= config.app %>/scripts/{,*/}*.js',
+//for jsx sensitivity        '<%= config.app %>/scripts/{,*/}*.js',
         '!<%= config.app %>/scripts/vendor/*',
         'test/spec/{,*/}*.js'
       ]
@@ -340,6 +363,8 @@ module.exports = function (grunt) {
       ]
     }
   });
+  
+  grunt.loadNpmTasks('grunt-browserify');
 
 
   grunt.registerTask('serve', 'start the server and preview your app, --allow-remote for remote access', function (target) {
@@ -401,4 +426,9 @@ module.exports = function (grunt) {
     'test',
     'build'
   ]);
+  
+  grunt.registerTask('default', [
+    'browserify'
+  ]);
+  
 };

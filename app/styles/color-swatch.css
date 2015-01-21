@@ -1,0 +1,40 @@
+/*color swatch theme for artfactum signup page*/
+
+.tomato{
+  color:#e56e5c;
+}
+
+.tomato-background{
+  background:#e5635c;
+  color: white;
+}
+
+.dark-gray{
+
+  color: #3a3a3a;
+
+}
+
+.dark-gray-background{
+
+  background: #3a3a3a;
+  color:white;
+  
+}
+
+.chrome{
+
+  color: #d1ccca;
+
+}
+
+.chrome-background{
+
+  background: #d1ccca;
+  color: black;
+
+}
+
+.gray{
+  color: slategray;
+}

@@ -1,89 +1,382 @@
+@font-face {
+  font-family: 'Open-Sans-600';
+  src: url(fonts/Open-Sans-600.ttf);
+}
+
+@font-face {
+  font-family: 'Open-Sans-300';
+  src: url(fonts/Open-Sans-300.ttf);
+}
+
+@font-face {
+  font-family: 'Open-Sans-regular';
+  src: url(fonts/Open-Sans-regular.ttf);
+}
+
+
+body{
+  background-color: #f8f8f8;
+  background-color: white;
+  font-weight: 400;
+  color: #474747;
+  margin:0;
+  padding:0;
+  font-family: 'Open-Sans-600', sans-serif;	
+  -webkit-font-smoothing: antialiased;
+}
+
+
+.title-wrapper{
+ 
+ -webkit-background-size: cover;
+ -moz-background-size: cover;
+ -o-background-size: cover;
+ background-size: cover;
+ color: white;
+ padding-top: 2em;
+ padding-bottom: 4em;
+
+}
+
+/*some handy classes */
+.content-head{
+
+  margin: 2em;
+
+}
+
+
+.white-text{
+  color: white;
+}
+
+.black-text{
+  color: black;
+}
+
+
+/*typography */
+
+.typography-wrapper{
+	margin-bottom: 2em;
+}
+
+.type{
+	font-size: 2em;
+	background-color: white;
+	border-radius: 0.1em;
+	padding: 1em;
+	margin-bottom: 0.5em;
+}		
+
+.light{
+	font-weight: 300;
+}
+.normal{
+	font-weight: 400;
+}
+.semi-bold{
+	font-weight: 600;
+}
+.bold{
+	font-weight: 700;
+}
+.heavy{
+	font-weight: 800;
+}
+
+
+
+/*colors wrapper and swatches*/
+.color-swatches-wrapper{
+	padding: 2em;
+	color: white;
+	margin-bottom: 2em; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover  
+}
+
+.primary-swatch{
+	height: 10em;
+	border-radius: 0.2em;
+	margin-bottom: 0.5em;
+}
+.secondary-swatch{
+	border-radius: 0.2em;
+	height: 8em;
+	width: 80%;
+	margin: 0 auto;
+	margin-bottom: 0.5em;
+}
+.first-color{
+	background-color: #52bad5;
+}
+.second-color{
+	background-color: #ffffff;
+	color: #474747; 
+}
+.third-color{
+	background-color: #f2f1f0;
+    color: #474747; 
+}
+.fourth-color{
+	background-color: #d1ccca;
+	color: #474747; 
+}
+.fifth-color{
+	background-color: #474747;
+}
+.sixth-color{
+	background-color: #3a3a3a;
+}
+.seventh-color{
+	background-color: #E56E5C;
+}
+.eighth-color{
+	background-color: #cc5746;
+}
+
+
+/*Buttons */
+.buttons{
+	margin: 0.5em;
+}
+
+button{
+	background-image: none;
+	box-shadow: none;
+	text-align: center;	 
+}
+.btn-flat, .round{
+	border-radius: 0.2em;
+	padding: 0.5em;
+	padding-left: 1.5em;
+	padding-right: 1.5em;
+}
+.btn-flat-form{
+	margin: 0;
+}
+.round{
+	border-radius: 2em;
+}
+.primary{
+	background-color: #E56E5C;
+	color: white;
+}
+.primary:hover{
+	background-color: #CC5746;
+	color: white;
+	-webkit-transition: background-color linear 0.2s; 
+	 transition: background-color linear 0.2s;
+}
+.secondary{
+	background-color: transparent;
+	color: #E56E5C;
+	border: 0.1em solid;
+	border-color: #E56E5C;
+	-webkit-transition: background-color linear 0.2s; 
+	 transition: background-color linear 0.2s;
+}
+.secondary:hover{
+	background-color: #E56E5C;
+	color: white;
+}
+.inactive{
+	background-color: #E56E5C;
+	opacity: 0.7;
+}
+.inactive:hover{
+	background-color: #E56E5C;
+	opacity: 0.7;
+}
+
+
+/*Forms*/
+.forms-wrapper > form{
+	margin: 1em;
+}
+.form-control{
+	background-image: none;
+	box-shadow: none;
+}
+
+
+/* Progress Bars */
+.progress-wrapper{
+	margin-bottom: 0em;
+}
+.progress{
+	background-color: #D1CCCA;
+	background-image: none;
+	box-shadow: none;
+}
+.progress-bar{
+	border-radius: 3px;
+	background-color: #E56E5C;
+	background-image: none;
+	box-shadow: none;
+}
+
+/* Dropdowns - Primary, Secondary, White */
+.dropdown-menu{
+	background-image: none;
+	box-shadow: none;
+}
+.dropdown-secondary{	
+	background-color: transparent;
+	color: #E56E5C;
+	border: 0.1em solid;
+	border-color: #E56E5C;
+}
+.dropdown-secondary>li>a{
+	color: #E56E5C;
+}
+
+.dropdown-menu>li>a:hover{
+	color: #52BAD5;
+	background-image: none;
+	background-color: rgba(0,200,255,0.1);
+	box-shadow: none;
+
+}
+.dropdown-white{
+	background-color: transparent;
+	color: white;
+	border: 0.1em solid;
+	border-color: white;
+}
+.dropdown-white>li>a{
+	color: #E56E5C;
+}
+.dropdown-white>li>a:hover{
+	color: #E56E5C;
+	background-image: none;
+	box-shadow: none;
+}
+
+
+/*logo variants */
+.logo-wrapper{
+
+	margin-top: 8em;
+	padding-top: 2em;
+	padding-bottom: 3em;
+	background-color: #E56E5C;
+
+}
+
+/*avatar size variants*/
+
+.avatars-wrapper{
+	padding: 2em;
+
+}
+.avatar-small{
+	margin-top: 4em;
+}
+
+.avatar-medium{
+	margin-top: 2em;
+}
+
+.avatar-large{
+	margin-top: 0em;
+}
+
+
+/*icons personalized and standard */
+.icons-wrapper{
+
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover  
+
+}
+
+/* pagination styling */
+
+.pagination >.active > a{
+	background-color: #E56E5C;
+	border-color: #E56E5C;
+}
+
+.pagination > .active > a:hover{
+	background-color: #CC5746;
+	border-color: #CC5746;
+
+}
+
+
+
+/*tag styling */
+
+.tag{
+
+	margin: 0.5em;
+	width: 6em;
+	background-image: none;
+	box-shadow: none;
+	background-color: transparent;
+	border: 0.125em solid;
+	border-radius: 0.3em;
+	border-color: #E56E5C;
+	color: #333333;
+
+}
+
+
+.video-wrapper{
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    padding-bottom: 4em;
+}
+
+
 .browsehappy {
   margin: 0.2em 0;
   background: #ccc;
   color: #000;
   padding: 0.2em 0;
+}	
+
+.user-profile{
+  width:100%;
+  position:absolute;
+  top:1em;
+  left:0;
 }
 
-/* Space out content a bit */
-body {
-  padding-top: 20px;
-  padding-bottom: 20px;
+.padding1{
+  padding: 1em;  
 }
 
-/* Everything but the jumbotron gets side spacing for mobile first views */
-.header,
-.marketing,
-.footer {
-  padding-left: 15px;
-  padding-right: 15px;
+.margin-top2{
+  margin-top: 2em;
 }
 
-/* Custom page header */
-.header {
-  border-bottom: 1px solid #e5e5e5;
+.margin-top3{
+  margin-top: 3em;
 }
 
-/* Make the masthead heading the same height as the navigation */
-.header h3 {
-  margin-top: 0;
-  margin-bottom: 0;
-  line-height: 40px;
-  padding-bottom: 19px;
+.eighty{
+  width: 80%
 }
 
-/* Custom page footer */
-.footer {
-  padding-top: 19px;
-  color: #777;
-  border-top: 1px solid #e5e5e5;
+.fluid{
+  width: 100%;
 }
 
-.container-narrow > hr {
-  margin: 30px 0;
+.center-block {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-/* Main marketing message and sign up button */
-.jumbotron {
-  text-align: center;
-  border-bottom: 1px solid #e5e5e5;
-}
-
-.jumbotron .btn {
-  font-size: 21px;
-  padding: 14px 24px;
-}
-
-/* Supporting marketing content */
-.marketing {
-  margin: 40px 0;
-}
-
-.marketing p + h4 {
-  margin-top: 28px;
-}
-
-/* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
-  .container {
-    max-width: 730px;
-  }
-
-  /* Remove the padding we set earlier */
-  .header,
-  .marketing,
-  .footer {
-    padding-left: 0;
-    padding-right: 0;
-  }
-
-  /* Space out the masthead */
-  .header {
-    margin-bottom: 30px;
-  }
-
-  /* Remove the bottom border on the jumbotron for visual effect */
-  .jumbotron {
-    border-bottom: 0;
-  }
+.vertical-align{
+   vertical-align:middle;
 }

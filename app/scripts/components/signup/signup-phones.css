@@ -1,0 +1,108 @@
+@media all and (max-width:600px) {
+
+.signup .simple-row div{
+
+  min-height: 45vh;
+  
+  
+}
+
+.signup figure{
+
+  min-height: 45vh;
+  
+}
+
+
+
+.signup .center-wrapper figure{
+  
+  padding:0;
+  
+}
+
+
+.signup .center-wrapper{
+
+  position:relative;
+  width:110%;
+  top:2em;
+  margin-right:auto;
+  margin-left:auto;
+
+}
+
+.signup .honey{
+   
+   width:100%;
+    
+}
+
+.signup .cool{
+
+  width:85%;
+
+}
+
+.signup .signup-icons{
+  font-size: .75em;
+  padding-top: 1.1em;
+}
+
+.signup .below-article{
+  bottom: 25%;
+  font-size: 1.4em;
+}
+  
+
+.signup .simple{
+  position:absolute;
+  width: 100%; 
+  text-align: center;
+  z-index: 10;
+  background: rgba(10,20,40,0.3);
+}
+
+.signup .oval-button {
+   font-size: 1em;
+   top:-2%;
+}
+
+.signup .simple-row h3{
+
+  padding: .8em;
+  padding-top:3em;
+  color: white;  
+  text-decoration: underline;
+  
+}
+
+.signup .jumbo-inner{
+  font-size: 1.1em;
+  top: -21%;
+}
+
+.signup .simple-row p{
+
+  color: white;
+
+}
+
+.signup .honey img{
+
+  padding: 0;
+  padding-right: 0;
+  width: 100%;
+  height:100;
+  position:absolute;
+  left:0;
+  top:0;
+  box-shadow: 0 0 0 0 white;
+
+}
+
+.signup .egon{
+  top:-2.25em;
+}
+
+}

@@ -1,0 +1,49 @@
+.af-footer{
+  background: black;
+}
+
+.af-footer .logo{
+  width:200px
+}
+
+.af-footer a,li{
+  color: white;
+}
+
+.af-footer p{
+  margin-left:1.5em;
+}
+
+.af-footer .breadcrumbs{
+  color:white;
+  width:90%;
+  
+  background: #3a3a3a;
+
+  display:block;
+  position:relative;
+  margin-left:auto;
+  margin-right:auto;
+  text-align:justify;
+}
+
+.footerpages{
+  text-align:center;
+  color:white;
+}
+
+.footerpage{
+  width:380px;
+  padding:2px;
+  font-size:1.08em;
+  display:block;
+  position:relative;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+@media (max-width:600px) {
+  .footerpage{
+    width:280px;
+  }
+}

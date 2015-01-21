@@ -1,0 +1,82 @@
+.top-nav{
+
+  width: 98%;
+  display: block;
+  margin-left: auto;
+  margin-right:auto;
+  background: white;
+  
+}
+
+.top-nav .tabs:active{
+	
+	color: tomato;
+	box-shadow: inset 0px -5px blue;
+    -webkit-transition: all 0.15s linear;
+	transition: all 0.15s linear;
+	
+}
+
+.top-nav .tabs:focus{
+	color: tomato;
+	box-shadow: inset 0px -5px tomato;
+
+}
+
+.top-nav .top-logo-holder{
+  width: 50px;
+  height:50px;
+  
+}
+
+.top-nav .navbar{
+  background: white;
+  border: none;
+}
+
+.top-nav .search{
+
+  border: none;
+  outline: none;
+  box-shadow: 0 0 0 0 white;
+  
+}
+
+.top-nav .search-gl{
+  background: white;
+  border:none;
+  outline: none;
+}
+
+.top-nav .search-box{
+
+  overflow:hidden; 
+ 
+}
+
+.top-nav .top-drop, .top-nav .top-drop:active{
+  
+  background: inherit;
+   
+}
+
+.top-nav .top-drop:hover{
+  background: #d1ccca;
+}
+
+.top-nav .userAvatar {
+  height: 1.45em;
+  width: 1.45em;
+  position:relative;
+  box-shadow: 0 0 4px 1px #eee;
+  display:cover;
+  overflow: hidden;
+  border-radius:50%;
+}
+
+.top-nav .userAvatar img{
+  position:relative;
+  margin-right:2px;
+  width:100%;
+}
+

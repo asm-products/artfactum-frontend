@@ -1,0 +1,79 @@
+.browseCollections .tomato-button{
+
+  border-radius: 15px;
+  background: white;
+  border: tomato 2px solid;
+  color: tomato;
+  
+}
+
+.browseCollections .sort{
+  padding-left: 15px;
+  padding-right: 15px;
+  
+}
+
+.browseCollections .sorter{
+
+  position:relative;
+  display:block;
+  width:100%;
+  height:1.5em;
+  
+}
+
+.browseCollections .sorter div{
+  position:absolute;
+  right: 2.5em;
+}
+
+.browseCollections .list{
+  
+  width:100%;
+  margin:0;
+  padding:0;
+  margin-bottom: 3em;
+  
+}
+
+.browseCollections .browse-images{
+  position: relative;
+  text-align:right;
+  list-style:none;
+  width: 100%;
+  margin:0;
+  padding:0;
+  margin-top:5px;
+}
+
+
+		  
+.browseCollections .notfocused{ 
+  color:slategray;
+  cursor:pointer;
+  -webkit-transition: color .4s ease;
+          transition: color .4s ease;
+}
+
+.browseCollections .focused{
+  cursor:pointer;
+  color:tomato;
+  text-decoration:none;
+  -webkit-transition: color .4s linear;
+          transition: color .4s linear;
+}
+
+
+.browse-categories-dt{
+  position:relative;
+  top:2em;
+}
+
+.browse-sort{
+  position:relative;
+}
+
+
+.browse-categories{
+  display: none;
+}
