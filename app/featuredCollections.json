@@ -66,6 +66,410 @@
 	  
 	}
    
+  },
+  {
+     
+	"featuredCollection": {
+	
+	  "title": "title",
+	  "mainPhoto": {
+	    "id": null,
+		"photoUrl": "images/egon.jpg",
+	    "title": "untitled",
+	    "ownerName": "artist",
+	    "ownerUrl": null,
+	    "description": "photo description lorem ipsum artsum lorem ip ipsum describe",
+	    "dateUploaded": null,
+	    "curatedIncrement": 0,
+	    "followedIncrement": 0,
+	    "viewedIncrement": 0,
+	    "isUndiscovered": true,
+	    "category": ["Art"],
+	    "trendingTags": []
+	  },
+	  "photos": [{
+	  
+	    "photoAttributes": {
+	
+		  "id": null,
+		  "photoUrl": "images/egon.jpg",
+		  "title": "untitled",
+		  "ownerName": "artist",
+		  "ownerUrl": null,
+		  "description": "photo description lorem ipsum artsum lorem ip ipsum describe",
+		  "dateUploaded": null,
+		  "curatedIncrement": 0,
+		  "followedIncrement": 0,
+		  "viewedIncrement": 0,
+		  "isUndiscovered": true,
+		  "category": ["Art"],
+		  "trendingTags": []
+		
+		}
+		
+	  },
+	  
+	  {
+		 
+		"photoAttributes": {
+		
+		  "id": null,
+		  "photoUrl": "images/picasso.png",
+		  "title": "untitled",
+		  "ownerName": "artist",
+		  "ownerUrl": null,
+		  "description": "photo description lorem ipsum artsum lorem ip ipsum describe",
+		  "dateUploaded": null,
+		  "curatedIncrement": 0,
+		  "followedIncrement": 0,
+		  "viewedIncrement": 0,
+		  "isUndiscovered": true,
+		  "category": ["Art"],
+		  "trendingTags": []
+		
+		}
+	  
+	  }]
+	  
+	}
+   
+  },
+  {
+     
+	"featuredCollection": {
+	
+	  "title": "title",
+	  "mainPhoto": {
+	    "id": null,
+		"photoUrl": "images/picasso.png",
+	    "title": "untitled",
+	    "ownerName": "artist",
+	    "ownerUrl": null,
+	    "description": "photo description lorem ipsum artsum lorem ip ipsum describe",
+	    "dateUploaded": null,
+	    "curatedIncrement": 0,
+	    "followedIncrement": 0,
+	    "viewedIncrement": 0,
+	    "isUndiscovered": true,
+	    "category": ["Art"],
+	    "trendingTags": []
+	  },
+	  "photos": [{
+	  
+	    "photoAttributes": {
+	
+		  "id": null,
+		  "photoUrl": "images/egon.jpg",
+		  "title": "untitled",
+		  "ownerName": "artist",
+		  "ownerUrl": null,
+		  "description": "photo description lorem ipsum artsum lorem ip ipsum describe",
+		  "dateUploaded": null,
+		  "curatedIncrement": 0,
+		  "followedIncrement": 0,
+		  "viewedIncrement": 0,
+		  "isUndiscovered": true,
+		  "category": ["Art"],
+		  "trendingTags": []
+		
+		}
+		
+	  },
+	  
+	  {
+		 
+		"photoAttributes": {
+		
+		  "id": null,
+		  "photoUrl": "images/picasso.png",
+		  "title": "untitled",
+		  "ownerName": "artist",
+		  "ownerUrl": null,
+		  "description": "photo description lorem ipsum artsum lorem ip ipsum describe",
+		  "dateUploaded": null,
+		  "curatedIncrement": 0,
+		  "followedIncrement": 0,
+		  "viewedIncrement": 0,
+		  "isUndiscovered": true,
+		  "category": ["Art"],
+		  "trendingTags": []
+		
+		}
+	  
+	  }]
+	  
+	}
+   
+  },
+  
+  {
+  
+    "featuredCollection": {
+	
+	  "title": "title",
+	  "mainPhoto": {
+	    "id": null,
+		"photoUrl": "images/honey.jpg",
+	    "title": "untitled",
+	    "ownerName": "artist",
+	    "ownerUrl": null,
+	    "description": "photo description lorem ipsum artsum lorem ip ipsum describe",
+	    "dateUploaded": null,
+	    "curatedIncrement": 0,
+	    "followedIncrement": 0,
+	    "viewedIncrement": 0,
+	    "isUndiscovered": true,
+	    "category": ["Art"],
+	    "trendingTags": []
+	  },
+	  "photos": [{
+	  
+	    "photoAttributes": {
+	
+		  "id": null,
+		  "photoUrl": "images/egon.jpg",
+		  "title": "untitled",
+		  "ownerName": "artist",
+		  "ownerUrl": null,
+		  "description": "photo description lorem ipsum artsum lorem ip ipsum describe",
+		  "dateUploaded": null,
+		  "curatedIncrement": 0,
+		  "followedIncrement": 0,
+		  "viewedIncrement": 0,
+		  "isUndiscovered": true,
+		  "category": ["Art"],
+		  "trendingTags": []
+		
+		}
+		
+	  },
+	  
+	  {
+		 
+		"photoAttributes": {
+		
+		  "id": null,
+		  "photoUrl": "images/picasso.png",
+		  "title": "untitled",
+		  "ownerName": "artist",
+		  "ownerUrl": null,
+		  "description": "photo description lorem ipsum artsum lorem ip ipsum describe",
+		  "dateUploaded": null,
+		  "curatedIncrement": 0,
+		  "followedIncrement": 0,
+		  "viewedIncrement": 0,
+		  "isUndiscovered": true,
+		  "category": ["Art"],
+		  "trendingTags": []
+		
+		}
+	  
+	  }]
+	  
+	}
+   
+  },
+  
+  {
+  
+    "featuredCollection": {
+	
+	  "title": "title",
+	  "mainPhoto": {
+	    "id": null,
+		"photoUrl": "images/honey.jpg",
+	    "title": "untitled",
+	    "ownerName": "artist",
+	    "ownerUrl": null,
+	    "description": "photo description lorem ipsum artsum lorem ip ipsum describe",
+	    "dateUploaded": null,
+	    "curatedIncrement": 0,
+	    "followedIncrement": 0,
+	    "viewedIncrement": 0,
+	    "isUndiscovered": true,
+	    "category": ["Art"],
+	    "trendingTags": []
+	  },
+	  "photos": [{
+	  
+	    "photoAttributes": {
+	
+		  "id": null,
+		  "photoUrl": "images/egon.jpg",
+		  "title": "untitled",
+		  "ownerName": "artist",
+		  "ownerUrl": null,
+		  "description": "photo description lorem ipsum artsum lorem ip ipsum describe",
+		  "dateUploaded": null,
+		  "curatedIncrement": 0,
+		  "followedIncrement": 0,
+		  "viewedIncrement": 0,
+		  "isUndiscovered": true,
+		  "category": ["Art"],
+		  "trendingTags": []
+		
+		}
+		
+	  },
+	  
+	  {
+		 
+		"photoAttributes": {
+		
+		  "id": null,
+		  "photoUrl": "images/picasso.png",
+		  "title": "untitled",
+		  "ownerName": "artist",
+		  "ownerUrl": null,
+		  "description": "photo description lorem ipsum artsum lorem ip ipsum describe",
+		  "dateUploaded": null,
+		  "curatedIncrement": 0,
+		  "followedIncrement": 0,
+		  "viewedIncrement": 0,
+		  "isUndiscovered": true,
+		  "category": ["Art"],
+		  "trendingTags": []
+		
+		}
+	  
+	  }]
+	  
+	}
+   
+  },
+  {  
+  
+    "featuredCollection": {
+	
+	  "title": "title",
+	  "mainPhoto": {
+	    "id": null,
+		"photoUrl": "images/honey.jpg",
+	    "title": "untitled",
+	    "ownerName": "artist",
+	    "ownerUrl": null,
+	    "description": "photo description lorem ipsum artsum lorem ip ipsum describe",
+	    "dateUploaded": null,
+	    "curatedIncrement": 0,
+	    "followedIncrement": 0,
+	    "viewedIncrement": 0,
+	    "isUndiscovered": true,
+	    "category": ["Art"],
+	    "trendingTags": []
+	  },
+	  "photos": [{
+	  
+	    "photoAttributes": {
+	
+		  "id": null,
+		  "photoUrl": "images/egon.jpg",
+		  "title": "untitled",
+		  "ownerName": "artist",
+		  "ownerUrl": null,
+		  "description": "photo description lorem ipsum artsum lorem ip ipsum describe",
+		  "dateUploaded": null,
+		  "curatedIncrement": 0,
+		  "followedIncrement": 0,
+		  "viewedIncrement": 0,
+		  "isUndiscovered": true,
+		  "category": ["Art"],
+		  "trendingTags": []
+		
+		}
+		
+	  },
+	  
+	  {
+		 
+		"photoAttributes": {
+		
+		  "id": null,
+		  "photoUrl": "images/picasso.png",
+		  "title": "untitled",
+		  "ownerName": "artist",
+		  "ownerUrl": null,
+		  "description": "photo description lorem ipsum artsum lorem ip ipsum describe",
+		  "dateUploaded": null,
+		  "curatedIncrement": 0,
+		  "followedIncrement": 0,
+		  "viewedIncrement": 0,
+		  "isUndiscovered": true,
+		  "category": ["Art"],
+		  "trendingTags": []
+		
+		}
+	  
+	  }]
+	  
+	}
+   
+  },
+  {  
+  
+    "featuredCollection": {
+	
+	  "title": "title",
+	  "mainPhoto": {
+	    "id": null,
+		"photoUrl": "images/honey.jpg",
+	    "title": "untitled",
+	    "ownerName": "artist",
+	    "ownerUrl": null,
+	    "description": "photo description lorem ipsum artsum lorem ip ipsum describe",
+	    "dateUploaded": null,
+	    "curatedIncrement": 0,
+	    "followedIncrement": 0,
+	    "viewedIncrement": 0,
+	    "isUndiscovered": true,
+	    "category": ["Art"],
+	    "trendingTags": []
+	  },
+	  "photos": [{
+	  
+	    "photoAttributes": {
+	
+		  "id": null,
+		  "photoUrl": "images/egon.jpg",
+		  "title": "untitled",
+		  "ownerName": "artist",
+		  "ownerUrl": null,
+		  "description": "photo description lorem ipsum artsum lorem ip ipsum describe",
+		  "dateUploaded": null,
+		  "curatedIncrement": 0,
+		  "followedIncrement": 0,
+		  "viewedIncrement": 0,
+		  "isUndiscovered": true,
+		  "category": ["Art"],
+		  "trendingTags": []
+		
+		}
+		
+	  },
+	  
+	  {
+		 
+		"photoAttributes": {
+		
+		  "id": null,
+		  "photoUrl": "images/picasso.png",
+		  "title": "untitled",
+		  "ownerName": "artist",
+		  "ownerUrl": null,
+		  "description": "photo description lorem ipsum artsum lorem ip ipsum describe",
+		  "dateUploaded": null,
+		  "curatedIncrement": 0,
+		  "followedIncrement": 0,
+		  "viewedIncrement": 0,
+		  "isUndiscovered": true,
+		  "category": ["Art"],
+		  "trendingTags": []
+		
+		}
+	  
+	  }]
+	  
+	}
+   
   }]
 
 }]
