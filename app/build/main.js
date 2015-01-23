@@ -123,6 +123,13 @@ var Carousel = React.createClass({displayName: 'Carousel',
   
   },
   
+  componentDidMount: function(){
+  
+    $('.carousel-control').css({background:'white'});
+	$('.carousel-control').find('.glyphicon').css({color:'black'});
+  
+  },
+  
   render: function(){
     
     var featuredCollections,
@@ -198,7 +205,7 @@ var Carousel = React.createClass({displayName: 'Carousel',
 
 module.exports = Carousel;
 },{"./carousel.css":4}],4:[function(require,module,exports){
-var css = ".custom-carousel .firstrow{\r\n  width: 100%;\r\n}\r\n\r\n.custom-carousel .imagewrapper{\r\n  \r\n  overflow:hidden;\r\n  height: 150px;\r\n  width: 30%;\r\n  margin:1%;\r\n  margin-top:0;\r\n  margin-bottom:0;\r\n  float:left;\r\n  position:relative;\r\n \r\n}\r\n\r\n.custom-carousel .carousel-inner{\r\n  position: relative;\r\n  width: 80%;\r\n  margin-left:auto;\r\n  margin-right:auto;\r\n \r\n}\r\n\r\n.custom-carousel{\r\n  \r\n  height: 150px;\r\n  \r\n}\r\n\r\n"; (require("C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify"))(css); module.exports = css;
+var css = ".custom-carousel .firstrow{\r\n  width: 100%;\r\n}\r\n\r\n.custom-carousel .imagewrapper{\r\n  \r\n  overflow:hidden;\r\n  height: 175px;\r\n  width: 30%;\r\n  margin:1%;\r\n  margin-top:0;\r\n  margin-bottom:0;\r\n  float:left;\r\n  position:relative;\r\n \r\n}\r\n\r\n.custom-carousel .carousel-inner{\r\n  position: relative;\r\n  width: 80%;\r\n  margin-left:auto;\r\n  margin-right:auto;\r\n \r\n}\r\n\r\n.custom-carousel{\r\n  \r\n  height: 175px;\r\n  \r\n}\r\n\r\n"; (require("C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify"))(css); module.exports = css;
 },{"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify":35}],5:[function(require,module,exports){
 'use strict';
 
@@ -547,7 +554,8 @@ var Actions = require('./../../actions/actions.js');
 var TopNav = require('./../TopNav/TopNav.js'),
     PaddedUnderline = require('./../PaddedUnderline/PaddedUnderline.js'),
     Carousel = require('./../Carousel/Carousel.js'),
-    QuatroGallery = require('./../QuatroGallery/QuatroGallery.js');
+    QuatroGallery = require('./../QuatroGallery/QuatroGallery.js'),
+	Footer = require('./../Footer/Footer.js');
 
 	
 	
@@ -592,20 +600,26 @@ var PhotoCollections = React.createClass({displayName: 'PhotoCollections',
 		), /*end container*/
 		React.createElement("div", {className: "container margin-top3"}, 
 		  
-		  React.createElement("div", {className: "row center-block eighty"}, 
+		  React.createElement("div", {className: "row center-block eighty margin-top3"}, 
 			  React.createElement(PaddedUnderline, {template: React.createElement("b", null, "Art Lovers Collections"), isFocused: "true"})
 		  ), /*end 1st row*/
 		  
-		  React.createElement("div", {className: "row center-block margin-top2 ninety"}, 
-		     React.createElement("div", {className: "col-s-12 col-md-6 col-lg-4"}, 
+		  React.createElement("div", {className: "row center-block quatrorow margin-top2 eighty"}, 
+		     React.createElement("div", {className: "col-sm-12 col-md-6 col-lg-4"}, 
+			   React.createElement(QuatroGallery, {featuredCollections: self.props.featuredCollections})
+			 ), 
+			 React.createElement("div", {className: "col-sm-12 col-md-6 col-lg-4"}, 
+			   React.createElement(QuatroGallery, {featuredCollections: self.props.featuredCollections})
+			 ), 
+			 React.createElement("div", {className: "col-sm-12 col-md-6 col-lg-4"}, 
 			   React.createElement(QuatroGallery, {featuredCollections: self.props.featuredCollections})
 			 )
 		  )
 		
 		), /*end container 2*/
 		React.createElement("br", null), 
-		React.createElement("br", null), 
-		React.createElement("br", null)
+		React.createElement(Footer, {className: "margin-top3"})
+		
 	  )
 	
 	);
@@ -617,8 +631,8 @@ var PhotoCollections = React.createClass({displayName: 'PhotoCollections',
 
 module.exports = PhotoCollections;
 	
-},{"./../../actions/actions.js":2,"./../Carousel/Carousel.js":3,"./../PaddedUnderline/PaddedUnderline.js":10,"./../QuatroGallery/QuatroGallery.js":15,"./../TopNav/TopNav.js":20}],14:[function(require,module,exports){
-var css = ".quatros{\r\n  width:100%;\r\n  height: 250px;\r\n}\r\n\r\n.quatro .image-wrap{\r\n  width:46%;\r\n  height:46%;\r\n  margin:2%;\r\n  overflow:hidden;\r\n  float:left;\r\n  box-shadow: 0 0 2px 2px black;\r\n}\r\n\r\n.quatro img{\r\n \r\n}"; (require("C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify"))(css); module.exports = css;
+},{"./../../actions/actions.js":2,"./../Carousel/Carousel.js":3,"./../Footer/Footer.js":5,"./../PaddedUnderline/PaddedUnderline.js":10,"./../QuatroGallery/QuatroGallery.js":15,"./../TopNav/TopNav.js":20}],14:[function(require,module,exports){
+var css = ".quatros{\r\n  width:100%;\r\n  height: 250px;\r\n}\r\n\r\n.quatro .image-wrap{\r\n  width:46%;\r\n  height:46%;\r\n  margin:2%;\r\n  overflow:hidden;\r\n  float:left;\r\n  box-shadow: 0 0 2px 2px #ccc;\r\n}\r\n\r\n.quatro .gray{\r\n  margin-left:1.9%;\r\n}\r\n\r\n.quatro {\r\n  margin:0;\r\n  padding:0;\r\n  margin-bottom: 3.25em; \r\n  position:relative;\r\n  width:100%;\r\n  left:-5%;\r\n  //border: solid pink 2px;\r\n  height:100%;\r\n}\r\n\r\n"; (require("C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify"))(css); module.exports = css;
 },{"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify":35}],15:[function(require,module,exports){
 'use strict';
 
@@ -628,7 +642,8 @@ var QuatroGallery = React.createClass({displayName: 'QuatroGallery',
   
   getDefaultProps: function(){
     return ({
-	  featuredCollections: [{}]
+	  featuredCollections: [{}],
+	  owner: 'owner'
 	});
   },
   
@@ -643,7 +658,7 @@ var QuatroGallery = React.createClass({displayName: 'QuatroGallery',
 	return (
 	  React.createElement("div", {className: "quatro"}, 
 	    React.createElement("h5", {className: "gray"}, 
-          "Video Art"
+          this.props.owner
 	    ), 
 	    React.createElement("div", {className: "quatros"}, 
 	      quatro

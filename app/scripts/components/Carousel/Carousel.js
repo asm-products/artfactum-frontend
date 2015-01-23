@@ -14,6 +14,13 @@ var Carousel = React.createClass({
   
   },
   
+  componentDidMount: function(){
+  
+    $('.carousel-control').css({background:'white'});
+	$('.carousel-control').find('.glyphicon').css({color:'black'});
+  
+  },
+  
   render: function(){
     
     var featuredCollections,

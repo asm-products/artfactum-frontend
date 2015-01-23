@@ -6,7 +6,8 @@ var QuatroGallery = React.createClass({
   
   getDefaultProps: function(){
     return ({
-	  featuredCollections: [{}]
+	  featuredCollections: [{}],
+	  owner: 'owner'
 	});
   },
   
@@ -21,7 +22,7 @@ var QuatroGallery = React.createClass({
 	return (
 	  <div className='quatro'>
 	    <h5 className='gray'>
-          Video Art
+          {this.props.owner}
 	    </h5>
 	    <div className='quatros'>
 	      {quatro}

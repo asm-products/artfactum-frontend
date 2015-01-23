@@ -5,7 +5,8 @@ var Actions = require('./../../actions/actions.js');
 var TopNav = require('./../TopNav/TopNav.js'),
     PaddedUnderline = require('./../PaddedUnderline/PaddedUnderline.js'),
     Carousel = require('./../Carousel/Carousel.js'),
-    QuatroGallery = require('./../QuatroGallery/QuatroGallery.js');
+    QuatroGallery = require('./../QuatroGallery/QuatroGallery.js'),
+	Footer = require('./../Footer/Footer.js');
 
 	
 	
@@ -50,20 +51,26 @@ var PhotoCollections = React.createClass({
 		</div>{/*end container*/}
 		<div className='container margin-top3'>
 		  
-		  <div className='row center-block eighty'>
+		  <div className='row center-block eighty margin-top3'>
 			  <PaddedUnderline template={<b>Art Lovers Collections</b>} isFocused="true"></PaddedUnderline>
 		  </div>{/*end 1st row*/}
 		  
-		  <div className='row center-block margin-top2 ninety'>
-		     <div className='col-s-12 col-md-6 col-lg-4'>
+		  <div className='row center-block quatrorow margin-top2 eighty'>
+		     <div className='col-sm-12 col-md-6 col-lg-4'>
+			   <QuatroGallery featuredCollections={self.props.featuredCollections} />
+			 </div>
+			 <div className='col-sm-12 col-md-6 col-lg-4'>
+			   <QuatroGallery featuredCollections={self.props.featuredCollections} />
+			 </div>
+			 <div className='col-sm-12 col-md-6 col-lg-4'>
 			   <QuatroGallery featuredCollections={self.props.featuredCollections} />
 			 </div>
 		  </div>
 		
 		</div>{/*end container 2*/}
 		<br />
-		<br />
-		<br />
+		<Footer className='margin-top3'/>
+		
 	  </div>
 	
 	);
