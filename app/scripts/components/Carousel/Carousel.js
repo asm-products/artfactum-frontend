@@ -1,5 +1,7 @@
 'use strict';
 
+var ImageOverlay = require('./../ImageOverlay/ImageOverlay.js');
+
 require('./carousel.css');
 
 var Carousel = React.createClass({
@@ -21,11 +23,17 @@ var Carousel = React.createClass({
   
   },
   
+  componentDidUpdate: function(){
+  
+    //alert(JSON.stringify(this.props));
+  
+  },
+  
   render: function(){
     
     var featuredCollections,
 	    carousel_id = "#" + this.props.carousel_id;
-	
+	var self = this;
     if(this.props.featuredCollections[0].featuredCollection.mainPhoto){
 	  
 	  var imageArr = [],
@@ -38,7 +46,8 @@ var Carousel = React.createClass({
 	    
 		imageArr.push(  
 		  <div className='imagewrapper'>
-		    <img className='img-responsive firstrow' src={item.featuredCollection.mainPhoto.photoUrl} alt='photo'/>
+	        <ImageOverlay userProfile={self.props.userProfile} photoAttributes={item.featuredCollection.mainPhoto} />	   
+			<img className='img-responsive firstrow' src={item.featuredCollection.mainPhoto.photoUrl} alt='photo'/>
 		  </div>
 		);
 		
@@ -71,11 +80,12 @@ var Carousel = React.createClass({
 	
 	  <div id={this.props.carousel_id} className="carousel slide custom-carousel">
             
-		<ol className="carousel-indicators">
+		{/*this is blocking overlay*/}	
+		{/*<ol className="carousel-indicators">
 		  <li data-target={carousel_id} data-slide-to="0" className="active"></li>
 		  <li data-target={carousel_id} data-slide-to="1"></li>
 		  <li data-target={carousel_id} data-slide-to="2"></li>
-		</ol>
+		</ol>}*/}
 
 		<div className="carousel-inner">
 		  {featuredCollections}

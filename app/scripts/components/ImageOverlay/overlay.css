@@ -10,7 +10,7 @@
 }
 
 .overlay:hover{
-opacity:0.99;
+  opacity:0.99;
   background: rgba(20,20,20,0.7);
   -webkit-transition: background .8s ease;
           transition: background .8s ease;
@@ -86,5 +86,5 @@ opacity:0.99;
 }
 
 .overlay .Unfollow{
-  color: orange;
+  color: tomato;
 }

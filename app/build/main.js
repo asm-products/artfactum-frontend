@@ -109,6 +109,8 @@ module.exports=require(1)
 },{"./../dispatcher.js":32,"C:\\Users\\Justin\\documents\\github\\af\\app\\scripts\\Actions\\actions.js":1}],3:[function(require,module,exports){
 'use strict';
 
+var ImageOverlay = require('./../ImageOverlay/ImageOverlay.js');
+
 require('./carousel.css');
 
 var Carousel = React.createClass({displayName: 'Carousel',
@@ -130,11 +132,17 @@ var Carousel = React.createClass({displayName: 'Carousel',
   
   },
   
+  componentDidUpdate: function(){
+  
+    //alert(JSON.stringify(this.props));
+  
+  },
+  
   render: function(){
     
     var featuredCollections,
 	    carousel_id = "#" + this.props.carousel_id;
-	
+	var self = this;
     if(this.props.featuredCollections[0].featuredCollection.mainPhoto){
 	  
 	  var imageArr = [],
@@ -147,7 +155,8 @@ var Carousel = React.createClass({displayName: 'Carousel',
 	    
 		imageArr.push(  
 		  React.createElement("div", {className: "imagewrapper"}, 
-		    React.createElement("img", {className: "img-responsive firstrow", src: item.featuredCollection.mainPhoto.photoUrl, alt: "photo"})
+	        React.createElement(ImageOverlay, {userProfile: self.props.userProfile, photoAttributes: item.featuredCollection.mainPhoto}), 	   
+			React.createElement("img", {className: "img-responsive firstrow", src: item.featuredCollection.mainPhoto.photoUrl, alt: "photo"})
 		  )
 		);
 		
@@ -180,11 +189,12 @@ var Carousel = React.createClass({displayName: 'Carousel',
 	
 	  React.createElement("div", {id: this.props.carousel_id, className: "carousel slide custom-carousel"}, 
             
-		React.createElement("ol", {className: "carousel-indicators"}, 
-		  React.createElement("li", {'data-target': carousel_id, 'data-slide-to': "0", className: "active"}), 
-		  React.createElement("li", {'data-target': carousel_id, 'data-slide-to': "1"}), 
-		  React.createElement("li", {'data-target': carousel_id, 'data-slide-to': "2"})
-		), 
+		/*this is blocking overlay*/	
+		/*<ol className="carousel-indicators">
+		  <li data-target={carousel_id} data-slide-to="0" className="active"></li>
+		  <li data-target={carousel_id} data-slide-to="1"></li>
+		  <li data-target={carousel_id} data-slide-to="2"></li>
+		</ol>}*/
 
 		React.createElement("div", {className: "carousel-inner"}, 
 		  featuredCollections
@@ -204,7 +214,7 @@ var Carousel = React.createClass({displayName: 'Carousel',
 });
 
 module.exports = Carousel;
-},{"./carousel.css":4}],4:[function(require,module,exports){
+},{"./../ImageOverlay/ImageOverlay.js":7,"./carousel.css":4}],4:[function(require,module,exports){
 var css = ".custom-carousel .firstrow{\r\n  width: 100%;\r\n}\r\n\r\n.custom-carousel .imagewrapper{\r\n  \r\n  overflow:hidden;\r\n  height: 175px;\r\n  width: 30%;\r\n  margin:1%;\r\n  margin-top:0;\r\n  margin-bottom:0;\r\n  float:left;\r\n  position:relative;\r\n \r\n}\r\n\r\n.custom-carousel .carousel-inner{\r\n  position: relative;\r\n  width: 80%;\r\n  margin-left:auto;\r\n  margin-right:auto;\r\n \r\n}\r\n\r\n.custom-carousel{\r\n  \r\n  height: 175px;\r\n  \r\n}\r\n\r\n"; (require("C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify"))(css); module.exports = css;
 },{"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify":35}],5:[function(require,module,exports){
 'use strict';
@@ -358,7 +368,7 @@ var ImageOverlay = React.createClass({displayName: 'ImageOverlay',
 
 module.exports = ImageOverlay;
 },{"./../../actions/actions.js":2,"./overlay.css":8}],8:[function(require,module,exports){
-var css = ".overlay{\r\n\r\n  color:white;\r\n  position:absolute;\r\n  opacity:0;\r\n  width:100%;\r\n  height:100%;\r\n  background: rgba(20,20,20,0.0);\r\n\r\n}\r\n\r\n.overlay:hover{\r\nopacity:0.99;\r\n  background: rgba(20,20,20,0.7);\r\n  -webkit-transition: background .8s ease;\r\n          transition: background .8s ease;\r\n}\r\n\t\t  \r\n.overlay-clicked{\r\n  \r\n  opacity:0.99;\r\n  background: rgba(20,20,20,0.72);\r\n  -webkit-transition: background .8s ease;\r\n          transition: background .8s ease;\r\n\r\n}\r\n\r\n.overlayWrapper{\r\n\r\n  position:relative;\r\n  width: 100%;\r\n  height:100%;\r\n  border: solid 1px #eee;\r\n\r\n}\r\n\r\n.overlayWrapper .container{\r\n\r\n  margin:12px 18px 12px 0;\r\n  position:relative;\r\n  width: 100%;\r\n\r\n}\r\n\r\n.overlay .description{\r\n  \r\n  text-align: justify;\r\n  font-size: 0.8em;\r\n  font-style:italic;\r\n  margin-left:1.75em;\r\n  margin-right:2.5em;\r\n \r\n}\r\n\r\n.overlay .btn-group-justified{\r\n width:100%;\r\n}\r\n\r\n.overlay .btn-group-justified .btn{\r\n  color:white;\r\n  width:20%;\r\n  border: none;\r\n  margin-top:18px;\r\n  background: inherit;\r\n}\r\n\r\n.overlay .glyphicon:hover{\r\n  color: #e56e5c;\r\n}\r\n\r\n.overlay .glyphicon:active{\r\n  -webkit-transform: scale(1.3);\r\n          transform: scale(1.3);\r\n  -webkit-transition: -webkit-transform .5s liner;\r\n          transition: -webkit-transform .5s liner;\r\n}\r\n\r\n.overlay .btn small{\r\n  color: white;\r\n  font-size:9px;\r\n}\r\n\r\n\r\n.overlay  .follow{\r\n  color: white;\r\n}\r\n\r\n.overlay .Unfollow{\r\n  color: orange;\r\n}"; (require("C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify"))(css); module.exports = css;
+var css = ".overlay{\r\n\r\n  color:white;\r\n  position:absolute;\r\n  opacity:0;\r\n  width:100%;\r\n  height:100%;\r\n  background: rgba(20,20,20,0.0);\r\n\r\n}\r\n\r\n.overlay:hover{\r\n  opacity:0.99;\r\n  background: rgba(20,20,20,0.7);\r\n  -webkit-transition: background .8s ease;\r\n          transition: background .8s ease;\r\n}\r\n\t\t  \r\n.overlay-clicked{\r\n  \r\n  opacity:0.99;\r\n  background: rgba(20,20,20,0.72);\r\n  -webkit-transition: background .8s ease;\r\n          transition: background .8s ease;\r\n\r\n}\r\n\r\n.overlayWrapper{\r\n\r\n  position:relative;\r\n  width: 100%;\r\n  height:100%;\r\n  border: solid 1px #eee;\r\n\r\n}\r\n\r\n.overlayWrapper .container{\r\n\r\n  margin:12px 18px 12px 0;\r\n  position:relative;\r\n  width: 100%;\r\n\r\n}\r\n\r\n.overlay .description{\r\n  \r\n  text-align: justify;\r\n  font-size: 0.8em;\r\n  font-style:italic;\r\n  margin-left:1.75em;\r\n  margin-right:2.5em;\r\n \r\n}\r\n\r\n.overlay .btn-group-justified{\r\n width:100%;\r\n}\r\n\r\n.overlay .btn-group-justified .btn{\r\n  color:white;\r\n  width:20%;\r\n  border: none;\r\n  margin-top:18px;\r\n  background: inherit;\r\n}\r\n\r\n.overlay .glyphicon:hover{\r\n  color: #e56e5c;\r\n}\r\n\r\n.overlay .glyphicon:active{\r\n  -webkit-transform: scale(1.3);\r\n          transform: scale(1.3);\r\n  -webkit-transition: -webkit-transform .5s liner;\r\n          transition: -webkit-transform .5s liner;\r\n}\r\n\r\n.overlay .btn small{\r\n  color: white;\r\n  font-size:9px;\r\n}\r\n\r\n\r\n.overlay  .follow{\r\n  color: white;\r\n}\r\n\r\n.overlay .Unfollow{\r\n  color: tomato;\r\n}"; (require("C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify"))(css); module.exports = css;
 },{"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify":35}],9:[function(require,module,exports){
 var css = ".paddedUnderline .focused{\r\n  \r\n  box-shadow: inset 0px -3px #e56e5c;\r\n  -webkit-transition: all 0.15s linear;\r\n  transition: all 0.15s linear;\r\n\r\n}\r\n\r\n.paddedUnderline .regular{\r\n \r\n  font-size:1.4em;\r\n  padding: .15em .4em .15em .5em;\r\n  margin:0;\r\n \r\n}\r\n\r\n"; (require("C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify"))(css); module.exports = css;
 },{"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify":35}],10:[function(require,module,exports){
@@ -586,8 +596,7 @@ var PhotoCollections = React.createClass({displayName: 'PhotoCollections',
 			React.createElement("hr", null)
 		  ), 
 		  
-		  React.createElement(Carousel, {featuredCollections: this.props.featuredCollections, carousel_id: "carousel-video-art"}), 
-			
+		  React.createElement(Carousel, {userProfile: this.props.userProfile, featuredCollections: this.props.featuredCollections, carousel_id: "carousel-video-art"}), 
 		  
 		  React.createElement("div", {className: "row center-block margin-top2 eighty"}, 
 		    React.createElement("h5", {className: "gray"}, 
@@ -595,7 +604,7 @@ var PhotoCollections = React.createClass({displayName: 'PhotoCollections',
 			), 
 			React.createElement("hr", null)
 		  ), 
-		  React.createElement(Carousel, {featuredCollections: this.props.featuredCollections})
+		  React.createElement(Carousel, {userProfile: this.props.userProfile, featuredCollections: this.props.featuredCollections})
 			      
 		), /*end container*/
 		React.createElement("div", {className: "container margin-top3"}, 
@@ -965,7 +974,7 @@ var TopNav = React.createClass({displayName: 'TopNav',
 				)
 			  ), 
 			  React.createElement("li", null, React.createElement(Link, {className: "tabs", to: "browsecollections"}, "Browse")), 
-			  React.createElement("li", null, React.createElement(Link, {className: "tabs", to: "collections"}, "Collections")), 
+			  React.createElement("li", null, React.createElement(Link, {className: "tabs", to: "photocollections"}, "Collections")), 
 			  React.createElement("li", null, React.createElement(Link, {className: "tabs", to: "marketplace"}, "Marketplace"))
 			  
 			), 

@@ -37,8 +37,7 @@ var PhotoCollections = React.createClass({
 			<hr />
 		  </div>
 		  
-		  <Carousel featuredCollections={this.props.featuredCollections} carousel_id='carousel-video-art'/>
-			
+		  <Carousel userProfile={this.props.userProfile} featuredCollections={this.props.featuredCollections} carousel_id='carousel-video-art'/>
 		  
 		  <div className='row center-block margin-top2 eighty'>
 		    <h5 className='gray'>
@@ -46,7 +45,7 @@ var PhotoCollections = React.createClass({
 			</h5>
 			<hr />
 		  </div>
-		  <Carousel featuredCollections={this.props.featuredCollections} />
+		  <Carousel userProfile={this.props.userProfile} featuredCollections={this.props.featuredCollections} />
 			      
 		</div>{/*end container*/}
 		<div className='container margin-top3'>
