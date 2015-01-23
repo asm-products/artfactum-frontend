@@ -1,0 +1,17 @@
+.quatros{
+  width:100%;
+  height: 250px;
+}
+
+.quatro .image-wrap{
+  width:46%;
+  height:46%;
+  margin:2%;
+  overflow:hidden;
+  float:left;
+  box-shadow: 0 0 2px 2px black;
+}
+
+.quatro img{
+ 
+}
