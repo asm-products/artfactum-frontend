@@ -3,80 +3,81 @@
 var Actions = require('./../../actions/actions.js');
 
 var TopNav = require('./../TopNav/TopNav.js'),
-    PaddedUnderline = require('./../PaddedUnderline/PaddedUnderline.js');
-
+    PaddedUnderline = require('./../PaddedUnderline/PaddedUnderline.js'),
+    Carousel = require('./../Carousel/Carousel.js'),
+    QuatroGallery = require('./../QuatroGallery/QuatroGallery.js'),
+	Footer = require('./../Footer/Footer.js');
 	
 var PhotoCollections = React.createClass({
 
   getDefaultProps: function() {
-  
-    return ({
-	
-	  featuredCollections: [{}]
-	
-	});
-    
+    return ({ featuredCollections: [{}] });
   },
-  
-  componentDidUpdate: function() {
-	
-	alert(JSON.stringify(this.props.featuredCollections[0].featuredCollection.title));
-  
-  },
-
+ 
+ 
   render: function() {
-    
-	if(this.props.featuredCollections[0].featuredCollection.mainPhoto){
 	
-      var featuredCollections = this.props.featuredCollections.map( function(item,i) {
-	
-	    return (
-	      <div>{item.featuredCollection.mainPhoto}</div>
-	    );
-	
-	  }); 
-    }
-    else{
-	  var featuredCollections = function(){ return (<div>Nothing loaded</div>) }
-	}
-    
+	var self = this;
 	return (
-	
-	  <div className='photoCollections'>
-	  
+	 
+	  <div className='collections'>
+	 
 	    <TopNav />
-		{featuredCollections}
+		
 		<div className='container margin-top3'>
+		  
 		  <div className='row center-block eighty'>
-			  <PaddedUnderline template={<b>Featured Collections</b>} isFocused='true'></PaddedUnderline>
+			<PaddedUnderline template={<b>Featured Collections</b>} isFocused='true'></PaddedUnderline>
 		  </div>{/*end 1st row*/}
+		  
 		  <div className='row center-block margin-top2 eighty'>
 		    <h5 className='gray'>
 			  Video Art
 			</h5>
 			<hr />
 		  </div>
-	      <div className='row center-block'>
-		    <div className='col-xs-1'>
-		      <span>span</span>
-		    </div>
-		    <div className='col-xs-10'>
-		      <span>span</span>
-		    </div>
-		    <div className='col-xs-1'>
-		      <span>span</span>
-		    </div>
+		  
+		  <Carousel userProfile={this.props.userProfile} featuredCollections={this.props.featuredCollections} carousel_id='carousel-video-art'/>
+		  
+		  <div className='row center-block margin-top2 eighty'>
+		    <h5 className='gray'>
+			  Sculpture
+			</h5>
+			<hr />
 		  </div>
-	    
+		  <Carousel userProfile={this.props.userProfile} featuredCollections={this.props.featuredCollections} />
+			      
 		</div>{/*end container*/}
-	  </div>
+		<div className='container margin-top3'>
+		  
+		  <div className='row center-block eighty margin-top3'>
+			  <PaddedUnderline template={<b>Art Lovers Collections</b>} isFocused="true"></PaddedUnderline>
+		  </div>{/*end 1st row*/}
+		  
+		  <div className='row center-block quatrorow margin-top2 eighty'>
+		     <div className='col-sm-12 col-md-6 col-lg-4'>
+			   <QuatroGallery artLoverCollections={self.props.artLoverCollections} />
+			 </div>
+			 <div className='col-sm-12 col-md-6 col-lg-4'>
+			   <QuatroGallery artLoverCollections={self.props.artLoverCollections} />
+			 </div>
+			 <div className='col-sm-12 col-md-6 col-lg-4'>
+			   <QuatroGallery artLoverCollections={self.props.artLoverCollections} />
+			 </div>
+		  </div>
 		
+		</div>{/*end container 2*/}
+		<br />
+		<Footer className='margin-top3'/>
+		
+	  </div>
 	
 	);
   
   }
   
 });
+
 
 module.exports = PhotoCollections;
 	

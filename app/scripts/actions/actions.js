@@ -57,6 +57,22 @@ var Actions = {
 	
   },
   
+  fetchArtLoverCollections: function(url) {
+  
+    $.getJSON( url, {
+	  format: 'json'
+	}).done( function(data) {
+	
+	  Dispatcher.setArtLoverCollections(data);
+	
+	}).fail( function(e){
+	
+      alert('unable to load');
+	
+	});
+  
+  },
+  
   followArtist: function(){
   
   },

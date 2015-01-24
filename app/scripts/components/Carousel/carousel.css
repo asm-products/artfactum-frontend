@@ -1,0 +1,32 @@
+.custom-carousel .firstrow{
+  width: 100%;
+}
+
+.custom-carousel .imagewrapper{
+  overflow:hidden;
+  height: 175px;
+  width: 31.33%;
+  margin:1%;
+  margin-top:0;
+  margin-bottom:0;
+  float:left;
+  position:relative;
+}
+
+.custom-carousel .carousel-inner{
+  position: relative;
+  width: 82%;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.custom-carousel{
+  height: 175px;
+}
+
+.custom-carousel .carousel-control{
+  width:9%;
+}
+
+
+

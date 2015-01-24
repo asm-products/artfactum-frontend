@@ -56,7 +56,7 @@ var TopNav = React.createClass({
 				</ul>
 			  </li>
 			  <li><Link className='tabs' to='browsecollections'>Browse</Link></li>
-			  <li><Link className='tabs' to='collections'>Collections</Link></li>
+			  <li><Link className='tabs' to='photocollections'>Collections</Link></li>
 			  <li><Link className='tabs' to='marketplace'>Marketplace</Link></li>
 			  
 			</ul>

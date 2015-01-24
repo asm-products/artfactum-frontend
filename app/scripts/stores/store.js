@@ -2,7 +2,6 @@
 
 var Flux = require('delorean').Flux;
 
-
 var Store = Flux.createStore({
   
   data: {
@@ -32,7 +31,6 @@ var Store = Flux.createStore({
 	  
 	  },
     
-	//photo model
 	photoAttributes: {
 	
 	  id: null,
@@ -73,6 +71,12 @@ var Store = Flux.createStore({
 	   featuredCollection: {
 	     title: "title",
 	   }
+	}],
+	
+	artLoverCollections: [{
+	  collection: {
+	    title: "title",
+	  }
 	}]
     
   },
@@ -89,6 +93,11 @@ var Store = Flux.createStore({
   
   fetchUserPhotos: function(data){
 	this.data.userPhotos.photos = data;
+	this.emit('change');
+  },
+  
+  setArtLoverCollections: function(data){
+    this.data.artLoverCollections = data;
 	this.emit('change');
   },
   
@@ -109,6 +118,7 @@ var Store = Flux.createStore({
 	'setUserProfile': 'setUserProfile',
 	'fetchUserPhotos': 'fetchUserPhotos',
 	'setFeaturedCollections': 'setFeaturedCollections',
+	'setArtLoverCollections': 'setArtLoverCollections',
 	'setCVFile': 'setCVFile'
   }
   

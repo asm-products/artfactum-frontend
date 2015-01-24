@@ -8,13 +8,12 @@ require('./overlay.css');
 var ImageOverlay = React.createClass({
 
   isFollowing: 'follow',
-  
   getInitialState: function(){
     
     //match artist user if following with owner/artist name in photo attributes
 	var following = this.props.userProfile.following;
 	var owner = this.props.photoAttributes.ownerName;
-	var toFollow = following == owner ? 'Unfollow' : 'Follow'
+	var toFollow = following == owner ? 'Following' : 'Follow'
 	  
 	return ({
 	  isFollowing: toFollow
@@ -28,7 +27,7 @@ var ImageOverlay = React.createClass({
 	var text = $(elem).find('small').text();
 	
 	if(text == 'Follow') {
-	  this.setState({isFollowing:'Unfollow'});
+	  this.setState({isFollowing:'Following'});
 	}
 	else{
 	  this.setState({isFollowing:'Follow'});

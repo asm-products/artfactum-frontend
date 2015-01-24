@@ -1,0 +1,29 @@
+.quatros{
+  width:100%;
+  height: 250px;
+}
+
+.quatro .image-wrap{
+  width:46%;
+  height:46%;
+  margin:2%;
+  overflow:hidden;
+  float:left;
+  box-shadow: 0 0 2px 2px #ccc;
+}
+
+.quatro .gray{
+  margin-left:1.9%;
+}
+
+.quatro {
+  margin:0;
+  padding:0;
+  margin-bottom: 3.25em; 
+  position:relative;
+  width:100%;
+  left:-5%;
+  //border: solid pink 2px;
+  height:100%;
+}
+

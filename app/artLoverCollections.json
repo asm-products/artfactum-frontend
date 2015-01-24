@@ -1,8 +1,8 @@
 [{
 
-  "featuredCollections": [{
+  "artLoverCollections": [{
      
-	"featuredCollection": {
+	"collection": {
 	
 	  "title": "title",
 	  "mainPhoto": {
@@ -69,7 +69,7 @@
   },
   {
      
-	"featuredCollection": {
+	"collection": {
 	
 	  "title": "title",
 	  "mainPhoto": {
@@ -136,7 +136,7 @@
   },
   {
      
-	"featuredCollection": {
+	"collection": {
 	
 	  "title": "title",
 	  "mainPhoto": {
@@ -204,7 +204,7 @@
   
   {
   
-    "featuredCollection": {
+    "collection": {
 	
 	  "title": "title",
 	  "mainPhoto": {
@@ -272,7 +272,7 @@
   
   {
   
-    "featuredCollection": {
+    "collection": {
 	
 	  "title": "title",
 	  "mainPhoto": {
@@ -339,7 +339,7 @@
   },
   {  
   
-    "featuredCollection": {
+    "collection": {
 	
 	  "title": "title",
 	  "mainPhoto": {
@@ -406,7 +406,7 @@
   },
   {  
   
-    "featuredCollection": {
+    "collection": {
 	
 	  "title": "title",
 	  "mainPhoto": {

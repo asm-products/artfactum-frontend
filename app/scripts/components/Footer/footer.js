@@ -32,7 +32,9 @@ var Footer = React.createClass({
 			  <Link className='footerpages' to='about'><a href='#about'>Contact</a></Link>
 			</div>
 		  </nav>
-		  <p>Made with love on assembly</p>
+		  <p>Made with <span className='glyphicon glyphicon-heart'></span> on 
+		    <a href='https://assembly.com' > Assembly</a>
+		  </p>
 		</div>
       
       </div>	  
