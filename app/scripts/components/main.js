@@ -8,13 +8,10 @@ var UserProfile = React.createFactory(require('./user-profile/user-profile.js'))
     Masonry = React.createFactory(require('./masonry/masonry.js')),
     ParallaxPage = React.createFactory(require('./ParallaxPage/ParallaxPage.js')),
     PaddedUnderline = React.createFactory(require('./PaddedUnderline/PaddedUnderline.js')),
-    PhotoCollections = React.createFactory(require('./PhotoCollections/PhotoCollections.js'));
-   
-	
-var store = require('./../stores/store.js'),
-    Dispatcher = require('./../dispatcher.js'),
-    Actions = require('./../actions/actions.js'),
-    Flux = require('delorean').Flux;  
+    PhotoCollections = React.createFactory(require('./PhotoCollections/PhotoCollections.js')),
+    App = React.createFactory(require('./app.js'));
+
+var	Dispatcher = require('./../dispatcher.js');
 	
 var Router = window.ReactRouter,
     Route = Router.Route,
@@ -26,16 +23,6 @@ var Router = window.ReactRouter,
 	
 require('./main.css');
 
-
-//better to render to a container or to document.html?	
-
-/*React.render (
-  <UserProfile></UserProfile>,
-  document.getElementById('container')
-);*/
-
-
-// Make Welcome and NotFound(404) separate components
 
 var Welcome = React.createClass({
   render: function() {
@@ -84,48 +71,6 @@ var MyMarketplace = React.createClass({
   }
 });
 
-var App = React.createClass({
-  
-  getDefaultProps: function(){
-    return {data: store.store.data }
-  },
-  
-  componentWillMount: function() {
-  
-    var url = 'photos.json';
-    Actions.fetchUserPhotos(url);
-	var featureUrl = 'featuredCollections.json';
-    Actions.fetchFeaturedCollections(featureUrl);
-  
-  },
-  
-  mixins: [Flux.mixins.storeListener],
-  
-  storeDidChange: function(Store){
-    //alert(JSON.stringify(store.store.data));
-	this.props.data = store.store.data;
-  },
-  
-  render: function() {
-    return (
-	  <div className='routeHandler route-header'>
-	    <Link to='welcome'><button>Welcome</button></Link>
-	    <Link to='user-profile'><button>user profile</button></Link>
-	    <Link to='topnav'><button>topnav</button></Link>
-	    <Link to='signup'><button>signup</button></Link>
-	    <Link to='browsecollections'><button>browse collections</button></Link>
-	    <Link to='footer'><button>footer</button></Link>
-	    <Link to='masonry'><button>masonry</button></Link>
-	    <Link to='parallaxpage'><button>Parallax</button></Link>
-	    <Link to='paddedunderline'><button>PaddedUnderline</button></Link>
-	    <Link to='photocollections'><button>PhotoCollections</button></Link>
- 	    <div className='views'>
-		  <RouteHandler {... this.props.data} />
-	    </div>
-	  </div>
-	);
-  }
-});
 
 var routes = (
   <Route handler={App} path='/'>

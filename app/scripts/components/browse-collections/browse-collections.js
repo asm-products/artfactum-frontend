@@ -27,7 +27,7 @@ var BrowseCollections = React.createClass({
   getDefaultProps: function(){
   
     return {
-	  category: ['Categories', 'All Art', 'Applied Art', 'Digital Art', 'Original', 'Literature', 'Performing Art', 'Public Art', 'Music', 'Visual Art', 'Collage', 'Film/Video', 'Painting', 'Photography', 'Printmaking', 'Sculpture', 'Work on Paper', 'Work on Materials', 'Other Visual Art', 'Other Art'],
+	  category: ['Categories','All Art', 'Applied Art', 'Digital Art', 'Original', 'Literature', 'Performing Art', 'Public Art', 'Music', 'Visual Art', 'Collage', 'Film/Video', 'Painting', 'Photography', 'Printmaking', 'Sculpture', 'Work on Paper', 'Work on Materials', 'Other Visual Art', 'Other Art'],
 	  sortingList: ['Recent', 'Most Curated', 'Most Viewed', 'Most Followed', 'Undiscovered', 'Oldest']
 	};
   
@@ -73,7 +73,6 @@ var BrowseCollections = React.createClass({
 	  });	  
 	  	  
 	});
-
   },
   
   handleSort: function(i){
@@ -169,5 +168,4 @@ var BrowseCollections = React.createClass({
 });
 
 module.exports = BrowseCollections;
-
 

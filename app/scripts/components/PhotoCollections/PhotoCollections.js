@@ -7,8 +7,6 @@ var TopNav = require('./../TopNav/TopNav.js'),
     Carousel = require('./../Carousel/Carousel.js'),
     QuatroGallery = require('./../QuatroGallery/QuatroGallery.js'),
 	Footer = require('./../Footer/Footer.js');
-
-	
 	
 var PhotoCollections = React.createClass({
 
@@ -16,7 +14,9 @@ var PhotoCollections = React.createClass({
     return ({ featuredCollections: [{}] });
   },
  
+ 
   render: function() {
+	
 	var self = this;
 	return (
 	 
@@ -27,7 +27,7 @@ var PhotoCollections = React.createClass({
 		<div className='container margin-top3'>
 		  
 		  <div className='row center-block eighty'>
-			  <PaddedUnderline template={<b>Featured Collections</b>} isFocused='true'></PaddedUnderline>
+			<PaddedUnderline template={<b>Featured Collections</b>} isFocused='true'></PaddedUnderline>
 		  </div>{/*end 1st row*/}
 		  
 		  <div className='row center-block margin-top2 eighty'>
@@ -56,13 +56,13 @@ var PhotoCollections = React.createClass({
 		  
 		  <div className='row center-block quatrorow margin-top2 eighty'>
 		     <div className='col-sm-12 col-md-6 col-lg-4'>
-			   <QuatroGallery featuredCollections={self.props.featuredCollections} />
+			   <QuatroGallery artLoverCollections={self.props.artLoverCollections} />
 			 </div>
 			 <div className='col-sm-12 col-md-6 col-lg-4'>
-			   <QuatroGallery featuredCollections={self.props.featuredCollections} />
+			   <QuatroGallery artLoverCollections={self.props.artLoverCollections} />
 			 </div>
 			 <div className='col-sm-12 col-md-6 col-lg-4'>
-			   <QuatroGallery featuredCollections={self.props.featuredCollections} />
+			   <QuatroGallery artLoverCollections={self.props.artLoverCollections} />
 			 </div>
 		  </div>
 		

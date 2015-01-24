@@ -58,6 +58,22 @@ var Actions = {
 	
   },
   
+  fetchArtLoverCollections: function(url) {
+  
+    $.getJSON( url, {
+	  format: 'json'
+	}).done( function(data) {
+	
+	  Dispatcher.setArtLoverCollections(data);
+	
+	}).fail( function(e){
+	
+      alert('unable to load');
+	
+	});
+  
+  },
+  
   followArtist: function(){
   
   },
@@ -104,9 +120,9 @@ var Actions = {
 };
 
 module.exports = Actions;
-},{"./../dispatcher.js":32}],2:[function(require,module,exports){
+},{"./../dispatcher.js":34}],2:[function(require,module,exports){
 module.exports=require(1)
-},{"./../dispatcher.js":32,"C:\\Users\\Justin\\documents\\github\\af\\app\\scripts\\Actions\\actions.js":1}],3:[function(require,module,exports){
+},{"./../dispatcher.js":34,"C:\\Users\\Justin\\documents\\github\\af\\app\\scripts\\Actions\\actions.js":1}],3:[function(require,module,exports){
 'use strict';
 
 var ImageOverlay = require('./../ImageOverlay/ImageOverlay.js');
@@ -215,8 +231,8 @@ var Carousel = React.createClass({displayName: 'Carousel',
 
 module.exports = Carousel;
 },{"./../ImageOverlay/ImageOverlay.js":7,"./carousel.css":4}],4:[function(require,module,exports){
-var css = ".custom-carousel .firstrow{\r\n  width: 100%;\r\n}\r\n\r\n.custom-carousel .imagewrapper{\r\n  \r\n  overflow:hidden;\r\n  height: 175px;\r\n  width: 30%;\r\n  margin:1%;\r\n  margin-top:0;\r\n  margin-bottom:0;\r\n  float:left;\r\n  position:relative;\r\n \r\n}\r\n\r\n.custom-carousel .carousel-inner{\r\n  position: relative;\r\n  width: 80%;\r\n  margin-left:auto;\r\n  margin-right:auto;\r\n \r\n}\r\n\r\n.custom-carousel{\r\n  \r\n  height: 175px;\r\n  \r\n}\r\n\r\n"; (require("C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify"))(css); module.exports = css;
-},{"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify":35}],5:[function(require,module,exports){
+var css = ".custom-carousel .firstrow{\r\n  width: 100%;\r\n}\r\n\r\n.custom-carousel .imagewrapper{\r\n  overflow:hidden;\r\n  height: 175px;\r\n  width: 31.33%;\r\n  margin:1%;\r\n  margin-top:0;\r\n  margin-bottom:0;\r\n  float:left;\r\n  position:relative;\r\n}\r\n\r\n.custom-carousel .carousel-inner{\r\n  position: relative;\r\n  width: 82%;\r\n  margin-left:auto;\r\n  margin-right:auto;\r\n}\r\n\r\n.custom-carousel{\r\n  height: 175px;\r\n}\r\n\r\n.custom-carousel .carousel-control{\r\n  width:9%;\r\n}\r\n\r\n\r\n\r\n"; (require("C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify"))(css); module.exports = css;
+},{"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify":37}],5:[function(require,module,exports){
 'use strict';
 
 var Router = window.ReactRouter,
@@ -251,7 +267,9 @@ var Footer = React.createClass({displayName: 'Footer',
 			  React.createElement(Link, {className: "footerpages", to: "about"}, React.createElement("a", {href: "#about"}, "Contact"))
 			)
 		  ), 
-		  React.createElement("p", null, "Made with love on assembly")
+		  React.createElement("p", null, "Made with ", React.createElement("span", {className: "glyphicon glyphicon-heart"}), " on",  
+		    React.createElement("a", {href: "https://assembly.com"}, " Assembly")
+		  )
 		)
       
       )	  
@@ -264,8 +282,8 @@ var Footer = React.createClass({displayName: 'Footer',
 
 module.exports = Footer;
 },{"./footer.css":6}],6:[function(require,module,exports){
-var css = ".af-footer{\r\n  background: black;\r\n}\r\n\r\n.af-footer .logo{\r\n  width:200px\r\n}\r\n\r\n.af-footer a,li{\r\n  color: white;\r\n}\r\n\r\n.af-footer p{\r\n  margin-left:1.5em;\r\n}\r\n\r\n.af-footer .breadcrumbs{\r\n  color:white;\r\n  width:90%;\r\n  \r\n  background: #3a3a3a;\r\n\r\n  display:block;\r\n  position:relative;\r\n  margin-left:auto;\r\n  margin-right:auto;\r\n  text-align:justify;\r\n}\r\n\r\n.footerpages{\r\n  text-align:center;\r\n  color:white;\r\n}\r\n\r\n.footerpage{\r\n  width:380px;\r\n  padding:2px;\r\n  font-size:1.08em;\r\n  display:block;\r\n  position:relative;\r\n  margin-left:auto;\r\n  margin-right:auto;\r\n}\r\n\r\n@media (max-width:600px) {\r\n  .footerpage{\r\n    width:280px;\r\n  }\r\n}\r\n"; (require("C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify"))(css); module.exports = css;
-},{"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify":35}],7:[function(require,module,exports){
+var css = ".af-footer{\r\n  background: black;\r\n}\r\n\r\n.af-footer .logo{\r\n  width:200px\r\n}\r\n\r\n.af-footer a,li{\r\n  color: white;\r\n}\r\n\r\n.af-footer p{\r\n  margin-left:2em;\r\n  color: lavender;\r\n}\r\n\r\n.af-footer .breadcrumbs{\r\n  color:white;\r\n  width:90%;\r\n  background: #3a3a3a;\r\n  display:block;\r\n  position:relative;\r\n  margin-left:auto;\r\n  margin-right:auto;\r\n  text-align:justify;\r\n}\r\n\r\n.footerpages{\r\n  text-align:center;\r\n  color:white;\r\n}\r\n\r\n.footerpage{\r\n  width:380px;\r\n  padding:2px;\r\n  font-size:1.08em;\r\n  display:block;\r\n  position:relative;\r\n  margin-left:auto;\r\n  margin-right:auto;\r\n}\r\n\r\n@media (max-width:600px) {\r\n  .footerpage{\r\n    width:280px;\r\n  }\r\n}\r\n"; (require("C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify"))(css); module.exports = css;
+},{"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify":37}],7:[function(require,module,exports){
 'use strict'
 
 var Actions = require('./../../actions/actions.js');
@@ -276,13 +294,12 @@ require('./overlay.css');
 var ImageOverlay = React.createClass({displayName: 'ImageOverlay',
 
   isFollowing: 'follow',
-  
   getInitialState: function(){
     
     //match artist user if following with owner/artist name in photo attributes
 	var following = this.props.userProfile.following;
 	var owner = this.props.photoAttributes.ownerName;
-	var toFollow = following == owner ? 'Unfollow' : 'Follow'
+	var toFollow = following == owner ? 'Following' : 'Follow'
 	  
 	return ({
 	  isFollowing: toFollow
@@ -296,7 +313,7 @@ var ImageOverlay = React.createClass({displayName: 'ImageOverlay',
 	var text = $(elem).find('small').text();
 	
 	if(text == 'Follow') {
-	  this.setState({isFollowing:'Unfollow'});
+	  this.setState({isFollowing:'Following'});
 	}
 	else{
 	  this.setState({isFollowing:'Follow'});
@@ -368,10 +385,10 @@ var ImageOverlay = React.createClass({displayName: 'ImageOverlay',
 
 module.exports = ImageOverlay;
 },{"./../../actions/actions.js":2,"./overlay.css":8}],8:[function(require,module,exports){
-var css = ".overlay{\r\n\r\n  color:white;\r\n  position:absolute;\r\n  opacity:0;\r\n  width:100%;\r\n  height:100%;\r\n  background: rgba(20,20,20,0.0);\r\n\r\n}\r\n\r\n.overlay:hover{\r\n  opacity:0.99;\r\n  background: rgba(20,20,20,0.7);\r\n  -webkit-transition: background .8s ease;\r\n          transition: background .8s ease;\r\n}\r\n\t\t  \r\n.overlay-clicked{\r\n  \r\n  opacity:0.99;\r\n  background: rgba(20,20,20,0.72);\r\n  -webkit-transition: background .8s ease;\r\n          transition: background .8s ease;\r\n\r\n}\r\n\r\n.overlayWrapper{\r\n\r\n  position:relative;\r\n  width: 100%;\r\n  height:100%;\r\n  border: solid 1px #eee;\r\n\r\n}\r\n\r\n.overlayWrapper .container{\r\n\r\n  margin:12px 18px 12px 0;\r\n  position:relative;\r\n  width: 100%;\r\n\r\n}\r\n\r\n.overlay .description{\r\n  \r\n  text-align: justify;\r\n  font-size: 0.8em;\r\n  font-style:italic;\r\n  margin-left:1.75em;\r\n  margin-right:2.5em;\r\n \r\n}\r\n\r\n.overlay .btn-group-justified{\r\n width:100%;\r\n}\r\n\r\n.overlay .btn-group-justified .btn{\r\n  color:white;\r\n  width:20%;\r\n  border: none;\r\n  margin-top:18px;\r\n  background: inherit;\r\n}\r\n\r\n.overlay .glyphicon:hover{\r\n  color: #e56e5c;\r\n}\r\n\r\n.overlay .glyphicon:active{\r\n  -webkit-transform: scale(1.3);\r\n          transform: scale(1.3);\r\n  -webkit-transition: -webkit-transform .5s liner;\r\n          transition: -webkit-transform .5s liner;\r\n}\r\n\r\n.overlay .btn small{\r\n  color: white;\r\n  font-size:9px;\r\n}\r\n\r\n\r\n.overlay  .follow{\r\n  color: white;\r\n}\r\n\r\n.overlay .Unfollow{\r\n  color: tomato;\r\n}"; (require("C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify"))(css); module.exports = css;
-},{"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify":35}],9:[function(require,module,exports){
+var css = ".overlay{\r\n\r\n  color:white;\r\n  position:absolute;\r\n  opacity:0;\r\n  width:100%;\r\n  height:100%;\r\n  background: rgba(20,20,20,0.0);\r\n\r\n}\r\n\r\n.overlay:hover{\r\n  opacity:0.99;\r\n  background: rgba(20,20,20,0.7);\r\n  -webkit-transition: background .8s ease;\r\n          transition: background .8s ease;\r\n}\r\n\t\t  \r\n.overlay-clicked{\r\n  \r\n  opacity:0.99;\r\n  background: rgba(20,20,20,0.72);\r\n  -webkit-transition: background .8s ease;\r\n          transition: background .8s ease;\r\n\r\n}\r\n\r\n.overlayWrapper{\r\n\r\n  position:relative;\r\n  width: 100%;\r\n  height:100%;\r\n  border: solid 1px #eee;\r\n\r\n}\r\n\r\n.overlayWrapper .container{\r\n\r\n  margin:-78px 20px 0 0;\r\n  position:absolute;\r\n  width: 100%;\r\n  height: 160px;\r\n  top:50%;\r\n\r\n}\r\n\r\n.overlay .description{\r\n  \r\n  text-align: justify;\r\n  font-size: 0.8em;\r\n  font-style:italic;\r\n  margin-left:1.85em;\r\n  margin-right:2.6em;\r\n  \r\n  position:relative;\r\n \r\n}\r\n\r\n.overlay .btn-group-justified{\r\n width:100%;\r\n}\r\n\r\n.overlay .btn-group-justified .btn{\r\n  color:white;\r\n  width:20%;\r\n  border: none;\r\n  margin-top:18px;\r\n  background: inherit;\r\n}\r\n\r\n.overlay .glyphicon:hover{\r\n  color: #e56e5c;\r\n}\r\n\r\n.overlay .glyphicon:active{\r\n  -webkit-transform: scale(1.3);\r\n          transform: scale(1.3);\r\n  -webkit-transition: -webkit-transform .5s liner;\r\n          transition: -webkit-transform .5s liner;\r\n}\r\n\r\n.overlay .btn small{\r\n  color: white;\r\n  font-size:9px;\r\n}\r\n\r\n\r\n.overlay  .follow{\r\n  color: white;\r\n}\r\n\r\n.overlay .Following{\r\n  color: pink;\r\n  \r\n}"; (require("C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify"))(css); module.exports = css;
+},{"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify":37}],9:[function(require,module,exports){
 var css = ".paddedUnderline .focused{\r\n  \r\n  box-shadow: inset 0px -3px #e56e5c;\r\n  -webkit-transition: all 0.15s linear;\r\n  transition: all 0.15s linear;\r\n\r\n}\r\n\r\n.paddedUnderline .regular{\r\n \r\n  font-size:1.4em;\r\n  padding: .15em .4em .15em .5em;\r\n  margin:0;\r\n \r\n}\r\n\r\n"; (require("C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify"))(css); module.exports = css;
-},{"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify":35}],10:[function(require,module,exports){
+},{"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify":37}],10:[function(require,module,exports){
 'use strict';
 
 var Actions = require('./../../Actions/actions.js'),
@@ -487,7 +504,7 @@ var PaddedUnderline = React.createClass({displayName: 'PaddedUnderline',
 module.exports = PaddedUnderline;
 },{"./../../Actions/actions.js":1,"./PaddedUnderline.css":9}],11:[function(require,module,exports){
 var css = ".parallax {\r\n  -webkit-perspective: 1px;\r\n          perspective: 1px;\r\n  top:.5vh;\r\n  overflow-x: hidden;\r\n  overflow-y: auto;\r\n  position:relative;\r\n  height:99vh;\r\n}\r\n  \r\n.parallax__group:nth-child(1){} \r\n \r\n.parallax__group:nth-child(2){}\r\n\r\n.parallax__layer {\r\n  position: absolute;\r\n  top: 0;\r\n  bottom: 0;\r\n  left: 0;\r\n  right: 0;\r\n  height: 100vh;\r\n}\r\n\r\n.parallax__layer--base {\r\n\r\n  transform: translateZ(0);\r\n  -webkit-transform: translateZ(0);\r\n  \r\n}\r\n\r\n.parallax__layer--back {\r\n\r\n  transform: translateZ(-1px) scale(2);\r\n  -webkit-transform: translateZ(-1px) scale(2);\r\n  width:100%;\r\n}\r\n\r\n.parallax__group {\r\n  position:relative;\r\n  background: rgba(130,130,230,0.01);\r\n  height:100vh;\r\n  -webkit-transform-style: preserve-3d;\r\n          transform-style: preserve-3d;\r\n  width:100%;\r\n}\r\n\r\n.parallax__below{\r\n  position:absolute;\r\n  top:100vh;\r\n}"; (require("C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify"))(css); module.exports = css;
-},{"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify":35}],12:[function(require,module,exports){
+},{"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify":37}],12:[function(require,module,exports){
 'use strict';
 
 require('./ParallaxPage.css');
@@ -566,8 +583,6 @@ var TopNav = require('./../TopNav/TopNav.js'),
     Carousel = require('./../Carousel/Carousel.js'),
     QuatroGallery = require('./../QuatroGallery/QuatroGallery.js'),
 	Footer = require('./../Footer/Footer.js');
-
-	
 	
 var PhotoCollections = React.createClass({displayName: 'PhotoCollections',
 
@@ -575,7 +590,9 @@ var PhotoCollections = React.createClass({displayName: 'PhotoCollections',
     return ({ featuredCollections: [{}] });
   },
  
+ 
   render: function() {
+	
 	var self = this;
 	return (
 	 
@@ -586,7 +603,7 @@ var PhotoCollections = React.createClass({displayName: 'PhotoCollections',
 		React.createElement("div", {className: "container margin-top3"}, 
 		  
 		  React.createElement("div", {className: "row center-block eighty"}, 
-			  React.createElement(PaddedUnderline, {template: React.createElement("b", null, "Featured Collections"), isFocused: "true"})
+			React.createElement(PaddedUnderline, {template: React.createElement("b", null, "Featured Collections"), isFocused: "true"})
 		  ), /*end 1st row*/
 		  
 		  React.createElement("div", {className: "row center-block margin-top2 eighty"}, 
@@ -615,13 +632,13 @@ var PhotoCollections = React.createClass({displayName: 'PhotoCollections',
 		  
 		  React.createElement("div", {className: "row center-block quatrorow margin-top2 eighty"}, 
 		     React.createElement("div", {className: "col-sm-12 col-md-6 col-lg-4"}, 
-			   React.createElement(QuatroGallery, {featuredCollections: self.props.featuredCollections})
+			   React.createElement(QuatroGallery, {artLoverCollections: self.props.artLoverCollections})
 			 ), 
 			 React.createElement("div", {className: "col-sm-12 col-md-6 col-lg-4"}, 
-			   React.createElement(QuatroGallery, {featuredCollections: self.props.featuredCollections})
+			   React.createElement(QuatroGallery, {artLoverCollections: self.props.artLoverCollections})
 			 ), 
 			 React.createElement("div", {className: "col-sm-12 col-md-6 col-lg-4"}, 
-			   React.createElement(QuatroGallery, {featuredCollections: self.props.featuredCollections})
+			   React.createElement(QuatroGallery, {artLoverCollections: self.props.artLoverCollections})
 			 )
 		  )
 		
@@ -642,7 +659,7 @@ module.exports = PhotoCollections;
 	
 },{"./../../actions/actions.js":2,"./../Carousel/Carousel.js":3,"./../Footer/Footer.js":5,"./../PaddedUnderline/PaddedUnderline.js":10,"./../QuatroGallery/QuatroGallery.js":15,"./../TopNav/TopNav.js":20}],14:[function(require,module,exports){
 var css = ".quatros{\r\n  width:100%;\r\n  height: 250px;\r\n}\r\n\r\n.quatro .image-wrap{\r\n  width:46%;\r\n  height:46%;\r\n  margin:2%;\r\n  overflow:hidden;\r\n  float:left;\r\n  box-shadow: 0 0 2px 2px #ccc;\r\n}\r\n\r\n.quatro .gray{\r\n  margin-left:1.9%;\r\n}\r\n\r\n.quatro {\r\n  margin:0;\r\n  padding:0;\r\n  margin-bottom: 3.25em; \r\n  position:relative;\r\n  width:100%;\r\n  left:-5%;\r\n  //border: solid pink 2px;\r\n  height:100%;\r\n}\r\n\r\n"; (require("C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify"))(css); module.exports = css;
-},{"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify":35}],15:[function(require,module,exports){
+},{"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify":37}],15:[function(require,module,exports){
 'use strict';
 
 require('./QuatroGallery.css');
@@ -651,14 +668,18 @@ var QuatroGallery = React.createClass({displayName: 'QuatroGallery',
   
   getDefaultProps: function(){
     return ({
-	  featuredCollections: [{}],
+	  artLoverCollections: [{}],
 	  owner: 'owner'
 	});
   },
   
+  componentDidMount: function(){
+    //alert(JSON.stringify(this.props));
+  },
+  
   render: function(){
     var quatro;
-	if( this.props.featuredCollections[0].featuredCollection.mainPhoto){
+	if( this.props.artLoverCollections[0].collection.mainPhoto){
       quatro = this.renderImages();
 	}
 	else{
@@ -678,12 +699,12 @@ var QuatroGallery = React.createClass({displayName: 'QuatroGallery',
   
   renderImages: function(){
   
-    var images = this.props.featuredCollections.map( function(item,i){
+    var images = this.props.artLoverCollections.map( function(item,i){
 	  if(i<4){
 	  return(
 
 	    React.createElement("div", {className: "image-wrap"}, 
-	      React.createElement("img", {className: "img-responsive", src: item.featuredCollection.mainPhoto.photoUrl, alt: item.featuredCollection.mainPhoto.photoUrl})
+	      React.createElement("img", {className: "img-responsive", src: item.collection.mainPhoto.photoUrl, alt: item.collection.mainPhoto.photoUrl})
 	    )
 	  );
 	  }
@@ -697,9 +718,9 @@ var QuatroGallery = React.createClass({displayName: 'QuatroGallery',
 module.exports = QuatroGallery;
 },{"./QuatroGallery.css":14}],16:[function(require,module,exports){
 var css = "@media all and (max-width:600px) {\r\n\r\n.signup .simple-row div{\r\n\r\n  min-height: 45vh;\r\n  \r\n  \r\n}\r\n\r\n.signup figure{\r\n\r\n  min-height: 45vh;\r\n  \r\n}\r\n\r\n\r\n\r\n.signup .center-wrapper figure{\r\n  \r\n  padding:0;\r\n  \r\n}\r\n\r\n\r\n.signup .center-wrapper{\r\n\r\n  position:relative;\r\n  width:110%;\r\n  top:2em;\r\n  margin-right:auto;\r\n  margin-left:auto;\r\n\r\n}\r\n\r\n.signup .honey{\r\n   \r\n   width:100%;\r\n    \r\n}\r\n\r\n.signup .cool{\r\n\r\n  width:85%;\r\n\r\n}\r\n\r\n.signup .signup-icons{\r\n  font-size: .75em;\r\n  padding-top: 1.1em;\r\n}\r\n\r\n.signup .below-article{\r\n  bottom: 25%;\r\n  font-size: 1.4em;\r\n}\r\n  \r\n\r\n.signup .simple{\r\n  position:absolute;\r\n  width: 100%; \r\n  text-align: center;\r\n  z-index: 10;\r\n  background: rgba(10,20,40,0.3);\r\n}\r\n\r\n.signup .oval-button {\r\n   font-size: 1em;\r\n   top:-2%;\r\n}\r\n\r\n.signup .simple-row h3{\r\n\r\n  padding: .8em;\r\n  padding-top:3em;\r\n  color: white;  \r\n  text-decoration: underline;\r\n  \r\n}\r\n\r\n.signup .jumbo-inner{\r\n  font-size: 1.1em;\r\n  top: -21%;\r\n}\r\n\r\n.signup .simple-row p{\r\n\r\n  color: white;\r\n\r\n}\r\n\r\n.signup .honey img{\r\n\r\n  padding: 0;\r\n  padding-right: 0;\r\n  width: 100%;\r\n  height:100;\r\n  position:absolute;\r\n  left:0;\r\n  top:0;\r\n  box-shadow: 0 0 0 0 white;\r\n\r\n}\r\n\r\n.signup .egon{\r\n  top:-2.25em;\r\n}\r\n\r\n}"; (require("C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify"))(css); module.exports = css;
-},{"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify":35}],17:[function(require,module,exports){
+},{"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify":37}],17:[function(require,module,exports){
 var css = "/*the height break point seems to be just over 450px;\r\n *width breakpoint 350px;\r\n */\r\n\r\n#underline{\r\n\r\n  text-decoration: underline;\r\n\r\n}\r\n\r\n/*for the language picker and sign-in button\r\n *the entire page needs to be wrapped inside the parallax class and it needs\r\n *to have the appropriate height to keep a second scroller from appearing\r\n */\r\n\t\r\n.parallax {\r\n  -webkit-perspective: 1px;\r\n          perspective: 1px;\r\n  top:.5vh;\r\n  overflow-x: hidden;\r\n  overflow-y: auto;\r\n  position:relative;\r\n  height:99vh;\r\n  background:white;\r\n}\r\n\r\n.parallax__layer {\r\n\r\n  position: absolute;\r\n  top: 0;\r\n  right: 0;\r\n  bottom: 0;\r\n  left: 0;\r\n  height:100vh;\r\n}\r\n\r\n.parallax__layer--base {\r\n\r\n  webkit-transform: translateZ(0);\r\n  transform: translateZ(0);\r\n  -webkit-transform: translateZ(0);\r\n\r\n}\r\n\r\n.parallax__layer--back {\r\n\r\n  -webkit-transform: translateZ(-1px);\r\n  transform: translateZ(-1px);\r\n  -webkit-transform: translateZ(-1px) scale(2);\r\n  width:100%;\r\n   \r\n}\r\n\r\n.parallax__group {\r\n  position:relative;\r\n  background: rgba(130,130,230,0.01);\r\n  height:100vh;\r\n  -webkit-transform-style: preserve-3d;\r\n          transform-style: preserve-3d;\r\n  width:100%;\r\n  -webkit-transform-style: preserve-3d;\r\n}\r\n  \r\n.parallax__group:nth-child(2){\r\n  background: white;\r\n}\r\n\r\n/***\r\n three pages in total\r\n ***/\r\n\r\n.signup .first-page{}\r\n\r\n.signup{\r\n  width:100%;\r\n  position:absolute;\r\n}\r\n \r\n.second-page{\r\n  top:30vh;\r\n  position:relative; \r\n  background:white;\r\n}\r\n \r\n.third-page{\r\n  top:40vh;\r\n  position:relative;\r\n  left:0;\r\n  margin:0;\r\n  margin-top:1em;\r\n\r\n}\r\n\r\n.signup .third-page .container{\r\n\r\n  padding-top: 3em;\r\n\r\n}\r\n\r\n.signup .near-footer{\r\n\r\n  top:1.5em;\r\n  font-size:1em;\r\n  background: #e56e5c;\r\n  color:white;\r\n  width:100%;\r\n  position:relative;\r\n  \r\n}\r\n\r\n/*wrap the second and third pages*/\r\n\r\n.under-back{\r\n  position:absolute;\r\n  width:100%;\r\n  top:200vh;\r\n}\r\n\r\n\r\n/*top header*/\r\n\r\n.signup-language, .signup-button{\r\n    position: absolute;\r\n    padding: 1vh;\r\n\tmargin: .75em;\r\n}\r\n\r\n.signup-button{\r\n  right:0;\r\n}\r\n\r\n/*hero-unit*/\t\r\n \r\n.signup .jumbo{\r\n  \r\n  position:relative;\r\n  top:-8%;\r\n  height:70%;\r\n  width:100%;\r\n  text-align:center;\r\n  color:black;\r\n  overflow:hidden:\r\n\r\n}\r\n\r\n  \r\n  \r\n.signup .jumbo img:nth-child(1){\r\n  \r\n  position:absolute;\r\n  z-index:0;\r\n  left:-25%;\r\n  top:-25%;\r\n  opacity:0.35;\r\n    \r\n}\r\n  \r\n.signup .jumbo img:nth-child(2){\r\n\r\n  top:.5em;\r\n  display:block;\r\n  position:relative;\r\n  z-index:0;\r\n  margin-left:auto;\r\n  margin-right:auto;\r\n  \r\n}\r\n  \r\n.jumbo-inner{\r\n  \r\n  position:relative;\r\n  top:-14%;\r\n  font-size:1.4em;\r\n  margin-left:5%;\r\n  margin-right:5%;\r\n\r\n}\r\n  \r\n.signup .jumbo i{\r\n\r\n  margin-top:-.2em;\r\n  position:relative;\r\n  display:block;\r\n  margin-left:auto;\r\n  margin-right:auto;\r\n  width:90%;\r\n  font-size:.9em;\r\n  color:#000;\r\n \r\n}\r\n\r\n.signup .jumbo h2{\r\n  \r\n  color:black;\r\n  font-size:1.4em;\r\n  \r\n}\r\n\r\n\t\t\r\n.signup .oval-button{\r\n  text-align:center;\r\n  color:white;\r\n  background: #e5635c;\r\n  padding: .75em;\r\n  position:relative;\r\n  display:block;\r\n  margin-left: auto;\r\n  margin-right:auto;\r\n  width:15em;\r\n  border-radius:20px;\r\n  font-family: 'Open-Sans-regular';\r\n  font-weight:bold;\r\n  font-size:1.2em;\r\n}\r\n  \r\n.signup .second-oval{\r\n\r\n  background:blue;\r\n\r\n}\r\n  \r\n  \r\n/*second section of the first page\r\n  the first page actually being two pages of vh (window height)\r\n */  \r\n  \r\n#section-two{\r\n  left:0;\r\n  width:90%;\r\n  height:100vh;\r\n  position:relative;\r\n  margin-left:auto;\r\n  margin-right:auto;\r\n  font-family: 'Open-Sans-regular';\r\n  font-size:1.2em;\r\n}\r\n\r\n/*wrap the icon section*/\r\n  \r\n.signup article{\r\n  position:relative;\r\n  top:11%;\r\n  width:110%;\r\n  margin-left:auto;\r\n  margin-right:auto;\r\n  height:65%;\r\n}\r\n\r\n.signup .signup-icons div{\r\n  margin-top:3em;\r\n}\r\n\r\n.signup .signup-icons p{\r\n  padding-top:1em;\r\n}\r\n  \r\n\r\n  /*statement*/\r\n  \r\n.below-article{\t\r\n\tposition:relative;\r\n\tbottom:20%;\r\n\tclear:float;\r\n\twidth:80%;\r\n\tpadding-top:1.5em;\r\n\tfont-size:1.4em;\r\n\tfont-style: italic;\r\n\tmargin-left:auto;\r\n\tmargin-right:auto;\r\n\ttext-align: center;\r\n\tfont-family: 'Open-Sans-600';\r\n}\r\n  \r\n  \r\n.center-wrapper .row{\r\n\r\n margin-top:3em;\r\n\r\n} \r\n  \r\n#section-two div{\r\n    \r\n\twidth: 25%;\r\n\theight:30%;\r\n\tfloat:left;\r\n\tfont-size:1.2em;\r\n\ttext-align:center;\r\n\t\r\n}\r\n  \r\n#section-two span{\r\n\r\n    \r\n\twidth: 8%;\r\n\theight:30%;\r\n\tfloat:left;\r\n\tfont-size:1.2em;\r\n\ttext-align:center;\r\n\t\r\n\r\n}\r\n  \r\n/*TODO make less global*/\r\n\r\n.signup.min-height div{\r\n  \r\n  padding: 0 15px;\r\n  min-height: 50vh;\r\n \r\n}\r\n\r\n.signup .min-height h3{\r\n\r\n  color:#e56e5c;\r\n\r\n}\r\n\r\n.signup .min-height p{\r\n\r\n  color: slategray;\r\n\r\n}\r\n\r\n.signup figure {\r\n\r\n  height:45vh;\r\n  min-width:45vh;\r\n  display:cover;\r\n  overflow:hidden;\r\n  \r\n\r\n}\r\n\r\n.signup figure img{\r\n\r\n  padding:1.1em;\r\n  padding-right:5em;\r\n  width: 100%;\r\n  height:100;\r\n  position:absolute;\r\n  left:0;\r\n  top:0;\r\n  box-shadow: 0 0 5px 2px #ccc;\r\n\r\n}\r\n\r\n.signup .fair-heading{\r\n\r\n  position:relative;\r\n  top:3em;\r\n  color:#e56e5c;\r\n  background:white;\r\n\r\n}\r\n\r\n\r\n.fair-heading p{\r\n\r\n  color:slategray;\r\n  padding-top:1.25em;\r\n  \r\n}\r\n\r\n.center-wrapper figure{\r\n  \r\n  padding:1em;\r\n  \r\n}\r\n\r\n\r\n.center-wrapper{\r\n\r\n  position:relative;\r\n  width:90%;\r\n  top:2em;\r\n  margin-right:auto;\r\n  margin-left:auto;\r\n\r\n}\r\n\r\n\r\n.signup .near-footer button{\r\n\r\n  margin-top:1.5em;\r\n  box-shadow: 0 0 3px rgba(10,10,10,0.3);\r\n  \r\n}\r\n\r\n.signup .footer{\r\n\r\n  position:relative;\r\n  color:white;\r\n  top:2.8em;\r\n  \r\n}\r\n\r\n\r\n.signup .modal-dialog, .modal-content{\r\n  border: solid black 10px;\r\n  position:relative;\r\n  z-index:9999;\r\n}"; (require("C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify"))(css); module.exports = css;
-},{"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify":35}],18:[function(require,module,exports){
+},{"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify":37}],18:[function(require,module,exports){
 'use strict';
 
 var Footer = React.createFactory(require('./../Footer/Footer.js'));
@@ -915,7 +936,7 @@ var Signup = React.createClass({displayName: 'Signup',
 module.exports = Signup
 },{"./../Footer/Footer.js":5,"./signup-phones.css":16,"./signup.css":17}],19:[function(require,module,exports){
 var css = ".top-nav{\r\n\r\n  width: 98%;\r\n  display: block;\r\n  margin-left: auto;\r\n  margin-right:auto;\r\n  background: white;\r\n  \r\n}\r\n\r\n.top-nav .tabs:active{\r\n\t\r\n\tcolor: tomato;\r\n\tbox-shadow: inset 0px -5px blue;\r\n    -webkit-transition: all 0.15s linear;\r\n\ttransition: all 0.15s linear;\r\n\t\r\n}\r\n\r\n.top-nav .tabs:focus{\r\n\tcolor: tomato;\r\n\tbox-shadow: inset 0px -5px tomato;\r\n\r\n}\r\n\r\n.top-nav .top-logo-holder{\r\n  width: 50px;\r\n  height:50px;\r\n  \r\n}\r\n\r\n.top-nav .navbar{\r\n  background: white;\r\n  border: none;\r\n}\r\n\r\n.top-nav .search{\r\n\r\n  border: none;\r\n  outline: none;\r\n  box-shadow: 0 0 0 0 white;\r\n  \r\n}\r\n\r\n.top-nav .search-gl{\r\n  background: white;\r\n  border:none;\r\n  outline: none;\r\n}\r\n\r\n.top-nav .search-box{\r\n\r\n  overflow:hidden; \r\n \r\n}\r\n\r\n.top-nav .top-drop, .top-nav .top-drop:active{\r\n  \r\n  background: inherit;\r\n   \r\n}\r\n\r\n.top-nav .top-drop:hover{\r\n  background: #d1ccca;\r\n}\r\n\r\n.top-nav .userAvatar {\r\n  height: 1.45em;\r\n  width: 1.45em;\r\n  position:relative;\r\n  box-shadow: 0 0 4px 1px #eee;\r\n  display:cover;\r\n  overflow: hidden;\r\n  border-radius:50%;\r\n}\r\n\r\n.top-nav .userAvatar img{\r\n  position:relative;\r\n  margin-right:2px;\r\n  width:100%;\r\n}\r\n\r\n"; (require("C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify"))(css); module.exports = css;
-},{"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify":35}],20:[function(require,module,exports){
+},{"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify":37}],20:[function(require,module,exports){
 'use strict';
 
 
@@ -1013,8 +1034,76 @@ var TopNav = React.createClass({displayName: 'TopNav',
 
 module.exports = TopNav;
 },{"./TopNav.css":19}],21:[function(require,module,exports){
-var css = ".browseCollections .tomato-button{\r\n\r\n  border-radius: 15px;\r\n  background: white;\r\n  border: tomato 2px solid;\r\n  color: tomato;\r\n  \r\n}\r\n\r\n.browseCollections .sort{\r\n  padding-left: 15px;\r\n  padding-right: 15px;\r\n  \r\n}\r\n\r\n.browseCollections .sorter{\r\n\r\n  position:relative;\r\n  display:block;\r\n  width:100%;\r\n  height:1.5em;\r\n  \r\n}\r\n\r\n.browseCollections .sorter div{\r\n  position:absolute;\r\n  right: 2.5em;\r\n}\r\n\r\n.browseCollections .list{\r\n  \r\n  width:100%;\r\n  margin:0;\r\n  padding:0;\r\n  margin-bottom: 3em;\r\n  \r\n}\r\n\r\n.browseCollections .browse-images{\r\n  position: relative;\r\n  text-align:right;\r\n  list-style:none;\r\n  width: 100%;\r\n  margin:0;\r\n  padding:0;\r\n  margin-top:5px;\r\n}\r\n\r\n\r\n\t\t  \r\n.browseCollections .notfocused{ \r\n  color:slategray;\r\n  cursor:pointer;\r\n  -webkit-transition: color .4s ease;\r\n          transition: color .4s ease;\r\n}\r\n\r\n.browseCollections .focused{\r\n  cursor:pointer;\r\n  color:tomato;\r\n  text-decoration:none;\r\n  -webkit-transition: color .4s linear;\r\n          transition: color .4s linear;\r\n}\r\n\r\n\r\n.browse-categories-dt{\r\n  position:relative;\r\n  top:2em;\r\n}\r\n\r\n.browse-sort{\r\n  position:relative;\r\n}\r\n\r\n\r\n.browse-categories{\r\n  display: none;\r\n}\r\n"; (require("C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify"))(css); module.exports = css;
-},{"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify":35}],22:[function(require,module,exports){
+var css = ".route-header{\r\n  position:absolute;\r\n  height:60px;\r\n  background: black;\r\n  padding:1em;\r\n  width:100%;\r\n  left:0;\r\n  top:0;\r\n}\r\n\r\n.views{\r\n\r\n  position:absolute;\r\n  top: 60px;\r\n  width:100%;\r\n  left:0;\r\n\r\n}"; (require("C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify"))(css); module.exports = css;
+},{"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify":37}],22:[function(require,module,exports){
+'use strict';
+
+var store = require('./../stores/store.js'),
+    Actions = require('./../actions/actions.js'),
+    Flux = require('delorean').Flux;  
+
+var Router = window.ReactRouter,
+    Link = Router.Link,
+    RouteHandler = Router.RouteHandler;
+	
+require('./app.css');
+
+var App = React.createClass({displayName: 'App',
+  
+  getDefaultProps: function(){
+    return {data: store.store.data }
+  },
+  
+  componentWillMount: function() {
+  
+    var url = 'photos.json';
+    Actions.fetchUserPhotos(url);
+	var featureUrl = 'featuredCollections.json';
+    Actions.fetchFeaturedCollections(featureUrl);
+    var artLoverUrl = 'artLoverCollections.json';
+	Actions.fetchArtLoverCollections(artLoverUrl);
+	
+  },
+  
+  mixins: [Flux.mixins.storeListener],
+  
+  storeDidChange: function(Store){
+    //alert(JSON.stringify(store.store.data));
+	this.props.data = store.store.data;
+  },
+  
+  render: function() {
+    return (
+	  React.createElement("div", {className: "routeHandler route-header"}, 
+	    React.createElement("div", {className: "btn-group"}, 
+          React.createElement("button", {type: "button", className: "btn btn-default dropdown-toggle primary", 'data-toggle': "dropdown"}, 
+            "Components ", React.createElement("span", {className: "caret"})
+          ), 
+		  React.createElement("ul", {className: "dropdown-menu", role: "menu"}, 
+	        React.createElement("li", null, React.createElement(Link, {to: "welcome"}, "Welcome")), 
+	        React.createElement("li", null, React.createElement(Link, {to: "user-profile"}, "user profile")), 
+	        React.createElement("li", null, React.createElement(Link, {to: "topnav"}, "topnav")), 
+	        React.createElement("li", null, React.createElement(Link, {to: "signup"}, "signup")), 
+	        React.createElement("li", null, React.createElement(Link, {to: "browsecollections"}, "browse collections")), 
+	        React.createElement("li", null, React.createElement(Link, {to: "footer"}, "footer")), 
+	        React.createElement("li", null, React.createElement(Link, {to: "masonry"}, "masonry")), 
+	        React.createElement("li", null, React.createElement(Link, {to: "parallaxpage"}, "Parallax")), 
+	        React.createElement("li", null, React.createElement(Link, {to: "paddedunderline"}, "PaddedUnderline")), 
+	        React.createElement("li", null, React.createElement(Link, {to: "photocollections"}, "PhotoCollections"))
+	      )
+		), 
+ 	    React.createElement("div", {className: "views"}, 
+		  React.createElement(RouteHandler, React.__spread({},   this.props.data))
+	    )
+	  )
+	);
+  }
+});
+
+module.exports = App;
+},{"./../actions/actions.js":2,"./../stores/store.js":35,"./app.css":21,"delorean":48}],23:[function(require,module,exports){
+var css = ".browseCollections .tomato-button{\r\n\r\n  border-radius: 15px;\r\n  background: white;\r\n  border: tomato 2px solid;\r\n  color: tomato;\r\n  \r\n}\r\n\r\n.browseCollections .sort{\r\n  padding-left: 15px;\r\n  padding-right: 15px;\r\n  \r\n}\r\n\r\n.browseCollections .sorter{\r\n\r\n  position:relative;\r\n  display:block;\r\n  width:100%;\r\n  height:1.5em;\r\n  \r\n}\r\n\r\n.browseCollections .sorter div{\r\n  position:absolute;\r\n  right: 2.5em;\r\n}\r\n\r\n.browseCollections .list{\r\n  \r\n  width:100%;\r\n  margin:0;\r\n  padding:0;\r\n  margin-bottom: 3em;\r\n  \r\n}\r\n\r\n.browseCollections .browse-images{\r\n  position: relative;\r\n  text-align:right;\r\n  list-style:none;\r\n  width: 100%;\r\n  margin:0;\r\n  padding:0;\r\n  margin-top:5px;\r\n}\r\n\r\n\t\t  \r\n.browseCollections .notfocused{ \r\n  color:slategray;\r\n  cursor:pointer;\r\n  -webkit-transition: color .4s ease;\r\n          transition: color .4s ease;\r\n}\r\n\r\n.browseCollections .focused{\r\n  cursor:pointer;\r\n  color:tomato;\r\n  text-decoration:none;\r\n  -webkit-transition: color .4s linear;\r\n          transition: color .4s linear;\r\n}\r\n\r\n\r\n.browse-categories-dt{\r\n  position:relative;\r\n  top:2em;\r\n}\r\n\r\n.browse-sort{\r\n  position:relative;\r\n}\r\n\r\n\r\n.browse-categories{\r\n  display: none;\r\n}\r\n"; (require("C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify"))(css); module.exports = css;
+},{"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify":37}],24:[function(require,module,exports){
 'use strict'
 
 
@@ -1044,7 +1133,7 @@ var BrowseCollections = React.createClass({displayName: 'BrowseCollections',
   getDefaultProps: function(){
   
     return {
-	  category: ['Categories', 'All Art', 'Applied Art', 'Digital Art', 'Original', 'Literature', 'Performing Art', 'Public Art', 'Music', 'Visual Art', 'Collage', 'Film/Video', 'Painting', 'Photography', 'Printmaking', 'Sculpture', 'Work on Paper', 'Work on Materials', 'Other Visual Art', 'Other Art'],
+	  category: ['Categories','All Art', 'Applied Art', 'Digital Art', 'Original', 'Literature', 'Performing Art', 'Public Art', 'Music', 'Visual Art', 'Collage', 'Film/Video', 'Painting', 'Photography', 'Printmaking', 'Sculpture', 'Work on Paper', 'Work on Materials', 'Other Visual Art', 'Other Art'],
 	  sortingList: ['Recent', 'Most Curated', 'Most Viewed', 'Most Followed', 'Undiscovered', 'Oldest']
 	};
   
@@ -1090,7 +1179,6 @@ var BrowseCollections = React.createClass({displayName: 'BrowseCollections',
 	  });	  
 	  	  
 	});
-
   },
   
   handleSort: function(i){
@@ -1188,16 +1276,15 @@ var BrowseCollections = React.createClass({displayName: 'BrowseCollections',
 module.exports = BrowseCollections;
 
 
-
-},{"./../TopNav/TopNav.js":20,"./../masonry/masonry.js":29,"./BrowseCollections.css":21,"./phones.css":23}],23:[function(require,module,exports){
+},{"./../TopNav/TopNav.js":20,"./../masonry/masonry.js":31,"./BrowseCollections.css":23,"./phones.css":25}],25:[function(require,module,exports){
 var css = "@media (max-width:986px){\r\n\r\n.browse-categories{\r\n  display: block;\r\n  position:absolute;\r\n  right:11em;\r\n  z-index:9999;\r\n}\r\n\r\n.browse-categories  ul{\r\n\r\n  height:300px;\r\n  overflow:auto;\r\n\r\n}\r\n\r\n.browse-categories-dt{\r\n  display:none;\r\n}\r\n\r\n\r\n.notfocused{\r\n  text-align: left;\r\n  margin:1em; \r\n}\r\n\r\n.focused{\r\n  text-align:left;\r\n  margin:1em;\r\n}\r\n\r\n}"; (require("C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify"))(css); module.exports = css;
-},{"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify":35}],24:[function(require,module,exports){
+},{"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify":37}],26:[function(require,module,exports){
 module.exports=require(6)
-},{"C:\\Users\\Justin\\documents\\github\\af\\app\\scripts\\components\\Footer\\footer.css":6,"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify":35}],25:[function(require,module,exports){
+},{"C:\\Users\\Justin\\documents\\github\\af\\app\\scripts\\components\\Footer\\footer.css":6,"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify":37}],27:[function(require,module,exports){
 module.exports=require(5)
-},{"./footer.css":24,"C:\\Users\\Justin\\documents\\github\\af\\app\\scripts\\components\\Footer\\Footer.js":5}],26:[function(require,module,exports){
-var css = ".browsehappy {\r\n  margin: 0.2em 0;\r\n  background: #ccc;\r\n  color: #000;\r\n  padding: 0.2em 0;\r\n}\r\n\r\n@font-face {\r\n  font-family: 'Open-Sans-600';\r\n  src: url(fonts/Open-Sans-600.ttf);\r\n}\r\n\r\n@font-face {\r\n  font-family: 'Open-Sans-300';\r\n  src: url(fonts/Open-Sans-300.ttf);\r\n}\r\n\r\n@font-face {\r\n  font-family: 'Open-Sans-regular';\r\n  src: url(fonts/Open-Sans-regular.ttf);\r\n}\r\n\t\r\n\r\nbody{\r\n  margin:0;\r\n  padding:0;\r\n  font-family: 'Open-Sans-600';\t\r\n  -webkit-font-smoothing: antialiased;\r\n}\r\n\r\n.user-profile{\r\n  width:100%;\r\n  position:absolute;\r\n  top:1em;\r\n  left:0;\r\n}\r\n\r\n.padding1{\r\n  padding: 1em;  \r\n}\r\n\r\n.fluid{\r\n  width: 100%;\r\n}\r\n\r\n.center-block {\r\n  display: block;\r\n  margin-left: auto;\r\n  margin-right: auto;\r\n}\r\n\r\n.vertical-align{\r\n   vertical-align:middle;\r\n}\r\n\r\n\r\n.route-header{\r\n  position:absolute;\r\n  height:100px;\r\n  background: #eee;\r\n  padding:1em;\r\n  width:100%;\r\n  left:0;\r\n  top:0;\r\n}\r\n\r\n.views{\r\n\r\n  position:absolute;\r\n  top: 100px;\r\n  width:100%;\r\n  left:0;\r\n\r\n}"; (require("C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify"))(css); module.exports = css;
-},{"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify":35}],27:[function(require,module,exports){
+},{"./footer.css":26,"C:\\Users\\Justin\\documents\\github\\af\\app\\scripts\\components\\Footer\\Footer.js":5}],28:[function(require,module,exports){
+var css = ".browsehappy {\r\n  margin: 0.2em 0;\r\n  background: #ccc;\r\n  color: #000;\r\n  padding: 0.2em 0;\r\n}\r\n\r\n@font-face {\r\n  font-family: 'Open-Sans-600';\r\n  src: url(fonts/Open-Sans-600.ttf);\r\n}\r\n\r\n@font-face {\r\n  font-family: 'Open-Sans-300';\r\n  src: url(fonts/Open-Sans-300.ttf);\r\n}\r\n\r\n@font-face {\r\n  font-family: 'Open-Sans-regular';\r\n  src: url(fonts/Open-Sans-regular.ttf);\r\n}\r\n\t\r\n\r\nbody{\r\n  margin:0;\r\n  padding:0;\r\n  font-family: 'Open-Sans-600';\t\r\n  -webkit-font-smoothing: antialiased;\r\n}\r\n\r\n.user-profile{\r\n  width:100%;\r\n  position:absolute;\r\n  top:1em;\r\n  left:0;\r\n}\r\n\r\n.padding1{\r\n  padding: 1em;  \r\n}\r\n\r\n.fluid{\r\n  width: 100%;\r\n}\r\n\r\n.center-block {\r\n  display: block;\r\n  margin-left: auto;\r\n  margin-right: auto;\r\n}\r\n\r\n.vertical-align{\r\n   vertical-align:middle;\r\n}\r\n"; (require("C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify"))(css); module.exports = css;
+},{"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify":37}],29:[function(require,module,exports){
 'use strict';
 
 var UserProfile = React.createFactory(require('./user-profile/user-profile.js')),
@@ -1208,13 +1295,10 @@ var UserProfile = React.createFactory(require('./user-profile/user-profile.js'))
     Masonry = React.createFactory(require('./masonry/masonry.js')),
     ParallaxPage = React.createFactory(require('./ParallaxPage/ParallaxPage.js')),
     PaddedUnderline = React.createFactory(require('./PaddedUnderline/PaddedUnderline.js')),
-    PhotoCollections = React.createFactory(require('./PhotoCollections/PhotoCollections.js'));
-   
-	
-var store = require('./../stores/store.js'),
-    Dispatcher = require('./../dispatcher.js'),
-    Actions = require('./../actions/actions.js'),
-    Flux = require('delorean').Flux;  
+    PhotoCollections = React.createFactory(require('./PhotoCollections/PhotoCollections.js')),
+    App = React.createFactory(require('./app.js'));
+
+var	Dispatcher = require('./../dispatcher.js');
 	
 var Router = window.ReactRouter,
     Route = Router.Route,
@@ -1226,16 +1310,6 @@ var Router = window.ReactRouter,
 	
 require('./main.css');
 
-
-//better to render to a container or to document.html?	
-
-/*React.render (
-  <UserProfile></UserProfile>,
-  document.getElementById('container')
-);*/
-
-
-// Make Welcome and NotFound(404) separate components
 
 var Welcome = React.createClass({displayName: 'Welcome',
   render: function() {
@@ -1284,48 +1358,6 @@ var MyMarketplace = React.createClass({displayName: 'MyMarketplace',
   }
 });
 
-var App = React.createClass({displayName: 'App',
-  
-  getDefaultProps: function(){
-    return {data: store.store.data }
-  },
-  
-  componentWillMount: function() {
-  
-    var url = 'photos.json';
-    Actions.fetchUserPhotos(url);
-	var featureUrl = 'featuredCollections.json';
-    Actions.fetchFeaturedCollections(featureUrl);
-  
-  },
-  
-  mixins: [Flux.mixins.storeListener],
-  
-  storeDidChange: function(Store){
-    //alert(JSON.stringify(store.store.data));
-	this.props.data = store.store.data;
-  },
-  
-  render: function() {
-    return (
-	  React.createElement("div", {className: "routeHandler route-header"}, 
-	    React.createElement(Link, {to: "welcome"}, React.createElement("button", null, "Welcome")), 
-	    React.createElement(Link, {to: "user-profile"}, React.createElement("button", null, "user profile")), 
-	    React.createElement(Link, {to: "topnav"}, React.createElement("button", null, "topnav")), 
-	    React.createElement(Link, {to: "signup"}, React.createElement("button", null, "signup")), 
-	    React.createElement(Link, {to: "browsecollections"}, React.createElement("button", null, "browse collections")), 
-	    React.createElement(Link, {to: "footer"}, React.createElement("button", null, "footer")), 
-	    React.createElement(Link, {to: "masonry"}, React.createElement("button", null, "masonry")), 
-	    React.createElement(Link, {to: "parallaxpage"}, React.createElement("button", null, "Parallax")), 
-	    React.createElement(Link, {to: "paddedunderline"}, React.createElement("button", null, "PaddedUnderline")), 
-	    React.createElement(Link, {to: "photocollections"}, React.createElement("button", null, "PhotoCollections")), 
- 	    React.createElement("div", {className: "views"}, 
-		  React.createElement(RouteHandler, React.__spread({},   this.props.data))
-	    )
-	  )
-	);
-  }
-});
 
 var routes = (
   React.createElement(Route, {handler: App, path: "/"}, 
@@ -1358,9 +1390,9 @@ Router.run(routes, Router.HistoryLocation, function (Handler,state) {
 
 
 
-},{"./../actions/actions.js":2,"./../dispatcher.js":32,"./../stores/store.js":33,"./PaddedUnderline/PaddedUnderline.js":10,"./ParallaxPage/ParallaxPage.js":12,"./PhotoCollections/PhotoCollections.js":13,"./Signup/signup.js":18,"./TopNav/TopNav.js":20,"./browse-collections/browse-collections.js":22,"./footer/footer.js":25,"./main.css":26,"./masonry/masonry.js":29,"./user-profile/user-profile.js":31,"delorean":46}],28:[function(require,module,exports){
+},{"./../dispatcher.js":34,"./PaddedUnderline/PaddedUnderline.js":10,"./ParallaxPage/ParallaxPage.js":12,"./PhotoCollections/PhotoCollections.js":13,"./Signup/signup.js":18,"./TopNav/TopNav.js":20,"./app.js":22,"./browse-collections/browse-collections.js":24,"./footer/footer.js":27,"./main.css":28,"./masonry/masonry.js":31,"./user-profile/user-profile.js":33}],30:[function(require,module,exports){
 var css = "#transition-in{\r\n  transition: opacity 1s ease;\r\n  transition: transform .5s ease;\r\n  -webkit-transform: scale(1);\r\n  opacity: 1;\r\n   \r\n}\r\n#transition-out {\r\n  transition: opacity 1s ease;\r\n  transition: transform .5s ease;\r\n  -webkit-transform: scale(1) translateX(1000px);\r\n  opacity: .9;\r\n}\r\n\r\n#transition-middle {\r\n\r\n  transition: opacity: .1s ease;\r\n  transition: transform: .1s ease;\r\n  -webkit-transform: scale(0) translateX(0px);\r\n  opacity: .5;\r\n\r\n}\r\n\r\n@keyframes appear {\r\n  from {opacity: 0; transform: scale(.8);}\r\n  to {opacity: 1; transform: scale(1)}\r\n}\r\n\r\n@keyframes disappear {\r\n  from {opacity: 1; transform: scale(1);}\r\n  to {opacity: 0; transform: scale(.9) rotateX(0deg) translateZ(-1500px);}\r\n}\r\n\r\n.masonry-gallery{\r\n  perspective: 1500px;\r\n  overflow: hidden;\r\n}\r\n\r\n.masonries .item{ \r\n  width: 32%;\r\n  margin:.5%;  \r\n}\r\n\r\n.masonries .item img{\r\n  box-shadow: 0 0 4px 1px rgba(10,30,10,0.4);\r\n}\r\n\r\n.masonry{\r\n\r\n  width:90%;\r\n  left:2.25em;\r\n  height:100%;\r\n  position:relative;\r\n  margin-top:2.25em;\r\n  margin-left:auto;\r\n  margin-right:auto;\r\n \r\n}\r\n\r\n@media (max-width:980px){\r\n  .masonry{\r\n    left:0;\r\n  }\r\n}\r\n\r\n.masonries{\r\n \r\n  position:relative;\r\n  margin-left: auto;\r\n  margin-right:auto;\r\n  position:relative;\r\n  height:100%;\r\n  width: 100%;\r\n    \r\n}"; (require("C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify"))(css); module.exports = css;
-},{"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify":35}],29:[function(require,module,exports){
+},{"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify":37}],31:[function(require,module,exports){
 'use strict';
 
 var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup,
@@ -1436,9 +1468,9 @@ var Masonry = React.createClass({displayName: 'Masonry',
 });
 
 module.exports = Masonry;
-},{"./../ImageOverlay/ImageOverlay.js":7,"./masonry.css":28,"imagesloaded":50,"masonry-layout":53}],30:[function(require,module,exports){
+},{"./../ImageOverlay/ImageOverlay.js":7,"./masonry.css":30,"imagesloaded":52,"masonry-layout":55}],32:[function(require,module,exports){
 var css = ".user-profile .underline{\r\n  text-decoration: underline;\r\n}\r\n\r\n.user-profile .container{\r\n  width:100%;\r\n}\r\n\r\n.user-profile-head{\r\n  height: 14em;\r\n  background: purple;\r\n}\r\n\r\n.user-profile-menu{\r\n  border: solid black 2px;\r\n  \r\n}\r\n\r\n.user-profile .aboutme{ \r\n margin-top:1em;\r\n}\r\n\r\n.user-profile menu{\r\n\r\n//  position:absolute;\r\n  //margin-top:1.5em;\r\n  //margin-left:0;\r\n}\r\n\r\n.user-profile-head h1{\r\n\r\n  position: relative;\r\n  top:1.5em;\r\n  width:100%;\r\n  height:7em;\r\n  color: white;\r\n \r\n}\r\n\r\n.user-profile .artist{\r\n  border-radius: 20px;\r\n  padding-left:20px;\r\n  padding-right:20px;\r\n  background: #e56e5c;\r\n  color:white;\r\n}\r\n\r\n.user-profile .photo-circle{\r\n  position:relative;\r\n  top:1em;\r\n  border: solid #eee 4px;\r\n  box-shadow: 0 0 4px 1px white;\r\n  border-radius: 50%;\r\n  width: 3em;\r\n  height: 3em;\r\n  display:block;\r\n  overflow:hidden;\r\n  margin-left:auto;\r\n  margin-right:auto;\r\n  display:cover;\r\n  background: white;\r\n}\r\n\r\n.user-profile .inner-circle{\r\n  position:absolute;\r\n  z-index:9999;\r\n  width:100%;\r\n  height:100%;\r\n  top: .75em;\r\n}\r\n\r\n.user-profile-bottom{\r\n  position:relative;\r\n  top:300px;\r\n  overflow:hidden;\r\n  background: #3a3a3a;\r\n  color:white;\r\n}\r\n\r\n.user-profile a:visited{\r\n  color: black;\r\n}\r\n\r\n.user-profile-forms{\r\n\r\n  width: 80%;\r\n  top:1em;\r\n\r\n}\r\n\r\n.user-profile .all-social{\r\n  top:2em;\r\n  padding-bottom:2em;\r\n  position:relative;\r\n}\r\n\r\n.user-profile .social{\r\n  margin-bottom:4em;\r\n}\r\n\r\n.user-profile-forms .input-group-addon{\r\n  background: white;\r\n  color: green;\r\n}\r\n\r\n.user-profile .help-block{\r\n  margin-top: -.75em;\r\n  margin-left: 1em;\r\n  font-size:0.88em;\r\n}\r\n\r\n.user-profile .help-block button{\r\n  margin-left: 8px;\r\n  border: solid 1px tomato;\r\n  padding: .1em .5em .1em .5em;\r\n}\r\n\r\n.user-profile .social-buttons{\r\n  margin-top: .5em;\r\n}\r\n\r\n/*make width wider on wider screens*/\r\n\r\n.user-profile-forms article{\r\n \r\n  margin-top:2em;\r\n  left:0; \r\n  width:100%;\r\n  height: 270px;\r\n \r\n}\r\n\r\n\r\n.user-profile .section{\r\n  \r\n  padding-bottom: 1em;\r\n  \r\n}\r\n\r\n.user-profile .my-account{\r\n  width:80%;\r\n  position:relative;\r\n  top:2em;\r\n}\r\n\r\n\r\n.user-profile-forms .input-group{\r\n\r\n  width:100%;\r\n\r\n  padding-top:4px;\r\n  padding-bottom:1em;\r\n\r\n}\r\n\r\n.user-profile .button-wrapper{\r\n  position:relative;\r\n  top:1em;\r\n  width:100px;\r\n}\r\n\r\n\r\n\r\n\r\n/*\r\n * jQuery File Upload Plugin CSS 1.3.0\r\n * https://github.com/blueimp/jQuery-File-Upload\r\n *\r\n * Copyright 2013, Sebastian Tschan\r\n * https://blueimp.net\r\n *\r\n * Licensed under the MIT license:\r\n * http://www.opensource.org/licenses/MIT\r\n */\r\n\r\n.fileinput-button {\r\n  position: relative;\r\n  overflow: hidden;\r\n}\r\n.fileinput-button input {\r\n  position: absolute;\r\n  top: 0;\r\n  right: 0;\r\n  margin: 0;\r\n  opacity: 0;\r\n  -ms-filter: 'alpha(opacity=0)';\r\n  font-size: 200px;\r\n  direction: ltr;\r\n  cursor: pointer;\r\n}\r\n\r\n/* Fixes for IE < 8 */\r\n@media screen\\9 {\r\n  .fileinput-button input {\r\n    filter: alpha(opacity=0);\r\n    font-size: 100%;\r\n    height: 100%;\r\n  }\r\n}\r\n"; (require("C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify"))(css); module.exports = css;
-},{"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify":35}],31:[function(require,module,exports){
+},{"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify":37}],33:[function(require,module,exports){
 'use strict'
 
 var Router = window.ReactRouter,
@@ -1871,7 +1903,7 @@ var UserProfile = React.createClass({displayName: 'UserProfile',
 
 
 module.exports = UserProfile;
-},{"../../../styles/color-swatch.css":34,"./../../actions/actions.js":2,"./../PaddedUnderline/PaddedUnderline.js":10,"./../TopNav/TopNav.js":20,"./../footer/footer.js":25,"./user-profile.css":30}],32:[function(require,module,exports){
+},{"../../../styles/color-swatch.css":36,"./../../actions/actions.js":2,"./../PaddedUnderline/PaddedUnderline.js":10,"./../TopNav/TopNav.js":20,"./../footer/footer.js":27,"./user-profile.css":32}],34:[function(require,module,exports){
 'use strict';
 
 /*
@@ -1893,6 +1925,9 @@ var Dispatcher = Flux.createDispatcher({
   fetchUserPhotos: function (data) {
     this.dispatch('fetchUserPhotos', data[0].photos);
   },
+  setArtLoverCollections: function (data) {
+    this.dispatch('setArtLoverCollections', data[0].artLoverCollections);
+  },
   setFeaturedCollections: function (data) {
     this.dispatch('setFeaturedCollections', data[0].featuredCollections);
   },
@@ -1904,11 +1939,10 @@ var Dispatcher = Flux.createDispatcher({
   }
 });
 module.exports = Dispatcher;
-},{"./stores/store.js":33,"delorean":46}],33:[function(require,module,exports){
+},{"./stores/store.js":35,"delorean":48}],35:[function(require,module,exports){
 'use strict';
 
 var Flux = require('delorean').Flux;
-
 
 var Store = Flux.createStore({
   
@@ -1939,7 +1973,6 @@ var Store = Flux.createStore({
 	  
 	  },
     
-	//photo model
 	photoAttributes: {
 	
 	  id: null,
@@ -1980,6 +2013,12 @@ var Store = Flux.createStore({
 	   featuredCollection: {
 	     title: "title",
 	   }
+	}],
+	
+	artLoverCollections: [{
+	  collection: {
+	    title: "title",
+	  }
 	}]
     
   },
@@ -1996,6 +2035,11 @@ var Store = Flux.createStore({
   
   fetchUserPhotos: function(data){
 	this.data.userPhotos.photos = data;
+	this.emit('change');
+  },
+  
+  setArtLoverCollections: function(data){
+    this.data.artLoverCollections = data;
 	this.emit('change');
   },
   
@@ -2016,6 +2060,7 @@ var Store = Flux.createStore({
 	'setUserProfile': 'setUserProfile',
 	'fetchUserPhotos': 'fetchUserPhotos',
 	'setFeaturedCollections': 'setFeaturedCollections',
+	'setArtLoverCollections': 'setArtLoverCollections',
 	'setCVFile': 'setCVFile'
   }
   
@@ -2024,9 +2069,9 @@ var Store = Flux.createStore({
 var store = new Store();
 
 module.exports = store;
-},{"delorean":46}],34:[function(require,module,exports){
+},{"delorean":48}],36:[function(require,module,exports){
 var css = "/*color swatch theme for artfactum signup page*/\r\n\r\n.tomato{\r\n  color:#e56e5c;\r\n}\r\n\r\n.tomato-background{\r\n  background:#e5635c;\r\n  color: white;\r\n}\r\n\r\n.dark-gray{\r\n\r\n  color: #3a3a3a;\r\n\r\n}\r\n\r\n.dark-gray-background{\r\n\r\n  background: #3a3a3a;\r\n  color:white;\r\n  \r\n}\r\n\r\n.chrome{\r\n\r\n  color: #d1ccca;\r\n\r\n}\r\n\r\n.chrome-background{\r\n\r\n  background: #d1ccca;\r\n  color: black;\r\n\r\n}\r\n\r\n.gray{\r\n  color: slategray;\r\n}\r\n"; (require("C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify"))(css); module.exports = css;
-},{"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify":35}],35:[function(require,module,exports){
+},{"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\cssify":37}],37:[function(require,module,exports){
 module.exports = function (css, customDocument) {
   var doc = customDocument || document;
   if (doc.createStyleSheet) {
@@ -2065,13 +2110,13 @@ module.exports.byUrl = function(url) {
   }
 };
 
-},{}],36:[function(require,module,exports){
+},{}],38:[function(require,module,exports){
 "use strict";
 var Promise = require("./promise/promise").Promise;
 var polyfill = require("./promise/polyfill").polyfill;
 exports.Promise = Promise;
 exports.polyfill = polyfill;
-},{"./promise/polyfill":40,"./promise/promise":41}],37:[function(require,module,exports){
+},{"./promise/polyfill":42,"./promise/promise":43}],39:[function(require,module,exports){
 "use strict";
 /* global toString */
 
@@ -2165,7 +2210,7 @@ function all(promises) {
 }
 
 exports.all = all;
-},{"./utils":45}],38:[function(require,module,exports){
+},{"./utils":47}],40:[function(require,module,exports){
 (function (process,global){
 "use strict";
 var browserGlobal = (typeof window !== 'undefined') ? window : {};
@@ -2229,7 +2274,7 @@ function asap(callback, arg) {
 
 exports.asap = asap;
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"_process":49}],39:[function(require,module,exports){
+},{"_process":51}],41:[function(require,module,exports){
 "use strict";
 var config = {
   instrument: false
@@ -2245,7 +2290,7 @@ function configure(name, value) {
 
 exports.config = config;
 exports.configure = configure;
-},{}],40:[function(require,module,exports){
+},{}],42:[function(require,module,exports){
 (function (global){
 "use strict";
 /*global self*/
@@ -2286,7 +2331,7 @@ function polyfill() {
 
 exports.polyfill = polyfill;
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./promise":41,"./utils":45}],41:[function(require,module,exports){
+},{"./promise":43,"./utils":47}],43:[function(require,module,exports){
 "use strict";
 var config = require("./config").config;
 var configure = require("./config").configure;
@@ -2498,7 +2543,7 @@ function publishRejection(promise) {
 }
 
 exports.Promise = Promise;
-},{"./all":37,"./asap":38,"./config":39,"./race":42,"./reject":43,"./resolve":44,"./utils":45}],42:[function(require,module,exports){
+},{"./all":39,"./asap":40,"./config":41,"./race":44,"./reject":45,"./resolve":46,"./utils":47}],44:[function(require,module,exports){
 "use strict";
 /* global toString */
 var isArray = require("./utils").isArray;
@@ -2588,7 +2633,7 @@ function race(promises) {
 }
 
 exports.race = race;
-},{"./utils":45}],43:[function(require,module,exports){
+},{"./utils":47}],45:[function(require,module,exports){
 "use strict";
 /**
   `RSVP.reject` returns a promise that will become rejected with the passed
@@ -2636,7 +2681,7 @@ function reject(reason) {
 }
 
 exports.reject = reject;
-},{}],44:[function(require,module,exports){
+},{}],46:[function(require,module,exports){
 "use strict";
 function resolve(value) {
   /*jshint validthis:true */
@@ -2652,7 +2697,7 @@ function resolve(value) {
 }
 
 exports.resolve = resolve;
-},{}],45:[function(require,module,exports){
+},{}],47:[function(require,module,exports){
 "use strict";
 function objectOrFunction(x) {
   return isFunction(x) || (typeof x === "object" && x !== null);
@@ -2675,7 +2720,7 @@ exports.objectOrFunction = objectOrFunction;
 exports.isFunction = isFunction;
 exports.isArray = isArray;
 exports.now = now;
-},{}],46:[function(require,module,exports){
+},{}],48:[function(require,module,exports){
 (function (DeLorean) {
   'use strict';
 
@@ -3315,7 +3360,7 @@ exports.now = now;
 
 })({});
 
-},{"./requirements":47}],47:[function(require,module,exports){
+},{"./requirements":49}],49:[function(require,module,exports){
 // ## Dependency injection file.
 
 // You can change dependencies using `DeLorean.Flux.define`. There are
@@ -3339,7 +3384,7 @@ if (typeof DeLorean !== 'undefined') {
   }
 }
 
-},{"es6-promise":36,"events":48}],48:[function(require,module,exports){
+},{"es6-promise":38,"events":50}],50:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -3642,7 +3687,7 @@ function isUndefined(arg) {
   return arg === void 0;
 }
 
-},{}],49:[function(require,module,exports){
+},{}],51:[function(require,module,exports){
 // shim for using process in browser
 
 var process = module.exports = {};
@@ -3730,7 +3775,7 @@ process.chdir = function (dir) {
     throw new Error('process.chdir is not supported');
 };
 
-},{}],50:[function(require,module,exports){
+},{}],52:[function(require,module,exports){
 /*!
  * imagesLoaded v3.1.8
  * JavaScript is all like "You images are done yet or what?"
@@ -4067,7 +4112,7 @@ function makeArray( obj ) {
 
 });
 
-},{"eventie":51,"wolfy87-eventemitter":52}],51:[function(require,module,exports){
+},{"eventie":53,"wolfy87-eventemitter":54}],53:[function(require,module,exports){
 /*!
  * eventie v1.0.5
  * event binding helper
@@ -4151,7 +4196,7 @@ if ( typeof define === 'function' && define.amd ) {
 
 })( this );
 
-},{}],52:[function(require,module,exports){
+},{}],54:[function(require,module,exports){
 /*!
  * EventEmitter v4.2.11 - git.io/ee
  * Unlicense - http://unlicense.org/
@@ -4625,7 +4670,7 @@ if ( typeof define === 'function' && define.amd ) {
     }
 }.call(this));
 
-},{}],53:[function(require,module,exports){
+},{}],55:[function(require,module,exports){
 /*!
  * Masonry v3.2.1
  * Cascading grid layout library
@@ -4837,7 +4882,7 @@ if ( typeof define === 'function' && define.amd ) {
 
 })( window );
 
-},{"get-size":54,"outlayer":62}],54:[function(require,module,exports){
+},{"get-size":56,"outlayer":64}],56:[function(require,module,exports){
 /*!
  * getSize v1.2.2
  * measure size of elements
@@ -5089,7 +5134,7 @@ if ( typeof define === 'function' && define.amd ) {
 
 })( window );
 
-},{"desandro-get-style-property":55}],55:[function(require,module,exports){
+},{"desandro-get-style-property":57}],57:[function(require,module,exports){
 /*!
  * getStyleProperty v1.0.4
  * original by kangax
@@ -5146,7 +5191,7 @@ if ( typeof define === 'function' && define.amd ) {
 
 })( window );
 
-},{}],56:[function(require,module,exports){
+},{}],58:[function(require,module,exports){
 /**
  * Outlayer Item
  */
@@ -5678,9 +5723,9 @@ if ( typeof define === 'function' && define.amd ) {
 
 })( window );
 
-},{"desandro-get-style-property":57,"get-size":54,"wolfy87-eventemitter":61}],57:[function(require,module,exports){
-module.exports=require(55)
-},{"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\masonry-layout\\node_modules\\get-size\\node_modules\\desandro-get-style-property\\get-style-property.js":55}],58:[function(require,module,exports){
+},{"desandro-get-style-property":59,"get-size":56,"wolfy87-eventemitter":63}],59:[function(require,module,exports){
+module.exports=require(57)
+},{"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\masonry-layout\\node_modules\\get-size\\node_modules\\desandro-get-style-property\\get-style-property.js":57}],60:[function(require,module,exports){
 /**
  * matchesSelector v1.0.2
  * matchesSelector( element, '.selector' )
@@ -5785,7 +5830,7 @@ module.exports=require(55)
 
 })( Element.prototype );
 
-},{}],59:[function(require,module,exports){
+},{}],61:[function(require,module,exports){
 /*!
  * docReady v1.0.3
  * Cross browser DOMContentLoaded event emitter
@@ -5859,11 +5904,11 @@ if ( typeof define === 'function' && define.amd ) {
 
 })( window );
 
-},{"eventie":60}],60:[function(require,module,exports){
-module.exports=require(51)
-},{"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\imagesloaded\\node_modules\\eventie\\eventie.js":51}],61:[function(require,module,exports){
-module.exports=require(52)
-},{"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\imagesloaded\\node_modules\\wolfy87-eventemitter\\EventEmitter.js":52}],62:[function(require,module,exports){
+},{"eventie":62}],62:[function(require,module,exports){
+module.exports=require(53)
+},{"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\imagesloaded\\node_modules\\eventie\\eventie.js":53}],63:[function(require,module,exports){
+module.exports=require(54)
+},{"C:\\Users\\Justin\\documents\\github\\af\\node_modules\\imagesloaded\\node_modules\\wolfy87-eventemitter\\EventEmitter.js":54}],64:[function(require,module,exports){
 /*!
  * Outlayer v1.3.0
  * the brains and guts of a layout library
@@ -6885,4 +6930,4 @@ if ( typeof define === 'function' && define.amd ) {
 
 })( window );
 
-},{"./item":56,"desandro-matches-selector":58,"doc-ready":59,"eventie":60,"get-size":54,"wolfy87-eventemitter":61}]},{},[27]);
+},{"./item":58,"desandro-matches-selector":60,"doc-ready":61,"eventie":62,"get-size":56,"wolfy87-eventemitter":63}]},{},[29]);

@@ -6,14 +6,18 @@ var QuatroGallery = React.createClass({
   
   getDefaultProps: function(){
     return ({
-	  featuredCollections: [{}],
+	  artLoverCollections: [{}],
 	  owner: 'owner'
 	});
   },
   
+  componentDidMount: function(){
+    //alert(JSON.stringify(this.props));
+  },
+  
   render: function(){
     var quatro;
-	if( this.props.featuredCollections[0].featuredCollection.mainPhoto){
+	if( this.props.artLoverCollections[0].collection.mainPhoto){
       quatro = this.renderImages();
 	}
 	else{
@@ -33,12 +37,12 @@ var QuatroGallery = React.createClass({
   
   renderImages: function(){
   
-    var images = this.props.featuredCollections.map( function(item,i){
+    var images = this.props.artLoverCollections.map( function(item,i){
 	  if(i<4){
 	  return(
 
 	    <div className='image-wrap'>
-	      <img className='img-responsive' src={item.featuredCollection.mainPhoto.photoUrl} alt={item.featuredCollection.mainPhoto.photoUrl} />
+	      <img className='img-responsive' src={item.collection.mainPhoto.photoUrl} alt={item.collection.mainPhoto.photoUrl} />
 	    </div>
 	  );
 	  }
