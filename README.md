@@ -2,11 +2,19 @@ artfactum-frontend
 ================== 
 A better way to discover new art
 
+Artfactum is built on Assembly
+
+##How Assembly Works
+
+Assembly products are like open-source and made with contributions from the community. Assembly handles the boring stuff like hosting, support, financing, legal, etc. Once the product launches we collect the revenue and split the profits amongst the contributors.
+
+Visit https://assembly.com to learn more.
+
 ##About
 
 The front-end repository for Artfactum.
 
-We're currently using React with the Flux architecture and Bootstrap w/LESS. Also included: jQuery and Modernizr.
+Tech stack includes React with Delorean Flux and Bootstrap 3. Also included: jQuery and Modernizr.
 
 React: http://facebook.github.io/react/
 
@@ -14,11 +22,12 @@ Flux: http://facebook.github.io/flux/docs/overview.html
 
 This repo was scaffolded using Yeoman (see https://github.com/yeoman/generator-webapp).
 
-##Install
+##Install and Contribute
 
-You'll need to have installed bower, node, grunt, grunt, and grunt-cli.
+Fork or clone from Develop branch. 
 
-Fork the repo. Clone branch "Develop". 
+You'll need to have installed bower, node, grunt, and grunt-cli.
+
 
 In the root directory fire:
 
@@ -43,13 +52,13 @@ To build:
 
         grunt build
   
-If you need to add a library or plugin, use bower.
+If you need to add a library or plugin, use bower or npm.
 
 For example:
 
         bower install --save jquery
 
-##Contributing
+##Git Workflow
 
 Base this project's git flow on [A successful Git branching model](http://nvie.com/posts/a-successful-git-branching-model/)
 
@@ -64,5 +73,22 @@ Base this project's git flow on [A successful Git branching model](http://nvie.c
 5. Open PR back into develop
   - Make PR Description links to the Bounty and add a comment to the Bounty linking the PR
 
+##React and JSX 
+
+JSX is automatically compiled to valid js in the gruntfile when changes are made.
+
+The build file main.js is in app/build/
+
+The working jsx files are in app/scripts/components.
+
+Normal js files are included in app/scripts.
+
+##Module Bundling
+
+You can require both javascript files and css files.
+
+#Work DRY
+
+Check to see if there is an existing React component, bootstrap solution, or jQuery plugin available for whatever you're working on.
 
 
