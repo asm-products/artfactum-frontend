@@ -240,12 +240,26 @@ var css = ""; (require("C:\\Users\\Justin\\documents\\github\\af\\node_modules\\
 require('./Description.css');
 
 var Description = React.createClass({displayName: 'Description',
+  
+  getDefaultProps: function(){
+  
+    return({
+	  title: 'Title',
+	  ownerName: 'Owner Name',
+	  photoUrl: null,
+	  //todo: add ownerAvatar to store/json
+	  ownerAvatar: null,
+	  description: "Description"
+    });
+  
+  },
+  
   render: function(){
     return(
 	  React.createElement("div", {className: "description"}, 
 	    
 		React.createElement("div", {className: "container"}, 
-	      React.createElement("h4", {className: "dark-gray heavy"}, "Bird In Space")
+	      React.createElement("h4", {className: "dark-gray heavy"}, this.props.title)
 		)
 	  
 	  )
