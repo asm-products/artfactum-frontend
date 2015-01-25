@@ -60,9 +60,13 @@ var Signup = React.createClass({
 				<option>English</option>
 				<option>Spanish</option>
 			  </select>
+			  <button className='light register-button'
+			    data-toggle='modal'
+				data-target='#basicModal'>Register
+			  </button>
 			  <button className='light signup-button'
 			    data-toggle='modal'
-				data-target='#basicModal'>Sign up
+				data-target='#basicModal'>Sign In
 			  </button>
 			</div>{/*end parallax base*/}
 			
@@ -158,34 +162,33 @@ var Signup = React.createClass({
 		 
 			<div>
 			  
-			<img src='icons/icons/png/32px/pencil2.png' />
+			<img src='images/pencil2.png' />
 			<p>Create your own Gallery</p>
 			  
 			</div>
 			
 			<span></span>
 			<div>
-			  <img src='icons/icons/png/32px/coin.png' />
+			  <img src='images/coin.png' />
 			  <p>Sell your artworks</p>
 			</div>
 			<span></span>
 			<div>
-			  <img src='icons/icons/png/32px/happy.png' />
+			  <img src='images/happy.png' />
 			  <p>Get paid discovering art</p>
 			</div>
 			<div>
-			  <img src='icons/icons/png/32px/users.png' />
-
+			  <img src='images/users.png' />
 			  <p>A global community</p>
 			</div>
 			<span></span>
 			<div>
-			  <img src='icons/icons/png/32px/volume-high.png' />
+			  <img src='images/volume-high.png' />
 			  <p>Democratized visibility</p>
 			</div>
 			<span></span>
 			<div>
-			  <img src='icons/icons/png/32px/loop.png' />
+			  <img src='images/loop.png' />
 			  <p>Best commission ever</p>
 			</div>
 			

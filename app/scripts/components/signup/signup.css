@@ -123,10 +123,19 @@
     position: absolute;
     padding: 1vh;
 	margin: .75em;
+	
 }
 
 .signup-button{
   right:0;
+}
+
+.register-button{
+  position:absolute;
+  padding:1vh;
+  margin:.75em;
+  right:5em;
+
 }
 
 /*hero-unit*/	
@@ -140,7 +149,6 @@
   text-align:center;
   color:black;
   overflow:hidden:
-
 }
 
   

@@ -14,9 +14,7 @@ var Actions = require('./../../actions/actions.js'),
 var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 
  
-require('./user-profile.css');
-require('../../../styles/color-swatch.css');
- 
+require('./user-profile.css'); 
 
  $.fn.serializeObject = function()
 {
@@ -145,22 +143,7 @@ var UserProfile = React.createClass({
 		   
 		  </div>{/*end second row*/}
 		  
-		
-		 	  
-			  <menu>
-			  
-			    <menuitem><a href='#myAccount'>My Account</a> | </menuitem>
-			    <menuitem><a href='#aboutMe'>About Me</a> | </menuitem>
-			    <menuitem><a href='#social'>Social</a> | </menuitem>
-			    <menuitem><a href='#background'>Background</a> | </menuitem>
-			    <menuitem><a href='#interests'>Interests</a></menuitem>
-			  
-			  </menu>
-			
-			
-		  
           <form ref='form' role='form' onSubmit={this.handleSubmit}>          
-		  
 		  
 		  <div className='row user-profile-forms center-block'>
 		  
