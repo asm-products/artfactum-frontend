@@ -21,37 +21,24 @@ body{
   color: #474747;
   margin:0;
   padding:0;
-  font-family: 'Open-Sans-600', sans-serif;	
+  font-family: 'Open-Sans', sans-serif;	
   -webkit-font-smoothing: antialiased;
 }
 
 
 .title-wrapper{
- 
- -webkit-background-size: cover;
- -moz-background-size: cover;
- -o-background-size: cover;
- background-size: cover;
- color: white;
- padding-top: 2em;
- padding-bottom: 4em;
-
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  color: white;
+  padding-top: 2em;
+  padding-bottom: 4em;
 }
 
 /*some handy classes */
 .content-head{
-
   margin: 2em;
-
-}
-
-
-.white-text{
-  color: white;
-}
-
-.black-text{
-  color: black;
 }
 
 
@@ -84,60 +71,6 @@ body{
 .heavy{
 	font-weight: 800;
 }
-
-
-
-/*colors wrapper and swatches*/
-.color-swatches-wrapper{
-	padding: 2em;
-	color: white;
-	margin-bottom: 2em; 
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover  
-}
-
-.primary-swatch{
-	height: 10em;
-	border-radius: 0.2em;
-	margin-bottom: 0.5em;
-}
-.secondary-swatch{
-	border-radius: 0.2em;
-	height: 8em;
-	width: 80%;
-	margin: 0 auto;
-	margin-bottom: 0.5em;
-}
-.first-color{
-	background-color: #52bad5;
-}
-.second-color{
-	background-color: #ffffff;
-	color: #474747; 
-}
-.third-color{
-	background-color: #f2f1f0;
-    color: #474747; 
-}
-.fourth-color{
-	background-color: #d1ccca;
-	color: #474747; 
-}
-.fifth-color{
-	background-color: #474747;
-}
-.sixth-color{
-	background-color: #3a3a3a;
-}
-.seventh-color{
-	background-color: #E56E5C;
-}
-.eighth-color{
-	background-color: #cc5746;
-}
-
 
 /*Buttons */
 .buttons{
@@ -310,7 +243,6 @@ button{
 }
 
 
-
 /*tag styling */
 
 .tag{
@@ -365,6 +297,10 @@ button{
 
 .eighty{
   width: 80%
+}
+
+.fifty{
+  width: 50%;
 }
 
 .fluid{

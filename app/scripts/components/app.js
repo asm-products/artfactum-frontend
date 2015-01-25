@@ -52,6 +52,8 @@ var App = React.createClass({
 	        <li><Link to='parallaxpage'>Parallax</Link></li>
 	        <li><Link to='paddedunderline'>PaddedUnderline</Link></li>
 	        <li><Link to='photocollections'>PhotoCollections</Link></li>
+	        <li><Link to='lightbox'>Lightbox</Link></li>
+	        <li><Link to='description'>Description</Link></li>
 	      </ul>
 		</div>
  	    <div className='views'>

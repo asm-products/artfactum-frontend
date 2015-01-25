@@ -9,6 +9,8 @@ var UserProfile = React.createFactory(require('./user-profile/user-profile.js'))
     ParallaxPage = React.createFactory(require('./ParallaxPage/ParallaxPage.js')),
     PaddedUnderline = React.createFactory(require('./PaddedUnderline/PaddedUnderline.js')),
     PhotoCollections = React.createFactory(require('./PhotoCollections/PhotoCollections.js')),
+	Lightbox = React.createFactory(require('./Lightbox/Lightbox.js')),
+	Description = React.createFactory(require('./Description/Description.js')),
     App = React.createFactory(require('./app.js'));
 
 var	Dispatcher = require('./../dispatcher.js');
@@ -21,8 +23,6 @@ var Router = window.ReactRouter,
     NotFoundRoute = Router.NotFoundRoute, 
 	RouteHandler = Router.RouteHandler;
 	
-require('./main.css');
-
 
 var Welcome = React.createClass({
   render: function() {
@@ -89,6 +89,8 @@ var routes = (
     <Route path='/marketplace' name='marketplace' handler={Marketplace}/>
     <Route path='/mygallery' name='mygallery' handler={MyGallery}/>
     <Route path='/mymarketplace' name='mymarketplace' handler={MyMarketplace}/>
+    <Route path='/lightbox' name='lightbox' handler={Lightbox}/>
+    <Route path='/description' name='description' handler={Description}/>
 	<NotFoundRoute handler={NotFound} ></NotFoundRoute>
 	<DefaultRoute handler={Welcome} pageTitle="Home"/>
   </Route>
